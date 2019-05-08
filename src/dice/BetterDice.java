@@ -23,7 +23,7 @@ import westSidePanel.WestSidePanel;
  *
  */
 public class BetterDice extends JPanel implements ActionListener {
-	
+
 	private Board board;
 	private PlayerList testPlayers;
 	private WestSidePanel wsp;
@@ -56,8 +56,8 @@ public class BetterDice extends JPanel implements ActionListener {
 		this.board = board;
 		testPlayers = allPlayers;
 		this.wsp = wsp;
-		this.tabPanel=tabPanel;
-		
+		this.tabPanel = tabPanel;
+
 		initializePanel();
 		addButtonsAndListeners();
 
@@ -157,7 +157,7 @@ public class BetterDice extends JPanel implements ActionListener {
 				break;
 			}
 			int total;
-			
+
 			if (faceValueDiceOne == faceValueDiceTwo) {
 				total = ((faceValueDiceOne + faceValueDiceTwo) * 2);
 			} else
@@ -168,27 +168,29 @@ public class BetterDice extends JPanel implements ActionListener {
 			lblDice2.setIcon(showDice);
 
 			System.out.println(total);
-			
-			System.out.println("pos is: "+testPlayers.getActivePlayer().getIndex());
-			System.out.println(testPlayers.getActivePlayer().getBalance());
 
-			if(testPlayers.getActivePlayer().getIndex() + total > 39) {
+	
+
+			if (testPlayers.getActivePlayer().getIndex() + total > 39) {
 				System.out.println("YOU GET MONEY");
-				testPlayers.getActivePlayer().setBalance(testPlayers.getActivePlayer().getBalance()+200);
+				testPlayers.getActivePlayer().increaseBalance(200);
 				System.out.println(testPlayers.getActivePlayer().getBalance());
 
 			}
 			movePlayerThread = new Thread(new LoopThread(total));
 			movePlayerThread.start();
-			
-			tabPanel.addPlayerList(testPlayers);			
-			
-			
-			wsp.append("\n" + testPlayers.getActivePlayer().getName() +" Rolled a: " + total);
+
+			tabPanel.addPlayerList(testPlayers);
+
+			if (faceValueDiceOne == faceValueDiceTwo) {
+				wsp.append("\n" + testPlayers.getActivePlayer().getName() + " Rolled a dubble: " + total);
+
+			} else
+				wsp.append("\n" + testPlayers.getActivePlayer().getName() + " Rolled a: " + total);
 		}
 
 		if (e.getSource() == finishTurn) {
-			testPlayers.switchToNextPlayer(); 
+			testPlayers.switchToNextPlayer();
 			System.out.println(
 					"Next player turn" + "\n" + "Aktic playerindex: " + testPlayers.getActivePlayer().getPlayerIndex());
 		}

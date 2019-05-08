@@ -106,6 +106,7 @@ public class Player {
 
 	public void increaseBalance(int income) {
 		this.balance += income;
+		setNetWorth(netWorth+income);
 	}
 
 	/**
