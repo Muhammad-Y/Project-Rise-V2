@@ -30,7 +30,8 @@ public class NullMain extends JPanel {
 	private TabPanel TPanel = new TabPanel();
 ;
 
-	private BetterDice dice = new BetterDice(board, playerList);
+//	private BetterDice dice = new BetterDice(board, playerList);
+	private BetterDice dice = new BetterDice(board, playerList, westPanel);
 	private JFrame frame = new JFrame();
 
 	public NullMain() {

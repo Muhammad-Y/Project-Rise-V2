@@ -157,7 +157,9 @@ public class WestSidePanel extends JPanel {
 		lblInfo.setForeground(Color.white);
 	}
 	
-	
+	public void append(String res) {
+		txtMessage.append(res);
+	}
 	
 	
 	
