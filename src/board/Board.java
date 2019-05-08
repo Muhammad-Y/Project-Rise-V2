@@ -13,6 +13,8 @@ import javax.swing.JPanel;
 
 import player.Player;
 import player.PlayerList;
+import tiles.Tile;
+import tileCollection.TileCollection;
 import tiles.TileInfo;
 import westSidePanel.WestSidePanel;
 
@@ -31,6 +33,10 @@ public class Board extends JPanel {
 	private GUITile[] tiles = new GUITile[40]; //skapar tomma Tile objekt med en bakgrund 
 	private PlayerList playerList = new PlayerList();
 	private Listener listener = new Listener();
+	
+	//Ny
+	private TileCollection tileCollection = new TileCollection();
+	
 	private JFrame hej;
 	
 	private static final long serialVersionUID = 1L;
@@ -420,6 +426,12 @@ public class Board extends JPanel {
 	}
 	public void removePlayer(Player player) {
 		tiles[player.getIndex()].removePlayer(player);
+	}
+	
+	
+	//Method called when the user arrives at the destination tile
+	public Tile getDestinationTile(int index) {
+		return tileCollection.getTileAtIndex(index);
 	}
 	 
 	
