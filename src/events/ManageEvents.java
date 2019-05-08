@@ -7,5 +7,9 @@ package events;
  */
 
 public class ManageEvents {
-
+	
+	public ManageEvents() {
+		
+	}
+	
 }
