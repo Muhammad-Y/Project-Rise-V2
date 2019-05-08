@@ -188,7 +188,7 @@ public class BetterDice extends JPanel implements ActionListener {
 		}
 
 		if (e.getSource() == finishTurn) {
-			testPlayers.switchToNextPlayer();
+			testPlayers.switchToNextPlayer(); 
 			System.out.println(
 					"Next player turn" + "\n" + "Aktic playerindex: " + testPlayers.getActivePlayer().getPlayerIndex());
 		}

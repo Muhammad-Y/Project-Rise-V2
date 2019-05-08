@@ -28,11 +28,11 @@ import player.PlayerList;
  */
 
 public class StartUpScreen extends JFrame {
-
+ 
 	private static final long serialVersionUID = 1L;
 
 //	private PlayerList playerList = new PlayerList(); 
-//	private Board board;
+//	private Board board; 
 
 	private BackgroundMusic bgm = new BackgroundMusic();
 

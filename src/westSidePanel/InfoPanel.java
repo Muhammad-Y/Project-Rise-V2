@@ -53,7 +53,7 @@ public class InfoPanel extends JFrame{
 	 * Sets the location, size other stuffs of JFrame.
 	 */
 	public InfoPanel(){		
-		setSize(418, 902);
+		setSize(418, 902); 
 		setLocation(-8, 0);
 		setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		

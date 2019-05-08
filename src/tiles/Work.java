@@ -55,7 +55,7 @@ public class Work implements Tile {
 	}
 	
 	public Player setPlayer(Player player) {
-		return this.player = player;
+		return this.player = player; 
 	}
 
 	public static void main(String[]args) {

@@ -18,7 +18,7 @@ public class TabPanel extends JPanel {
 	private JTabbedPane tab = new JTabbedPane();
 	private JPanel[] aP;
 	private PlayerPanel p;
-
+ 
 	private int[] array;
 	
 	public void addPlayerList(PlayerList playerList) {

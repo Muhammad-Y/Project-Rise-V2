@@ -29,7 +29,7 @@ public class NullMain extends JPanel {
 
 
 	private PlayerList playerList ;
-
+ 
 //	private BetterDice dice = new BetterDice(board, playerList);
 	private BetterDice dice = new BetterDice(board, playerList, westPanel,tPanel);
 	private JFrame frame = new JFrame();

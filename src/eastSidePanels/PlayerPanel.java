@@ -50,7 +50,7 @@ public class PlayerPanel extends JPanel {
     
     
     public PlayerPanel(PlayerList playerList, int playa) {
-
+ 
     	
     	setPreferredSize(new Dimension(350,400));
     	setBackground(Color.DARK_GRAY);

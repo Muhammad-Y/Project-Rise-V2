@@ -30,7 +30,7 @@ public class TileCollection {
 		tileArray[2] = new ChanceCard();
 		tileArray[3] = new Property("Stone Mason Camp", 60, 4, 15, new Color(58,20,56,255));
 		tileArray[4] = new Tax();
-		tileArray[5] = new Work();
+		tileArray[5] = new Work(); 
 		tileArray[6] = new Property("Vegetables Stand", 100, 6, 20, new Color(131, 166, 219, 255));
 		tileArray[7] = new ChanceCard();
 		tileArray[8] = new Property("Fish Stand", 100, 6, 25, new Color(131, 166, 219, 255));

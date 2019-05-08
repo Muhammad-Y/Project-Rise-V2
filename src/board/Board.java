@@ -111,7 +111,7 @@ public class Board extends JPanel {
 
 	public Board(PlayerList playerList,WestSidePanel wp) {
 		initializeAllPanels();	
-		this.playerList = playerList; 
+		this.playerList = playerList;  
 		
 	}
 

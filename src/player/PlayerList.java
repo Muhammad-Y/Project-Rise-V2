@@ -40,7 +40,7 @@ public class PlayerList {
 //		currentPlayer = 0; 
 //	}
 	
-	
+	 
 	public void addNewPlayer(String name, ImageIcon icon) {
 		activePlayers.add(new Player(name, icon, playerListLength)); 
 		playerListLength++;

@@ -99,7 +99,7 @@ public class WestSidePanel extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				new ManageWindow();
 			}			
-		});
+		}); 
 		
 		// Extra knappar kan vi ha
 //		pnlInBtn.add(btn);

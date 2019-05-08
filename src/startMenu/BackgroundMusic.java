@@ -12,7 +12,7 @@ import javax.sound.sampled.Clip;
  * @author AevanDino
  */
 public class BackgroundMusic extends Thread {
-
+ 
 	private Clip clip;
 	private Thread musicThread;
 	public Boolean shouldBeRunning;
