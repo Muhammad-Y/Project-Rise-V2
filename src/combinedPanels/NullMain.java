@@ -12,6 +12,7 @@ import dice.BetterDice;
 import eastSidePanels.TabPanel;
 import menu.Menu;
 import player.PlayerList;
+import startMenu.BackgroundMusic;
 import westSidePanel.WestSidePanel;
 
 /**
@@ -20,10 +21,8 @@ import westSidePanel.WestSidePanel;
  */
 public class NullMain extends JPanel {
 	private TabPanel tPanel = new TabPanel();
-
-
+	private BackgroundMusic music;
 	private Menu m = new Menu();
-
 	private WestSidePanel westPanel = new WestSidePanel();
 	private Board board = new Board(westPanel);
 
@@ -75,6 +74,7 @@ public class NullMain extends JPanel {
 		dice.addPlayerList(playerList);
 
 	}
+	
 
 	public static void main(String[] args) {
 

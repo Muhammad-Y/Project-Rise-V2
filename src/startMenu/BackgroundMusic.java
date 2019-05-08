@@ -17,7 +17,7 @@ public class BackgroundMusic extends Thread {
 	private Thread musicThread;
 	public Boolean shouldBeRunning;
 	private int pos = 0;
-
+	
 	public BackgroundMusic() {
 		this.clip = null;
 	}
@@ -31,6 +31,7 @@ public class BackgroundMusic extends Thread {
 		if(clip!=null && shouldBeRunning) {
 			clip.setFramePosition(pos);
 			clip.start();
+			
 		
 		} else if(musicThread==null) {
 			musicThread = new Thread(this);

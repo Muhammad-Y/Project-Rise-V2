@@ -10,7 +10,10 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import startMenu.BackgroundMusic;
 
 /**
  * This class displays the game board as well as what the players are called and
@@ -24,8 +27,7 @@ public class Menu extends JPanel {
 	private JMenu jmMenu = new JMenu("Menu");
 	private JMenuBar jmMenuBar = new JMenuBar();
 	private JMenuItem jmExit = new JMenuItem("Exit");
-	private JMenuItem jmOptions = new JMenuItem("mute");
-
+	private JMenuItem jmOptions = new JMenuItem("Pause Music");
 	/**
 	 * Constructor used to create and draw in the frame.
 	 */
@@ -41,6 +43,13 @@ public class Menu extends JPanel {
 				System.exit(0);
 			}
 		});
+		jmOptions.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+//				music.pauseMusic();
+				JOptionPane.showInputDialog("Hello");
+			}
+		});
 		jmMenu.add(jmOptions);
 
 		jmMenuBar.add(jmMenu);
@@ -50,16 +59,17 @@ public class Menu extends JPanel {
 
 
 	}
+	
 
-	public static void main(String[] args) {
-
-		Menu panelTest = new Menu();
-		JFrame frame = new JFrame();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setVisible(true);
-		frame.getContentPane().add(panelTest);
-		frame.pack();
-		
-	}
+//	public static void main(String[] args) {
+//
+//		Menu panelTest = new Menu();
+//		JFrame frame = new JFrame();
+//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		frame.setVisible(true);
+//		frame.getContentPane().add(panelTest);
+//		frame.pack();
+//		
+//	}
 
 }
