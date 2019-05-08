@@ -31,7 +31,7 @@ public class ManageWindow extends JFrame{
 	private Player player;
 	
 	// Main frame
-	public ManageWindow(Player player) {
+	public ManageWindow() {
 		this.player = player;
 		setSize(505, 630);
 		setLocation(200, 150);
@@ -119,8 +119,9 @@ public class ManageWindow extends JFrame{
 	
 	
 	public static void main(String[] args) {
-		Player p1 = new Player("Momo", new ImageIcon("images/playerYellow.jpg"), 0);
-		p1.addNewProperty(newProperty);
-		new ManageWindow(p1);
+//		Player p1 = new Player("Momo", new ImageIcon("images/playerYellow.jpg"), 0);
+//		p1.addNewProperty(newProperty);
+//		new ManageWindow(p1);
+		new ManageWindow();
 	}
 }
