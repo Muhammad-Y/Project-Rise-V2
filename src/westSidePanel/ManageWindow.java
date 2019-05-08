@@ -5,17 +5,16 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
-import javax.swing.*;
+
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 
-/**
- * This panel shows the properties which a player owns and let the player
- * to manage them. Upgrade, Downgrade or sell the property. 
- * @param Rohan
- */
-
-
-import menu.Menu;
 import player.Player;;
 
 

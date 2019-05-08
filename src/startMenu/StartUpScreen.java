@@ -5,6 +5,7 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -17,9 +18,8 @@ import javax.swing.JTextField;
 
 import board.Board;
 import board.ColorIconMap;
-import board.PlayerList;
 import combinedPanels.NullMain;
-import gui.BackgroundMusic;
+import player.PlayerList;
 
 /**
  * 

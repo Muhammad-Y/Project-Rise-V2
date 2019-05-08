@@ -1,10 +1,10 @@
-package board;
+package player;
 
 import java.util.LinkedList;
 
 import javax.swing.ImageIcon;
 
-import player.Player;
+import board.ColorIconMap;
 
 public class PlayerList {
 	private LinkedList<Player> activePlayers = new LinkedList<Player>();

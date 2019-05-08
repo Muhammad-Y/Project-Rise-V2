@@ -1,14 +1,10 @@
 package player;
 
-import java.awt.Color;
-
-import player.PlayerRanks;
-
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 
-import tile.Tile;
+import tiles.Tile;
 
 /**
  * Player class deals with everything that has to do with a player.

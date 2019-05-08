@@ -1,4 +1,4 @@
-package player;
+package tileCollection;
 
 import javax.swing.JOptionPane;
 

@@ -1,4 +1,4 @@
-package titleScreen;
+package startMenu;
 
 import java.io.File;
 

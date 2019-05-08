@@ -1,18 +1,17 @@
 package combinedPanels;
 
 import java.awt.Color;
+
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import board.Board;
-import board.PlayerList;
 import dice.BetterDice;
-import eastSidePanels.EastSidePanel;
-import eastSidePanels.PlayerPanel;
 import eastSidePanels.TabPanel;
 import menu.Menu;
+import player.PlayerList;
 import westSidePanel.WestSidePanel;
 
 /**
@@ -22,7 +21,6 @@ import westSidePanel.WestSidePanel;
 public class NullMain extends JPanel {
 	private PlayerList playerList;
 
-	private EastSidePanel eastPanel = new EastSidePanel();
 
 	private Menu m = new Menu();
 

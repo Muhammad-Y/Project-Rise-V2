@@ -8,11 +8,12 @@ import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel; 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+
 import player.Player;
-import tile.Tile;
-import tileInfo.TileInfo;
+import player.PlayerList;
+import tiles.TileInfo;
 import westSidePanel.WestSidePanel;
 
 

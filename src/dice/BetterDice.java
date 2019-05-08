@@ -1,10 +1,7 @@
 package dice;
 
-import java.awt.BorderLayout;
-
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -17,7 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import board.Board;
-import board.PlayerList;
+import player.PlayerList;
 
 /**
  * @author Muhammad Abdulkhuder ,Aevan Dino, Sebastian Viro'la, Seth �berg

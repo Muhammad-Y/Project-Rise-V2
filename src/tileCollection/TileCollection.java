@@ -1,14 +1,16 @@
 package tileCollection;
 
 import javafx.scene.paint.Color;
-import tile.ChanceCard;
-import tile.Go;
-import tile.Jail;
-import tile.Property;
-import tile.SundayChurch;
-import tile.Tax;
-import tile.Tile;
-import tile.Work;
+import tiles.ChanceCard;
+import tiles.Go;
+import tiles.GoToJail;
+import tiles.Jail;
+import tiles.Property;
+import tiles.SundayChurch;
+import tiles.Tavern;
+import tiles.Tax;
+import tiles.Tile;
+import tiles.Work;
 
 public class TileCollection {
 

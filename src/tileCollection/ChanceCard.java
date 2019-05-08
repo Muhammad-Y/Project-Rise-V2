@@ -1,4 +1,4 @@
-package chance;
+package tileCollection;
 
 import javax.swing.JOptionPane;
 

@@ -1,13 +1,12 @@
 package eastSidePanels;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
-import board.PlayerList;
+import player.PlayerList;
 
 /**
  * @author Abdulkhuder Muhammad, Sebastian Viro.
