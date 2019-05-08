@@ -47,12 +47,4 @@ public class Go implements Tile {
 				+ "Every time a player passes by, he or she \nis rewarded 200 gold coins";
 		return info;
 	}
-	
-	public static void main(String[] args) {
-		Go g = new Go(new Player("Momo", Color.green));
-		System.out.println(player.getBalance());
-		g.onLanding();
-		System.out.println(player.getBalance());
-	}
-
 }
