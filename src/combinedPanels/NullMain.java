@@ -57,7 +57,7 @@ public class NullMain extends JPanel {
 
 	public void startboard() {
 		frame = new JFrame("Tjena");
-		frame.setPreferredSize(new Dimension(900, 750));
+		frame.setPreferredSize(new Dimension(1480, 900));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		frame.add(this);
