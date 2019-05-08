@@ -41,9 +41,15 @@ public class TabPanel extends JPanel {
 		
 		array = new int[playerList.getLength()];
 
-		System.out.print(playerList.getLength());
 
+		
+			tab.removeAll();
+
+	
+
+		
 		for (int i = 0; i < array.length; i++) {
+			new TabPanel();
 			p = new PlayerPanel(playerList, i);
 			tab.addTab("Player " +( i + 1), p);
 

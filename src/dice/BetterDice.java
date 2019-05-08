@@ -27,7 +27,7 @@ public class BetterDice extends JPanel implements ActionListener {
 	private Board board;
 	private PlayerList testPlayers;
 	private WestSidePanel wsp;
-	private TabPanel tabPanel;
+	private TabPanel tabPanel = new TabPanel();
 	private JButton finishTurn = new JButton("End Turn");
 	private int newIndex;
 	private Thread movePlayerThread;
@@ -181,7 +181,7 @@ public class BetterDice extends JPanel implements ActionListener {
 			movePlayerThread = new Thread(new LoopThread(total));
 			movePlayerThread.start();
 			
-			
+			tabPanel.addPlayerList(testPlayers);			
 			
 			
 			wsp.append("\n" + testPlayers.getActivePlayer().getName() +" Rolled a: " + total);
