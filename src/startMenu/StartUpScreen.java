@@ -170,7 +170,7 @@ public class StartUpScreen extends JFrame {
 		setVisible(true);
 		setResizable(false);
 		setLocationRelativeTo(null);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 
 	public void createRadioButtons(int width, int height) {
@@ -233,8 +233,8 @@ public class StartUpScreen extends JFrame {
 				} else if (radioButtons[3].isSelected()) {
 					btnPressed(3, true);
 					amountOfPlayers = 4;
-
 				}
+				
 			}
 
 			if (e.getSource() == btnStartGame) {
@@ -242,7 +242,7 @@ public class StartUpScreen extends JFrame {
 					System.out.println(
 							"Player One: " + playerTf[i].getText() + " : " + playerColors[i].getSelectedItem());
 				}
-
+				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				createNewUsers();
 
 				for (int i = 0; i < playerList.getLength(); i++) {

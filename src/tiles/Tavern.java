@@ -11,9 +11,11 @@ public class Tavern implements Tile{
 	private boolean purchasable;
 	private Player owner;
 	private Color color; 
+	private int price;
 	
 
-	public Tavern() {
+	public Tavern(int price) {
+		this.price = price;
 		this.purchasable = true;
 		this.owner = null;
 	}
@@ -39,7 +41,7 @@ public class Tavern implements Tile{
 
 	@Override
 	public String getTileInfo() {
-		return this.info + "name\n" + "Owner: " + ;
+		return this.info + "name\n" + "Owner: " + "";
 		
 	}
 
