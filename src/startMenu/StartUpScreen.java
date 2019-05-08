@@ -238,7 +238,7 @@ public class StartUpScreen extends JFrame {
 			}
 
 			if (e.getSource() == btnStartGame) {
-				for (int i = 0; i <= amountOfPlayers; i++) {
+				for (int i = 0; i == amountOfPlayers; i++) {
 					System.out.println(
 							"Player One: " + playerTf[i].getText() + " : " + playerColors[i].getSelectedItem());
 				}

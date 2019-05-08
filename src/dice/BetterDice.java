@@ -41,14 +41,12 @@ public class BetterDice extends JPanel implements ActionListener {
 	ImageIcon faceToShow, showDice;
 	Image resizedImage;
 
-	 
 	public void addPlayerList(PlayerList list) {
-		
+
 		this.testPlayers = list;
-		
-		
+
 	}
-	
+
 	public BetterDice(Board board, PlayerList allPlayers) {
 		this.board = board;
 		testPlayers = allPlayers;
@@ -57,10 +55,11 @@ public class BetterDice extends JPanel implements ActionListener {
 		addButtonsAndListeners();
 
 	}
+
 	public BetterDice() {
 		initializePanel();
 		addButtonsAndListeners();
-		}
+	}
 
 	public void initializePanel() {
 		setPreferredSize(new Dimension(400, 120));
@@ -150,12 +149,17 @@ public class BetterDice extends JPanel implements ActionListener {
 				faceToShow = new ImageIcon("DicePictures/faceValue6.png");
 				break;
 			}
-			int total = faceValueDiceOne+faceValueDiceTwo;
+			int total;
+			
+			if (faceValueDiceOne == faceValueDiceTwo) {
+				total = ((faceValueDiceOne + faceValueDiceTwo) * 2);
+			} else
+				total = faceValueDiceOne + faceValueDiceTwo;
+
 			resizedImage = faceToShow.getImage().getScaledInstance(diceWidth, diceHeight, Image.SCALE_SMOOTH);
 			showDice = new ImageIcon(resizedImage);
 			lblDice2.setIcon(showDice);
 
-			
 			System.out.println(total);
 
 			movePlayerThread = new Thread(new LoopThread(total));
