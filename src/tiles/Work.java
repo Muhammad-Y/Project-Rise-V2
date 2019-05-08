@@ -2,9 +2,7 @@ package tiles;
 
 import java.awt.Color;
 
-
-import gui.DiceWork;
-import dice.DiceGUI;
+import dice.BetterDice;
 import player.Player;
 
 /**
@@ -12,7 +10,7 @@ import player.Player;
  */
 public class Work implements Tile {
 	
-	private DiceWork dice;
+	private BetterDice dice;
 	private static Player player;
 	private String info;
 	
@@ -23,10 +21,10 @@ public class Work implements Tile {
 		
 	}
 	
-	public void onLanding() {
-		dice = new DiceWork(player);
-		dice.startGUI();
-	}
+//	public void onLanding() {
+//		dice = new BetterDice(player);
+//		dice.startGUI();
+//	}
 	
 	public void payPlayer(int nbrOfDots) {
 		player.increaseBalance(player.getPlayerRank().getSalary(nbrOfDots));
@@ -66,5 +64,10 @@ public class Work implements Tile {
 		System.out.println(player.getBalance());
 		Work w = new Work(player);
 		w.onLanding();
+	}
+	@Override
+	public void onLanding() {
+		// TODO Auto-generated method stub
+		
 	}
 }

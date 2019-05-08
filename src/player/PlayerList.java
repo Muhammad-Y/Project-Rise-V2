@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import javax.swing.ImageIcon;
 
 import board.ColorIconMap;
+import eastSidePanels.TabPanel;
 
 public class PlayerList {
 	private LinkedList<Player> activePlayers = new LinkedList<Player>();
@@ -17,6 +18,10 @@ public class PlayerList {
 	private int currentPlayer = 0; //index fÃ¶r den aktiva spelaren?
 	private int playerListLength = 0;
 	
+	public PlayerList(TabPanel p) {
+		currentPlayer = 0; 
+		
+	}
 	
 	public PlayerList() {
 		currentPlayer = 0; 

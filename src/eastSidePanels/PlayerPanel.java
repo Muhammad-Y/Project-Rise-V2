@@ -87,6 +87,9 @@ public class PlayerPanel extends JPanel {
     	lblGold.setText("Amount of gold: " + playerList.getPlayerFromIndex(playa).getBalance() );
     	lblGold.setFont(font);
     	lblGold.setHorizontalAlignment(SwingConstants.CENTER);
+    	
+    	
+    	
     	p2.add(lblGold);
     	add(p2);
 

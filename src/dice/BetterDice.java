@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import board.Board;
+import eastSidePanels.TabPanel;
 import player.PlayerList;
 import westSidePanel.WestSidePanel;
 
@@ -26,6 +27,7 @@ public class BetterDice extends JPanel implements ActionListener {
 	private Board board;
 	private PlayerList testPlayers;
 	private WestSidePanel wsp;
+	private TabPanel tabPanel;
 	private JButton finishTurn = new JButton("End Turn");
 	private int newIndex;
 	private Thread movePlayerThread;
@@ -50,10 +52,11 @@ public class BetterDice extends JPanel implements ActionListener {
 
 	}
 
-	public BetterDice(Board board, PlayerList allPlayers, WestSidePanel wsp) {
+	public BetterDice(Board board, PlayerList allPlayers, WestSidePanel wsp, TabPanel tabPanel) {
 		this.board = board;
 		testPlayers = allPlayers;
 		this.wsp = wsp;
+		this.tabPanel=tabPanel;
 		
 		initializePanel();
 		addButtonsAndListeners();
@@ -177,6 +180,7 @@ public class BetterDice extends JPanel implements ActionListener {
 			}
 			movePlayerThread = new Thread(new LoopThread(total));
 			movePlayerThread.start();
+			
 			
 			
 			

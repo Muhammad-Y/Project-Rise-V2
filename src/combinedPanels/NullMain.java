@@ -19,7 +19,7 @@ import westSidePanel.WestSidePanel;
  *
  */
 public class NullMain extends JPanel {
-	private PlayerList playerList;
+	private TabPanel tPanel = new TabPanel();
 
 
 	private Menu m = new Menu();
@@ -27,11 +27,11 @@ public class NullMain extends JPanel {
 	private WestSidePanel westPanel = new WestSidePanel();
 	private Board board = new Board(westPanel);
 
-	private TabPanel TPanel = new TabPanel();
-;
+
+	private PlayerList playerList ;
 
 //	private BetterDice dice = new BetterDice(board, playerList);
-	private BetterDice dice = new BetterDice(board, playerList, westPanel);
+	private BetterDice dice = new BetterDice(board, playerList, westPanel,tPanel);
 	private JFrame frame = new JFrame();
 
 	public NullMain() {
@@ -41,8 +41,8 @@ public class NullMain extends JPanel {
 		setLayout(null);
 		
 		
-		TPanel.setBounds(1095, 0, 345, 860);
-		add(TPanel);
+		tPanel.setBounds(1095, 0, 345, 860);
+		add(tPanel);
 		westPanel.setBounds(0, 0, 345, 860);
 		add(westPanel);
 		board.setBounds(346, 0, 750, 750);
@@ -70,7 +70,7 @@ public class NullMain extends JPanel {
 		board.addPlayers(playerList);
 
 		board.setPlayers();
-		TPanel.addPlayerList(playerList);
+		tPanel.addPlayerList(playerList);
 
 		dice.addPlayerList(playerList);
 
