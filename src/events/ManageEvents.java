@@ -1,6 +1,9 @@
 package events;
 
+import player.Player;
 import player.PlayerList;
+import tiles.Property;
+import tiles.Tile;
 
 /**
  * Klass som hanterar alla händelser då en spelare landar på en ruta
@@ -16,13 +19,32 @@ public class ManageEvents {
 	}
 	
 	
-	public void newEvent() {
+	public void newEvent(Tile tile, Player player) {
+		
+		if(tile instanceof Property) {
+			propertyEvent(tile, player);
+		}
 		
 	}
 	
 	
+	//Om spelare inte har råd att betala, eliminera spelare
 	public void control() {
 		
+	}
+	
+	
+	public void propertyEvent(Tile tile, Player player) {
+		Property tempProperty = (Property) tile; 
+		
+		//Boolean isOwned should be added to property
+//		if(tempProperty.isOwned == true) {
+			player.setBalance(player.getBalance() - tempProperty.getDefaultRent());
+//		}
+		
+		
+		
+		control();
 	}
 	
 	
