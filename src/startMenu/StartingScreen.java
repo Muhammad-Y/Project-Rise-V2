@@ -17,16 +17,21 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
+import board.Board;
+import board.ColorIconMap;
+import combinedPanels.NullMain;
+import player.PlayerList;
+
 public class StartingScreen extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
 	// References
 	private BackgroundMusic bgm = new BackgroundMusic();
-	//	private PlayerList playerList = new PlayerList();
-	//	private NullMain mainWindow = new NullMain();
-	//	private ColorIconMap colorMap = new ColorIconMap();
-	//	private Board board;
+		private PlayerList playerList = new PlayerList();
+		private NullMain mainWindow = new NullMain();
+		private ColorIconMap colorMap = new ColorIconMap();
+		private Board board;
 
 	// JButtons
 	private JButton btnConfirm = new JButton("Confirm");
@@ -241,32 +246,32 @@ public class StartingScreen extends JFrame {
 					amountOfPlayers = 4;
 				}
 			}
-		}
+		
 
-		//			if (e.getSource() == btnStartGame) {
-		//				for (int i = 0; i == amountOfPlayers; i++) {
-		//					System.out.println(
-		//							"Player One: " + playerTf[i].getText() + " : " + playerColors[i].getSelectedItem());
-		//				}
-		//				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		//				createNewUsers();
-		//
-		//				for (int i = 0; i < playerList.getLength(); i++) {
-		//					 System.out.println(playerList.getPlayerFromIndex(i).getPlayerIndex());
-		//				}
-		//
-		//				mainWindow.addPlayer(playerList);
-		//				
-		//				
-		//				
-		//				mainWindow.startboard();
-		//
-		//			}
-		//		}
+					if (e.getSource() == btnStartGame) {
+						for (int i = 0; i == amountOfPlayers; i++) {
+							System.out.println(
+									"Player One: " + playerTf[i].getText() + " : " + playerColors[i].getSelectedItem());
+						}
+						setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+						createNewUsers();
+		
+						for (int i = 0; i < playerList.getLength(); i++) {
+							 System.out.println(playerList.getPlayerFromIndex(i).getPlayerIndex());
+						}
+		
+						mainWindow.addPlayer(playerList);
+						
+						
+						
+						mainWindow.startboard();
+		
+					}
+				}
 
 		private void createNewUsers() {
 			for (int i = 0; i < amountOfPlayers; i++) {
-				//					playerList.addNewPlayer(playerTf[i].getText(), (String) playerColors[i].getSelectedItem());
+									playerList.addNewPlayer(playerTf[i].getText(), (String) playerColors[i].getSelectedItem());
 			}
 		}
 
