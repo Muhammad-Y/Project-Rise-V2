@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import board.Board;
+import cheat.CheatGui;
 import eastSidePanels.TabPanel;
 import player.PlayerList;
 import westSidePanel.WestSidePanel;
@@ -24,6 +25,7 @@ import westSidePanel.WestSidePanel;
  */
 public class BetterDice extends JPanel implements ActionListener {
 
+	private CheatGui cheat = new CheatGui(this);
 	private Board board;
 	private PlayerList testPlayers;
 	private WestSidePanel wsp;
@@ -63,13 +65,15 @@ public class BetterDice extends JPanel implements ActionListener {
 
 	}
 
+	// We can remove it after we are done with cheat
 	public BetterDice() {
+		
 		initializePanel();
 		addButtonsAndListeners();
 	}
 
 	public void initializePanel() {
-		setPreferredSize(new Dimension(400, 120));
+		setPreferredSize(new Dimension(650, 120));
 		setLayout(new FlowLayout());
 		setOpaque(false);
 	}
@@ -92,6 +96,7 @@ public class BetterDice extends JPanel implements ActionListener {
 
 		finishTurn.addActionListener(this);
 		add(finishTurn);
+		add(cheat);
 
 	}
 
@@ -169,19 +174,15 @@ public class BetterDice extends JPanel implements ActionListener {
 
 			System.out.println(total);
 
-	
-
 			if (testPlayers.getActivePlayer().getIndex() + total > 39) {
 				System.out.println("YOU GET MONEY");
 				testPlayers.getActivePlayer().increaseBalance(200);
 				System.out.println(testPlayers.getActivePlayer().getBalance());
 
 			}
-			
+
 			testPlayers.getActivePlayer().checkPlayerRank();
-			
-			
-			
+
 			movePlayerThread = new Thread(new LoopThread(total));
 			movePlayerThread.start();
 
@@ -201,6 +202,29 @@ public class BetterDice extends JPanel implements ActionListener {
 		}
 
 	}
+	
+	public void moveWCheat(int i) {
+		if (testPlayers.getActivePlayer().getIndex() + i > 39) {
+			System.out.println("YOU GET MONEY");
+			testPlayers.getActivePlayer().increaseBalance(200);
+			System.out.println(testPlayers.getActivePlayer().getBalance());
+
+		}
+
+		testPlayers.getActivePlayer().checkPlayerRank();
+
+		
+
+		tabPanel.addPlayerList(testPlayers);
+
+		
+		board.removePlayer(testPlayers.getActivePlayer());
+		testPlayers.getActivePlayer().setCounter(i);
+		board.setPlayer(testPlayers.getActivePlayer());
+		
+		
+	}
+	
 
 	private class LoopThread implements Runnable {
 		private int loop;

@@ -28,10 +28,10 @@ public class StartingScreen extends JFrame {
 
 	// References
 	private BackgroundMusic bgm = new BackgroundMusic();
-		private PlayerList playerList = new PlayerList();
-		private NullMain mainWindow = new NullMain();
-		private ColorIconMap colorMap = new ColorIconMap();
-		private Board board;
+	private PlayerList playerList = new PlayerList();
+	private NullMain mainWindow = new NullMain();
+	private ColorIconMap colorMap = new ColorIconMap();
+	private Board board;
 
 	// JButtons
 	private JButton btnConfirm = new JButton("Confirm");
@@ -39,7 +39,8 @@ public class StartingScreen extends JFrame {
 	private JButton btnReset = new JButton("Reset");
 
 	// Images
-	private ImageIcon imgBackground = new ImageIcon(new ImageIcon("images/fancyRoll.jpg").getImage().getScaledInstance(900, 860, Image.SCALE_SMOOTH));
+	private ImageIcon imgBackground = new ImageIcon(
+			new ImageIcon("images/fancyRoll.jpg").getImage().getScaledInstance(900, 860, Image.SCALE_SMOOTH));
 
 	// Fonts
 	private Font fontRadioButtons = new Font("Gabriola", Font.PLAIN, 24);
@@ -89,6 +90,7 @@ public class StartingScreen extends JFrame {
 
 	/**
 	 * Used to test program
+	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
@@ -98,6 +100,7 @@ public class StartingScreen extends JFrame {
 
 	/**
 	 * Used to determine amount of players
+	 * 
 	 * @param amountOfPlayers
 	 */
 	private StartingScreen(int amountOfPlayers) {
@@ -111,9 +114,9 @@ public class StartingScreen extends JFrame {
 	}
 
 	public void initializeGUI() {
-		
+
 		bgm.startMusic();
-		
+
 		createFrame();
 		bgm.startMusic();
 
@@ -136,7 +139,7 @@ public class StartingScreen extends JFrame {
 		lblPlayer.setFont(fontLabel);
 		lblPlayer.setBounds(315, 175, 300, 200);
 
-		// Create  three JRadioButtons
+		// Create three JRadioButtons
 		createRadioButtons();
 
 		// Confirm button
@@ -187,7 +190,7 @@ public class StartingScreen extends JFrame {
 	public void createRadioButtons() {
 		for (int i = 0; i < 3; i++) {
 			JRadioButton btnRadio = new JRadioButton((i + 2) + "");
-			btnRadio.setBounds(375 + i*65, 275, 50, 50);
+			btnRadio.setBounds(375 + i * 65, 275, 50, 50);
 			btnRadio.setFont(fontRadioButtons);
 			btnRadio.setOpaque(false);
 			btnGroup.add(btnRadio);
@@ -197,15 +200,15 @@ public class StartingScreen extends JFrame {
 	}
 
 	public void CreatePlayers() {
-		for (int i=0 ; i<4; i++) {
-			playerLabels[i].setBounds(280, 360 + i*40, 150, 50);
+		for (int i = 0; i < 4; i++) {
+			playerLabels[i].setBounds(280, 360 + i * 40, 150, 50);
 			playerLabels[i].setFont(fontLabelPlayer);
 			playerLabels[i].setVisible(false);
 
-			playerTf[i].setBounds(375, 360 + i*40, 150, 30);
+			playerTf[i].setBounds(375, 360 + i * 40, 150, 30);
 			playerTf[i].setVisible(false);
 
-			playerColors[i].setBounds(530, 360 + i*40, 100, 30);
+			playerColors[i].setBounds(530, 360 + i * 40, 100, 30);
 			playerColors[i].setVisible(false);
 
 			pnlPlayerInfo.add(playerLabels[i]);
@@ -214,7 +217,6 @@ public class StartingScreen extends JFrame {
 		}
 	}
 
-
 	private class ButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 
@@ -222,8 +224,8 @@ public class StartingScreen extends JFrame {
 				btnPressed(3, false);
 			}
 
-			if(e.getSource() == mute) {
-				if(mute.getText().contains("n")) {
+			if (e.getSource() == mute) {
+				if (mute.getText().contains("n")) {
 					mute.setText("Music Off");
 					bgm.pauseMusic();
 				} else {
@@ -246,32 +248,29 @@ public class StartingScreen extends JFrame {
 					amountOfPlayers = 4;
 				}
 			}
-		
 
-					if (e.getSource() == btnStartGame) {
-						for (int i = 0; i == amountOfPlayers; i++) {
-							System.out.println(
-									"Player One: " + playerTf[i].getText() + " : " + playerColors[i].getSelectedItem());
-						}
-						setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-						createNewUsers();
-		
-						for (int i = 0; i < playerList.getLength(); i++) {
-							 System.out.println(playerList.getPlayerFromIndex(i).getPlayerIndex());
-						}
-		
-						mainWindow.addPlayer(playerList);
-						
-						
-						
-						mainWindow.startboard();
-		
-					}
+			if (e.getSource() == btnStartGame) {
+				for (int i = 0; i == amountOfPlayers; i++) {
+					System.out.println(
+							"Player One: " + playerTf[i].getText() + " : " + playerColors[i].getSelectedItem());
 				}
+				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				createNewUsers();
+
+				for (int i = 0; i < playerList.getLength(); i++) {
+					System.out.println(playerList.getPlayerFromIndex(i).getPlayerIndex());
+				}
+
+				mainWindow.addPlayer(playerList);
+
+				mainWindow.startboard();
+
+			}
+		}
 
 		private void createNewUsers() {
 			for (int i = 0; i < amountOfPlayers; i++) {
-									playerList.addNewPlayer(playerTf[i].getText(), (String) playerColors[i].getSelectedItem());
+				playerList.addNewPlayer(playerTf[i].getText(), (String) playerColors[i].getSelectedItem());
 			}
 		}
 
@@ -287,7 +286,5 @@ public class StartingScreen extends JFrame {
 
 		}
 	}
-
-
 
 }
