@@ -15,7 +15,7 @@ public class WestSidePanel extends JPanel {
 	 * @author Rohan
 	 */
 	private static final long serialVersionUID = 1L;
-	private JLabel lblInfo;
+	private JLabel lblInfoTitle, lblHistoryTitle;
 	private JPanel pnlSpace, pnlHeading, pnlInfo, pnlHistory, pnlBtn, pnlInBtn;
 	private Font font = new Font("ALGERIAN", Font.BOLD, 16);
 	private JTextArea txtTileInfo = new JTextArea();
@@ -37,18 +37,18 @@ public class WestSidePanel extends JPanel {
 		pnlHeading = new JPanel();
 		pnlHeading.setBorder(border);
 		pnlHeading.setPreferredSize(new Dimension(340, 80));
-		lblInfo = new JLabel(title);
+		lblInfoTitle = new JLabel(title);
 
-		lblInfo.setFont(new Font("ALGERIAN", Font.BOLD, 26));
-		lblInfo.setPreferredSize(new Dimension(320, 70));
-		lblInfo.setBorder(BorderFactory.createLineBorder(Color.black));
-		lblInfo.setHorizontalAlignment(SwingConstants.CENTER);
-		lblInfo.setBackground(titleColor);
-		lblInfo.setOpaque(true);
-		lblInfo.setForeground(Color.white);
+		lblInfoTitle.setFont(new Font("ALGERIAN", Font.BOLD, 26));
+		lblInfoTitle.setPreferredSize(new Dimension(320, 70));
+		lblInfoTitle.setBorder(BorderFactory.createLineBorder(Color.black));
+		lblInfoTitle.setHorizontalAlignment(SwingConstants.CENTER);
+		lblInfoTitle.setBackground(titleColor);
+		lblInfoTitle.setOpaque(true);
+		lblInfoTitle.setForeground(Color.white);
 
 		pnlHeading.setBackground(new Color(0, 0, 0, 20));
-		pnlHeading.add(lblInfo, BorderLayout.SOUTH);
+		pnlHeading.add(lblInfoTitle, BorderLayout.SOUTH);
 
 		// TileInformation Panel
 		pnlInfo = new JPanel();
@@ -91,18 +91,25 @@ public class WestSidePanel extends JPanel {
 		pnlHistory = new JPanel();
 		txtMessage.setFont(new Font("ALGERIAN", Font.BOLD, 18));
 		txtMessage.setMargin(new Insets(10, 10, 10, 10));
-		txtMessage.setText("Game History\nshows here..");
 		txtMessage.setEditable(false);
 		txtMessage.setForeground(new Color(71, 60, 50, 225));
 
 		scroller.setBackground(Color.white);
 		scroller.setForeground(new Color(71, 60, 50, 225));
-		scroller.setPreferredSize(new Dimension(320, 330));
+		scroller.setPreferredSize(new Dimension(320, 300));
 		scroller.setAutoscrolls(false);
+		
+		lblHistoryTitle = new JLabel("Game history shows here");
+		lblHistoryTitle.setPreferredSize(new Dimension(320, 30));
+		lblHistoryTitle.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHistoryTitle.setBorder(BorderFactory.createLineBorder(Color.white, 2, false));
+		lblHistoryTitle.setForeground(Color.white);
+		lblHistoryTitle.setFont(font);
 
 		pnlHistory.setPreferredSize(new Dimension(340, 350));
 		pnlHistory.setBackground(new Color(0, 0, 0, 20));
 		pnlHistory.setBorder(border);
+		pnlHistory.add(lblHistoryTitle);
 		pnlHistory.add(scroller);
 
 		// The main Panel
@@ -127,8 +134,8 @@ public class WestSidePanel extends JPanel {
 	 */
 	public void setTileInfo(String info, String lblTitle, Color titleColor) {
 		txtTileInfo.setText(info);
-		lblInfo.setText(lblTitle);
-		lblInfo.setBackground(titleColor);
+		lblInfoTitle.setText(lblTitle);
+		lblInfoTitle.setBackground(titleColor);
 	}
 
 	/**
@@ -142,9 +149,9 @@ public class WestSidePanel extends JPanel {
 	 */
 	public void setTitleText(String info, String lblTitle, Color titleColor, Color titleTxtColor) {
 		txtTileInfo.setText(info);
-		lblInfo.setText(lblTitle);
-		lblInfo.setBackground(titleColor);
-		lblInfo.setForeground(titleTxtColor);
+		lblInfoTitle.setText(lblTitle);
+		lblInfoTitle.setBackground(titleColor);
+		lblInfoTitle.setForeground(titleTxtColor);
 	}
 
 	/**
@@ -152,9 +159,9 @@ public class WestSidePanel extends JPanel {
 	 */
 	public void setTextDefault() {
 		txtTileInfo.setText(def);
-		lblInfo.setText(title);
-		lblInfo.setBackground(titleColor);
-		lblInfo.setForeground(Color.white);
+		lblInfoTitle.setText(title);
+		lblInfoTitle.setBackground(titleColor);
+		lblInfoTitle.setForeground(Color.white);
 	}
 
 	/**
@@ -166,13 +173,13 @@ public class WestSidePanel extends JPanel {
 		txtMessage.append(res);
 	}
 
-	public static void main(String[] args) {
-		WestSidePanel wi = new WestSidePanel();
-		JFrame frame = new JFrame();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(wi);
-		frame.pack();
-		frame.setVisible(true);
-		frame.setLocationRelativeTo(null);
-	}
+//	public static void main(String[] args) {
+//		WestSidePanel wi = new WestSidePanel();
+//		JFrame frame = new JFrame();
+//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		frame.add(wi);
+//		frame.pack();
+//		frame.setVisible(true);
+//		frame.setLocationRelativeTo(null);
+//	}
 }
