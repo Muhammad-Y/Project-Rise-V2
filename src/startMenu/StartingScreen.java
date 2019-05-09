@@ -129,12 +129,12 @@ public class StartingScreen extends JFrame {
 
 		// Header reading "RISE"
 		lblRise.setFont(fontHeader);
-		lblRise.setBounds(375, 150, 150, 200);
+		lblRise.setBounds(375, 125, 175, 200);
 		lblBackground.add(lblRise);
 
 		// JLabel reading "How many players?"
 		lblPlayer.setFont(fontLabel);
-		lblPlayer.setBounds(315, 175, 280, 200);
+		lblPlayer.setBounds(315, 175, 300, 200);
 
 		// Create  three JRadioButtons
 		createRadioButtons();
