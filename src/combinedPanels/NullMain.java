@@ -46,6 +46,7 @@ public class NullMain extends JPanel {
 		add(westPanel);
 		board.setBounds(346, 0, 750, 750);
 		add(board);
+//		dice.setBounds(346, 751, 750, 109);
 		dice.setBounds(346, 751, 750, 109);
 		add(dice);
 		m.setBounds(0, 0, 50, 18);
