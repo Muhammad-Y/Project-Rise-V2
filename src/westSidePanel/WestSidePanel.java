@@ -100,6 +100,7 @@ public class WestSidePanel extends JPanel {
 		scroller.setBackground(Color.white);
 		scroller.setForeground(new Color(71,60,50,225));
 		scroller.setPreferredSize(new Dimension(320, 330));	
+		scroller.setAutoscrolls(true);
 		
 		pnlHistory.setPreferredSize(new Dimension(340, 350));
 		pnlHistory.setBackground(new Color(0,0,0,20));
