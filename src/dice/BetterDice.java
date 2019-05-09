@@ -177,6 +177,11 @@ public class BetterDice extends JPanel implements ActionListener {
 				System.out.println(testPlayers.getActivePlayer().getBalance());
 
 			}
+			
+			testPlayers.getActivePlayer().checkPlayerRank();
+			
+			
+			
 			movePlayerThread = new Thread(new LoopThread(total));
 			movePlayerThread.start();
 

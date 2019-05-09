@@ -197,6 +197,20 @@ public class Player {
 		}
 		return null;
 	}
+	
+	public void checkPlayerRank() {
+		
+		if (getNetWorth() >= 3000) {
+			setPlayerRank(playerRank.KNIGHT);
+			
+		}
+		
+		if (getNetWorth() >= 6000) {
+			setPlayerRank(playerRank.LORD);
+			
+		}
+
+	}
 
 	/**
 	 * @return propertiesOwned, returns entire ArrayList of properties owned.

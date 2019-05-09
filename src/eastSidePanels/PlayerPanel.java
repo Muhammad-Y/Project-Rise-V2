@@ -21,6 +21,8 @@ public class PlayerPanel extends JPanel {
 	//private PlayerList playerList;
 
     private JLabel lblName = new JLabel("");
+    private JLabel lblRank = new JLabel("");
+
     private JLabel lblGold = new JLabel("100G");
     private JLabel lblNetworth = new JLabel("1000G");
     private JLabel lblProperty = new JLabel();
@@ -37,6 +39,7 @@ public class PlayerPanel extends JPanel {
     private JPanel p4 = new JPanel();
     private JPanel p5 = new JPanel();
     private JPanel p6 = new JPanel();
+    private JPanel p7 = new JPanel();
 
 
     
@@ -54,7 +57,7 @@ public class PlayerPanel extends JPanel {
     	
     	setPreferredSize(new Dimension(350,400));
     	setBackground(Color.DARK_GRAY);
-    	setLayout(new GridLayout(6, 0));
+    	setLayout(new GridLayout(7, 0));
     	
     //border shiet
     	
@@ -107,19 +110,25 @@ public class PlayerPanel extends JPanel {
     	p4.add(lblISAlive);
     	add(p4);
 
+    	lblRank.setText("Player Rank: "+playerList.getPlayerFromIndex(playa).getPlayerRank()); 
+    	lblRank.setFont(font);
+    	lblRank.setHorizontalAlignment(SwingConstants.CENTER);
+    	p5.add(lblRank);
+    	add(p5);
+    	
     	lblProperty.setText("Properties"); 
     	lblProperty.setFont(font);
     	lblProperty.setHorizontalAlignment(SwingConstants.CENTER);
-    	p5.add(lblProperty);
-    	add(p5);
+    	p6.add(lblProperty);
+    	add(p6);
 
     	String pList=""+ playerList.getPlayerFromIndex(playa).getProperties();
     	pList = pList.substring(1, pList.length()-1);
     	lblPropertyList.setText("" + pList); 
     	lblPropertyList.setFont(font);
     	lblPropertyList.setHorizontalAlignment(SwingConstants.CENTER);
-    	p6.add(lblPropertyList);    	
-    	add(p6);
+    	p7.add(lblPropertyList);    	
+    	add(p7);
 
 
 
