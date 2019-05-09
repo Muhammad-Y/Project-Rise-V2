@@ -487,7 +487,7 @@ public class Listener implements MouseListener {
 				}		
 			}
 			public void mouseExited(MouseEvent e) {
-				pnlWest.setDefault();
+				pnlWest.setTextDefault();
 			}
 			public void mousePressed(MouseEvent e) {
 				// Nothing will happen by pressed button

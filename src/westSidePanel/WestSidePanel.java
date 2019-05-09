@@ -2,22 +2,11 @@ package westSidePanel;
 
 import java.awt.BorderLayout;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.GridLayout;
-import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
+import java.awt.event.*;
 
 import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.SwingConstants;
+import javax.swing.*;
 import javax.swing.border.Border;
 
 public class WestSidePanel extends JPanel {
@@ -27,7 +16,7 @@ public class WestSidePanel extends JPanel {
 	 * @author Rohan
 	 */
 	private static final long serialVersionUID = 1L;
-	private JLabel lblInfo, lblSpace;
+	private JLabel lblInfo;
 	private JPanel pnlSpace, pnlHeading, pnlInfo, pnlHistory, pnlBtn, pnlInBtn;
 	private Font font = new Font("ALGERIAN", Font.BOLD, 16);
 	private JTextArea txtTileInfo = new JTextArea();
@@ -35,20 +24,14 @@ public class WestSidePanel extends JPanel {
 	private JScrollPane scroller = new JScrollPane(txtMessage);
 	private Border border = BorderFactory.createLineBorder(Color.DARK_GRAY); 
 	// test
-//	private JButton btn = new JButton("......");
-//	private JButton btnHelp = new JButton("Help");
 	private JButton btnManage = new JButton("Manage Properties");
-	private String def = "Move your mouse on a tile \nwhich you wanna see \ninformation about! "
-			+ "\n\n"
-			+ "By the way! if you wanna mute\nthe song press the mute\nbutton on your computer! "
-			+ "\nCheers!";
+	private String def = "Move your mouse on a tile \nwhich you wanna see \ninformation about!";
 	private String title = "Information";
 	private Color titleColor = Color.DARK_GRAY;
 
 	public WestSidePanel() {
 		
-		// HeadPanel with Information Label
-		
+		// HeadPanel with Information Label		
 		pnlSpace = new JPanel();
 		
 		pnlSpace.setPreferredSize(new Dimension(10, 15));
@@ -57,7 +40,6 @@ public class WestSidePanel extends JPanel {
 		pnlHeading.setBorder(border);
 		pnlHeading.setPreferredSize(new Dimension(340, 80));
 		lblInfo = new JLabel(title);
-		lblSpace = new JLabel();
 		
 		lblInfo.setFont(new Font("ALGERIAN", Font.BOLD, 26));
 		lblInfo.setPreferredSize(new Dimension(320, 70));
@@ -101,8 +83,9 @@ public class WestSidePanel extends JPanel {
 			}			
 		}); 
 		
-		// Extra knappar kan vi ha
+//		Extra knappar kan vi ha
 //		pnlInBtn.add(btn);
+		
 		pnlInBtn.add(btnManage);
 		pnlBtn.add(pnlInBtn);		
 		
@@ -124,7 +107,6 @@ public class WestSidePanel extends JPanel {
 		pnlHistory.add(scroller);
 		
 		// The main Panel 
-
 		setOpaque(false);
 		setPreferredSize(new Dimension(345,860));
 		setBackground(Color.yellow);
@@ -139,8 +121,7 @@ public class WestSidePanel extends JPanel {
 	public void setTileInfo(String info, String lblTitle, Color titleColor) {
 		txtTileInfo.setText(info);
 		lblInfo.setText(lblTitle);
-		lblInfo.setBackground(titleColor);
-		
+		lblInfo.setBackground(titleColor);		
 	}
 	
 	public void setTitleText(String info, String lblTitle, Color titleColor, Color titleTxtColor) {
@@ -150,7 +131,7 @@ public class WestSidePanel extends JPanel {
 		lblInfo.setForeground(titleTxtColor);
 	}
 	
-	public void setDefault() {
+	public void setTextDefault() {
 		txtTileInfo.setText(def);
 		lblInfo.setText(title);
 		lblInfo.setBackground(titleColor);
@@ -166,10 +147,8 @@ public class WestSidePanel extends JPanel {
 	public static void main(String[] args) {
 		WestSidePanel wi = new WestSidePanel();
 		JFrame frame = new JFrame();
-		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(wi);
-//		frame.setBackground(Color.DARK_GRAY);
 		frame.pack();
 		frame.setVisible(true);
 		frame.setLocationRelativeTo(null);
