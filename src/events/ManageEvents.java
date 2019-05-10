@@ -41,7 +41,8 @@ public class ManageEvents {
 		
 		if(player.getBalance() < amount) {
 //			playerList.eliminatePlayer(int index); 
-			//In playerList.eliminatePlayer call isAlive == false;
+//			playerList.eliminatePlayer call isAlive == false;
+//			board.removePlayer(player);
 		}
 		
 	}
