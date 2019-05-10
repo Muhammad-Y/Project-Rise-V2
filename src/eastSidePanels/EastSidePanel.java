@@ -12,12 +12,12 @@ import player.PlayerList;
  * @author Abdulkhuder Muhammad, Sebastian Viro.
  *
  */
-public class TabPanel extends JPanel {
+public class EastSidePanel extends JPanel {
 	private PlayerList playerList;
 
 	private JTabbedPane tab = new JTabbedPane();
 	private JPanel[] aP;
-	private PlayerPanel p;
+	private PlayerInfoPanel p;
  
 	private int[] array;
 	
@@ -28,7 +28,7 @@ public class TabPanel extends JPanel {
 
 	}
 
-	public TabPanel() {
+	public EastSidePanel() {
 
 		setPreferredSize(new Dimension(345, 900));
 		// setLayout(new BorderLayout());
@@ -49,8 +49,8 @@ public class TabPanel extends JPanel {
 
 		
 		for (int i = 0; i < array.length; i++) {
-			new TabPanel();
-			p = new PlayerPanel(playerList, i);
+			new EastSidePanel();
+			p = new PlayerInfoPanel(playerList, i);
 			tab.addTab("Player " +( i + 1), p);
 
 		}
@@ -60,7 +60,7 @@ public class TabPanel extends JPanel {
 
 
 	public static void main(String[] args) {
-		TabPanel ui = new TabPanel();
+		EastSidePanel ui = new EastSidePanel();
 		JFrame frame = new JFrame();
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

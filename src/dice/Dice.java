@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 
 import board.Board;
 import cheat.CheatGui;
-import eastSidePanels.TabPanel;
+import eastSidePanels.EastSidePanel;
 import player.PlayerList;
 import westSidePanel.WestSidePanel;
 
@@ -23,13 +23,13 @@ import westSidePanel.WestSidePanel;
  * @author Muhammad Abdulkhuder ,Aevan Dino, Sebastian Viro'la, Seth �berg
  *
  */
-public class BetterDice extends JPanel implements ActionListener {
+public class Dice extends JPanel implements ActionListener {
 
 	private CheatGui cheat = new CheatGui(this);
 	private Board board;
 	private PlayerList testPlayers;
 	private WestSidePanel wsp;
-	private TabPanel tabPanel = new TabPanel();
+	private EastSidePanel tabPanel = new EastSidePanel();
 	private JButton finishTurn = new JButton("End Turn");
 	private int newIndex;
 	private Thread movePlayerThread;
@@ -54,7 +54,7 @@ public class BetterDice extends JPanel implements ActionListener {
 
 	}
 
-	public BetterDice(Board board, PlayerList allPlayers, WestSidePanel wsp, TabPanel tabPanel) {
+	public Dice(Board board, PlayerList allPlayers, WestSidePanel wsp, EastSidePanel tabPanel) {
 		this.board = board;
 		testPlayers = allPlayers;
 		this.wsp = wsp;
@@ -66,7 +66,7 @@ public class BetterDice extends JPanel implements ActionListener {
 	}
 
 	// We can remove it after we are done with cheat
-	public BetterDice() {
+	public Dice() {
 		
 		initializePanel();
 		addButtonsAndListeners();
@@ -252,7 +252,7 @@ public class BetterDice extends JPanel implements ActionListener {
 	}
 
 	public static void main(String[] args) {
-		BetterDice ui = new BetterDice();
+		Dice ui = new Dice();
 		JFrame frame = new JFrame();
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

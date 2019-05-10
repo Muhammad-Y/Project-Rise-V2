@@ -18,7 +18,7 @@ import javax.swing.JTextField;
 
 import board.Board;
 import board.ColorIconMap;
-import combinedPanels.NullMain;
+import combinedPanels.GamePanels;
 import player.PlayerList;
 
 /**
@@ -27,7 +27,7 @@ import player.PlayerList;
  *
  */
 
-public class StartUpScreen extends JFrame {
+public class OldStartUpScreen extends JFrame {
  
 	private static final long serialVersionUID = 1L;
 
@@ -38,7 +38,7 @@ public class StartUpScreen extends JFrame {
 
 	private PlayerList playerList = new PlayerList();
 	private Board board;
-	private NullMain mainWindow = new NullMain();
+	private GamePanels mainWindow = new GamePanels();
 
 	private ColorIconMap colorMap = new ColorIconMap();
 
@@ -95,15 +95,15 @@ public class StartUpScreen extends JFrame {
 	private int amountOfPlayers;
 
 	public static void main(String[] args) {
-		StartUpScreen su = new StartUpScreen();
+		OldStartUpScreen su = new OldStartUpScreen();
 		su.initializeGUI();
 	}
 
-	private StartUpScreen(int amountOfPlayers) {
+	private OldStartUpScreen(int amountOfPlayers) {
 		this.amountOfPlayers = amountOfPlayers;
 	}
 
-	public StartUpScreen() {
+	public OldStartUpScreen() {
 	}
 
 	public void initializeGUI() {

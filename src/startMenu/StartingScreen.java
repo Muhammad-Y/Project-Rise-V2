@@ -19,7 +19,7 @@ import javax.swing.JTextField;
 
 import board.Board;
 import board.ColorIconMap;
-import combinedPanels.NullMain;
+import combinedPanels.GamePanels;
 import player.PlayerList;
 
 public class StartingScreen extends JFrame {
@@ -29,7 +29,7 @@ public class StartingScreen extends JFrame {
 	// References
 	private BackgroundMusic bgm = new BackgroundMusic();
 	private PlayerList playerList = new PlayerList();
-	private NullMain mainWindow = new NullMain();
+	private GamePanels mainWindow = new GamePanels();
 	private ColorIconMap colorMap = new ColorIconMap();
 	private Board board;
 

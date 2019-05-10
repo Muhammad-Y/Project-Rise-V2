@@ -2,7 +2,7 @@ package tiles;
 
 import java.awt.Color;
 
-import dice.BetterDice;
+import dice.Dice;
 import player.Player;
 
 /**
@@ -10,7 +10,7 @@ import player.Player;
  */
 public class Work implements Tile {
 	
-	private BetterDice dice;
+	private Dice dice;
 	private static Player player;
 	private String info;
 	

@@ -9,7 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import dice.BetterDice;
+import dice.Dice;
 
 /**
  * @author Sebastian Viro, Muhammad Abdulkhuder
@@ -19,10 +19,10 @@ public class CheatGui extends JPanel implements ActionListener {
 
 	private JTextField inputTF = new JTextField("");
 	private JButton btnTeleport = new JButton("Teleport");
-	private BetterDice betterDice;
+	private Dice betterDice;
 	private int index;
 
-	public CheatGui(BetterDice betterDice) {
+	public CheatGui(Dice betterDice) {
 		this.betterDice = betterDice;
 		startGUI();
 	}

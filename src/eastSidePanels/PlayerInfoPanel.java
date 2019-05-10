@@ -16,7 +16,7 @@ import player.PlayerList;
  * @author Abdulkhuder Muhammad, Sebastian Viro.
  *
  */ 
-public class PlayerPanel extends JPanel {
+public class PlayerInfoPanel extends JPanel {
 	
 	//private PlayerList playerList;
 
@@ -52,7 +52,7 @@ public class PlayerPanel extends JPanel {
     
     
     
-    public PlayerPanel(PlayerList playerList, int playa) {
+    public PlayerInfoPanel(PlayerList playerList, int playa) {
  
     	
     	setPreferredSize(new Dimension(350,400));
