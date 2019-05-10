@@ -16,9 +16,10 @@ public class ShowPlayersTurn extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private String playerName;
 	private JLabel lblPlayer;
-	private Color playerColor;
+	private String playerColor;
+	private Color 
 	
-	public ShowPlayersTurn(String playerName, Color playerCol) {
+	public ShowPlayersTurn(String playerName, String playerCol) {
 		this.playerName = playerName;
 		this.playerColor = playerCol;
 		showTheLabel();
