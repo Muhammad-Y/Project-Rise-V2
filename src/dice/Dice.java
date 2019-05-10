@@ -25,7 +25,9 @@ import westSidePanel.WestSidePanel;
  */
 public class Dice extends JPanel implements ActionListener {
 
+//	private ShowPlayersTurn showPlayer;
 	private CheatGui cheat = new CheatGui(this);
+	private ShowPlayersTurn showPlayer;
 	private Board board;
 	private PlayerList testPlayers;
 	private WestSidePanel wsp;
@@ -79,7 +81,8 @@ public class Dice extends JPanel implements ActionListener {
 	}
 
 	public void addButtonsAndListeners() {
-
+		showPlayer = new ShowPlayersTurn("Hej", "RED");
+		add(showPlayer);
 		add(lblDice1);
 
 		add(lblDice2);
@@ -95,6 +98,7 @@ public class Dice extends JPanel implements ActionListener {
 		lblDice1.setIcon(showDice);
 
 		finishTurn.addActionListener(this);
+		
 		add(finishTurn);
 		add(cheat);
 
@@ -196,7 +200,9 @@ public class Dice extends JPanel implements ActionListener {
 		}
 
 		if (e.getSource() == finishTurn) {
-			testPlayers.switchToNextPlayer();
+			
+//			testPlayers.switchToNextPlayer();
+			new ShowPlayersTurn(testPlayers.getActivePlayer().getName(), "GREEN");
 			System.out.println(
 					"Next player turn" + "\n" + "Aktic playerindex: " + testPlayers.getActivePlayer().getPlayerIndex());
 		}
