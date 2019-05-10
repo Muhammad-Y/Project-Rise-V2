@@ -34,8 +34,8 @@ public class ManageEvents {
 	
 	
 	/**
-	 * This method is supposed to be called from ANY class that requires the current player to pay any amount,
-	 * if the user does not have said amount they are to be eliminated immediately 
+	 * This method is supposed to be called from any class that requires the current player to pay any amount,
+	 * if the user does not have the amount required they should be removed from the game
 	 */
 	public void control(Player player, int amount) {
 		
