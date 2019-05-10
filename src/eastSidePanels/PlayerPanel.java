@@ -43,7 +43,7 @@ public class PlayerPanel extends JPanel {
 
 
     
-    private Font font = new Font("ALGERIAN", Font.BOLD, 20);
+    private Font font = new Font("ALGERIAN", Font.BOLD, 14);
 //    private JPanel lblISAlive = new JPanel();
 //    private JPanel lblISAlive = new JPanel();
 //    private JPanel lblISAlive = new JPanel();

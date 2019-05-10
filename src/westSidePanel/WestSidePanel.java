@@ -89,7 +89,7 @@ public class WestSidePanel extends JPanel {
 
 		// HistoryPanel
 		pnlHistory = new JPanel();
-		txtMessage.setFont(new Font("ALGERIAN", Font.BOLD, 18));
+		txtMessage.setFont(new Font("GABRIOLA", Font.BOLD, 14));
 		txtMessage.setMargin(new Insets(10, 10, 10, 10));
 		txtMessage.setEditable(false);
 		txtMessage.setForeground(new Color(71, 60, 50, 225));
