@@ -27,11 +27,9 @@ public class StartingScreen extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	// References
-	private BackgroundMusic bgm = new BackgroundMusic();
+	private BackgroundMusic backgroundMusic = new BackgroundMusic();
 	private PlayerList playerList = new PlayerList();
 	private GamePanels mainWindow = new GamePanels();
-	private ColorIconMap colorMap = new ColorIconMap();
-	private Board board;
 
 	// JButtons
 	private JButton btnConfirm = new JButton("Confirm");
@@ -65,14 +63,14 @@ public class StartingScreen extends JFrame {
 	private JLabel lblPlayerIndex2 = new JLabel("Player 2:");
 	private JLabel lblPlayerIndex3 = new JLabel("Player 3:");
 	private JLabel lblPlayerIndex4 = new JLabel("Player 4:");
-	private JLabel[] playerLabels = new JLabel[] { lblPlayerIndex1, lblPlayerIndex2, lblPlayerIndex3, lblPlayerIndex4 };
+	private JLabel[] lblPlayers = new JLabel[] { lblPlayerIndex1, lblPlayerIndex2, lblPlayerIndex3, lblPlayerIndex4 };
 
 	// JTextFields
 	private JTextField tfPlayer1 = new JTextField("Insert Name1...");
 	private JTextField tfPlayer2 = new JTextField("Insert Name2...");
 	private JTextField tfPlayer3 = new JTextField("Insert Name3...");
 	private JTextField tfPlayer4 = new JTextField("Insert Name4...");
-	private JTextField[] playerTf = new JTextField[] { tfPlayer1, tfPlayer2, tfPlayer3, tfPlayer4 };
+	private JTextField[] tfPlayers = new JTextField[] { tfPlayer1, tfPlayer2, tfPlayer3, tfPlayer4 };
 
 	// JComboBox
 	private String[] colors = new String[] { "RED", "GREEN", "ORANGE", "YELLOW", "CYAN", "MAGENTA" };
@@ -87,16 +85,6 @@ public class StartingScreen extends JFrame {
 
 	// Integers
 	private int amountOfPlayers;
-
-	/**
-	 * Used to test program
-	 * 
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		StartingScreen su = new StartingScreen();
-		su.initializeGUI();
-	}
 
 	/**
 	 * Used to determine amount of players
@@ -115,10 +103,10 @@ public class StartingScreen extends JFrame {
 
 	public void initializeGUI() {
 
-		bgm.startMusic();
+		backgroundMusic.startMusic();
 
 		createFrame();
-		bgm.startMusic();
+		backgroundMusic.startMusic();
 
 		// JPanel for information about players
 		pnlPlayerInfo.setBounds(0, 0, 900, 830);
@@ -179,7 +167,7 @@ public class StartingScreen extends JFrame {
 
 	public void createFrame() {
 		setSize(900, 830);
-		setTitle("THIS");
+		setTitle("RISE");
 		setLayout(null);
 		setVisible(true);
 		setResizable(false);
@@ -201,18 +189,18 @@ public class StartingScreen extends JFrame {
 
 	public void CreatePlayers() {
 		for (int i = 0; i < 4; i++) {
-			playerLabels[i].setBounds(280, 360 + i * 40, 150, 50);
-			playerLabels[i].setFont(fontLabelPlayer);
-			playerLabels[i].setVisible(false);
+			lblPlayers[i].setBounds(280, 360 + i * 40, 150, 50);
+			lblPlayers[i].setFont(fontLabelPlayer);
+			lblPlayers[i].setVisible(false);
 
-			playerTf[i].setBounds(375, 360 + i * 40, 150, 30);
-			playerTf[i].setVisible(false);
+			tfPlayers[i].setBounds(375, 360 + i * 40, 150, 30);
+			tfPlayers[i].setVisible(false);
 
 			playerColors[i].setBounds(530, 360 + i * 40, 100, 30);
 			playerColors[i].setVisible(false);
 
-			pnlPlayerInfo.add(playerLabels[i]);
-			pnlPlayerInfo.add(playerTf[i]);
+			pnlPlayerInfo.add(lblPlayers[i]);
+			pnlPlayerInfo.add(tfPlayers[i]);
 			pnlPlayerInfo.add(playerColors[i]);
 		}
 	}
@@ -227,10 +215,10 @@ public class StartingScreen extends JFrame {
 			if (e.getSource() == mute) {
 				if (mute.getText().contains("n")) {
 					mute.setText("Music Off");
-					bgm.pauseMusic();
+					backgroundMusic.pauseMusic();
 				} else {
 					mute.setText("Music On");
-					bgm.startMusic();
+					backgroundMusic.startMusic();
 				}
 			}
 
@@ -252,7 +240,7 @@ public class StartingScreen extends JFrame {
 			if (e.getSource() == btnStartGame) {
 				for (int i = 0; i == amountOfPlayers; i++) {
 					System.out.println(
-							"Player One: " + playerTf[i].getText() + " : " + playerColors[i].getSelectedItem());
+							"Player One: " + tfPlayers[i].getText() + " : " + playerColors[i].getSelectedItem());
 				}
 				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				createNewUsers();
@@ -270,14 +258,14 @@ public class StartingScreen extends JFrame {
 
 		private void createNewUsers() {
 			for (int i = 0; i < amountOfPlayers; i++) {
-				playerList.addNewPlayer(playerTf[i].getText(), (String) playerColors[i].getSelectedItem());
+				playerList.addNewPlayer(tfPlayers[i].getText(), (String) playerColors[i].getSelectedItem());
 			}
 		}
 
 		public void btnPressed(int amountOfPlayers, boolean bool) {
 			for (int i = 0; i < amountOfPlayers; i++) {
-				playerLabels[i].setVisible(bool);
-				playerTf[i].setVisible(bool);
+				lblPlayers[i].setVisible(bool);
+				tfPlayers[i].setVisible(bool);
 				playerColors[i].setVisible(bool);
 			}
 			btnStartGame.setVisible(bool);
