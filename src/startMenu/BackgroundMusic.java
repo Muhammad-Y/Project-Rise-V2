@@ -9,14 +9,15 @@ import javax.sound.sampled.Clip;
 /**
  * This class is used to select a music file. The chosen music file
  * can be player and stopped via the GUI.
+ * 
  * @author AevanDino
  */
 public class BackgroundMusic extends Thread {
  
 	private Clip clip;
-	private Thread musicThread;
-	public Boolean shouldBeRunning;
-	private int pos = 0;
+	private Thread musicPlayer;
+	public Boolean isPlaying;
+	private int musicPausedAt = 0;
 	
 	public BackgroundMusic() {
 		this.clip = null;
@@ -28,15 +29,15 @@ public class BackgroundMusic extends Thread {
 	 */
 	public void startMusic() {
 		
-		if(clip!=null && shouldBeRunning) {
-			clip.setFramePosition(pos);
+		if(clip!=null && isPlaying) {
+			clip.setFramePosition(musicPausedAt);
 			clip.start();
 			
 		
-		} else if(musicThread==null) {
-			musicThread = new Thread(this);
-			shouldBeRunning=true;
-			musicThread.start();
+		} else if(musicPlayer==null) {
+			musicPlayer = new Thread(this);
+			isPlaying=true;
+			musicPlayer.start();
 		}
 	}    
 
@@ -45,7 +46,7 @@ public class BackgroundMusic extends Thread {
 	 */
 	public void pauseMusic() {
 		if(clip!=null) {
-			pos = clip.getFramePosition();
+			musicPausedAt = clip.getFramePosition();
 			clip.stop();
 		}
 	}
@@ -54,7 +55,7 @@ public class BackgroundMusic extends Thread {
 	 * Run method from Thread class. This method starts playing music until told to stop.
 	 */
 	public void run() {
-		while(shouldBeRunning && clip == null) {
+		while(isPlaying && clip == null) {
 			try {
 				File musicPath = new File("music/bgMusic.wav");				
 				AudioInputStream ais = AudioSystem.getAudioInputStream(musicPath);
