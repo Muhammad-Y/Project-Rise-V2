@@ -1,82 +1,120 @@
 package player;
 
 /**
- * Enums are a lot like constants in Java but enums can do so much
- * more! Each enum/rank is equal to a numeric value, the value they're
- * equal to is their place below. The first enum (Peassant) is equal to
- * zero while our last and 5th enum is equal to 4.
- * 
- * The private constructor is used to set a value to each rank. The multipliers
- * for each rank will therefore be different yet unchangeable. Should you want
- * to add more qualities to the ranks, you'll have to add the type to the private
- * constructor as well.
- * 
- * The "qualities" can be called upon from other classes and are meant to be public.
+ * Enum class used to deal with the players rank. That is, different things happen
+ * when the same method is called for different ranks
  * 
  * @author AevanDino
  */
-
 public enum PlayerRanks {
 	
+	/**
+	 * Player rank peasant
+	 */
 	PEASANT {
+		/**
+		 * How salary is caluclated for peasants
+		 */
 		public int getSalary(int dots) {
 			return 20 * dots;
 		}
-
-		public int nbrOfHouses() {
+		
+		/**
+		 * Highest level a property can be
+		 */
+		public int nbrOfLevels() {
 			return 1;
 		}
 
+		/**
+		 * Tax for peasants
+		 */
 		public int calculateTax() {
 			return 100; 
 		}
 	},
 	
+	/**
+	 * Player rank knight
+	 */
 	KNIGHT {
+		
+		/**
+		 * How salary is calculated for knights
+		 */
 		public int getSalary(int dots) {
 			return 25 * dots;
 		}
 
-		public int nbrOfHouses() {
+		/**
+		 * Highest level a property can be
+		 */
+		public int nbrOfLevels() {
 			return 2;
 		}
 
+		/**
+		 * Tax for Knights
+		 */
 		public int calculateTax() {
 			return 150;
 		}
 	},
 	
+	/**
+	 * Player rank lord
+	 */
 	LORD {
+		/**
+		 * How salary is calculated for Lords
+		 */
 		public int getSalary(int dots) {
 			return 30 * dots;
 		}
-
-		public int nbrOfHouses() {
+		
+		/**
+		 * Highest level a property can be
+		 */
+		public int nbrOfLevels() {
 			return 3;
 		}
-
-		@Override
+		
+		/**
+		 * Tax for Lords
+		 */
 		public int calculateTax() {
 			return 200;
 		}
 	},
 	
+	/**
+	 * Player rank ruler.
+	 */
 	RULER {
+		/**
+		 * How salary is calculated for rulers
+		 */
 		public int getSalary(int dots) {
 			return 40 * dots;
 		}
 
-		public int nbrOfHouses() {
+		/**
+		 * Highest level a property can be
+		 */
+		public int nbrOfLevels() {
 			return 4;
 		}
 
+		/**
+		 * Tax for rulers
+		 */
 		public int calculateTax() {
 			return 0;
 		}
 	};
 
 	public abstract int getSalary(int dots);
-	public abstract int nbrOfHouses();
+	public abstract int nbrOfLevels();
 	public abstract int calculateTax();
 	
 	
