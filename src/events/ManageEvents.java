@@ -1,8 +1,15 @@
 package events;
 
+import javax.swing.JOptionPane;
+
 import player.Player;
 import player.PlayerList;
+import tiles.Go;
+import tiles.GoToJail;
+import tiles.Jail;
 import tiles.Property;
+import tiles.SundayChurch;
+import tiles.Tavern;
 import tiles.Tax;
 import tiles.Tile;
 
@@ -29,6 +36,28 @@ public class ManageEvents {
 		if(tile instanceof Tax) {
 			taxEvent(tile, player);
 		}
+		
+		if(tile instanceof Jail) {
+			
+		}
+		
+		if(tile instanceof GoToJail) {
+			
+		}
+		
+		if(tile instanceof Tavern) {
+			tavernEvent(tile, player);
+		}
+		
+		
+		if(tile instanceof Go) {
+			//Detta sköts just nu i dice klassen?
+		}
+		
+		if(tile instanceof SundayChurch) {
+			
+		}
+		
 		
 	}
 	
@@ -80,8 +109,6 @@ public class ManageEvents {
 	
 	public void taxEvent(Tile tile, Player player) {
 		Tax tempTaxObject = (Tax) tile;
-		System.out.println("Ruta, " + tile.getName());
-		System.out.println("Spelaren har inte betalat skatt: " + player.getBalance());
 		int chargePlayer = tempTaxObject.getTax();
 		
 //		control(player, chargePlayer);
@@ -89,12 +116,29 @@ public class ManageEvents {
 //		if(player.isAlive()) {
 //			
 //		}
-//		player.setBalance( (player.getBalance() - chargePlayer) );
+		
 		player.decreaseBalace(chargePlayer);
 		player.decreaseNetWorth(chargePlayer);
-//		player.increaseBalance(- chargePlayer);
 		
-		System.out.println("Spelaren betalar skatt: " + player.getBalance());
+	}
+	
+	
+	public void tavernEvent(Tile tile, Player player) {
+		Tavern tempTavernObj = (Tavern) tile;
+		
+		
+		if(tempTavernObj.getPurchaseable() == false) {
+			//dialogruta
+			//Har spelaren råd att köpa gatan?
+			//funkar detta???
+			JOptionPane.showConfirmDialog(null,
+					"choose one", "choose one", JOptionPane.YES_NO_OPTION);
+			
+			tempTavernObj.setOwner(player);
+		} 
+		else {
+			
+		}
 		
 	}
 	

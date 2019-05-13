@@ -38,6 +38,14 @@ public class Tavern implements Tile{
 	public Color getColor() {
 		return null;
 	}
+	
+	public void setOwner(Player newOwner) {
+		this.owner = newOwner;
+	}
+	
+	public Player getOwner() {
+		return owner;
+	}
 
 	@Override
 	public String getTileInfo() {
