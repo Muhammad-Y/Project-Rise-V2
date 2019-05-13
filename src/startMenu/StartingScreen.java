@@ -248,7 +248,7 @@ public class StartingScreen extends JFrame {
 					amountOfPlayers = 4;
 				}
 			}
-
+ 
 			if (e.getSource() == btnStartGame) {
 				for (int i = 0; i == amountOfPlayers; i++) {
 					System.out.println(
