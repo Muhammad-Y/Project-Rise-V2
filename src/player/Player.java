@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 
+import tiles.Tavern;
+import tiles.Property;
 import tiles.Tile;
 
 /**
@@ -26,7 +28,10 @@ public class Player {
 	private int netWorth;
 	private int position;
 
-	private ArrayList<Tile> propertiesOwned;
+	private ArrayList<Property> propertiesOwned;
+	
+	private ArrayList<Tavern> tavernsOwned;
+	
 	private ArrayList<String> transactionsMade; // Should we want to keep track of in/out comes
 
 	public Player(String inPlayerName, ImageIcon playerIcon, int playerIndex) {
@@ -195,10 +200,29 @@ public class Player {
 	 * 
 	 * @param newProperty, the newly bought property.
 	 */
-	public void addNewProperty(Tile newProperty) {
+	public void addNewProperty(Property newProperty) {
 		this.propertiesOwned.add(newProperty);
 	}
 
+	public void addNewTavern(Tavern newTavern) {
+		this.tavernsOwned.add(newTavern);
+	}
+	
+	
+	
+	
+	public void clearPlayer() {
+		for(int i = 0; i < propertiesOwned.size(); i++) {
+			propertiesOwned.get(i).clearProperty();
+
+		}
+		for(int i = 0; i < tavernsOwned.size(); i++) {
+			tavernsOwned.get(i).clearTavern();
+		}
+	}
+	
+	
+	
 	/**
 	 * Gets property att specified position
 	 * 
@@ -229,8 +253,12 @@ public class Player {
 	/**
 	 * @return propertiesOwned, returns entire ArrayList of properties owned.
 	 */
-	public ArrayList<Tile> getProperties() {
+	public ArrayList<Property> getProperties() {
 		return this.propertiesOwned;
+	}
+	
+	public ArrayList<Tavern> getTaverns() {
+		return this.tavernsOwned;
 	}
 
 }
