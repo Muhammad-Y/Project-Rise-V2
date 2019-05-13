@@ -1,5 +1,6 @@
 package events;
 
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 import player.Player;
@@ -143,6 +144,36 @@ public class ManageEvents {
 	}
 	
 	
+	public int testDialog() {
+		Object[] options = {"Buy", "Cancel"};
+		 JOptionPane pane = new JOptionPane("hej");
+		 pane.setOptions(options);
+	     pane.set.Xxxx(...); // Configure
+	     JDialog dialog = pane.createDialog(parentComponent, title);
+	     dialog.show();
+	     Object selectedValue = pane.getValue();
+	     if(selectedValue == null)
+	       return CLOSED_OPTION;
+	     //If there is not an array of option buttons:
+	     if(options == null) {
+	       if(selectedValue instanceof Integer)
+	          return ((Integer)selectedValue).intValue();
+	       return CLOSED_OPTION;
+	     }
+	     //If there is an array of option buttons:
+	     for(int counter = 0, maxCounter = options.length;
+	        counter < maxCounter; counter++) {
+	        if(options[counter].equals(selectedValue))
+	        return counter;
+	     }
+	     return CLOSED_OPTION;
+	}
+	
+	
+	public void testDialog2() {
+		JOptionPane.showConfirmDialog(null,
+				"Buy", "Pass", JOptionPane.YES_NO_OPTION);
+	}
 	
 	
 }
