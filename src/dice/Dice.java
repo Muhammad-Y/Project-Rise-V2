@@ -188,6 +188,8 @@ public class Dice extends JPanel implements ActionListener {
 			if (testPlayers.getActivePlayer().getIndex() + total > 39) {
 				System.out.println("YOU GET MONEY");
 				testPlayers.getActivePlayer().increaseBalance(200);
+				testPlayers.getActivePlayer().increaseNetWorth(200);
+
 				System.out.println(testPlayers.getActivePlayer().getBalance());
 
 			}
@@ -209,7 +211,7 @@ public class Dice extends JPanel implements ActionListener {
 
 		if (e.getSource() == finishTurn) {
 			
-//			testPlayers.switchToNextPlayer();
+			testPlayers.switchToNextPlayer();
 			new ShowPlayersTurn(testPlayers.getActivePlayer().getName(), "GREEN");
 			System.out.println(
 					"Next player turn" + "\n" + "Aktic playerindex: " + testPlayers.getActivePlayer().getPlayerIndex());
@@ -221,6 +223,8 @@ public class Dice extends JPanel implements ActionListener {
 		if (testPlayers.getActivePlayer().getIndex() + i > 39) {
 			System.out.println("YOU GET MONEY");
 			testPlayers.getActivePlayer().increaseBalance(200);
+			testPlayers.getActivePlayer().increaseNetWorth(200);
+
 			System.out.println(testPlayers.getActivePlayer().getBalance());
 
 		}
