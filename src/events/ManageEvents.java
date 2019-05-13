@@ -82,30 +82,13 @@ public class ManageEvents {
 		Property tempProperty = (Property) tile; 
 		int tempInt = 0; 
 		
-		
-		//Boolean isOwned should be added to property
-////		if(tempProperty.isOwned == true) {
-//		    tempInt = player.getBalance() - tempProperty.getTotalRent();
-//			player.setBalance(player.getBalance() - tempProperty.getTotalRent());
-//			propertyOwner.addMoney(tempProperty.getTotalRent());
-//		}
-		
-		
-//		if(tempProperty.isOwned == false) {
-			/*
-			 * At this point the current player will get a pop-up menu asking if the user wants to purchase a property
-			 * (if they have sufficent funds). The menu will say something like:
-			 * This property is avaliable, do you want to purchase it? with the option of either yes or no
-			 * In the future an auction function could be added in this step as well 
-			 * 
-			 * A method call to this point could loop something like 
-			 * popUpMenu.purchaseProperty(tile, player);
-			 */
+		if(tempProperty.getPurchaseable() == false) {
+			propertyDialog(tempProperty, player);
+		} 
+		else {
 			
-			
-//		}
-			
-//		control();
+		}
+
 	}
 	
 	public void taxEvent(Tile tile, Player player) {
@@ -129,13 +112,7 @@ public class ManageEvents {
 		
 		
 		if(tempTavernObj.getPurchaseable() == false) {
-			//dialogruta
-			//Har spelaren råd att köpa gatan?
-			//funkar detta???
-			JOptionPane.showConfirmDialog(null,
-					"choose one", "choose one", JOptionPane.YES_NO_OPTION);
-			
-			tempTavernObj.setOwner(player);
+			tavernDialog(tempTavernObj, player);
 		} 
 		else {
 			
@@ -144,35 +121,39 @@ public class ManageEvents {
 	}
 	
 	
-	public int testDialog() {
-		Object[] options = {"Buy", "Cancel"};
-		 JOptionPane pane = new JOptionPane("hej");
-		 pane.setOptions(options);
-	     pane.set.Xxxx(...); // Configure
-	     JDialog dialog = pane.createDialog(parentComponent, title);
-	     dialog.show();
-	     Object selectedValue = pane.getValue();
-	     if(selectedValue == null)
-	       return CLOSED_OPTION;
-	     //If there is not an array of option buttons:
-	     if(options == null) {
-	       if(selectedValue instanceof Integer)
-	          return ((Integer)selectedValue).intValue();
-	       return CLOSED_OPTION;
-	     }
-	     //If there is an array of option buttons:
-	     for(int counter = 0, maxCounter = options.length;
-	        counter < maxCounter; counter++) {
-	        if(options[counter].equals(selectedValue))
-	        return counter;
-	     }
-	     return CLOSED_OPTION;
+
+	public void propertyDialog(Property property, Player player) {
+		int yesOrNo = JOptionPane.showConfirmDialog(null,
+				"Do you want to purchase this property", "JOption", JOptionPane.YES_NO_OPTION);
+
+		if(yesOrNo == 0 && (property.getPrice() <= player.getBalance()) ) {
+			System.out.println("Owner of property: " + property.getOwner());
+			property.setOwner(player);
+			System.out.println("Owner of property: " + property.getOwner());
+			player.decreaseBalace(property.getPrice());
+
+		}
+		else {
+			//Behövs inte fixas
+			//Skriv ut typ "player passed"
+		}
 	}
 	
-	
-	public void testDialog2() {
-		JOptionPane.showConfirmDialog(null,
-				"Buy", "Pass", JOptionPane.YES_NO_OPTION);
+	public void tavernDialog(Tavern tavern, Player player) {
+		int yesOrNo = JOptionPane.showConfirmDialog(null,
+				"Do you want to purchase this property", "JOption", JOptionPane.YES_NO_OPTION);
+
+		if(yesOrNo == 0 && (tavern.getPrice() <= player.getBalance()) ) {
+			System.out.println("Owner of tavern: " + tavern.getOwner());
+			tavern.setOwner(player);
+			System.out.println("Owner of tavern: " + tavern.getOwner());
+			player.decreaseBalace(tavern.getPrice());
+			
+		}
+		else {
+			//Behövs inte fixas
+			//Skriv ut typ "player passed"
+		}
 	}
 	
 	

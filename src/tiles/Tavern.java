@@ -46,6 +46,11 @@ public class Tavern implements Tile{
 	public Player getOwner() {
 		return owner;
 	}
+	
+	public int getPrice() {
+		return price;
+	}
+	
 
 	@Override
 	public String getTileInfo() {
