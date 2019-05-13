@@ -254,7 +254,6 @@ public class StartingScreen extends JFrame {
 					System.out.println(
 							"Player One: " + playerTf[i].getText() + " : " + playerColors[i].getSelectedItem());
 				}
-				setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 				createNewUsers();
 
 				for (int i = 0; i < playerList.getLength(); i++) {

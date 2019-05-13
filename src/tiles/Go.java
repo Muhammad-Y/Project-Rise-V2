@@ -47,4 +47,16 @@ public class Go implements Tile {
 				+ "Every time a player passes by, he or she \nis rewarded 200 gold coins";
 		return info;
 	}
+
+	@Override
+	public String getTitle() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Color getTitleColor() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

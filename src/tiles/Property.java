@@ -29,8 +29,7 @@ public class Property implements Tile {
 	}
 
 	public String getTileInfo() {
-		info = name + "\n"
-				+ "Owner: " 			+ owner + "\n"
+		info =    "Owner: " 			+ owner + "\n"
 				+ "Price: " 			+ price + "\n"
 				+ "Default rent: " 		+ defaultRent + "\n"
 				+ "Rent with Houses: " 	+ rentPerLevel + "\n"
@@ -38,7 +37,13 @@ public class Property implements Tile {
 				+ "Total rent: " 		+ getTotalRent();
 		return info;
 	}
-
+	public String getTitle() {
+		return name;
+	}
+	public Color getTitleColor() {
+		return color;
+	}
+	
 	public static void main(String[] args) {
 		Property p = new Property("MomoSuger gatan", 200, 35, 20, Color.BLUE);
 		p.setNumberOfHouses(3);
@@ -122,6 +127,5 @@ public class Property implements Tile {
 	public void setPurchaseable(boolean b) {
 		this.purchaseable = b;
 	}
-	
 	
 }

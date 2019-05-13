@@ -7,6 +7,8 @@ import javax.swing.BorderFactory;
 import javax.swing.*;
 import javax.swing.border.Border;
 
+import tiles.Tile;
+
 public class WestSidePanel extends JPanel {
 
 	/**
@@ -172,14 +174,9 @@ public class WestSidePanel extends JPanel {
 	public void append(String res) {
 		txtMessage.append(res);
 	}
-
-//	public static void main(String[] args) {
-//		WestSidePanel wi = new WestSidePanel();
-//		JFrame frame = new JFrame();
-//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		frame.add(wi);
-//		frame.pack();
-//		frame.setVisible(true);
-//		frame.setLocationRelativeTo(null);
-//	}
+	
+	public void infoChanger(String totInfo) {
+		txtTileInfo.setText(totInfo);
+		
+	}
 }

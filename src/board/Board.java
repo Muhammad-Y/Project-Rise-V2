@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 
 import player.Player;
 import player.PlayerList;
+import tiles.Property;
 import tiles.Tile;
 import tileCollection.TileCollection;
 import tiles.TileInfo;
@@ -36,6 +37,7 @@ public class Board extends JPanel {
 	
 	//Ny
 	private TileCollection tileCollection = new TileCollection();
+	private Property property ;
 	
 	private JFrame hej;
 	
@@ -319,48 +321,6 @@ public class Board extends JPanel {
 		p40.setBounds(649, 587, 101, 62);
 		add(p40);
 		
-		//MouseListener
-//				p1.addMouseListener(new Listener());
-//				p2.addMouseListener(new Listener());
-//				p3.addMouseListener(new Listener());
-//				p4.addMouseListener(new Listener());
-//				p5.addMouseListener(new Listener());
-//				p6.addMouseListener(new Listener());
-//				p7.addMouseListener(new Listener());
-//				p8.addMouseListener(new Listener());
-//				p9.addMouseListener(new Listener());
-//				p10.addMouseListener(new Listener());
-//				p11.addMouseListener(new Listener());
-//				p12.addMouseListener(new Listener());
-//				p13.addMouseListener(new Listener());
-//				p14.addMouseListener(new Listener());
-//				p15.addMouseListener(new Listener());
-//				p16.addMouseListener(new Listener());
-//				p17.addMouseListener(new Listener());
-//				p18.addMouseListener(new Listener());
-//				p19.addMouseListener(new Listener());
-//				p20.addMouseListener(new Listener());
-//				p21.addMouseListener(new Listener());
-//				p22.addMouseListener(new Listener());
-//				p23.addMouseListener(new Listener());
-//				p24.addMouseListener(new Listener());
-//				p25.addMouseListener(new Listener());
-//				p26.addMouseListener(new Listener());
-//				p27.addMouseListener(new Listener());
-//				p28.addMouseListener(new Listener());
-//				p29.addMouseListener(new Listener());
-//				p30.addMouseListener(new Listener());
-//				p31.addMouseListener(new Listener());
-//				p32.addMouseListener(new Listener());
-//				p33.addMouseListener(new Listener());
-//				p34.addMouseListener(new Listener());
-//				p35.addMouseListener(new Listener());
-//				p36.addMouseListener(new Listener());
-//				p37.addMouseListener(new Listener());
-//				p38.addMouseListener(new Listener());
-//				p39.addMouseListener(new Listener());
-//				p40.addMouseListener(new Listener());
-
 		//MouseListener		
 		for (int i=0; i<panelarray.length; i++) {
 			panelarray[i].addMouseListener(listener);
@@ -455,34 +415,62 @@ public class Listener implements MouseListener {
 			public void mouseEntered(MouseEvent e) {
 				for (int i=0; i<panelarray.length; i++) {
 					if (e.getSource()==panelarray[i]) {
-						if (i==1 || i==3) {
-							pnlWest.setTileInfo(info.getInfo(i), info.getTitle(i), info.getColor(0));
+						if (i == 0 || i == 2 ||i == 4 || i == 5 ||i == 7 || 
+								i == 10 ||i == 12 || i == 15 ||i == 17 || 
+								i == 20 ||i == 22 || i == 25 ||i == 28 || i == 30 ||
+								i == 33 ||i == 35 || i == 36 || i == 38){
+							pnlWest.setTileInfo(info.getInfo(i), info.getTitle(i), info.getColor(8));
 						}
-						else if(i==6 || i==8 || i==9) {
-							pnlWest.setTileInfo(info.getInfo(i), info.getTitle(i), info.getColor(1));
+						else {						
+							pnlWest.setTileInfo(tileCollection.getTileAtIndex(i).getTileInfo(),
+								tileCollection.getTileAtIndex(i).getTitle(), tileCollection.getTileAtIndex(i).getColor() );
 						}
-						else if(i==11 || i==13 || i==14) {
-							pnlWest.setTileInfo(info.getInfo(i), info.getTitle(i), info.getColor(2));
-						}
-						else if(i==16 || i==18 || i==19) {
-							pnlWest.setTileInfo(info.getInfo(i), info.getTitle(i), info.getColor(3));
-						}
-						else if(i==21 || i==23 || i==24) {
-							pnlWest.setTileInfo(info.getInfo(i), info.getTitle(i), info.getColor(4));
-						}
-						else if(i==26 || i==27 || i==29) {
-							pnlWest.setTitleText(info.getInfo(i), info.getTitle(i), info.getColor(5), Color.black);
-						}
-						else if(i==31 || i==32 || i==34) {
-//							pnlWest.setTitleText(info.getInfo(i), info.getTitle(i), info.getColor(6), Color.black );
-							pnlWest.setTileInfo(info.getInfo(i), info.getTitle(i), info.getColor(6));
-						}
-						else if(i==37 || i==39) {
-							pnlWest.setTileInfo(info.getInfo(i), info.getTitle(i), info.getColor(7));
-						}
-						else {
-						pnlWest.setTileInfo(info.getInfo(i), info.getTitle(i), info.getColor(8));
-						}
+//						if (i==1 || i==3) {
+//							pnlWest.setTileInfo(tileCollection.getTileAtIndex(i).getTileInfo(),
+//									tileCollection.getTileAtIndex(i).getTitle(), tileCollection.getTileAtIndex(i).getColor() );
+//							
+////							pnlWest.setTileInfo(info.getInfo(i), info.getTitle(i), info.getColor(0));
+//							
+//						}
+//						else if(i==6 || i==8 || i==9) {
+//							pnlWest.setTileInfo(tileCollection.getTileAtIndex(i).getTileInfo(),
+//									tileCollection.getTileAtIndex(i).getTitle(), tileCollection.getTileAtIndex(i).getColor() );
+////							pnlWest.setTileInfo(info.getInfo(i), info.getTitle(i), info.getColor(1));
+//						}
+//						else if(i==11 || i==13 || i==14) {
+//							pnlWest.setTileInfo(tileCollection.getTileAtIndex(i).getTileInfo(),
+//									tileCollection.getTileAtIndex(i).getTitle(), tileCollection.getTileAtIndex(i).getColor() );
+////							pnlWest.setTileInfo(info.getInfo(i), info.getTitle(i), info.getColor(2));
+//						}
+//						else if(i==16 || i==18 || i==19) {
+//							pnlWest.setTileInfo(tileCollection.getTileAtIndex(i).getTileInfo(),
+//									tileCollection.getTileAtIndex(i).getTitle(), tileCollection.getTileAtIndex(i).getColor() );
+////							pnlWest.setTileInfo(info.getInfo(i), info.getTitle(i), info.getColor(3));
+//						}
+//						else if(i==21 || i==23 || i==24) {
+//							pnlWest.setTileInfo(tileCollection.getTileAtIndex(i).getTileInfo(),
+//									tileCollection.getTileAtIndex(i).getTitle(), tileCollection.getTileAtIndex(i).getColor() );
+////							pnlWest.setTileInfo(info.getInfo(i), info.getTitle(i), info.getColor(4));
+//						}
+//						else if(i==26 || i==27 || i==29) {
+//							pnlWest.setTileInfo(tileCollection.getTileAtIndex(i).getTileInfo(),
+//									tileCollection.getTileAtIndex(i).getTitle(), tileCollection.getTileAtIndex(i).getColor() );
+////							pnlWest.setTitleText(info.getInfo(i), info.getTitle(i), info.getColor(5), Color.black);
+//						}
+//						else if(i==31 || i==32 || i==34) {
+//							pnlWest.setTileInfo(tileCollection.getTileAtIndex(i).getTileInfo(),
+//									tileCollection.getTileAtIndex(i).getTitle(), tileCollection.getTileAtIndex(i).getColor() );
+////							pnlWest.setTitleText(info.getInfo(i), info.getTitle(i), info.getColor(6), Color.black );
+////							pnlWest.setTileInfo(info.getInfo(i), info.getTitle(i), info.getColor(6));
+//						}
+//						else if(i==37 || i==39) {
+//							pnlWest.setTileInfo(tileCollection.getTileAtIndex(i).getTileInfo(),
+//									tileCollection.getTileAtIndex(i).getTitle(), tileCollection.getTileAtIndex(i).getColor() );
+////							pnlWest.setTileInfo(info.getInfo(i), info.getTitle(i), info.getColor(7));
+//						}
+//						else {
+//						pnlWest.setTileInfo(info.getInfo(i), info.getTitle(i), info.getColor(8));
+//						}
 					}
 				}		
 			}
@@ -497,18 +485,4 @@ public class Listener implements MouseListener {
 			}
 }
 
-	
-
-//	public static void main(String[] args) {
-//		Board ui = new Board();
-//		JFrame frame = new JFrame();
-//		frame.setVisible(true);
-//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		frame.add(ui);
-//		frame.setSize(new Dimension(850, 850));
-//		frame.pack();
-//		frame.setVisible(true);
-//		frame.setLocationRelativeTo(null);
-//
-//	}
 }

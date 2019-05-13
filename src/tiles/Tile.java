@@ -33,5 +33,9 @@ public interface Tile {
 	 * @return info, information about tile. (Price, owner, stuff).
 	 */
 	public String getTileInfo();
+	
+	public String getTitle();
+	
+	public Color getTitleColor();
 
 }
