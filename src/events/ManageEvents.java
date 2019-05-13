@@ -80,13 +80,18 @@ public class ManageEvents {
 	
 	public void taxEvent(Tile tile, Player player) {
 		Tax tempTaxObject = (Tax) tile;
+		System.out.println("Spelaren har inte betalat skatt: " + player.getBalance());
 		int chargePlayer = tempTaxObject.getTax();
 		
-		control(player, chargePlayer);
+//		control(player, chargePlayer);
 		
-		if(player.isAlive()) {
-			
-		}
+//		if(player.isAlive()) {
+//			
+//		}
+//		player.setBalance(player.getBalance() - chargePlayer);
+		player.increaseBalance(- chargePlayer);
+		
+		System.out.println("Spelaren betalar skatt: " + player.getBalance());
 		
 	}
 	

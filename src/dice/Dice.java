@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import board.Board;
 import cheat.CheatGui;
 import eastSidePanels.EastSidePanel;
+import events.ManageEvents;
 import player.PlayerList;
 import westSidePanel.WestSidePanel;
 
@@ -49,10 +50,16 @@ public class Dice extends JPanel implements ActionListener {
 
 	ImageIcon faceToShow, showDice;
 	Image resizedImage;
+	
+	
+	//Nytt 13e maj 
+	private ManageEvents manageEvents;	
+	
 
 	public void addPlayerList(PlayerList list) {
 
 		this.testPlayers = list;
+		manageEvents = new ManageEvents(list);
 
 	}
 
@@ -245,6 +252,12 @@ public class Dice extends JPanel implements ActionListener {
 				board.removePlayer(testPlayers.getActivePlayer());
 				testPlayers.getActivePlayer().setCounter(1);
 				board.setPlayer(testPlayers.getActivePlayer());
+				
+				if(i == (loop - 1) ) {
+					manageEvents.newEvent(board.getDestinationTile(testPlayers.getActivePlayer().getIndex()), 
+							testPlayers.getActivePlayer());
+				}
+				
 
 				try {
 					Thread.sleep(600);
