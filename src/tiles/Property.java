@@ -119,4 +119,9 @@ public class Property implements Tile {
 		return this.levels;
 	}
 	
+	public void setPurchaseable(boolean b) {
+		this.purchaseable = b;
+	}
+	
+	
 }

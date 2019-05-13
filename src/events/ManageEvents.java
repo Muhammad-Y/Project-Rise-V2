@@ -82,12 +82,14 @@ public class ManageEvents {
 		Property tempProperty = (Property) tile; 
 		int tempInt = 0; 
 		
-		if(tempProperty.getPurchaseable() == false) {
+		if(tempProperty.getPurchaseable() == true) {
 			propertyDialog(tempProperty, player);
 		} 
 		else {
 			
 		}
+		
+		System.out.println("Property händelse");
 
 	}
 	
@@ -110,13 +112,15 @@ public class ManageEvents {
 	public void tavernEvent(Tile tile, Player player) {
 		Tavern tempTavernObj = (Tavern) tile;
 		
-		
-		if(tempTavernObj.getPurchaseable() == false) {
-			tavernDialog(tempTavernObj, player);
+		 
+		if(tempTavernObj.getPurchaseable() == true) {
+			tavernDialog(tempTavernObj, player); 
 		} 
 		else {
 			
 		}
+		
+		System.out.println("Tavern händelse");
 		
 	}
 	
@@ -129,6 +133,7 @@ public class ManageEvents {
 		if(yesOrNo == 0 && (property.getPrice() <= player.getBalance()) ) {
 			System.out.println("Owner of property: " + property.getOwner());
 			property.setOwner(player);
+			property.setPurchaseable(false);
 			System.out.println("Owner of property: " + property.getOwner());
 			player.decreaseBalace(property.getPrice());
 
@@ -146,6 +151,7 @@ public class ManageEvents {
 		if(yesOrNo == 0 && (tavern.getPrice() <= player.getBalance()) ) {
 			System.out.println("Owner of tavern: " + tavern.getOwner());
 			tavern.setOwner(player);
+			tavern.setPurchaseable(false);
 			System.out.println("Owner of tavern: " + tavern.getOwner());
 			player.decreaseBalace(tavern.getPrice());
 			

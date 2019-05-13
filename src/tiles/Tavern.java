@@ -57,5 +57,8 @@ public class Tavern implements Tile{
 		return this.info + "name\n" + "Owner: " + "";
 		
 	}
+	public void setPurchaseable(boolean b) {
+		this.purchasable = b;
+	}
 
 }
