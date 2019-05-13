@@ -127,20 +127,6 @@ public class WestSidePanel extends JPanel {
 	}
 
 	/**
-	 * It updates the title's text and color. this method is only for the boxes with
-	 * color
-	 * 
-	 * @param info:       gets the box's text
-	 * @param lblTitle:   gets the title's text
-	 * @param titleColor: gets the title's color
-	 */
-//	public void setTileInfo(String info, String lblTitle, Color titleColor) {
-//		txtTileInfo.setText(info);
-//		lblInfoTitle.setText(lblTitle);
-//		lblInfoTitle.setBackground(titleColor);
-//	}
-
-	/**
 	 * This method is like the above method but only for those boxes which has
 	 * default color.
 	 * 
@@ -174,9 +160,4 @@ public class WestSidePanel extends JPanel {
 	public void append(String res) {
 		txtMessage.append(res);
 	}
-//	
-//	public void infoChanger(String totInfo) {
-//		txtTileInfo.setText(totInfo);
-//		
-//	}
 }
