@@ -196,6 +196,7 @@ public class Dice extends JPanel implements ActionListener {
 
 			movePlayerThread = new Thread(new LoopThread(total));
 			movePlayerThread.start();
+			
 
 			tabPanel.addPlayerList(testPlayers);
 
@@ -228,7 +229,6 @@ public class Dice extends JPanel implements ActionListener {
 
 		
 
-		tabPanel.addPlayerList(testPlayers);
 
 		
 		board.removePlayer(testPlayers.getActivePlayer());
@@ -240,7 +240,8 @@ public class Dice extends JPanel implements ActionListener {
 		//Koppling mellan spelares index och TileCollection funkar
 		manageEvents.newEvent(board.getDestinationTile(testPlayers.getActivePlayer().getIndex()), 
 		testPlayers.getActivePlayer());
-		
+		tabPanel.addPlayerList(testPlayers);
+
 	}
 	
 
