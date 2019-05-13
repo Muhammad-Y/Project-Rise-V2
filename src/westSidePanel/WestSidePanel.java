@@ -19,13 +19,13 @@ public class WestSidePanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JLabel lblInfoTitle, lblHistoryTitle;
 	private JPanel pnlSpace, pnlHeading, pnlInfo, pnlHistory, pnlBtn, pnlInBtn;
-	private Font font = new Font("ALGERIAN", Font.BOLD, 16);
+	private Font font = new Font("ALGERIAN", Font.BOLD, 19);
 	private JTextArea txtTileInfo = new JTextArea();
 	private JTextArea txtMessage = new JTextArea();
 	private JScrollPane scroller = new JScrollPane(txtMessage);
 	private Border border = BorderFactory.createLineBorder(Color.DARK_GRAY);
 	private JButton btnManage = new JButton("Manage Properties");
-	private String def = "Move your mouse on a tile \nwhich you wanna see \ninformation about!";
+	private String def = "Move your mouse on a tile \nwhich you want to see \ninformation about!";
 	private String title = "Information";
 	private Color titleColor = Color.DARK_GRAY;
 
@@ -101,7 +101,7 @@ public class WestSidePanel extends JPanel {
 		scroller.setPreferredSize(new Dimension(320, 300));
 		scroller.setAutoscrolls(false);
 		
-		lblHistoryTitle = new JLabel("Game history shows here");
+		lblHistoryTitle = new JLabel("Game history");
 		lblHistoryTitle.setPreferredSize(new Dimension(320, 30));
 		lblHistoryTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		lblHistoryTitle.setBorder(BorderFactory.createLineBorder(Color.white, 2, false));
@@ -134,11 +134,11 @@ public class WestSidePanel extends JPanel {
 	 * @param lblTitle:   gets the title's text
 	 * @param titleColor: gets the title's color
 	 */
-	public void setTileInfo(String info, String lblTitle, Color titleColor) {
-		txtTileInfo.setText(info);
-		lblInfoTitle.setText(lblTitle);
-		lblInfoTitle.setBackground(titleColor);
-	}
+//	public void setTileInfo(String info, String lblTitle, Color titleColor) {
+//		txtTileInfo.setText(info);
+//		lblInfoTitle.setText(lblTitle);
+//		lblInfoTitle.setBackground(titleColor);
+//	}
 
 	/**
 	 * This method is like the above method but only for those boxes which has
@@ -174,9 +174,9 @@ public class WestSidePanel extends JPanel {
 	public void append(String res) {
 		txtMessage.append(res);
 	}
-	
-	public void infoChanger(String totInfo) {
-		txtTileInfo.setText(totInfo);
-		
-	}
+//	
+//	public void infoChanger(String totInfo) {
+//		txtTileInfo.setText(totInfo);
+//		
+//	}
 }

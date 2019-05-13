@@ -15,7 +15,7 @@ public class Property implements Tile {
 	private int price, rentPerLevel, defaultRent, levels;
 	private Boolean purchaseable;
 	private Color color;
-	private Player owner;
+	private Player owner ;
 
 
 	public Property(String name, int price, int defaultRent, int rentPerLevel, Color color) {
@@ -29,12 +29,11 @@ public class Property implements Tile {
 	}
 
 	public String getTileInfo() {
-		info =    "Owner: " 			+ owner + "\n"
-				+ "Price: " 			+ price + "\n"
-				+ "Default rent: " 		+ defaultRent + "\n"
-				+ "Rent with Houses: " 	+ rentPerLevel + "\n"
-				+ "Color: " 			+ color + "\n"
-				+ "Total rent: " 		+ getTotalRent();
+		info =    "Owner: \t\t" + owner + "\n"
+				+ "Price:\t\t" + price + "\n"
+				+ "Default rent:\t" + defaultRent + "\n"
+				+ "Rent with Levels:\t" 	+ rentPerLevel + "\n"
+				+ "Total rent:\t" 		+ getTotalRent();
 		return info;
 	}
 	public String getTitle() {
@@ -43,6 +42,7 @@ public class Property implements Tile {
 	public Color getTitleColor() {
 		return color;
 	}
+	
 	
 	public static void main(String[] args) {
 		Property p = new Property("MomoSuger gatan", 200, 35, 20, Color.BLUE);

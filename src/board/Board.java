@@ -419,58 +419,16 @@ public class Listener implements MouseListener {
 								i == 10 ||i == 12 || i == 15 ||i == 17 || 
 								i == 20 ||i == 22 || i == 25 ||i == 28 || i == 30 ||
 								i == 33 ||i == 35 || i == 36 || i == 38){
-							pnlWest.setTileInfo(info.getInfo(i), info.getTitle(i), info.getColor(8));
+								pnlWest.setTitleText(info.getInfo(i), info.getTitle(i), info.getColor(8), Color.white);
+						}else if(i==26 || i==27 || i==29) {
+							pnlWest.setTitleText(tileCollection.getTileAtIndex(i).getTileInfo(),
+							tileCollection.getTileAtIndex(i).getTitle(), tileCollection.getTileAtIndex(i).getColor(), Color.white );
+							pnlWest.setTitleText(tileCollection.getTileAtIndex(i).getTileInfo(),
+									tileCollection.getTileAtIndex(i).getTitle(), info.getColor(5), Color.black);
+						}else {						
+							pnlWest.setTitleText(tileCollection.getTileAtIndex(i).getTileInfo(),
+								tileCollection.getTileAtIndex(i).getTitle(), tileCollection.getTileAtIndex(i).getColor(), Color.white );
 						}
-						else {						
-							pnlWest.setTileInfo(tileCollection.getTileAtIndex(i).getTileInfo(),
-								tileCollection.getTileAtIndex(i).getTitle(), tileCollection.getTileAtIndex(i).getColor() );
-						}
-//						if (i==1 || i==3) {
-//							pnlWest.setTileInfo(tileCollection.getTileAtIndex(i).getTileInfo(),
-//									tileCollection.getTileAtIndex(i).getTitle(), tileCollection.getTileAtIndex(i).getColor() );
-//							
-////							pnlWest.setTileInfo(info.getInfo(i), info.getTitle(i), info.getColor(0));
-//							
-//						}
-//						else if(i==6 || i==8 || i==9) {
-//							pnlWest.setTileInfo(tileCollection.getTileAtIndex(i).getTileInfo(),
-//									tileCollection.getTileAtIndex(i).getTitle(), tileCollection.getTileAtIndex(i).getColor() );
-////							pnlWest.setTileInfo(info.getInfo(i), info.getTitle(i), info.getColor(1));
-//						}
-//						else if(i==11 || i==13 || i==14) {
-//							pnlWest.setTileInfo(tileCollection.getTileAtIndex(i).getTileInfo(),
-//									tileCollection.getTileAtIndex(i).getTitle(), tileCollection.getTileAtIndex(i).getColor() );
-////							pnlWest.setTileInfo(info.getInfo(i), info.getTitle(i), info.getColor(2));
-//						}
-//						else if(i==16 || i==18 || i==19) {
-//							pnlWest.setTileInfo(tileCollection.getTileAtIndex(i).getTileInfo(),
-//									tileCollection.getTileAtIndex(i).getTitle(), tileCollection.getTileAtIndex(i).getColor() );
-////							pnlWest.setTileInfo(info.getInfo(i), info.getTitle(i), info.getColor(3));
-//						}
-//						else if(i==21 || i==23 || i==24) {
-//							pnlWest.setTileInfo(tileCollection.getTileAtIndex(i).getTileInfo(),
-//									tileCollection.getTileAtIndex(i).getTitle(), tileCollection.getTileAtIndex(i).getColor() );
-////							pnlWest.setTileInfo(info.getInfo(i), info.getTitle(i), info.getColor(4));
-//						}
-//						else if(i==26 || i==27 || i==29) {
-//							pnlWest.setTileInfo(tileCollection.getTileAtIndex(i).getTileInfo(),
-//									tileCollection.getTileAtIndex(i).getTitle(), tileCollection.getTileAtIndex(i).getColor() );
-////							pnlWest.setTitleText(info.getInfo(i), info.getTitle(i), info.getColor(5), Color.black);
-//						}
-//						else if(i==31 || i==32 || i==34) {
-//							pnlWest.setTileInfo(tileCollection.getTileAtIndex(i).getTileInfo(),
-//									tileCollection.getTileAtIndex(i).getTitle(), tileCollection.getTileAtIndex(i).getColor() );
-////							pnlWest.setTitleText(info.getInfo(i), info.getTitle(i), info.getColor(6), Color.black );
-////							pnlWest.setTileInfo(info.getInfo(i), info.getTitle(i), info.getColor(6));
-//						}
-//						else if(i==37 || i==39) {
-//							pnlWest.setTileInfo(tileCollection.getTileAtIndex(i).getTileInfo(),
-//									tileCollection.getTileAtIndex(i).getTitle(), tileCollection.getTileAtIndex(i).getColor() );
-////							pnlWest.setTileInfo(info.getInfo(i), info.getTitle(i), info.getColor(7));
-//						}
-//						else {
-//						pnlWest.setTileInfo(info.getInfo(i), info.getTitle(i), info.getColor(8));
-//						}
 					}
 				}		
 			}
