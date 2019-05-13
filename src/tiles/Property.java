@@ -81,6 +81,16 @@ public class Property implements Tile {
 		return this.price;
 	}
 
+	
+	public void setOwner(Player newOwner) {
+		this.owner = newOwner;
+	}
+	
+	public Player getOwner() {
+		return owner;
+	}
+	
+	
 	public void setDefaultRent(int defRent) {
 		this.defaultRent = defRent;
 	}
