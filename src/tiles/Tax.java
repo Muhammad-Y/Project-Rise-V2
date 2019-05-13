@@ -42,7 +42,7 @@ public class Tax implements Tile {
 		return this.COLOR;
 	}
 	
-	public String getTileInfo() {
+	public String getTileInfo() { 
 		info = getName() + "\n"
 				+ "Owner: \t \t" 			+ "The king" + "\n"
 				+ "Peasant tax: \t" 		+ "100 gold coins" + "\n"
