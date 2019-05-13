@@ -112,6 +112,8 @@ public class Player {
 		this.balance += income;
 		setNetWorth(netWorth+income);
 	}
+	
+	
 
 	/**
 	 * @return the playerIsAlive
@@ -180,6 +182,15 @@ public class Player {
 		this.netWorth = netWorth;
 	}
 
+	public void decreaseNetWorth(int decrease) {
+		this.netWorth -= decrease;
+	}
+
+	public void increaseNetWorth(int income) {
+		this.netWorth += income;
+	}
+
+	
 	/**
 	 * Adds newly purchased property to ownedProperties array
 	 * 

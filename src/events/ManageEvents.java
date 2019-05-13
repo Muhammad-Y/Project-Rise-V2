@@ -54,9 +54,9 @@ public class ManageEvents {
 		
 		
 		//Boolean isOwned should be added to property
-//		if(tempProperty.isOwned == true) {
-		    tempInt = player.getBalance() - tempProperty.getTotalRent();
-			player.setBalance(player.getBalance() - tempProperty.getTotalRent());
+////		if(tempProperty.isOwned == true) {
+//		    tempInt = player.getBalance() - tempProperty.getTotalRent();
+//			player.setBalance(player.getBalance() - tempProperty.getTotalRent());
 //			propertyOwner.addMoney(tempProperty.getTotalRent());
 //		}
 		
@@ -91,6 +91,7 @@ public class ManageEvents {
 //		}
 //		player.setBalance( (player.getBalance() - chargePlayer) );
 		player.decreaseBalace(chargePlayer);
+		player.decreaseNetWorth(chargePlayer);
 //		player.increaseBalance(- chargePlayer);
 		
 		System.out.println("Spelaren betalar skatt: " + player.getBalance());
