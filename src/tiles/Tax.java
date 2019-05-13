@@ -13,7 +13,7 @@ public class Tax implements Tile {
 	private final static Color COLOR = Color.WHITE;
 	private String info;
 	private static Player player;
-	private int taxToPay;
+	private int taxToPay = 200;
 	
 //	public Tax(Player player) {
 //		this.player = player;
