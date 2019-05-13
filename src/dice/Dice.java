@@ -47,6 +47,7 @@ public class Dice extends JPanel implements ActionListener {
 
 	private int diceWidth = (screenSize.width) / 20;
 	private int diceHeight = (screenSize.height) / 10;
+	
 
 	ImageIcon faceToShow, showDice;
 	Image resizedImage;
@@ -54,7 +55,15 @@ public class Dice extends JPanel implements ActionListener {
 	
 	//Nytt 13e maj 
 	private ManageEvents manageEvents;	
-	
+	private int roll;
+
+	public int getRoll() {
+		return roll;
+	}
+
+	public void setRoll(int roll) {
+		this.roll = roll;
+	}
 
 	public void addPlayerList(PlayerList list) {
 
@@ -220,7 +229,8 @@ public class Dice extends JPanel implements ActionListener {
 	}
 	
 	public void moveWCheat(int i) {
-		if (testPlayers.getActivePlayer().getIndex() + i > 39) {
+		setRoll(i);
+		if (testPlayers.getActivePlayer().getIndex() + getRoll() > 39) {
 			System.out.println("YOU GET MONEY");
 			testPlayers.getActivePlayer().increaseBalance(200);
 			testPlayers.getActivePlayer().increaseNetWorth(200);
@@ -236,7 +246,7 @@ public class Dice extends JPanel implements ActionListener {
   
 		
 		board.removePlayer(testPlayers.getActivePlayer());
-		testPlayers.getActivePlayer().setCounter(i);
+		testPlayers.getActivePlayer().setCounter(getRoll());
 		board.setPlayer(testPlayers.getActivePlayer());
 		
 		
@@ -250,20 +260,19 @@ public class Dice extends JPanel implements ActionListener {
 	
 
 	private class LoopThread implements Runnable {
-		private int loop;
 
 		public LoopThread(int index) {
-			loop = index;
+			setRoll(index);
 		}
 
 		public void run() {
 
-			for (int i = 0; i < loop; i++) {
+			for (int i = 0; i < getRoll(); i++) {
 				board.removePlayer(testPlayers.getActivePlayer());
 				testPlayers.getActivePlayer().setCounter(1);
 				board.setPlayer(testPlayers.getActivePlayer());
 				
-				if(i == (loop - 1) ) {
+				if(i == (getRoll() - 1) ) {
 					manageEvents.newEvent(board.getDestinationTile(testPlayers.getActivePlayer().getIndex()), 
 							testPlayers.getActivePlayer());
 				}
