@@ -265,7 +265,7 @@ public class OldStartUpScreen extends JFrame {
 			}
 
 		}
-
+ 
 		private void createNewUsers() {
 			for (int i = 0; i < amountOfPlayers; i++) {
 				playerList.addNewPlayer(playerTf[i].getText(), (String) playerColors[i].getSelectedItem());

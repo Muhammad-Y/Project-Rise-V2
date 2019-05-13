@@ -80,7 +80,7 @@ public class GamePanels extends JPanel {
 
 		GamePanels panelTest = new GamePanels();
 		JFrame frame = new JFrame();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
 		frame.setVisible(true);
 		frame.getContentPane().add(panelTest);
 		frame.pack();

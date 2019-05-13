@@ -3,6 +3,7 @@ package events;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
+import board.Board;
 import player.Player;
 import player.PlayerList;
 import tiles.Go;
@@ -22,8 +23,10 @@ import tiles.Tile;
 
 public class ManageEvents {
 	private PlayerList playerList;
+	private Board board; 
 	
-	public ManageEvents(PlayerList playerList) {
+	public ManageEvents(Board board, PlayerList playerList) {
+		this.board = board;
 		this.playerList = playerList;
 	}
 	
@@ -70,9 +73,8 @@ public class ManageEvents {
 	public void control(Player player, int amount) {
 		
 		if(player.getBalance() < amount) {
-//			playerList.eliminatePlayer(int index); 
-//			playerList.eliminatePlayer call isAlive == false;
-//			board.removePlayer(player);
+			player.setIsAlive(false); 
+			board.removePlayer(player);
 		}
 		
 	}
@@ -85,12 +87,21 @@ public class ManageEvents {
 		if(tempProperty.getPurchaseable() == true) {
 			propertyDialog(tempProperty, player);
 		} 
-		else {
+		else if (tempProperty.getPurchaseable() == false){
+			
+			if(tempProperty.getNumberOfHouses() == 0) {
+				tempInt = tempProperty.getDefaultRent();
+				player.decreaseBalace(tempInt);
+				tempProperty.getOwner().increaseBalance(tempInt);
+			}
+			else {
+				tempInt = tempProperty.getTotalRent();
+				player.decreaseBalace(tempInt);
+				tempProperty.getOwner().increaseBalance(tempInt);
+			}
 			
 		}
-		
-		System.out.println("Property händelse");
-
+		 
 	}
 	
 	public void taxEvent(Tile tile, Player player) {
@@ -120,8 +131,6 @@ public class ManageEvents {
 			
 		}
 		
-		System.out.println("Tavern händelse");
-		
 	}
 	
 	
@@ -131,10 +140,11 @@ public class ManageEvents {
 				"Do you want to purchase this property", "JOption", JOptionPane.YES_NO_OPTION);
 
 		if(yesOrNo == 0 && (property.getPrice() <= player.getBalance()) ) {
-			System.out.println("Owner of property: " + property.getOwner());
+			
+			//Visa en MessageDialog med "You cannot afford this property" om spelaren klickar på ja men inte har råd
 			property.setOwner(player);
+			player.addNewProperty(property);
 			property.setPurchaseable(false);
-			System.out.println("Owner of property: " + property.getOwner());
 			player.decreaseBalace(property.getPrice());
 
 		}
@@ -149,10 +159,11 @@ public class ManageEvents {
 				"Do you want to purchase this property", "JOption", JOptionPane.YES_NO_OPTION);
 
 		if(yesOrNo == 0 && (tavern.getPrice() <= player.getBalance()) ) {
-			System.out.println("Owner of tavern: " + tavern.getOwner());
+			
+			//Visa en MessageDialog med "You cannot afford this property" om spelaren klickar på ja men inte har råd
 			tavern.setOwner(player);
+			player.addNewProperty(tavern);
 			tavern.setPurchaseable(false);
-			System.out.println("Owner of tavern: " + tavern.getOwner());
 			player.decreaseBalace(tavern.getPrice());
 			
 		}
