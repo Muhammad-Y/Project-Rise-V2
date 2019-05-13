@@ -37,6 +37,7 @@ public class ManageEvents {
 	}
 	
 	
+	
 	public void newEvent(Tile tile, Player player) {
 		
 		if(tile instanceof Property) {
@@ -76,6 +77,11 @@ public class ManageEvents {
 		
 		
 	}
+	
+	
+		
+		
+
 	
 	
 	/**

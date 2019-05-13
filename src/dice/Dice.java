@@ -47,16 +47,13 @@ public class Dice extends JPanel implements ActionListener {
 
 	private int diceWidth = (screenSize.width) / 20;
 	private int diceHeight = (screenSize.height) / 10;
-	
 
 	ImageIcon faceToShow, showDice;
 	Image resizedImage;
-	
-	
-	//Nytt 13e maj 
-	private ManageEvents manageEvents;	
-	private int roll;
 
+	// Nytt 13e maj
+	private ManageEvents manageEvents;
+	private int roll;
 
 	public void addPlayerList(PlayerList list) {
 
@@ -78,7 +75,7 @@ public class Dice extends JPanel implements ActionListener {
 
 	// We can remove it after we are done with cheat
 	public Dice() {
-		
+
 		initializePanel();
 		addButtonsAndListeners();
 	}
@@ -107,7 +104,7 @@ public class Dice extends JPanel implements ActionListener {
 		lblDice1.setIcon(showDice);
 
 		finishTurn.addActionListener(this);
-		
+
 		add(finishTurn);
 		add(cheat);
 
@@ -174,44 +171,35 @@ public class Dice extends JPanel implements ActionListener {
 				faceToShow = new ImageIcon("DicePictures/faceValue6.png");
 				break;
 			}
-			int total;
+			
 
 			if (faceValueDiceOne == faceValueDiceTwo) {
-				total = ((faceValueDiceOne + faceValueDiceTwo) * 2);
+				setRoll(((faceValueDiceOne + faceValueDiceTwo) * 2));
 			} else
-				total = faceValueDiceOne + faceValueDiceTwo;
+				setRoll(((faceValueDiceOne + faceValueDiceTwo)));
 
 			resizedImage = faceToShow.getImage().getScaledInstance(diceWidth, diceHeight, Image.SCALE_SMOOTH);
 			showDice = new ImageIcon(resizedImage);
 			lblDice2.setIcon(showDice);
 
-
-			if (testPlayers.getActivePlayer().getIndex() + total > 39) {
-				System.out.println("YOU GET MONEY");
-				testPlayers.getActivePlayer().increaseBalance(200);
-				testPlayers.getActivePlayer().increaseNetWorth(200);
-
-				System.out.println(testPlayers.getActivePlayer().getBalance());
-
-			}
-
 			testPlayers.getActivePlayer().checkPlayerRank();
 			manageEvents.setRoll(this);
-			movePlayerThread = new Thread(new LoopThread(total));
+			goEvent();
+
+			movePlayerThread = new Thread(new LoopThread(getRoll()));
 			movePlayerThread.start();
-			
 
 			tabPanel.addPlayerList(testPlayers);
 
 			if (faceValueDiceOne == faceValueDiceTwo) {
-				wsp.append("\n" + testPlayers.getActivePlayer().getName() + " Rolled a dubble: " + total);
+				wsp.append("\n" + testPlayers.getActivePlayer().getName() + " Rolled a dubble: " + getRoll());
 
 			} else
-				wsp.append("\n" + testPlayers.getActivePlayer().getName() + " Rolled a: " + total);
+				wsp.append("\n" + testPlayers.getActivePlayer().getName() + " Rolled a: " + getRoll());
 		}
 
 		if (e.getSource() == finishTurn) {
-			
+
 			testPlayers.switchToNextPlayer();
 			new ShowPlayersTurn(testPlayers.getActivePlayer().getName(), "GREEN");
 			System.out.println(
@@ -219,38 +207,24 @@ public class Dice extends JPanel implements ActionListener {
 		}
 
 	}
-	
+
 	public void moveWCheat(int i) {
 		setRoll(i);
-		if (testPlayers.getActivePlayer().getIndex() + getRoll() > 39) {
-			System.out.println("YOU GET MONEY");
-			testPlayers.getActivePlayer().increaseBalance(200);
-			testPlayers.getActivePlayer().increaseNetWorth(200);
-
-			System.out.println(testPlayers.getActivePlayer().getBalance());
-
-		}
-
 		testPlayers.getActivePlayer().checkPlayerRank();
 
-		
-
-  
-		
 		board.removePlayer(testPlayers.getActivePlayer());
 		testPlayers.getActivePlayer().setCounter(getRoll());
 		board.setPlayer(testPlayers.getActivePlayer());
-		
-		
-		//För att testa händelser
-		//Koppling mellan spelares index och TileCollection funkar
+
+		// För att testa händelser
+		// Koppling mellan spelares index och TileCollection funkar
 		manageEvents.setRoll(this);
-		manageEvents.newEvent(board.getDestinationTile(testPlayers.getActivePlayer().getIndex()), 
-		testPlayers.getActivePlayer());
+		goEvent();
+		manageEvents.newEvent(board.getDestinationTile(testPlayers.getActivePlayer().getIndex()),
+				testPlayers.getActivePlayer());
 		tabPanel.addPlayerList(testPlayers);
 
 	}
-	
 
 	private class LoopThread implements Runnable {
 
@@ -264,15 +238,14 @@ public class Dice extends JPanel implements ActionListener {
 				board.removePlayer(testPlayers.getActivePlayer());
 				testPlayers.getActivePlayer().setCounter(1);
 				board.setPlayer(testPlayers.getActivePlayer());
-				
-				if(i == (getRoll() - 1) ) {
-					manageEvents.newEvent(board.getDestinationTile(testPlayers.getActivePlayer().getIndex()), 
+
+				if (i == (getRoll() - 1)) {
+					manageEvents.newEvent(board.getDestinationTile(testPlayers.getActivePlayer().getIndex()),
 							testPlayers.getActivePlayer());
 				}
-				
 
 				try {
-					Thread.sleep(600);
+					Thread.sleep(60);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
@@ -281,7 +254,17 @@ public class Dice extends JPanel implements ActionListener {
 
 		}
 	}
-	
+
+	private void goEvent() {
+
+		if (testPlayers.getActivePlayer().getIndex() + getRoll() > 39) {
+
+			testPlayers.getActivePlayer().increaseBalance(200);
+			testPlayers.getActivePlayer().increaseNetWorth(200);
+			System.out.println("You passed go");
+		}
+	}
+
 	public int getRoll() {
 		return roll;
 	}
