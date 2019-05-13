@@ -236,6 +236,11 @@ public class Dice extends JPanel implements ActionListener {
 		board.setPlayer(testPlayers.getActivePlayer());
 		
 		
+		//För att testa händelser
+		//Koppling mellan spelares index och TileCollection funkar
+		manageEvents.newEvent(board.getDestinationTile(testPlayers.getActivePlayer().getIndex()), 
+		testPlayers.getActivePlayer());
+		
 	}
 	
 

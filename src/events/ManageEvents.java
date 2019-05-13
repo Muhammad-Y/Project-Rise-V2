@@ -88,8 +88,8 @@ public class ManageEvents {
 //		if(player.isAlive()) {
 //			
 //		}
-//		player.setBalance(player.getBalance() - chargePlayer);
-		player.increaseBalance(- chargePlayer);
+		player.setBalance( (player.getBalance() - chargePlayer) );
+//		player.increaseBalance(- chargePlayer);
 		
 		System.out.println("Spelaren betalar skatt: " + player.getBalance());
 		
