@@ -103,6 +103,10 @@ public class Player {
 	public void setBalance(int playerBalance) {
 		this.balance = playerBalance;
 	}
+	
+	public void decreaseBalace(int decrease) {
+		this.balance -= decrease;
+	}
 
 	public void increaseBalance(int income) {
 		this.balance += income;

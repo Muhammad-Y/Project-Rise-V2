@@ -80,6 +80,7 @@ public class ManageEvents {
 	
 	public void taxEvent(Tile tile, Player player) {
 		Tax tempTaxObject = (Tax) tile;
+		System.out.println("Ruta, " + tile.getName());
 		System.out.println("Spelaren har inte betalat skatt: " + player.getBalance());
 		int chargePlayer = tempTaxObject.getTax();
 		
@@ -88,7 +89,8 @@ public class ManageEvents {
 //		if(player.isAlive()) {
 //			
 //		}
-		player.setBalance( (player.getBalance() - chargePlayer) );
+//		player.setBalance( (player.getBalance() - chargePlayer) );
+		player.decreaseBalace(chargePlayer);
 //		player.increaseBalance(- chargePlayer);
 		
 		System.out.println("Spelaren betalar skatt: " + player.getBalance());
