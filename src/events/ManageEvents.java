@@ -4,8 +4,10 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 import board.Board;
+import dice.Dice;
 import player.Player;
 import player.PlayerList;
+import player.PlayerRanks;
 import tiles.Go;
 import tiles.GoToJail;
 import tiles.Jail;
@@ -14,6 +16,7 @@ import tiles.SundayChurch;
 import tiles.Tavern;
 import tiles.Tax;
 import tiles.Tile;
+import tiles.Work;
 
 /**
  * Klass som hanterar alla händelser då en spelare landar på en ruta
@@ -24,6 +27,9 @@ import tiles.Tile;
 public class ManageEvents {
 	private PlayerList playerList;
 	private Board board; 
+	private Dice dice;
+	private int roll;
+
 	
 	public ManageEvents(Board board, PlayerList playerList) {
 		this.board = board;
@@ -61,6 +67,12 @@ public class ManageEvents {
 		if(tile instanceof SundayChurch) {
 			
 		}
+		
+		if (tile instanceof Work) {
+			workEvent(tile, player);
+		}
+
+		
 		
 		
 	}
@@ -102,6 +114,31 @@ public class ManageEvents {
 			
 		}
 		 
+	}
+	
+	public void workEvent(Tile tile, Player player) {
+		int pay=0;
+		int totalEarnings;
+		if (player.getPlayerRank() == PlayerRanks.PEASANT) {
+
+			pay = 20;
+
+		}
+		if (player.getPlayerRank() == PlayerRanks.KNIGHT) {
+
+			pay = 25;
+
+		}
+		if (player.getPlayerRank() == PlayerRanks.LORD) {
+
+			pay = 30;
+
+		}
+		totalEarnings = (getRoll() * pay);
+		JOptionPane.showMessageDialog(null,"the roll is"+ roll+ "\n" +"you got: " + totalEarnings +"G for your hard work");
+		player.increaseBalance(totalEarnings);
+		player.increaseNetWorth(totalEarnings);
+
 	}
 	
 	public void taxEvent(Tile tile, Player player) {
@@ -171,7 +208,15 @@ public class ManageEvents {
 			//Behövs inte fixas
 			//Skriv ut typ "player passed"
 		}
+		
 	}
 	
-	
+	public int getRoll() {
+		return roll;
+	}
+
+	public void setRoll(Dice dice) {
+		this.roll = dice.getRoll();
+	}
+
 }

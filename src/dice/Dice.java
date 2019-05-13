@@ -57,13 +57,6 @@ public class Dice extends JPanel implements ActionListener {
 	private ManageEvents manageEvents;	
 	private int roll;
 
-	public int getRoll() {
-		return roll;
-	}
-
-	public void setRoll(int roll) {
-		this.roll = roll;
-	}
 
 	public void addPlayerList(PlayerList list) {
 
@@ -192,7 +185,6 @@ public class Dice extends JPanel implements ActionListener {
 			showDice = new ImageIcon(resizedImage);
 			lblDice2.setIcon(showDice);
 
-			System.out.println(total);
 
 			if (testPlayers.getActivePlayer().getIndex() + total > 39) {
 				System.out.println("YOU GET MONEY");
@@ -204,7 +196,7 @@ public class Dice extends JPanel implements ActionListener {
 			}
 
 			testPlayers.getActivePlayer().checkPlayerRank();
-
+			manageEvents.setRoll(this);
 			movePlayerThread = new Thread(new LoopThread(total));
 			movePlayerThread.start();
 			
@@ -252,6 +244,7 @@ public class Dice extends JPanel implements ActionListener {
 		
 		//För att testa händelser
 		//Koppling mellan spelares index och TileCollection funkar
+		manageEvents.setRoll(this);
 		manageEvents.newEvent(board.getDestinationTile(testPlayers.getActivePlayer().getIndex()), 
 		testPlayers.getActivePlayer());
 		tabPanel.addPlayerList(testPlayers);
@@ -287,6 +280,14 @@ public class Dice extends JPanel implements ActionListener {
 			}
 
 		}
+	}
+	
+	public int getRoll() {
+		return roll;
+	}
+
+	public void setRoll(int roll) {
+		this.roll = roll;
 	}
 
 	public static void main(String[] args) {
