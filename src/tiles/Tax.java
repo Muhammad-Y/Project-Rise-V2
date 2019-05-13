@@ -53,12 +53,5 @@ public class Tax implements Tile {
 		return info;
 	}
 
-	public static void main(String args[]) {
-		Tax t = new Tax(new Player("Momo", Color.BLACK));
-		System.out.println(t.getTileInfo());
-		player.setPlayerRank(player.KNIGHT);
-		System.out.println(t.getTileInfo());
-		player.setPlayerRank(player.LORD);
-		System.out.print(t.getTileInfo());
-	}
+
 }
