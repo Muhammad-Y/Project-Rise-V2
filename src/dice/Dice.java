@@ -219,7 +219,6 @@ public class Dice extends JPanel implements ActionListener {
 	public void moveWCheat(int i) {
 		setRoll(i);
 		testPlayers.getActivePlayer().checkPlayerRank();
-
 		board.removePlayer(testPlayers.getActivePlayer());
 		testPlayers.getActivePlayer().setCounter(getRoll());
 		board.setPlayer(testPlayers.getActivePlayer());
