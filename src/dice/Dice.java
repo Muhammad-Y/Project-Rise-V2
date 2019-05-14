@@ -108,7 +108,7 @@ public class Dice extends JPanel implements ActionListener {
 
 		add(finishTurn);
 		add(cheat);
-		finishTurn.setEnabled(false);
+//		finishTurn.setEnabled(false);
 
 	}
 
@@ -189,10 +189,16 @@ public class Dice extends JPanel implements ActionListener {
 			manageEvents.setRoll(this);
 			movePlayerThread = new Thread(new LoopThread(getRoll()));
 			movePlayerThread.start();
-			goEvent();
+			
 			tabPanel.addPlayerList(testPlayers);
-			btnThrow.setEnabled(false);
-			finishTurn.setEnabled(true);
+
+			goEvent();
+			
+			
+			
+			tabPanel.addPlayerList(testPlayers);
+//			btnThrow.setEnabled(false);
+//			finishTurn.setEnabled(true);
 
 		}
 
@@ -204,7 +210,7 @@ public class Dice extends JPanel implements ActionListener {
 					"Next player turn" + "\n" + "Aktic playerindex: " + testPlayers.getActivePlayer().getPlayerIndex());
 			btnThrow.setEnabled(true);
 			finishTurn.setEnabled(false);
-			tabPanel.setTab();
+//			tabPanel.setTab();
 
 		}
 
@@ -258,11 +264,13 @@ public class Dice extends JPanel implements ActionListener {
 
 	private void goEvent() {
 
-		if (testPlayers.getActivePlayer().getIndex() + getRoll() > 39) {
+		if (testPlayers.getActivePlayer().getIndex()+1 + getRoll() > 39) {
 
 			testPlayers.getActivePlayer().increaseBalance(200);
 			testPlayers.getActivePlayer().increaseNetWorth(200);
+			
 			wsp.append("\n" + testPlayers.getActivePlayer().getName() + "Passed GO!");
+			
 		}
 	}
 
