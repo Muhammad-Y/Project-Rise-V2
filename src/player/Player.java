@@ -21,6 +21,7 @@ public class Player {
 	private ImageIcon playerIcon;
 	private int counter;
 	private int playerIndex;
+	private int playerJailCounter = 0;
 
 	private PlayerRanks playerRank;
 
@@ -50,6 +51,21 @@ public class Player {
 
 		counter = 0;
 	}
+	
+	
+	
+	public int getJailCounter() {
+		return playerJailCounter;
+	}
+	
+	public void setJailCounter(int amount) {
+		this.playerJailCounter = amount;
+	}
+	
+	public void increaseJailCounter() {
+		this.playerJailCounter++;
+	}
+	
 
 	/**
 	 * @return the playerName
@@ -76,6 +92,13 @@ public class Player {
 	public int getPosition() {
 		return counter;
 	}
+	
+	
+	
+	public void setPositionInSpecificIndex(int newPosition) {
+		this.counter = newPosition;
+	}
+	
 
 	public void setPosition(int amountOfStepsToMove) {
 
