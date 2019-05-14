@@ -95,7 +95,9 @@ public enum PlayerRanks {
 		 * How salary is calculated for rulers
 		 */
 		public int getSalary(int dots) {
+		
 			return 40 * dots;
+			
 		}
 
 		/**

@@ -27,11 +27,12 @@ public class Player {
 
 	private int balance;
 	private int netWorth;
+	private boolean playerPassedgo = false;
 
 	private ArrayList<Property> propertiesOwned;
-	
+
 	private ArrayList<Tavern> tavernsOwned;
-	
+
 	private ArrayList<String> transactionsMade; // Should we want to keep track of in/out comes
 
 	public Player(String inPlayerName, ImageIcon playerIcon, int playerIndex) {
@@ -51,21 +52,18 @@ public class Player {
 
 		counter = 0;
 	}
-	
-	
-	
+
 	public int getJailCounter() {
 		return playerJailCounter;
 	}
-	
+
 	public void setJailCounter(int amount) {
 		this.playerJailCounter = amount;
 	}
-	
+
 	public void increaseJailCounter() {
 		this.playerJailCounter++;
 	}
-	
 
 	/**
 	 * @return the playerName
@@ -92,13 +90,10 @@ public class Player {
 	public int getPosition() {
 		return counter;
 	}
-	
-	
-	
+
 	public void setPositionInSpecificIndex(int newPosition) {
 		this.counter = newPosition;
 	}
-	
 
 	public void setPosition(int amountOfStepsToMove) {
 
@@ -108,9 +103,22 @@ public class Player {
 				counter++;
 			} else {
 				counter = 0;
+				playerPassedgo = true;
+
 			}
 
 		}
+
+	}
+
+	public boolean passedGo() {
+
+		return playerPassedgo;
+		
+	}
+	
+	public void resetPassedGo() {
+		playerPassedgo = false;
 	}
 
 	/**
@@ -130,7 +138,7 @@ public class Player {
 	public void setBalance(int playerBalance) {
 		this.balance = playerBalance;
 	}
-	
+
 	public void decreaseBalace(int decrease) {
 		this.balance -= decrease;
 	}
@@ -138,8 +146,6 @@ public class Player {
 	public void increaseBalance(int income) {
 		this.balance += income;
 	}
-	
-	
 
 	/**
 	 * @return the playerIsAlive
@@ -163,7 +169,6 @@ public class Player {
 			return "The plauge has taken another soul";
 
 	}
-
 
 	/**
 	 * @return playerRank the rank of the player
@@ -201,7 +206,6 @@ public class Player {
 		this.netWorth += income;
 	}
 
-	
 	/**
 	 * Adds newly purchased property to ownedProperties array
 	 * 
@@ -214,25 +218,21 @@ public class Player {
 	public void addNewTavern(Tavern newTavern) {
 		this.tavernsOwned.add(newTavern);
 	}
-	
-	
+
 	public int getAmountOfTaverns() {
 		return tavernsOwned.size();
 	}
-	
-	
+
 	public void clearPlayer() {
-		for(int i = 0; i < propertiesOwned.size(); i++) {
+		for (int i = 0; i < propertiesOwned.size(); i++) {
 			propertiesOwned.get(i).clearProperty();
 
 		}
-		for(int i = 0; i < tavernsOwned.size(); i++) {
+		for (int i = 0; i < tavernsOwned.size(); i++) {
 			tavernsOwned.get(i).clearTavern();
 		}
 	}
-	
-	
-	
+
 	/**
 	 * Gets property att specified position
 	 * 
@@ -245,17 +245,17 @@ public class Player {
 		}
 		return null;
 	}
-	
+
 	public void checkPlayerRank() {
-		
+
 		if (getNetWorth() >= 3000) {
 			setPlayerRank(playerRank.KNIGHT);
-			
+
 		}
-		
+
 		if (getNetWorth() >= 6000) {
 			setPlayerRank(playerRank.LORD);
-			
+
 		}
 
 	}
@@ -266,7 +266,7 @@ public class Player {
 	public ArrayList<Property> getProperties() {
 		return this.propertiesOwned;
 	}
-	
+
 	public ArrayList<Tavern> getTaverns() {
 		return this.tavernsOwned;
 	}

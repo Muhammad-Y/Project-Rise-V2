@@ -32,6 +32,7 @@ public class ManageEvents {
 	private Dice dice;
 	private Random rand = new Random(); 
 	private int roll;
+	int taxCounter = 0;
 
 	
 	public ManageEvents(Board board, PlayerList playerList) {
@@ -69,7 +70,7 @@ public class ManageEvents {
 		}
 		
 		if(tile instanceof SundayChurch) {
-			churchEvent();
+			churchEvent(player);
 		}
 		
 		if (tile instanceof Work) {
@@ -167,17 +168,15 @@ public class ManageEvents {
 		Tax tempTaxObject = (Tax) tile;
 		int chargePlayer = tempTaxObject.getTax();
 		
-//		control(player, chargePlayer);
-		
-//		if(player.isAlive()) {
-//			
-//		}
+
 		
 		control(player, chargePlayer);
 		
 		if(player.isAlive() == true) {
 			player.decreaseBalace(chargePlayer);
 			player.decreaseNetWorth(chargePlayer);
+			taxCounter++;
+			
 		}
 		
 		
@@ -243,8 +242,13 @@ public class ManageEvents {
 	}
 	
 	
-	public void churchEvent() {
-		System.out.println("Ingenting händer");
+	public void churchEvent(Player player) {
+		
+		player.increaseBalance(200*taxCounter);
+		player.increaseNetWorth(200*taxCounter);
+		
+		taxCounter=0;
+
 	}
 	
 	

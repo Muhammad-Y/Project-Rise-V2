@@ -262,13 +262,14 @@ public class Dice extends JPanel implements ActionListener {
 
 	private void goEvent() {
 
-		if (testPlayers.getActivePlayer().getPosition()+1 + getRoll() > 39) {
+		if (testPlayers.getActivePlayer().passedGo()) {
+			
 
 			testPlayers.getActivePlayer().increaseBalance(200);
 			testPlayers.getActivePlayer().increaseNetWorth(200);
 			
-			wsp.append("\n" + testPlayers.getActivePlayer().getName() + "Passed GO!");
-			
+			wsp.append("You passed Go and recived 200 gold coins");
+			testPlayers.getActivePlayer().resetPassedGo();
 		}
 	}
 
