@@ -46,6 +46,7 @@ public class Player {
 		setPosition(0);
 		setPlayerRank(playerRank.PEASANT);
 		this.playerIndex = playerIndex;
+		this.tavernsOwned = new ArrayList<>();
 		this.propertiesOwned = new ArrayList<>(); // only red marked cuz Tile interface isnt in this package/imported
 		this.transactionsMade = new ArrayList<String>();
 
