@@ -73,11 +73,11 @@ public class Player {
 		return playerIndex;
 	}
 
-	public int getIndex() {
+	public int getPosition() {
 		return counter;
 	}
 
-	public void setCounter(int amountOfStepsToMove) {
+	public void setPosition(int amountOfStepsToMove) {
 
 		for (int i = 0; i < amountOfStepsToMove; i++) {
 

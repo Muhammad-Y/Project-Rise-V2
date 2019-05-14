@@ -108,7 +108,7 @@ public class Dice extends JPanel implements ActionListener {
 
 		add(finishTurn);
 		add(cheat);
-//		finishTurn.setEnabled(false);
+		finishTurn.setEnabled(false);
 
 	}
 
@@ -190,15 +190,14 @@ public class Dice extends JPanel implements ActionListener {
 			movePlayerThread = new Thread(new LoopThread(getRoll()));
 			movePlayerThread.start();
 			
-			tabPanel.addPlayerList(testPlayers);
 
 			goEvent();
 			
 			
 			
 			tabPanel.addPlayerList(testPlayers);
-//			btnThrow.setEnabled(false);
-//			finishTurn.setEnabled(true);
+			btnThrow.setEnabled(false);
+			finishTurn.setEnabled(true);
 
 		}
 
@@ -210,7 +209,7 @@ public class Dice extends JPanel implements ActionListener {
 					"Next player turn" + "\n" + "Aktic playerindex: " + testPlayers.getActivePlayer().getPlayerIndex());
 			btnThrow.setEnabled(true);
 			finishTurn.setEnabled(false);
-//			tabPanel.setTab();
+			tabPanel.setTab();
 
 		}
 
@@ -220,14 +219,14 @@ public class Dice extends JPanel implements ActionListener {
 		setRoll(i);
 		testPlayers.getActivePlayer().checkPlayerRank();
 		board.removePlayer(testPlayers.getActivePlayer());
-		testPlayers.getActivePlayer().setCounter(getRoll());
+		testPlayers.getActivePlayer().setPosition(getRoll());
 		board.setPlayer(testPlayers.getActivePlayer());
 
 		// För att testa händelser
 		// Koppling mellan spelares index och TileCollection funkar
 		manageEvents.setRoll(this);
 		goEvent();
-		manageEvents.newEvent(board.getDestinationTile(testPlayers.getActivePlayer().getIndex()),
+		manageEvents.newEvent(board.getDestinationTile(testPlayers.getActivePlayer().getPosition()),
 				testPlayers.getActivePlayer());
 		tabPanel.addPlayerList(testPlayers);
 	}
@@ -242,11 +241,11 @@ public class Dice extends JPanel implements ActionListener {
 
 			for (int i = 0; i < getRoll(); i++) {
 				board.removePlayer(testPlayers.getActivePlayer());
-				testPlayers.getActivePlayer().setCounter(1);
+				testPlayers.getActivePlayer().setPosition(1);
 				board.setPlayer(testPlayers.getActivePlayer());
 
 				if (i == (getRoll() - 1)) {
-					manageEvents.newEvent(board.getDestinationTile(testPlayers.getActivePlayer().getIndex()),
+					manageEvents.newEvent(board.getDestinationTile(testPlayers.getActivePlayer().getPosition()),
 							testPlayers.getActivePlayer());
 				}
 
@@ -263,7 +262,7 @@ public class Dice extends JPanel implements ActionListener {
 
 	private void goEvent() {
 
-		if (testPlayers.getActivePlayer().getIndex()+1 + getRoll() > 39) {
+		if (testPlayers.getActivePlayer().getPosition()+1 + getRoll() > 39) {
 
 			testPlayers.getActivePlayer().increaseBalance(200);
 			testPlayers.getActivePlayer().increaseNetWorth(200);

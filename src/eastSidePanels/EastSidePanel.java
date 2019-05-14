@@ -62,14 +62,12 @@ public class EastSidePanel extends JPanel {
 			tab.addTab("Player " +( i + 1), p);
 
 		}
-		p.setOpaque(false);
-		tab.setOpaque(false);
+	
 		tab.setSelectedIndex(currentPlayer);
 		tab.setForeground(Color.white);
 		tab.setBackground(new Color(157,0,0));
 		tab.setBackgroundAt(currentPlayer, new Color(0,157,0));
 
-		tab.setBorder(BorderFactory.createLineBorder(Color.black));
 	}
 	
 	
@@ -80,14 +78,17 @@ public class EastSidePanel extends JPanel {
 		if (currentPlayer > playerList.getLength()-1 ) {
 			currentPlayer=0;
 			
+			tab.setSelectedIndex(currentPlayer);
+			tab.setForeground(Color.white);
+			tab.setBackground(new Color(157,0,0));
+			tab.setBackgroundAt(currentPlayer, new Color(0,157,0));
 			
-		}
+		}else
+		
 		tab.setSelectedIndex(currentPlayer);
 		tab.setForeground(Color.white);
 		tab.setBackground(new Color(157,0,0));
 		tab.setBackgroundAt(currentPlayer, new Color(0,157,0));
-		tab.setBorder(BorderFactory.createLineBorder(Color.black));
-
 		
 		
 	}

@@ -382,10 +382,10 @@ public class Board extends JPanel {
 	
 	//skicka in spelar objekt fÃ¶r att fÃ¶rflytta och ta bort spelar objekt
 	public void setPlayer(Player player) {
-		tiles[player.getIndex()].setPlayer(player); 
+		tiles[player.getPosition()].setPlayer(player); 
 	}
 	public void removePlayer(Player player) {
-		tiles[player.getIndex()].removePlayer(player);
+		tiles[player.getPosition()].removePlayer(player);
 	}
 	
 	
