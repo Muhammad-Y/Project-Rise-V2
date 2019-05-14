@@ -1,5 +1,7 @@
 package events;
 
+import java.util.Random;
+
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
@@ -28,6 +30,7 @@ public class ManageEvents {
 	private PlayerList playerList;
 	private Board board; 
 	private Dice dice;
+	private Random rand = new Random(); 
 	private int roll;
 
 	
@@ -49,11 +52,11 @@ public class ManageEvents {
 		}
 		
 		if(tile instanceof Jail) {
-			
+			jailEvent(tile, player);
 		}
 		
 		if(tile instanceof GoToJail) {
-			
+			goToJailEvent(tile, player);
 		}
 		
 		if(tile instanceof Tavern) {
@@ -66,7 +69,7 @@ public class ManageEvents {
 		}
 		
 		if(tile instanceof SundayChurch) {
-			
+			churchEvent();
 		}
 		
 		if (tile instanceof Work) {
@@ -92,6 +95,7 @@ public class ManageEvents {
 		
 		if(player.getBalance() < amount) {
 			player.setIsAlive(false); 
+			playerList.eliminatePlayer(player);
 			board.removePlayer(player);
 		}
 		
@@ -156,7 +160,6 @@ public class ManageEvents {
 //		if(player.isAlive()) {
 //			
 //		}
-		
 		player.decreaseBalace(chargePlayer);
 		player.decreaseNetWorth(chargePlayer);
 		
@@ -171,10 +174,44 @@ public class ManageEvents {
 			tavernDialog(tempTavernObj, player); 
 		} 
 		else {
+			int randomValue = 0;
 			
+			if(tempTavernObj.getOwner().getAmountOfTaverns() == 1) {
+				randomValue = ((rand.nextInt(10) + 1) * 10);
+			}
+			else if(tempTavernObj.getOwner().getAmountOfTaverns() == 2) {
+				randomValue = ((rand.nextInt(10) + 1) * 20);
+			}
+			
+			control(player, randomValue);
+			if(player.isAlive() == true) {
+				tempTavernObj.getOwner().increaseBalance(randomValue);
+				tempTavernObj.getOwner().increaseNetWorth(randomValue);
+				player.decreaseBalace(randomValue);
+			}
 			
 			
 		}
+		
+	}
+	
+	
+	/**
+	 * Spelaren ska vara fast på jail rutan i 3 rundor, eller köpa sig ut för 50G?
+	 * @param tile
+	 * @param player
+	 */
+	public void jailEvent(Tile tile, Player player) {
+		
+	}
+	
+	
+	public void goToJailEvent(Tile tile, Player player) {
+		
+	}
+	
+	
+	public void churchEvent() {
 		
 	}
 	

@@ -26,7 +26,6 @@ public class Player {
 
 	private int balance;
 	private int netWorth;
-	private int position;
 
 	private ArrayList<Property> propertiesOwned;
 	
@@ -43,7 +42,6 @@ public class Player {
 
 		setBalance(1500);
 		setNetWorth(1500);
-		setPosition(0);
 		setPlayerRank(playerRank.PEASANT);
 		this.playerIndex = playerIndex;
 		this.tavernsOwned = new ArrayList<>();
@@ -143,21 +141,6 @@ public class Player {
 
 	}
 
-	/**
-	 * @return the positionOfPlayer
-	 */
-	public int getPosition() {
-		return this.position;
-	}
-
-	/**
-	 * @param positionOfPlayer the positionOfPlayer to set
-	 */
-	public void setPosition(int positionOfPlayer) {
-		if (positionOfPlayer > 0) {
-			this.position = positionOfPlayer;
-		}
-	}
 
 	/**
 	 * @return playerRank the rank of the player
@@ -210,6 +193,9 @@ public class Player {
 	}
 	
 	
+	public int getAmountOfTaverns() {
+		return tavernsOwned.size();
+	}
 	
 	
 	public void clearPlayer() {
