@@ -256,10 +256,6 @@ public class StartingScreen extends JFrame {
 				}
 				createNewUsers();
 
-				for (int i = 0; i < playerList.getLength(); i++) {
-					System.out.println(playerList.getPlayerFromIndex(i).getPlayerIndex());
-				}
-
 				mainWindow.addPlayer(playerList);
 
 				mainWindow.startboard();

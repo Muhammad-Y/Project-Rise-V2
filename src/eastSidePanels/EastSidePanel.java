@@ -1,10 +1,12 @@
 package eastSidePanels;
 
+import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+import javax.swing.UIManager;
 
 import player.PlayerList;
 
@@ -58,7 +60,10 @@ public class EastSidePanel extends JPanel {
 		}
 		
 		tab.setSelectedIndex(currentPlayer);
-
+		tab.setForeground(Color.white);
+		tab.setBackground(Color.RED);
+		tab.setBackgroundAt(currentPlayer, Color.GREEN);
+		
 	}
 	
 	
@@ -67,9 +72,10 @@ public class EastSidePanel extends JPanel {
 		currentPlayer++;
 		if (currentPlayer > playerList.getLength()-1 ) {
 			currentPlayer=0;
+			
 		}
 		
-		tab.setSelectedIndex(currentPlayer);
+		
 		
 	}
 	

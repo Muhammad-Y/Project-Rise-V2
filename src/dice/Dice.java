@@ -22,7 +22,7 @@ import player.PlayerList;
 import westSidePanel.WestSidePanel;
 
 /**
- * @author Muhammad Abdulkhuder ,Aevan Dino, Sebastian Viro, Seth �berg
+ * @author Muhammad Abdulkhuder ,Aevan Dino, Sebastian Virola, Seth �berg
  *
  */
 public class Dice extends JPanel implements ActionListener {
