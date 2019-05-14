@@ -1,12 +1,17 @@
 package eastSidePanels;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Insets;
 
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.UIManager;
+import javax.swing.border.Border;
 
 import player.PlayerList;
 
@@ -15,10 +20,9 @@ import player.PlayerList;
  *
  */
 public class EastSidePanel extends JPanel {
+	
 	private PlayerList playerList;
-
 	private JTabbedPane tab = new JTabbedPane();
-	private JPanel[] aP;
 	private PlayerInfoPanel p;
 	private int currentPlayer= 0;
 
@@ -58,23 +62,32 @@ public class EastSidePanel extends JPanel {
 			tab.addTab("Player " +( i + 1), p);
 
 		}
-		
+		p.setOpaque(false);
+		tab.setOpaque(false);
 		tab.setSelectedIndex(currentPlayer);
 		tab.setForeground(Color.white);
-		tab.setBackground(Color.RED);
-		tab.setBackgroundAt(currentPlayer, Color.GREEN);
-		
+		tab.setBackground(new Color(157,0,0));
+		tab.setBackgroundAt(currentPlayer, new Color(0,157,0));
+
+		tab.setBorder(BorderFactory.createLineBorder(Color.black));
 	}
 	
 	
 	public void setTab() {
-		
+		tab.setBackgroundAt(currentPlayer, null);
+
 		currentPlayer++;
 		if (currentPlayer > playerList.getLength()-1 ) {
 			currentPlayer=0;
 			
+			
 		}
-		
+		tab.setSelectedIndex(currentPlayer);
+		tab.setForeground(Color.white);
+		tab.setBackground(new Color(157,0,0));
+		tab.setBackgroundAt(currentPlayer, new Color(0,157,0));
+		tab.setBorder(BorderFactory.createLineBorder(Color.black));
+
 		
 		
 	}

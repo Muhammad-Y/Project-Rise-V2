@@ -205,13 +205,10 @@ public class Dice extends JPanel implements ActionListener {
 			btnThrow.setEnabled(true);
 			finishTurn.setEnabled(false);
 			tabPanel.setTab();
-			
 
 		}
 
 	}
-	
-	
 
 	public void moveWCheat(int i) {
 		setRoll(i);
@@ -265,7 +262,7 @@ public class Dice extends JPanel implements ActionListener {
 
 			testPlayers.getActivePlayer().increaseBalance(200);
 			testPlayers.getActivePlayer().increaseNetWorth(200);
-			System.out.println("You passed go");
+			wsp.append("\n" + testPlayers.getActivePlayer().getName() + "Passed GO!");
 		}
 	}
 

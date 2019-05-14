@@ -167,10 +167,12 @@ public class ManageEvents {
 		Tavern tempTavernObj = (Tavern) tile;
 		
 		 
-		if(tempTavernObj.getPurchaseable() == true) {
+		if(tempTavernObj.getPurchaseable()) {
 			tavernDialog(tempTavernObj, player); 
 		} 
 		else {
+			
+			
 			
 		}
 		
@@ -179,8 +181,8 @@ public class ManageEvents {
 	
 
 	public void propertyDialog(Property property, Player player) {
-		int yesOrNo = JOptionPane.showConfirmDialog(null,
-				"Do you want to purchase this property", "Choose!", JOptionPane.YES_NO_OPTION);
+		int yesOrNo = JOptionPane.showConfirmDialog(null,property.getName() +"\n"+
+				"Do you want to purchase this property for "+ property.getPrice()+" Gold coins", "Decide your fate!", JOptionPane.YES_NO_OPTION);
 
 		if(yesOrNo == 0 && (property.getPrice() <= player.getBalance()) ) {
 			
