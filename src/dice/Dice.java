@@ -17,12 +17,11 @@ import board.Board;
 import cheat.CheatGui;
 import eastSidePanels.EastSidePanel;
 import events.ManageEvents;
-import javafx.scene.control.TabPane;
 import player.PlayerList;
 import westSidePanel.WestSidePanel;
 
 /**
- * @author Muhammad Abdulkhuder ,Aevan Dino, Sebastian Viro, Seth �berg
+ * @author Muhammad Abdulkhuder ,Aevan Dino, Sebastian Viro'la, Seth �berg
  *
  */
 public class Dice extends JPanel implements ActionListener {
@@ -108,7 +107,6 @@ public class Dice extends JPanel implements ActionListener {
 
 		add(finishTurn);
 		add(cheat);
-		finishTurn.setEnabled(false);
 
 	}
 
@@ -173,27 +171,31 @@ public class Dice extends JPanel implements ActionListener {
 				faceToShow = new ImageIcon("DicePictures/faceValue6.png");
 				break;
 			}
+			
 
 			if (faceValueDiceOne == faceValueDiceTwo) {
 				setRoll(((faceValueDiceOne + faceValueDiceTwo) * 2));
-				wsp.append("\n" + testPlayers.getActivePlayer().getName() + " Rolled a dubble: " + getRoll());
-			} else {
+			} else
 				setRoll(((faceValueDiceOne + faceValueDiceTwo)));
-				wsp.append("\n" + testPlayers.getActivePlayer().getName() + " Rolled a: " + getRoll());
-			}
+
 			resizedImage = faceToShow.getImage().getScaledInstance(diceWidth, diceHeight, Image.SCALE_SMOOTH);
 			showDice = new ImageIcon(resizedImage);
 			lblDice2.setIcon(showDice);
 
 			testPlayers.getActivePlayer().checkPlayerRank();
 			manageEvents.setRoll(this);
+			goEvent();
+
 			movePlayerThread = new Thread(new LoopThread(getRoll()));
 			movePlayerThread.start();
-			goEvent();
-			tabPanel.addPlayerList(testPlayers);
-			btnThrow.setEnabled(false);
-			finishTurn.setEnabled(true);
 
+			tabPanel.addPlayerList(testPlayers);
+
+			if (faceValueDiceOne == faceValueDiceTwo) {
+				wsp.append("\n" + testPlayers.getActivePlayer().getName() + " Rolled a dubble: " + getRoll());
+
+			} else
+				wsp.append("\n" + testPlayers.getActivePlayer().getName() + " Rolled a: " + getRoll());
 		}
 
 		if (e.getSource() == finishTurn) {
@@ -202,16 +204,9 @@ public class Dice extends JPanel implements ActionListener {
 			new ShowPlayersTurn(testPlayers.getActivePlayer().getName(), "GREEN");
 			System.out.println(
 					"Next player turn" + "\n" + "Aktic playerindex: " + testPlayers.getActivePlayer().getPlayerIndex());
-			btnThrow.setEnabled(true);
-			finishTurn.setEnabled(false);
-			tabPanel.setTab();
-			
-
 		}
 
 	}
-	
-	
 
 	public void moveWCheat(int i) {
 		setRoll(i);
@@ -228,6 +223,7 @@ public class Dice extends JPanel implements ActionListener {
 		manageEvents.newEvent(board.getDestinationTile(testPlayers.getActivePlayer().getIndex()),
 				testPlayers.getActivePlayer());
 		tabPanel.addPlayerList(testPlayers);
+
 	}
 
 	private class LoopThread implements Runnable {

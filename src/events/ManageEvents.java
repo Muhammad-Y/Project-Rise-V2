@@ -205,7 +205,7 @@ public class ManageEvents {
 			
 			//Visa en MessageDialog med "You cannot afford this property" om spelaren klickar på ja men inte har råd
 			tavern.setOwner(player);
-			player.addNewProperty(tavern);
+			player.addNewTavern(tavern);
 			tavern.setPurchaseable(false);
 			player.decreaseBalace(tavern.getPrice());
 			
