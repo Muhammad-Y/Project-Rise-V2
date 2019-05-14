@@ -222,16 +222,29 @@ public class ManageEvents {
 	 */
 	public void jailEvent(Tile tile, Player player) {
 		
+		if(player.getJailCounter() < 3) {
+			System.out.println("Spelare väntar i fängelse " + " Rundor kvar att vänta " + (3 - player.getJailCounter()) );
+			player.increaseJailCounter();
+		}
+		else {
+			player.setJailCounter(0);
+		}
+		
+		
 	}
 	
 	
 	public void goToJailEvent(Tile tile, Player player) {
 		
+		player.setPositionInSpecificIndex(10);
+		board.removePlayer(player);
+		board.setPlayer(player);
+		
 	}
 	
 	
 	public void churchEvent() {
-		
+		System.out.println("Ingenting händer");
 	}
 	
 	
