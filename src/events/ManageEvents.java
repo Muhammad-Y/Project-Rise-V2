@@ -98,6 +98,9 @@ public class ManageEvents {
 			playerList.eliminatePlayer(player);
 			board.removePlayer(player);
 		}
+		else {
+			System.out.println("Spelaren har råd att betala " + amount);
+		}
 		
 	}
 	
@@ -113,13 +116,22 @@ public class ManageEvents {
 			
 			if(tempProperty.getNumberOfHouses() == 0) {
 				tempInt = tempProperty.getDefaultRent();
-				player.decreaseBalace(tempInt);
-				tempProperty.getOwner().increaseBalance(tempInt);
+				
+				control(player, tempInt);
+				if(player.isAlive() == true) {
+					player.decreaseBalace(tempInt);
+					tempProperty.getOwner().increaseBalance(tempInt);
+				}
+				
 			}
 			else {
 				tempInt = tempProperty.getTotalRent();
-				player.decreaseBalace(tempInt);
-				tempProperty.getOwner().increaseBalance(tempInt);
+				control(player, tempInt);
+				if(player.isAlive() == true) {
+					player.decreaseBalace(tempInt);
+					tempProperty.getOwner().increaseBalance(tempInt);
+				}
+				
 			}
 			
 		}
@@ -160,8 +172,15 @@ public class ManageEvents {
 //		if(player.isAlive()) {
 //			
 //		}
-		player.decreaseBalace(chargePlayer);
-		player.decreaseNetWorth(chargePlayer);
+		
+		control(player, chargePlayer);
+		
+		if(player.isAlive() == true) {
+			player.decreaseBalace(chargePlayer);
+			player.decreaseNetWorth(chargePlayer);
+		}
+		
+		
 		
 	}
 	
@@ -177,10 +196,10 @@ public class ManageEvents {
 			int randomValue = 0;
 			
 			if(tempTavernObj.getOwner().getAmountOfTaverns() == 1) {
-				randomValue = ((rand.nextInt(10) + 1) * 10);
+				randomValue = (getRoll() * 10);
 			}
 			else if(tempTavernObj.getOwner().getAmountOfTaverns() == 2) {
-				randomValue = ((rand.nextInt(10) + 1) * 20);
+				randomValue = (getRoll() * 20);
 			}
 			
 			control(player, randomValue);
