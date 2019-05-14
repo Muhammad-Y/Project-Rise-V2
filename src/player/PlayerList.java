@@ -73,6 +73,22 @@ public class PlayerList {
 	}
 	
 	
+	public void eliminatePlayer(Player player) {
+		//Marker: Denna metod kommer behöva implementeras 
+		//player.clearPlayer(); 
+		activePlayers.remove(player.getPlayerIndex());
+	}
+	
+	
+	public void updatePlayerList() {
+		
+		for(int i = 0; i < activePlayers.size(); i++) {
+			activePlayers.get(i).setPlayerIndex(i);
+		}
+		
+	}
+	
+	
 	//Kan Ã¤ndras till endTurn() eller nÃ¥got annat fÃ¶r att gÃ¶ras tydligare?
 	public void switchToNextPlayer() {
 		

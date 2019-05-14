@@ -57,8 +57,26 @@ public class Tavern implements Tile{
 		return this.info + "name\n" + "Owner: " + "";
 		
 	}
+	
 	public void setPurchaseable(boolean b) {
 		this.purchasable = b;
+	}
+	
+	public void clearTavern() {
+		purchasable = true; 
+	}
+	@Override
+	public String getTitle() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	
+	
+	//Vad används denna till????
+	public Color getTitleColor() {
+		// TODO Auto-generated method stub
+		return color.red;
 	}
 
 }

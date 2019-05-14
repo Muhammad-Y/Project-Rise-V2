@@ -128,4 +128,12 @@ public class Property implements Tile {
 		this.purchaseable = b;
 	}
 	
+	
+	//Ej klar!!!
+	public void clearProperty() {
+		purchaseable = true; 
+		setNumberOfHouses(0);
+	}
+	
+	
 }

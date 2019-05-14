@@ -18,6 +18,8 @@ public class EastSidePanel extends JPanel {
 	private JTabbedPane tab = new JTabbedPane();
 	private JPanel[] aP;
 	private PlayerInfoPanel p;
+	private int currentPlayer= 0;
+
  
 	private int[] array;
 	
@@ -33,8 +35,8 @@ public class EastSidePanel extends JPanel {
 		setPreferredSize(new Dimension(345, 900));
 		// setLayout(new BorderLayout());
 		setOpaque(false);
-
 		add(tab);
+		
 	}
 
 	public void addtabs() {
@@ -54,7 +56,25 @@ public class EastSidePanel extends JPanel {
 			tab.addTab("Player " +( i + 1), p);
 
 		}
+		
+		tab.setSelectedIndex(currentPlayer);
 
+	}
+	
+	
+	public void setTab() {
+		
+		currentPlayer++;
+		if (currentPlayer > playerList.getLength()-1 ) {
+			currentPlayer=0;
+		}
+		
+		tab.setSelectedIndex(currentPlayer);
+		
+	}
+	
+	public int getTab() {
+		return currentPlayer;
 	}
 
 
