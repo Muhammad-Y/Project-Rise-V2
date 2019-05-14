@@ -236,8 +236,8 @@ public class ManageEvents {
 	
 	public void goToJailEvent(Tile tile, Player player) {
 		
-		player.setPositionInSpecificIndex(10);
 		board.removePlayer(player);
+		player.setPositionInSpecificIndex(10);
 		board.setPlayer(player);
 		
 	}
