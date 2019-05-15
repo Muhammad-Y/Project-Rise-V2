@@ -37,7 +37,6 @@ public class Player {
 	private ArrayList<Property> propertiesOwned;
 	private ArrayList<Tavern> tavernsOwned;
 	
-	private WinGui winGui = new WinGui();
 
 	/**
 	 * Constructor for adding a new player, new players are created by the playerList class and 
@@ -367,17 +366,16 @@ public class Player {
 	public void checkPlayerRank() {
 
 		if (getNetWorth() >= 3000) {
-			setPlayerRank(playerRank.KNIGHT);
+			setPlayerRank(PlayerRanks.KNIGHT);
 
 		}
 
 		if (getNetWorth() >= 6000) {
-			setPlayerRank(playerRank.LORD);
+			setPlayerRank(PlayerRanks.LORD);
 
 		}
 		if (getNetWorth() >= 9000) {
-			setPlayerRank(playerRank.RULER);
-			winGui.startGUI();
+			setPlayerRank(PlayerRanks.RULER);
 		}
 	}
 
