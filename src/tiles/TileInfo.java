@@ -15,76 +15,51 @@ public class TileInfo {
 		
 	}
 	
-	// An array with all information about each tile/Box.
+	/**
+	 *  An array with all information about each tile/Box.
+	 * @param tile gets the index of the tile
+	 * @return information about the insert index
+	 */
 	public String getInfo(int tile) {
 		
 		info = new String[]{"\n\n    Cash in 200 Gold coins \n"
 				+ "            when you pass ",
-				
-				"2", "3", "4", 
-				
-				"5", 
-				
-				"6",				
-				"7", 
-				"Chance Card", 
-				"9", 
-				"10", 
-				"11", 
-				"12", 
-				"13", 
-				"14", 
-				"15", 
-				"16", 
-				"17", 
-				"Chance Card",
-				"19", 
-				"20", 
-				"21", 
-				"22",				
-				"Chance Card", 
-				"24", 
-				"25", 
-				"26", 
-				"27", 
-				"28", 
-				"29", 
-				"30",	 
-				"31", 
-				"32", 
-				"33", 
-				"Chance Card", 
-				"35", 
-				"36", 
-				"Chance Card", 
-				"38", 
-				"39", 
-				"40"};
+				"2", "\n\n       Doro Mönster Cordo", "4", 
+				"\n\n           You shall pay\n           200 Gold Coins\n"
+				+"              to the king\n" + "         if you land here", 
+				"\n\n               get paid\n     for your hard work",	"7", 
+				"\n\n     Doro Mönster Cordo", "9", "10", 
+				"\n\n         Visiting the prison", "12", "13", "14", "15", 
+				"\n\n               get paid\n     for your hard work", "17", 
+				"\n\n     Doro Mönster Cordo", "19", "20", "\n\n           Rest In Peace\n\n"
+						+ "      Get all the taxes\n        which are paid\n       as the King tax ", "22",				
+				"\n\n     Doro Mönster Cordo", "24", "25", 
+				"\n\n               get paid\n     for your hard work", 
+				"27", "28", "29", "30",	 
+				"\n\n   You shall be in the jail \n              for 3 rounds\n "
+				+ "Can we pay and get free?, \n               guyzz???", "32", 
+				"33", "\n\n       Doro Mönster Cordo", "35", 
+				"\n\n               get paid\n     for your hard work", 
+				"\n\n       Doro Mönster Cordo", "38", 
+				"\n\n           You shall pay\n           200 Gold Coins\n", "40"};
 		return info[tile];
 	}
 	
+	/**
+	 * An array with all title names.
+	 * @param i, has the index of the tile
+	 * @return the title name of the insert index
+	 */
 	public String getTitle(int i) {
-		title = new String[] {"Go", "Wood Cutter", "Fortune Teller", "Title4", 
-				"King Tax", "Work", "Title7", "Chance Card", "Title9", "Title10",
-				"Jail", "Title12", "Title13", "Title14", "Title15", 
-				"Work", "Title17", "Fortune Teller", "Title19", "Title20", 
-				"Title21", "Title22", "Fortune Teller", "Title24", "Title25", 
-				"Work", "Title27", "Title28", "Title29", "Title30", 
-				"Go To Jail", "Title32", "Title33", "Fortune Teller", "Title35", 
-				"Work", "Fortune Teller", "Title38", "King Tax", "Title40"}; 
+		title = new String[] {"Go", "1", "Fortune Teller", "4", 
+				"King Tax", "Work", "7", "Fortune Teller", "9", "10",
+				"Jail", "12", "Western Tavern", "14", "15", 
+				"Work", "17", "Fortune Teller", "19", "20", 
+				"Sunday church", "22", "Fortune Teller", "24", "25", 
+				"Work", "27", "28", "Northern Tavern", "30", 
+				"Go To Jail", "32", "33", "Fortune Teller", "35", 
+				"Work", "Fortune Teller", "38", "King Tax", "40"}; 
 				
 		return title[i];
 	}
-	
-	public Color getColor(int color) {
-		Color[] tileColor;
-		tileColor = new Color[] {new Color(58,20,56,255), new Color(131, 166, 219, 255), new Color(163,61,125,255),
-				new Color(191,120,59,255), new Color(169, 60, 48, 255),new Color(254,231,11, 255), new Color(95,178,77, 255),
-				new Color(4,74,159, 255), Color.DARK_GRAY};
-		return tileColor[color];
-	}
-//	public static void main(String[] args) {
-//		TileInfo t = new TileInfo();
-//		System.out.println(t.getInfo(0));
-//	}
 }

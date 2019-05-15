@@ -419,10 +419,10 @@ public class Listener implements MouseListener {
 								i == 10 ||i == 12 || i == 15 ||i == 17 || 
 								i == 20 ||i == 22 || i == 25 ||i == 28 || i == 30 ||
 								i == 33 ||i == 35 || i == 36 || i == 38){
-								pnlWest.setTitleText(info.getInfo(i), info.getTitle(i), info.getColor(8), Color.white);
+								pnlWest.setTitleText(info.getInfo(i), info.getTitle(i), Color.DARK_GRAY, Color.white);
 						}else if(i==26 || i==27 || i==29) {
 							pnlWest.setTitleText(tileCollection.getTileAtIndex(i).getTileInfo(),
-									tileCollection.getTileAtIndex(i).getTitle(), info.getColor(5), Color.black);
+									tileCollection.getTileAtIndex(i).getTitle(), new Color(254,231,11, 255), Color.black);
 						}
 						else {						
 							pnlWest.setTitleText(tileCollection.getTileAtIndex(i).getTileInfo(),

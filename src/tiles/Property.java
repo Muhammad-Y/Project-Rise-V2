@@ -29,7 +29,7 @@ public class Property implements Tile {
 	}
 
 	public String getTileInfo() {
-		info =    "Owner: \t" + owner + "\n"
+		info =    "\nOwner: \t" + owner + "\n"
 				+ "Price:\t\t" + price + "\n"
 				+ "Default rent:\t" + defaultRent + "\n"
 				+ "Rent with Levels:\t" 	+ rentPerLevel + "\n"
@@ -44,11 +44,11 @@ public class Property implements Tile {
 	}
 	
 	
-	public static void main(String[] args) {
-		Property p = new Property("MomoSuger gatan", 200, 35, 20, Color.BLUE);
-		p.setNumberOfHouses(3);
-		System.out.println(p.getTileInfo());
-	}
+//	public static void main(String[] args) {
+//		Property p = new Property("MomoSuger gatan", 200, 35, 20, Color.BLUE);
+//		p.setNumberOfHouses(3);
+////		System.out.println(p.getTileInfo());
+//	}
 
 	public void onLanding() {
 
