@@ -10,6 +10,7 @@ import dice.Dice;
 import player.Player;
 import player.PlayerList;
 import player.PlayerRanks;
+import tiles.FortuneTeller;
 import tiles.Go;
 import tiles.GoToJail;
 import tiles.Jail;
@@ -77,17 +78,36 @@ public class ManageEvents {
 			workEvent(tile, player);
 		}
 
-		
+		if(tile instanceof FortuneTeller) {
+			fortuneTellerEvent(tile, player);
+		}
 		
 		
 	}
 	
-	
-		
-		
+	private void fortuneTellerEvent(Tile tile, Player player) {
+		FortuneTeller tempCard = (FortuneTeller)tile;
+		tempCard.setAmount(rand.nextInt(600) - 300);
+		if(tempCard.getAmount()<0) {
+		int pay = (tempCard.getAmount() * -1);
+			tempCard.setIsBlessing(false);
+			tempCard.setFortune("CURSE");
+			control(player, pay);
+			if(player.isAlive() == true) {
+				player.decreaseBalace(pay);
+				player.decreaseNetWorth(pay);
+				JOptionPane.showMessageDialog(null, "You pay" + pay);
+			} 
+			
+		} else {
+			tempCard.setIsBlessing(true);
+			tempCard.setFortune("BLESSING");
+			player.increaseBalance(tempCard.getAmount());
+			player.increaseNetWorth(tempCard.getAmount());
+			JOptionPane.showMessageDialog(null, "You get " + tempCard.getAmount());
+		}		
+	}
 
-	
-	
 	/**
 	 * This method is supposed to be called from any class that requires the current player to pay any amount,
 	 * if the user does not have the amount required they should be removed from the game
@@ -98,9 +118,10 @@ public class ManageEvents {
 			player.setIsAlive(false); 
 			playerList.eliminatePlayer(player);
 			board.removePlayer(player);
+			JOptionPane.showMessageDialog(null, "The plague has taken you\nYou have lost\nTry again in another life");
 		}
 		else {
-			System.out.println("Spelaren har råd att betala " + amount);
+//			System.out.println("Spelaren har råd att betala " + amount);
 		}
 		
 	}

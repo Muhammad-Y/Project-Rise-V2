@@ -9,14 +9,14 @@ import javax.swing.JOptionPane;
  * and each card is picked randomly.
  * @author AevanDino, SebastianViro   
  */
-public class ChanceCard implements Tile {
+public class OldChanceCard implements Tile {
 
 	private Color color = Color.WHITE;
 	private static final String NAME = "Fortune Teller";
 	
 	private static final Boolean PURCHASEABLE = false;
-	private Card[] chanceCard = {new Card(Boolean.TRUE, "F�rsta Kortet", 50)
-								, new Card(Boolean.FALSE, "Andra Kortet", -50)};
+	private FortuneTeller[] chanceCard = {new FortuneTeller(Boolean.TRUE, "F�rsta Kortet", 50)
+								, new FortuneTeller(Boolean.FALSE, "Andra Kortet", -50)};
 
 	/**
 	 * Generates a random number between 0 and chanceCard.length and
@@ -30,7 +30,7 @@ public class ChanceCard implements Tile {
 	/**
 	 * Displays the chosen chance card in an JOptionPane
 	 */
-	public Card getChanceCard() {
+	public FortuneTeller getChanceCard() {
 		return chanceCard[getRandomNumber()];
 	}
 
