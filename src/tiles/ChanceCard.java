@@ -15,7 +15,7 @@ public class ChanceCard implements Tile {
 	private static final String NAME = "Fortune Teller";
 	
 	private static final Boolean PURCHASEABLE = false;
-	private Card[] chanceCard = {new Card(Boolean.TRUE, "Första Kortet", 50)
+	private Card[] chanceCard = {new Card(Boolean.TRUE, "Fï¿½rsta Kortet", 50)
 								, new Card(Boolean.FALSE, "Andra Kortet", -50)};
 
 	/**
@@ -54,5 +54,17 @@ public class ChanceCard implements Tile {
 		return "There are two types of cards, blessings and curses." + 
 				"\nBlessing affect the player in a positive way." + 
 				"\nCurses affect the player in a negative way.";
+	}
+
+	@Override
+	public String getTitle() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Color getTitleColor() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

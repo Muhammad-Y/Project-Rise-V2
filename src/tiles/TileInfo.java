@@ -18,19 +18,16 @@ public class TileInfo {
 	// An array with all information about each tile/Box.
 	public String getInfo(int tile) {
 		
-		info = new String[]{"                GO 1 \nCash in 200GLD \n\nBut not in the first round",
+		info = new String[]{"\n\n    Cash in 200 Gold coins \n"
+				+ "            when you pass ",
 				
-				"Hello Rohan 2", 
+				"2", "3", "4", 
 				
-				"Hello Seth 3", 
-				
-				"Hello Sebbe 4", 
-				
-				"Hello Aevan 5", 
+				"5", 
 				
 				"6",				
 				"7", 
-				"8", 
+				"Chance Card", 
 				"9", 
 				"10", 
 				"11", 
@@ -40,12 +37,12 @@ public class TileInfo {
 				"15", 
 				"16", 
 				"17", 
-				"18",
+				"Chance Card",
 				"19", 
 				"20", 
 				"21", 
 				"22",				
-				"23", 
+				"Chance Card", 
 				"24", 
 				"25", 
 				"26", 
@@ -56,10 +53,10 @@ public class TileInfo {
 				"31", 
 				"32", 
 				"33", 
-				"34", 
+				"Chance Card", 
 				"35", 
 				"36", 
-				"37", 
+				"Chance Card", 
 				"38", 
 				"39", 
 				"40"};
@@ -67,14 +64,14 @@ public class TileInfo {
 	}
 	
 	public String getTitle(int i) {
-		title = new String[] {"{   Go   }", "{   Wood Cutter   }", "{   Treasure Chest   }", "Title4", 
-				"Title5", "Title6", "Title7", "Title8", "Title9", "Title10",
-				"{ Jail }", "Title12", "Title13", "Title14", "Title15", 
-				"Title16", "Title17", "Title18", "Title19", "Title20", 
-				"Title21", "Title22", "Title23", "Title24", "Title25", 
-				"Title26", "Title27", "Title28", "Title29", "Title30", 
-				"{   Go To Jail   }", "Title32", "Title33", "Title34", "Title35", 
-				"Title36", "Title37", "Title38", "Title39", "Title40"}; 
+		title = new String[] {"Go", "Wood Cutter", "Fortune Teller", "Title4", 
+				"King Tax", "Work", "Title7", "Chance Card", "Title9", "Title10",
+				"Jail", "Title12", "Title13", "Title14", "Title15", 
+				"Work", "Title17", "Fortune Teller", "Title19", "Title20", 
+				"Title21", "Title22", "Fortune Teller", "Title24", "Title25", 
+				"Work", "Title27", "Title28", "Title29", "Title30", 
+				"Go To Jail", "Title32", "Title33", "Fortune Teller", "Title35", 
+				"Work", "Fortune Teller", "Title38", "King Tax", "Title40"}; 
 				
 		return title[i];
 	}

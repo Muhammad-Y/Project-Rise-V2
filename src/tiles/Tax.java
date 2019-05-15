@@ -11,9 +11,10 @@ public class Tax implements Tile {
 	private final static String NAME = "Kings tax";
 	private final static Boolean PURCHASABLE = false;
 	private final static Color COLOR = Color.WHITE;
-	private String info;
+	private String info, tileName;
 	private static Player player;
 	private int taxToPay = 200;
+	
 	
 //	public Tax(Player player) {
 //		this.player = player;
@@ -51,6 +52,16 @@ public class Tax implements Tile {
 				+ "\n"
 				+ "Your tax: \t" 		    + player.getPlayerRank().calculateTax() + "\n";
 		return info;
+	}
+	@Override
+	public String getTitle() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public Color getTitleColor() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

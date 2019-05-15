@@ -415,17 +415,16 @@ public class Listener implements MouseListener {
 			public void mouseEntered(MouseEvent e) {
 				for (int i=0; i<panelarray.length; i++) {
 					if (e.getSource()==panelarray[i]) {
-						if (i == 0 || i == 2 ||i == 4 || i == 5 ||i == 7 || 
+						if (i == 0 || i == 2 || i == 4 || i == 5 ||i == 7 || 
 								i == 10 ||i == 12 || i == 15 ||i == 17 || 
 								i == 20 ||i == 22 || i == 25 ||i == 28 || i == 30 ||
 								i == 33 ||i == 35 || i == 36 || i == 38){
 								pnlWest.setTitleText(info.getInfo(i), info.getTitle(i), info.getColor(8), Color.white);
 						}else if(i==26 || i==27 || i==29) {
 							pnlWest.setTitleText(tileCollection.getTileAtIndex(i).getTileInfo(),
-							tileCollection.getTileAtIndex(i).getTitle(), tileCollection.getTileAtIndex(i).getColor(), Color.white );
-							pnlWest.setTitleText(tileCollection.getTileAtIndex(i).getTileInfo(),
 									tileCollection.getTileAtIndex(i).getTitle(), info.getColor(5), Color.black);
-						}else {						
+						}
+						else {						
 							pnlWest.setTitleText(tileCollection.getTileAtIndex(i).getTileInfo(),
 								tileCollection.getTileAtIndex(i).getTitle(), tileCollection.getTileAtIndex(i).getColor(), Color.white );
 						}

@@ -32,4 +32,16 @@ public class Jail implements Tile {
 		System.out.println(j.getTileInfo());
 	}
 
+	@Override
+	public String getTitle() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Color getTitleColor() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
