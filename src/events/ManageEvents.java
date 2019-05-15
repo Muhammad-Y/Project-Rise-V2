@@ -44,6 +44,7 @@ public class ManageEvents {
 	
 	
 	public void newEvent(Tile tile, Player player) {
+		player.checkPlayerRank();
 		
 		if(tile instanceof Property) {
 			propertyEvent(tile, player);
@@ -126,7 +127,6 @@ public class ManageEvents {
 		
 	}
 	
-	
 	public void propertyEvent(Tile tile, Player player) {
 		Property tempProperty = (Property) tile; 
 		int tempInt = 0; 
@@ -182,7 +182,7 @@ public class ManageEvents {
 		JOptionPane.showMessageDialog(null,"the roll is"+ roll+ "\n" +"you got: " + totalEarnings +"G for your hard work");
 		player.increaseBalance(totalEarnings);
 		player.increaseNetWorth(totalEarnings);
-
+		//Rad nedan är test
 	}
 	
 	public void taxEvent(Tile tile, Player player) {

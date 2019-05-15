@@ -28,8 +28,8 @@ public class WinGui extends JPanel{
     private ManageEvents me;
     
     public WinGui() {
-    	startGUI();
-	}
+
+    }
     
     public WinGui(ManageEvents me) {
     	this.me = me;
@@ -66,9 +66,10 @@ public class WinGui extends JPanel{
 
         add(outerPanel, BorderLayout.CENTER);
         outerPanel.add(centerPanel, BorderLayout.CENTER); 
+        getFrame();
     }
     
-    public static void main(String[] args) {
+    public void getFrame() {
 		WinGui mGUI = new WinGui();
 		JFrame frame = new JFrame();
 		frame.setVisible(true);

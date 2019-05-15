@@ -4,9 +4,11 @@ import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 
-import tiles.Tavern;
+import messageGui.WinGui;
 import tiles.Property;
+import tiles.Tavern;
 import tiles.Tile;
+
 
 /**
  * Player class deals with everything that has to do with a player.
@@ -32,6 +34,8 @@ public class Player {
 
 	private ArrayList<Property> propertiesOwned;
 	private ArrayList<Tavern> tavernsOwned;
+	
+	private WinGui winGui = new WinGui();
 
 	/**
 	 * Constructor for adding a new player, new players are created by the playerList class and 
@@ -351,7 +355,10 @@ public class Player {
 			setPlayerRank(playerRank.LORD);
 
 		}
-
+		if (getNetWorth() >= 9000) {
+			setPlayerRank(playerRank.RULER);
+			winGui.startGUI();
+		}
 	}
 
 	/**
