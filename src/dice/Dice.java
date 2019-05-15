@@ -205,8 +205,8 @@ public class Dice extends JPanel implements ActionListener {
 
 			testPlayers.switchToNextPlayer();
 			new ShowPlayersTurn(testPlayers.getActivePlayer().getName(), "GREEN");
-			System.out.println(
-					"Next player turn" + "\n" + "Aktic playerindex: " + testPlayers.getActivePlayer().getPlayerIndex());
+//			System.out.println(
+//					"Next player turn" + "\n" + "Aktic playerindex: " + testPlayers.getActivePlayer().getPlayerIndex());
 			btnThrow.setEnabled(true);
 			finishTurn.setEnabled(false);
 			tabPanel.setTab();

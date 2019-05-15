@@ -8,6 +8,8 @@ import java.awt.Dimension;
 
 import javax.swing.*;
 
+import player.PlayerList;
+
 public class ShowPlayersTurn extends JPanel{
 	
 	/**
@@ -18,6 +20,7 @@ public class ShowPlayersTurn extends JPanel{
 	private JLabel lblPlayer;
 	private String playerColor;
 	private Color players;
+	private PlayerList playerList;
 	
 	public ShowPlayersTurn(String playerName, String playerCol) {
 		this.playerName = playerName;
