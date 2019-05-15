@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -182,7 +184,7 @@ public class StartingScreen extends JFrame {
 
 	public void createFrame() {
 		setSize(900, 830);
-		setTitle("THIS");
+		setTitle("Choose Player!");
 		setLayout(null);
 		setVisible(true);
 		setResizable(false);
@@ -210,6 +212,7 @@ public class StartingScreen extends JFrame {
 
 			playerTf[i].setBounds(375, 360 + i * 40, 150, 30);
 			playerTf[i].setVisible(false);
+			playerTf[i].addMouseListener(new MouseAction());
 
 			playerColors[i].setBounds(530, 360 + i * 40, 100, 30);
 			playerColors[i].setVisible(false);
@@ -265,7 +268,7 @@ public class StartingScreen extends JFrame {
 
 			}
 		}
-
+		
 		private void createNewUsers() {
 			for (int i = 0; i < amountOfPlayers; i++) {
 				playerList.addNewPlayer(playerTf[i].getText(), (String) playerColors[i].getSelectedItem());
@@ -283,6 +286,47 @@ public class StartingScreen extends JFrame {
 			btnConfirm.setEnabled(!bool);
 
 		}
+	}
+	
+	// MouseClickedListener for the name inserting so the text disappear when the player clicks.  
+	private class MouseAction implements MouseListener{
+		int counter1 = 0, counter2 = 0, counter3 =0, counter4=0;
+		public void mouseClicked(MouseEvent e) {
+			if(e.getSource() == tfPlayer1) {
+				if(counter1<1) {
+					counter1++;
+				tfPlayer1.setText(null);
+				}
+			}
+			if(e.getSource() == tfPlayer2) {
+				if(counter2<1) {
+					counter2++;
+				tfPlayer2.setText(null);
+				}
+			}
+			if(e.getSource() == tfPlayer3) {
+				if(counter3<1) {
+					counter3++;
+				tfPlayer3.setText(null);
+				}
+			}
+			if(e.getSource() == tfPlayer4) {
+				if(counter4<1) {
+					counter4++;
+				tfPlayer4.setText(null);
+				}
+			}
+		}
+		// Nothing will happen with the other implemented methods
+		public void mouseEntered(MouseEvent e) {
+		}
+		public void mouseExited(MouseEvent e) {
+		}
+		public void mousePressed(MouseEvent e) {
+		}
+		public void mouseReleased(MouseEvent e) {
+		}
+		
 	}
 
 }
