@@ -20,6 +20,7 @@ import javax.swing.JTextField;
 import board.Board;
 import board.ColorIconMap;
 import combinedPanels.GamePanels;
+import menu.Menu;
 import player.PlayerList;
 
 public class StartingScreen extends JFrame {
@@ -96,6 +97,7 @@ public class StartingScreen extends JFrame {
 	public static void main(String[] args) {
 		StartingScreen su = new StartingScreen();
 		su.initializeGUI();
+		
 	}
 
 	/**
@@ -175,6 +177,7 @@ public class StartingScreen extends JFrame {
 		lblBackground.add(btnStartGame);
 		lblBackground.add(mute);
 		add(lblBackground);
+		new Menu(bgm);
 	}
 
 	public void createFrame() {

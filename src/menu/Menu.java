@@ -23,11 +23,13 @@ import startMenu.BackgroundMusic;
  */
 
 public class Menu extends JPanel {
+	private BackgroundMusic music;
 	// Menu
 	private JMenu jmMenu = new JMenu("Menu");
 	private JMenuBar jmMenuBar = new JMenuBar();
 	private JMenuItem jmExit = new JMenuItem("Exit");
 	private JMenuItem jmOptions = new JMenuItem("Pause Music");
+	private JMenuItem jmRestart = new JMenuItem("Restart Game");
 	/**
 	 * Constructor used to create and draw in the frame.
 	 */
@@ -56,8 +58,9 @@ public class Menu extends JPanel {
 		
 		add(jmMenuBar, BorderLayout.WEST);
 		setBackground(Color.black);
-
-
+	}
+	public Menu(BackgroundMusic music) {
+		this.music = music;
 	}
 	
 
