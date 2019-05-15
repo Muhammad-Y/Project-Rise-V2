@@ -5,6 +5,7 @@ package dice;
  */
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.util.LinkedList;
 
 import javax.swing.*;
@@ -25,41 +26,44 @@ public class ShowPlayersTurn extends JPanel{
 	private Color players;
 	private PlayerList playerList;
 	
-	public ShowPlayersTurn() {
+	public ShowPlayersTurn(String player) {
 		
-	}
-	public ShowPlayersTurn(String player, String playerCol) {
 		this.playerName = player;
-		this.playerColor = playerCol;
-		if (playerCol == "GREEN") {
-			players = Color.green;
-		}
-		if (playerCol == "RED") {
-			players = Color.red;
-		}
+		players = Color.DARK_GRAY;
 		showTheLabel();
 	}
 	
 	
 	
 	private void showTheLabel() {
-		setPreferredSize(new Dimension(100,50));
+		setPreferredSize(new Dimension(200,50));
 		setBackground(players);
 		
 		lblPlayer = new JLabel(playerName);
 		lblPlayer.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPlayer.setForeground(Color.white);
-		lblPlayer.setPreferredSize(new Dimension(100,25));
+		lblPlayer.setPreferredSize(new Dimension(200,45));
+		lblPlayer.setFont(new Font("ALGERIAN", Font.BOLD, 14 ));
+		lblPlayer.setBorder(BorderFactory.createLineBorder(Color.white));
 		add(lblPlayer);
 	}
-	public void addNewPlayer(String name, String color) {
-//		 playerName = name;
-	}
+//	public void addNewPlayer(String name, String color) {
+////		 playerName = name;
+//	}
 	
-	public void activePlayer() {
-		Player tempPlayer = playerList.getActivePlayer();
-	    playerName = tempPlayer.getName();
-//		tempPlayer.getImage();
+//	public void activePlayer() {
+//		Player tempPlayer = playerList.getActivePlayer();
+//	    playerName = tempPlayer.getName();
+//		
+//	}
+	public void uppdateGUI(String playerName, String color) {
+		
+		if (color == "RED") {
+			players = Color.red;
+		}
+		lblPlayer.setBackground(players);
+		lblPlayer.setText(playerName+"'s turn");
+		
 		
 	}
 }

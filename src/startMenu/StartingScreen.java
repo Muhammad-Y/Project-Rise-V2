@@ -31,7 +31,7 @@ public class StartingScreen extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	// References
-	private ShowPlayersTurn playersTurn = new ShowPlayersTurn();
+//	private ShowPlayersTurn playersTurn = new ShowPlayersTurn();
 	private BackgroundMusic bgm = new BackgroundMusic();
 	private PlayerList playerList = new PlayerList();
 	private GamePanels mainWindow = new GamePanels();

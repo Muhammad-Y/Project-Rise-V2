@@ -88,7 +88,7 @@ public class Dice extends JPanel implements ActionListener {
 	}
 
 	public void addButtonsAndListeners() {
-		showPlayer = new ShowPlayersTurn("Rohan", "RED");
+		showPlayer = new ShowPlayersTurn("Player");
 		add(showPlayer);
 		add(lblDice1);
 
@@ -204,7 +204,7 @@ public class Dice extends JPanel implements ActionListener {
 		if (e.getSource() == finishTurn) {
 
 			testPlayers.switchToNextPlayer();
-			new ShowPlayersTurn(testPlayers.getActivePlayer().getName(), "GREEN");
+			showPlayer.uppdateGUI(testPlayers.getActivePlayer().getName(), "GREEN");
 //			System.out.println(
 //					"Next player turn" + "\n" + "Aktic playerindex: " + testPlayers.getActivePlayer().getPlayerIndex());
 			btnThrow.setEnabled(true);
