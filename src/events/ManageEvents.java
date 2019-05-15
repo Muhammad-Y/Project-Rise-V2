@@ -182,7 +182,7 @@ public class ManageEvents {
 		JOptionPane.showMessageDialog(null,"the roll is"+ roll+ "\n" +"you got: " + totalEarnings +"G for your hard work");
 		player.increaseBalance(totalEarnings);
 		player.increaseNetWorth(totalEarnings);
-		//Rad nedan �r test
+		//Rad nedan �r test
 	}
 	
 	public void taxEvent(Tile tile, Player player) {
@@ -241,21 +241,22 @@ public class ManageEvents {
 	 * @param player
 	 */
 	public void jailEvent(Tile tile, Player player) {
-		
-		if(player.getJailCounter() < 3) {
-			System.out.println("Spelare väntar i fängelse " + " Rundor kvar att vänta " + (3 - player.getJailCounter()) );
+
+		if( (player.getJailCounter()) < 2) {
+			System.out.println("Spelare väntar i fängelse " + " Rundor kvar att vänta " + (2 - player.getJailCounter()) );
 			player.increaseJailCounter();
 		}
 		else {
+			player.setPlayerIsInJail(false);
 			player.setJailCounter(0);
 		}
-		
-		
+
+
 	}
 	
 	
 	public void goToJailEvent(Tile tile, Player player) {
-		
+		player.setPlayerIsInJail(true);
 		board.removePlayer(player);
 		player.setPositionInSpecificIndex(10);
 		board.setPlayer(player);

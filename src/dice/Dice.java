@@ -201,17 +201,38 @@ public class Dice extends JPanel implements ActionListener {
 
 		}
 
+//		if (e.getSource() == finishTurn) {
+//
+//			testPlayers.switchToNextPlayer();
+//			showPlayer.uppdateGUI(testPlayers.getActivePlayer().getName(), "GREEN");
+////			System.out.println(
+////					"Next player turn" + "\n" + "Aktic playerindex: " + testPlayers.getActivePlayer().getPlayerIndex());
+//			btnThrow.setEnabled(true);
+//			finishTurn.setEnabled(false);
+//			tabPanel.setTab(); 
+//
+//		}
+		
+		
 		if (e.getSource() == finishTurn) {
 
 			testPlayers.switchToNextPlayer();
-			showPlayer.uppdateGUI(testPlayers.getActivePlayer().getName(), "GREEN");
-//			System.out.println(
-//					"Next player turn" + "\n" + "Aktic playerindex: " + testPlayers.getActivePlayer().getPlayerIndex());
-			btnThrow.setEnabled(true);
-			finishTurn.setEnabled(false);
+//			new ShowPlayersTurn(testPlayers.getActivePlayer().getName(), "GREEN");
+			
+			if(testPlayers.getActivePlayer().isPlayerInJail() == true) {
+				btnThrow.setEnabled(false);
+				finishTurn.setEnabled(true);
+				manageEvents.newEvent(board.getDestinationTile(testPlayers.getActivePlayer().getPosition()),
+						testPlayers.getActivePlayer());
+			}
+			else if (testPlayers.getActivePlayer().isPlayerInJail() == false){
+				btnThrow.setEnabled(true);
+				finishTurn.setEnabled(false);
+			}
+			
 			tabPanel.setTab();
-
 		}
+		
 
 	}
 
