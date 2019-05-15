@@ -12,13 +12,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 
-import com.oracle.xmlns.internal.webservices.jaxws_databinding.ExistingAnnotationsType;
+import events.ManageEvents;
 
-import tiles.FortuneTeller;
-
-public class FortuneTellerGUI extends JPanel{
-
-    private FortuneTeller cardo;
+public class MessageGUI extends JPanel{
 
     private JPanel centerPanel = new JPanel();
     private JPanel outerPanel = new JPanel();
@@ -29,9 +25,18 @@ public class FortuneTellerGUI extends JPanel{
     private Font fontType = new Font("ALGERIAN", Font.BOLD, 30);
     private Font fontDis = new Font("ALGERIAN", Font.ITALIC, 20);
 
-
-    public FortuneTellerGUI(String fortune, String description, int amount) {
-        setLayout(new BorderLayout());
+    private ManageEvents me;
+    
+    public MessageGUI() {
+    	startGUI();
+	}
+    
+    public MessageGUI(ManageEvents me) {
+    	this.me = me;
+    }
+    
+    public void startGUI() {
+    	setLayout(new BorderLayout());
         outerPanel.setLayout(new BorderLayout());
         centerPanel.setLayout(new BorderLayout());
 
@@ -55,26 +60,22 @@ public class FortuneTellerGUI extends JPanel{
 
     //    dis.setHorizontalAlignment(SwingConstants.CENTER);
 
-
         centerPanel.setBackground(color1);
         centerPanel.add(type,BorderLayout.NORTH);
         centerPanel.add(dis,BorderLayout.CENTER);
 
-
         add(outerPanel, BorderLayout.CENTER);
-        outerPanel.add(centerPanel, BorderLayout.CENTER);
-
-
- 
-}
+        outerPanel.add(centerPanel, BorderLayout.CENTER); 
+    }
+    
     public static void main(String[] args) {
-//		FortuneTellerGUI ft = new FortuneTellerGUI("Momo", "sucks", 250);
-//		JFrame frame = new JFrame();
-//		frame.setVisible(true);
-//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		frame.add(ft);
-//		frame.pack();
-//		frame.setVisible(true);
-//		frame.setLocationRelativeTo(null);
+		MessageGUI mGUI = new MessageGUI();
+		JFrame frame = new JFrame();
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.add(mGUI);
+		frame.pack();
+		frame.setVisible(true);
+		frame.setLocationRelativeTo(null);
 	}
 }
