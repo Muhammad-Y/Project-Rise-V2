@@ -28,7 +28,7 @@ public class CheatGui extends JPanel implements ActionListener {
 	}
 
 	private void startGUI() {
-		setPreferredSize(new Dimension(300, 100));
+		setPreferredSize(new Dimension(100, 100));
 		setLayout(new BorderLayout());
 		
 	//	btnTeleport.setPreferredSize(new Dimension(300,50));
