@@ -176,10 +176,10 @@ public class Dice extends JPanel implements ActionListener {
 
 			if (faceValueDiceOne == faceValueDiceTwo) {
 				setRoll(((faceValueDiceOne + faceValueDiceTwo) * 2));
-				wsp.append("\n" + testPlayers.getActivePlayer().getName() + " Rolled a dubble: " + getRoll());
+				wsp.append(testPlayers.getActivePlayer().getName() + " Rolled a dubble: " + getRoll() + "\n");
 			} else {
 				setRoll(((faceValueDiceOne + faceValueDiceTwo)));
-				wsp.append("\n" + testPlayers.getActivePlayer().getName() + " Rolled a: " + getRoll());
+				wsp.append(testPlayers.getActivePlayer().getName() + " Rolled a: " + getRoll() + "\n");
 			}
 			resizedImage = faceToShow.getImage().getScaledInstance(diceWidth, diceHeight, Image.SCALE_SMOOTH);
 			showDice = new ImageIcon(resizedImage);
@@ -268,7 +268,7 @@ public class Dice extends JPanel implements ActionListener {
 			testPlayers.getActivePlayer().increaseBalance(200);
 			testPlayers.getActivePlayer().increaseNetWorth(200);
 			
-			wsp.append("You passed Go and recived 200 gold coins");
+			wsp.append("Passed Go \nand recived 200 Gold coins \n");
 			testPlayers.getActivePlayer().resetPassedGo();
 		}
 	}
@@ -281,14 +281,14 @@ public class Dice extends JPanel implements ActionListener {
 		this.roll = roll;
 	}
 
-	public static void main(String[] args) {
-		Dice ui = new Dice();
-		JFrame frame = new JFrame();
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(ui);
-		frame.pack();
-		frame.setVisible(true);
-		frame.setLocationRelativeTo(null);
-	}
+//	public static void main(String[] args) {
+//		Dice ui = new Dice();
+//		JFrame frame = new JFrame();
+//		frame.setVisible(true);
+//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		frame.add(ui);
+//		frame.pack();
+//		frame.setVisible(true);
+//		frame.setLocationRelativeTo(null);
+//	}
 }

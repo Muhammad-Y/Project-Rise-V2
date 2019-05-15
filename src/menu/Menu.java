@@ -39,7 +39,6 @@ public class Menu extends JPanel {
 		setLayout(new BorderLayout());
 		//jmMenuBar.setAlignmentX(LEFT_ALIGNMENT);
 		jmMenuBar.setPreferredSize(new Dimension(100,5));
-		jmMenu.add(jmExit);
 		jmExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
@@ -53,7 +52,8 @@ public class Menu extends JPanel {
 			}
 		});
 		jmMenu.add(jmOptions);
-
+		jmMenu.add(jmRestart);
+		jmMenu.add(jmExit);
 		jmMenuBar.add(jmMenu);
 		
 		add(jmMenuBar, BorderLayout.WEST);
