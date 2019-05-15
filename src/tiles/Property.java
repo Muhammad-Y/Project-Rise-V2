@@ -29,7 +29,13 @@ public class Property implements Tile {
 	}
 
 	public String getTileInfo() {
-		info =    "\nOwner: \t" + owner + "\n"
+		String ownerName = "";
+		if(owner == null) {
+			ownerName = "No Owner";
+		} else {
+			ownerName = owner.getName();
+		}
+		info =    "\nOwner: \t" + ownerName + "\n"
 				+ "Price:\t\t" + price + "\n"
 				+ "Default rent:\t" + defaultRent + "\n"
 				+ "Rent with Levels:\t" 	+ rentPerLevel + "\n"
