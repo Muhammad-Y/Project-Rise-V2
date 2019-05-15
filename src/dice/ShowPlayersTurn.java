@@ -36,13 +36,13 @@ public class ShowPlayersTurn extends JPanel{
 	
 	
 	private void showTheLabel() {
-		setPreferredSize(new Dimension(200,50));
+		setPreferredSize(new Dimension(250,50));
 		setBackground(players);
 		
 		lblPlayer = new JLabel(playerName);
 		lblPlayer.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPlayer.setForeground(Color.white);
-		lblPlayer.setPreferredSize(new Dimension(200,45));
+		lblPlayer.setPreferredSize(new Dimension(240,45));
 		lblPlayer.setFont(new Font("ALGERIAN", Font.BOLD, 14 ));
 		lblPlayer.setBorder(BorderFactory.createLineBorder(Color.white));
 		add(lblPlayer);
@@ -56,12 +56,20 @@ public class ShowPlayersTurn extends JPanel{
 //	    playerName = tempPlayer.getName();
 //		
 //	}
-	public void uppdateGUI(String playerName, String color) {
+	public void uppdateGUI(String playerName, Color color) {
 		
-		if (color == "RED") {
-			players = Color.red;
-		}
-		lblPlayer.setBackground(players);
+//		if (color == "RED") {
+//			players = Color.red;
+//		} else if (color == "CYAN") {
+//			players = Color.cyan;
+//		} else if (color == "YELLOW") {
+//			players = Color.yellow;
+//		} else if (color == "GREEN") {
+//			players = Color.green;
+//		}
+		
+		lblPlayer.setOpaque(true);
+		lblPlayer.setBackground(color);
 		lblPlayer.setText(playerName+"'s turn");
 		
 		

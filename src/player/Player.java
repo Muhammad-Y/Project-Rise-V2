@@ -1,5 +1,6 @@
 package player;
 
+import java.awt.Color;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -25,6 +26,7 @@ public class Player {
 	private int playerIndex;
 	private int playerJailCounter = 0;
 	private boolean playerIsInJail = false; 
+	private Color playerColor;
 
 	private PlayerRanks playerRank;
 
@@ -44,6 +46,7 @@ public class Player {
 	 * @param playerIcon imageIcon from ColorIconMap
 	 * @param playerIndex index of player (for example if second player the playerIndex is 1)
 	 */
+	
 	public Player(String inPlayerName, ImageIcon playerIcon, int playerIndex) {
 
 		setName(inPlayerName);
@@ -59,6 +62,23 @@ public class Player {
 		this.propertiesOwned = new ArrayList<>(); 
 
 		counter = 0;
+	}
+	public Player(String inPlayerName, ImageIcon playerIcon, Color playerColor, int playerIndex) {
+		this.playerColor = playerColor;
+		setName(inPlayerName);
+		this.playerIcon = playerIcon;
+		setIsAlive(true);
+		this.playerIndex = playerIndex;
+
+		setBalance(1500);
+		setNetWorth(1500);
+		setPlayerRank(playerRank.PEASANT);
+		this.playerIndex = playerIndex;
+		this.tavernsOwned = new ArrayList<>();
+		this.propertiesOwned = new ArrayList<>(); 
+
+		counter = 0;
+		
 	}
 
 	
@@ -373,6 +393,10 @@ public class Player {
 	 */
 	public ArrayList<Tavern> getTaverns() {
 		return this.tavernsOwned;
+	}
+	
+	public Color getPlayerColor() {
+		return playerColor;
 	}
 
 }

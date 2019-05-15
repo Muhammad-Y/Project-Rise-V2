@@ -217,8 +217,7 @@ public class Dice extends JPanel implements ActionListener {
 		if (e.getSource() == finishTurn) {
 
 			testPlayers.switchToNextPlayer();
-//			new ShowPlayersTurn(testPlayers.getActivePlayer().getName(), "GREEN");
-			
+			showPlayer.uppdateGUI(testPlayers.getActivePlayer().getName(), testPlayers.getActivePlayer().getPlayerColor());
 			if(testPlayers.getActivePlayer().isPlayerInJail() == true) {
 				btnThrow.setEnabled(false);
 				finishTurn.setEnabled(true);

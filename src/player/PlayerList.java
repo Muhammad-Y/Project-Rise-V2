@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import javax.swing.ImageIcon;
 
 import board.ColorIconMap;
+import colorsAndIcons.StringColorMap;
 import eastSidePanels.EastSidePanel;
 
 /**
@@ -16,6 +17,7 @@ import eastSidePanels.EastSidePanel;
 public class PlayerList {
 	private LinkedList<Player> activePlayers = new LinkedList<Player>();
 	private ColorIconMap colorIcons = new ColorIconMap();
+	private StringColorMap colorMap = new StringColorMap();
 	
 	private ImageIcon playerIcon = new ImageIcon(); 
 	private int currentPlayer = 0; //index fÃ¶r den aktiva spelaren?
@@ -59,7 +61,7 @@ public class PlayerList {
 	 */
 	public void addNewPlayer(String name, String icon) {
 		playerIcon = colorIcons.getColorFromMap(icon);
-		activePlayers.add(new Player(name, playerIcon, playerListLength)); 
+		activePlayers.add(new Player(name, playerIcon, colorMap.getColorFromMap(icon), playerListLength)); 
 		playerListLength++;
 	}
 	
