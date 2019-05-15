@@ -7,45 +7,56 @@ import javax.swing.ImageIcon;
 import board.ColorIconMap;
 import eastSidePanels.EastSidePanel;
 
+/**
+ * A class that holds all active players 
+ * @author sethoberg
+ *
+ */
+
 public class PlayerList {
 	private LinkedList<Player> activePlayers = new LinkedList<Player>();
 	private ColorIconMap colorIcons = new ColorIconMap();
 	
-	//Tas bort senare?
-	private int playerIndex = 0; 
-	private String playerName = "";
 	private ImageIcon playerIcon = new ImageIcon(); 
 	private int currentPlayer = 0; //index fÃ¶r den aktiva spelaren?
 	private int playerListLength = 0;
 	
+	
+	/**
+	 * Constructor that sets the active player to 0 immediately at the start of a game
+	 * @param p
+	 */
 	public PlayerList(EastSidePanel p) {
-		currentPlayer = 0; 
+		currentPlayer = 0;  
 		
 	}
 	
+	/**
+	 * Constructor that sets the active player to 0 immediately at the start of a game
+	 * @param p
+	 */
 	public PlayerList() {
 		currentPlayer = 0; 
 	}
 	
 	
-//	Denna konstruktor kan kallas frÃ¥n startskÃ¤rmen om man matat in rÃ¤tt mÃ¤ngd spelare
-//	public PlayerList(int amountOfPlayers) {
-//		
-//		for(int i = 0; i < amountOfPlayers; i++) {
-//			//hÃ¤r behÃ¶ver nya vÃ¤rden hÃ¤mtas
-//			//tex playerIndex = startScreen.getPlayerName();???
-//			addNewPlayer(playerName, playerIcon); 
-//			//Konstruktorn med playerIndex kan tas bort, istÃ¤llet kan man ta playerIndex = array.length/size
-//		}
-//		currentPlayer = 0; 
-//	}
 	
-	 
+	/**
+	 * Add new player
+	 * @param name the chosen name for a player
+	 * @param icon the chosen image for a player
+	 */
 	public void addNewPlayer(String name, ImageIcon icon) {
 		activePlayers.add(new Player(name, icon, playerListLength)); 
 		playerListLength++;
 	} 
 	
+	
+	/**
+	 * Adds new player with the use of the ColorIconMap
+	 * @param name chosen name
+	 * @param icon string containing a color used to get a color from the ColorIconMap
+	 */
 	public void addNewPlayer(String name, String icon) {
 		playerIcon = colorIcons.getColorFromMap(icon);
 		activePlayers.add(new Player(name, playerIcon, playerListLength)); 
@@ -53,33 +64,51 @@ public class PlayerList {
 	}
 	
 	
+	/**
+	 * @return list with all players
+	 */
 	public PlayerList getList() {
 		return this;
 	}
 	
-	
+	/**
+	 * @param index get specific player
+	 * @return player at chosen index
+	 */
 	public Player getPlayerFromIndex(int index) {
 		return activePlayers.get(index);
 	}
 	
 	
+	/**
+	 * @return the curent player
+	 */
 	public Player getActivePlayer() {
 		return activePlayers.get(currentPlayer); 
 	}
 	
-	 
+	
+	/**
+	 * @return amount of players
+	 */
 	public int getLength() {
 		return activePlayers.size();
 	}
 	
 	
+	/**
+	 * @param player to remove from list 
+	 */
 	public void eliminatePlayer(Player player) {
-		//Marker: Denna metod kommer behöva implementeras 
-		//player.clearPlayer(); 
+		player.clearPlayer(); 
 		activePlayers.remove(player.getPlayerIndex());
 	}
 	
 	
+	
+	/**
+	 * Update amount of players after a player has been removed
+	 */
 	public void updatePlayerList() {
 		
 		for(int i = 0; i < activePlayers.size(); i++) {
@@ -89,7 +118,9 @@ public class PlayerList {
 	}
 	
 	
-	//Kan Ã¤ndras till endTurn() eller nÃ¥got annat fÃ¶r att gÃ¶ras tydligare?
+	/**
+	 * Used to switch to the current player to the next one
+	 */
 	public void switchToNextPlayer() {
 		
 		if(currentPlayer < (activePlayers.size() - 1) ) {
