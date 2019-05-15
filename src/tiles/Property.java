@@ -35,7 +35,7 @@ public class Property implements Tile {
 		} else {
 			ownerName = owner.getName();
 		}
-		info =    "\nOwner: \t" + ownerName + "\n"
+		info =    "\nOwner: \t         " + ownerName + "\n"
 				+ "Price:\t\t" + price + "\n"
 				+ "Default rent:\t" + defaultRent + "\n"
 				+ "Rent with Levels:\t" 	+ rentPerLevel + "\n"
