@@ -46,7 +46,7 @@ public class WinGui extends JPanel{
 
         setBorder(BorderFactory.createMatteBorder(3,3, 3, 3, Color.black));
         outerPanel.setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2,Color.DARK_GRAY));
-        centerPanel.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1,Color.gray));
+//        centerPanel.setBorder(BorderFactory.createMatteBorSder(1, 1, 1, 1,Color.gray));
 
         type.setPreferredSize(new Dimension(200,70));
         type.setText("\nBlessed");
