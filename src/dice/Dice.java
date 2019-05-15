@@ -22,7 +22,7 @@ import player.PlayerList;
 import westSidePanel.WestSidePanel;
 
 /**
- * @author Muhammad Abdulkhuder ,Aevan Dino, Sebastian Virola, Seth �berg
+ * @author Muhammad Abdulkhuder ,AevanDino, Sebastian Viro, Seth �berg
  *
  */
 public class Dice extends JPanel implements ActionListener {
@@ -247,6 +247,7 @@ public class Dice extends JPanel implements ActionListener {
 				if (i == (getRoll() - 1)) {
 					manageEvents.newEvent(board.getDestinationTile(testPlayers.getActivePlayer().getPosition()),
 							testPlayers.getActivePlayer());
+					tabPanel.addPlayerList(testPlayers);
 				}
 
 				try {
