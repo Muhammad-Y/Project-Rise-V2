@@ -22,6 +22,7 @@ public class Player {
 	private int counter;
 	private int playerIndex;
 	private int playerJailCounter = 0;
+	private boolean playerIsInJail = false; 
 
 	private PlayerRanks playerRank;
 
@@ -81,6 +82,22 @@ public class Player {
 	public void increaseJailCounter() {
 		this.playerJailCounter++;
 	}
+	
+	
+	/**
+	 * @param isInJail if player is sent to jail send true, if player is not in jail anymore set to false
+	 */
+	public void setPlayerIsInJail(boolean isInJail) {
+		this.playerIsInJail = isInJail;
+	}
+	
+	/**
+	 * @return Return either true or false if player in in jail or not
+	 */
+	public Boolean isPlayerInJail() {
+		return this.playerIsInJail;
+	}
+	
 
 	/**
 	 * @return the playerName
