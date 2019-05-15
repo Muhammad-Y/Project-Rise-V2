@@ -19,12 +19,12 @@ public class StringColorMap {
 	
 	
 	private void addColorsToMap() { 
-		colorMap.put("MAGENTA", Color.MAGENTA);
-		colorMap.put("RED", Color.RED); 
-		colorMap.put("ORANGE", Color.ORANGE);
-		colorMap.put("YELLOW", Color.YELLOW); 
-		colorMap.put("GREEN", Color.GREEN);
-		colorMap.put("CYAN", Color.CYAN);
+		colorMap.put("MAGENTA", new Color(255, 15, 226));
+		colorMap.put("RED", new Color(255, 0, 10, 255)); 
+		colorMap.put("ORANGE", new Color(254, 119, 14, 255));
+		colorMap.put("YELLOW", new Color(206, 183, 51, 255)); 
+		colorMap.put("GREEN", new Color(35, 254, 14, 255));
+		colorMap.put("CYAN", new Color(93, 188, 210, 255));
 		colorMap.put("PURPLE", Color.decode("#9542f4")); //purple
 	}
 	 

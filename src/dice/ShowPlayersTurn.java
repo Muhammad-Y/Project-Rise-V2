@@ -22,18 +22,14 @@ public class ShowPlayersTurn extends JPanel{
 	private static final long serialVersionUID = 1L;
 	
 	private JLabel lblPlayer;
-	private String playerColor, playerName = "Player";
+	private String playerName = "Player";
 	private Color players;
-	private PlayerList playerList;
 	
 	public ShowPlayersTurn(String player) {
-		
 		this.playerName = player;
 		players = Color.DARK_GRAY;
 		showTheLabel();
 	}
-	
-	
 	
 	private void showTheLabel() {
 		setPreferredSize(new Dimension(250,50));
@@ -47,26 +43,7 @@ public class ShowPlayersTurn extends JPanel{
 		lblPlayer.setBorder(BorderFactory.createLineBorder(Color.white));
 		add(lblPlayer);
 	}
-//	public void addNewPlayer(String name, String color) {
-////		 playerName = name;
-//	}
-	
-//	public void activePlayer() {
-//		Player tempPlayer = playerList.getActivePlayer();
-//	    playerName = tempPlayer.getName();
-//		
-//	}
 	public void uppdateGUI(String playerName, Color color) {
-		
-//		if (color == "RED") {
-//			players = Color.red;
-//		} else if (color == "CYAN") {
-//			players = Color.cyan;
-//		} else if (color == "YELLOW") {
-//			players = Color.yellow;
-//		} else if (color == "GREEN") {
-//			players = Color.green;
-//		}
 		
 		lblPlayer.setOpaque(true);
 		lblPlayer.setBackground(color);
