@@ -88,7 +88,7 @@ public class Dice extends JPanel implements ActionListener {
 	}
 
 	public void addButtonsAndListeners() {
-		showPlayer = new ShowPlayersTurn("Hej", "RED");
+		showPlayer = new ShowPlayersTurn("Rohan", "RED");
 		add(showPlayer);
 		add(lblDice1);
 

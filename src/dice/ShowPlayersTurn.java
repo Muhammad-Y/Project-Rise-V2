@@ -5,9 +5,12 @@ package dice;
  */
 import java.awt.Color;
 import java.awt.Dimension;
+import java.util.LinkedList;
 
 import javax.swing.*;
 
+import board.ColorIconMap;
+import player.Player;
 import player.PlayerList;
 
 public class ShowPlayersTurn extends JPanel{
@@ -16,46 +19,47 @@ public class ShowPlayersTurn extends JPanel{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String playerName;
+	
 	private JLabel lblPlayer;
-	private String playerColor;
+	private String playerColor, playerName = "Player";
 	private Color players;
 	private PlayerList playerList;
 	
-	public ShowPlayersTurn(String playerName, String playerCol) {
-		this.playerName = playerName;
-		this.playerColor = playerCol;
-		
-		
-		showTheLabel();
-		if(playerCol == "RED") {
-//			players = Color.red;
-			setBackground(Color.red);
-		}else if (playerColor == "GREEN") {
-//			players = Color.green;
-			setBackground(Color.GREEN);
-		}
+	public ShowPlayersTurn() {
 		
 	}
+	public ShowPlayersTurn(String player, String playerCol) {
+		this.playerName = player;
+		this.playerColor = playerCol;
+		if (playerCol == "GREEN") {
+			players = Color.green;
+		}
+		if (playerCol == "RED") {
+			players = Color.red;
+		}
+		showTheLabel();
+	}
+	
+	
 	
 	private void showTheLabel() {
-		setPreferredSize(new Dimension(50,50));
+		setPreferredSize(new Dimension(100,50));
 		setBackground(players);
 		
 		lblPlayer = new JLabel(playerName);
+		lblPlayer.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPlayer.setForeground(Color.white);
 		lblPlayer.setPreferredSize(new Dimension(100,25));
 		add(lblPlayer);
 	}
-//	public static void main(String[] args) {
-//		JFrame frame = new JFrame();
-//		frame.setPreferredSize(new Dimension(220, 100));
-//		frame.add(new ShowPlayersTurn("Rohan", "RED"));
-//		frame.pack();
-//		frame.setVisible(true);
-//		
-//		
-//		
-////		new ShowPlayersTurn("Rohan", Color.green);
-//	}
+	public void addNewPlayer(String name, String color) {
+//		 playerName = name;
+	}
+	
+	public void activePlayer() {
+		Player tempPlayer = playerList.getActivePlayer();
+	    playerName = tempPlayer.getName();
+//		tempPlayer.getImage();
+		
+	}
 }

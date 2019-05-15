@@ -122,7 +122,7 @@ public class PlayerInfoPanel extends JPanel {
     	p6.add(lblProperty);
     	add(p6);
 
-    	String pList=""+ playerList.getPlayerFromIndex(playa).getProperties();
+    	String pList=""+ playerList.getPlayerFromIndex(playa).getProperties() + "\n";
     	pList = pList.substring(1, pList.length()-1);
     	lblPropertyList.setText("" + pList); 
     	lblPropertyList.setFont(font);

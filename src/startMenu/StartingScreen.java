@@ -22,6 +22,7 @@ import javax.swing.JTextField;
 import board.Board;
 import board.ColorIconMap;
 import combinedPanels.GamePanels;
+import dice.ShowPlayersTurn;
 import menu.Menu;
 import player.PlayerList;
 
@@ -30,6 +31,7 @@ public class StartingScreen extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	// References
+	private ShowPlayersTurn playersTurn = new ShowPlayersTurn();
 	private BackgroundMusic bgm = new BackgroundMusic();
 	private PlayerList playerList = new PlayerList();
 	private GamePanels mainWindow = new GamePanels();
@@ -256,14 +258,13 @@ public class StartingScreen extends JFrame {
 			}
  
 			if (e.getSource() == btnStartGame) {
-				for (int i = 0; i == amountOfPlayers; i++) {
-					System.out.println(
-							"Player One: " + playerTf[i].getText() + " : " + playerColors[i].getSelectedItem());
-				}
+//				for (int i = 0; i == amountOfPlayers; i++) {
+//					System.out.println(
+//							"Player One: " + playerTf[i].getText() + " : " + playerColors[i].getSelectedItem());
+//				}
 				createNewUsers();
 
 				mainWindow.addPlayer(playerList);
-
 				mainWindow.startboard();
 
 			}
@@ -272,6 +273,8 @@ public class StartingScreen extends JFrame {
 		private void createNewUsers() {
 			for (int i = 0; i < amountOfPlayers; i++) {
 				playerList.addNewPlayer(playerTf[i].getText(), (String) playerColors[i].getSelectedItem());
+				// PLayersTurn
+//				playersTurn.addNewPlayer(playerTf[i].getText(), (String) playerColors[i].getSelectedItem());
 			}
 		}
 

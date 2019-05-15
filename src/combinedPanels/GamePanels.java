@@ -64,7 +64,7 @@ public class GamePanels extends JPanel {
 	}
 
 	public void addPlayer(PlayerList playerList) {
-		this.playerList = playerList;
+//		this.playerList = playerList;
 
 		board.addPlayers(playerList);
 
