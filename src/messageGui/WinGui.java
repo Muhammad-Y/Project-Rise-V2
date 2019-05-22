@@ -4,8 +4,10 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Image;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -14,67 +16,43 @@ import javax.swing.SwingConstants;
 
 import events.ManageEvents;
 
-public class WinGui extends JPanel{
+public class WinGui extends JPanel {
 
-    private JPanel centerPanel = new JPanel();
-    private JPanel outerPanel = new JPanel();
-    private JLabel type = new JLabel();
-    private JTextPane dis = new JTextPane();
+	private JLabel lblLblpic = new JLabel("lblPic");
 
-    private Color color1 = new Color(102,178,255);
-    private Font fontType = new Font("ALGERIAN", Font.BOLD, 30);
-    private Font fontDis = new Font("ALGERIAN", Font.ITALIC, 20);
+	public WinGui() {
+		
+		addgui();
 
-    private ManageEvents me;
-    
-    public WinGui() {
+	}
+	
+	public void addgui() {
+		setPreferredSize(new Dimension(1000, 500));
+		setLayout(null);
 
-    }
-    
-    public WinGui(ManageEvents me) {
-    	this.me = me;
-    }
-    
-    public void startGUI() {
-    	setLayout(new BorderLayout());
-        outerPanel.setLayout(new BorderLayout());
-        centerPanel.setLayout(new BorderLayout());
+		lblLblpic.setBounds(0, 0, 1027, 500);
+		lblLblpic.setIcon(
+				new ImageIcon("images/Rise Winner.png"));
+		add(lblLblpic);
+		getFrame();
+	}
 
-        setPreferredSize(new Dimension(500, 250));
-        setBackground(Color.black);
-        setForeground(Color.black);
-
-        setBorder(BorderFactory.createMatteBorder(3,3, 3, 3, Color.black));
-        outerPanel.setBorder(BorderFactory.createMatteBorder(2, 2, 2, 2,Color.DARK_GRAY));
-//        centerPanel.setBorder(BorderFactory.createMatteBorSder(1, 1, 1, 1,Color.gray));
-
-        type.setPreferredSize(new Dimension(200,70));
-        type.setText("\nBlessed");
-        type.setFont(fontType);
-        type.setHorizontalAlignment(SwingConstants.CENTER);
-
-        dis.setText("\n                        Fortune smiles upon you. \n"
-                + "                            You recived " + 2 + " gold");
-        dis.setFont(fontDis);
-        dis.setBackground(color1);
-
-    //    dis.setHorizontalAlignment(SwingConstants.CENTER);
-
-        centerPanel.setBackground(color1);
-        centerPanel.add(type,BorderLayout.NORTH);
-        centerPanel.add(dis,BorderLayout.CENTER);
-
-        add(outerPanel, BorderLayout.CENTER);
-        outerPanel.add(centerPanel, BorderLayout.CENTER); 
-        getFrame();
-    }
-    
-    public void getFrame() {
-		WinGui mGUI = new WinGui();
+	public void getFrame() {
 		JFrame frame = new JFrame();
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(mGUI);
+		frame.getContentPane().add(this);
+		frame.pack();
+		frame.setVisible(true);
+		frame.setLocationRelativeTo(null);
+	}
+	public static void main(String[] args) {
+		WinGui mGUI = new WinGui();
+		JFrame frame = new JFrame();
+		
+		frame.setUndecorated(true);	
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().add(mGUI);
 		frame.pack();
 		frame.setVisible(true);
 		frame.setLocationRelativeTo(null);

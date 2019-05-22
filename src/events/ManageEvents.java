@@ -2,11 +2,11 @@ package events;
 
 import java.util.Random;
 
-import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 import board.Board;
 import dice.Dice;
+import messageGui.WinGui;
 import player.Player;
 import player.PlayerList;
 import player.PlayerRanks;
@@ -31,6 +31,7 @@ public class ManageEvents {
 	private PlayerList playerList;
 	private Board board; 
 	private Dice dice;
+	private WinGui winGui ;
 	private Random rand = new Random(); 
 	private int roll;
 	int taxCounter = 0;
@@ -45,6 +46,13 @@ public class ManageEvents {
 	
 	public void newEvent(Tile tile, Player player) {
 		player.checkPlayerRank();
+		
+		if (player.getPlayerRank() == PlayerRanks.RULER) {
+			this.winGui= new WinGui();
+		
+			
+			
+		}
 		
 		if(tile instanceof Property) {
 			propertyEvent(tile, player);
@@ -82,6 +90,8 @@ public class ManageEvents {
 		if(tile instanceof FortuneTeller) {
 			fortuneTellerEvent(tile, player);
 		}
+		
+		
 		
 		
 	}
