@@ -6,6 +6,7 @@ import javax.swing.JOptionPane;
 
 import board.Board;
 import dice.Dice;
+import messageGui.DeathGUI;
 import messageGui.WinGui;
 import player.Player;
 import player.PlayerList;
@@ -34,6 +35,8 @@ public class ManageEvents {
 	private Board board;
 	private Dice dice;
 	private WinGui winGui;
+	private DeathGUI deathGUI;
+	
 	private Random rand = new Random();
 	private int roll;
 	private int taxCounter = 0;
@@ -44,6 +47,7 @@ public class ManageEvents {
 		this.westPanel = pnlWest;
 		this.board = board;
 		this.playerList = playerList;
+		deathGUI = new DeathGUI();
 	}
 
 	public void newEvent(Tile tile, Player player) {
@@ -132,6 +136,7 @@ public class ManageEvents {
 			player.setIsAlive(false);
 			playerList.eliminatePlayer(player);
 			board.removePlayer(player);
+			deathGUI.addGui();
 			JOptionPane.showMessageDialog(null, "The plague has taken you\nYou have lost\nTry again in another life");
 		} else {
 //			System.out.println("Spelaren har råd att betala " + amount);
