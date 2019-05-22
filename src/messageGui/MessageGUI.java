@@ -28,7 +28,7 @@ public class MessageGUI extends JPanel{
     private ManageEvents me;
     
     public MessageGUI() {
-    	startGUI();
+//    	startGUI();
 	}
     
     public MessageGUI(ManageEvents me) {
@@ -49,31 +49,47 @@ public class MessageGUI extends JPanel{
         centerPanel.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1,Color.gray));
 
         type.setPreferredSize(new Dimension(200,70));
-        type.setText("\nBlessed");
         type.setFont(fontType);
         type.setHorizontalAlignment(SwingConstants.CENTER);
-
-        dis.setText("\n                        Fortune smiles upon you. \n"
-                + "                            You recived " + 2 + " gold");
         dis.setFont(fontDis);
-        dis.setBackground(color1);
+//        dis.setBackground(color1);
 
     //    dis.setHorizontalAlignment(SwingConstants.CENTER);
 
-        centerPanel.setBackground(color1);
+//        centerPanel.setBackground(color1);
         centerPanel.add(type,BorderLayout.NORTH);
         centerPanel.add(dis,BorderLayout.CENTER);
 
         add(outerPanel, BorderLayout.CENTER);
         outerPanel.add(centerPanel, BorderLayout.CENTER); 
+        getFrame();
+        
     }
     
-    public static void main(String[] args) {
-		MessageGUI mGUI = new MessageGUI();
+    public void newFortune(Boolean b, int amount) {
+    	if(b) {
+    		type.setText("Blessing");
+    		 dis.setText("\n                        Fortune smiles upon you. \n"
+    	                + "                            You recived " + amount + " gold");
+    		 dis.setBackground(new Color(102,178,255));
+    		 centerPanel.setBackground(new Color(102,178,255));
+    	} else {
+    		type.setText("Curse");
+    		dis.setText("\n                        You have been cursed! \n"
+	                + "                            You pay " + amount + " gold");
+    		dis.setBackground(new Color(209, 13, 10));
+    		centerPanel.setBackground(new Color(209, 13, 10));
+    	}
+//    	new MessageGUI();
+    	startGUI();
+    }
+    
+    public void getFrame() {
+//		MessageGUI mGUI = new MessageGUI();
 		JFrame frame = new JFrame();
 		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(mGUI);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frame.add(this);
 		frame.pack();
 		frame.setVisible(true);
 		frame.setLocationRelativeTo(null);

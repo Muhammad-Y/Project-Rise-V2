@@ -12,8 +12,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 
-import com.oracle.xmlns.internal.webservices.jaxws_databinding.ExistingAnnotationsType;
-
 import tiles.FortuneTeller;
 
 public class FortuneTellerGUI extends JPanel{
@@ -68,13 +66,13 @@ public class FortuneTellerGUI extends JPanel{
  
 }
     public static void main(String[] args) {
-//		FortuneTellerGUI ft = new FortuneTellerGUI("Momo", "sucks", 250);
-//		JFrame frame = new JFrame();
-//		frame.setVisible(true);
-//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		frame.add(ft);
-//		frame.pack();
-//		frame.setVisible(true);
-//		frame.setLocationRelativeTo(null);
+		FortuneTellerGUI ft = new FortuneTellerGUI("Momo", "sucks", 250);
+		JFrame frame = new JFrame();
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.add(ft);
+		frame.pack();
+		frame.setVisible(true);
+		frame.setLocationRelativeTo(null);
 	}
 }

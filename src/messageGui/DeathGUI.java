@@ -20,7 +20,7 @@ public class DeathGUI extends JPanel implements ActionListener{
 	private JFrame frame;
 	
 	public DeathGUI () {
-		addGui();
+//		addGui();
 	}
 	
 	public void addGui() {

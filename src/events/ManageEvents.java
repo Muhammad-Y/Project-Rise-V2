@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 import board.Board;
 import dice.Dice;
 import messageGui.DeathGUI;
+import messageGui.MessageGUI;
 import messageGui.WinGui;
 import player.Player;
 import player.PlayerList;
@@ -36,6 +37,7 @@ public class ManageEvents {
 	private Dice dice;
 	private WinGui winGui;
 	private DeathGUI deathGUI;
+	private MessageGUI msgGUI;
 	
 	private Random rand = new Random();
 	private int roll;
@@ -48,6 +50,7 @@ public class ManageEvents {
 		this.board = board;
 		this.playerList = playerList;
 		deathGUI = new DeathGUI();
+		msgGUI = new MessageGUI();
 	}
 
 	public void newEvent(Tile tile, Player player) {
@@ -110,7 +113,8 @@ public class ManageEvents {
 //				slut på ändringar
 				player.decreaseBalace(pay);
 				player.decreaseNetWorth(pay);
-				JOptionPane.showMessageDialog(null, "You pay" + pay);
+//				JOptionPane.showMessageDialog(null, "You pay" + pay);
+				msgGUI.newFortune(false, pay);
 			}
 
 		} else {
@@ -121,7 +125,8 @@ public class ManageEvents {
 //			nya ändringar
 			westPanel.append(player.getName() + " received " + tempCard.getAmount() + "\n");
 //			slut på ändringar
-			JOptionPane.showMessageDialog(null, "You get " + tempCard.getAmount());
+//			JOptionPane.showMessageDialog(null, "You get " + tempCard.getAmount());
+			msgGUI.newFortune(true, tempCard.getAmount());
 		}
 	}
 
@@ -137,7 +142,7 @@ public class ManageEvents {
 			playerList.eliminatePlayer(player);
 			board.removePlayer(player);
 			deathGUI.addGui();
-			JOptionPane.showMessageDialog(null, "The plague has taken you\nYou have lost\nTry again in another life");
+//			JOptionPane.showMessageDialog(null, "The plague has taken you\nYou have lost\nTry again in another life");
 		} else {
 //			System.out.println("Spelaren har råd att betala " + amount);
 		}
