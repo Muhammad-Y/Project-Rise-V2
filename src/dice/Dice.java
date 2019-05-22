@@ -98,7 +98,7 @@ public class Dice extends JPanel implements ActionListener {
 
 		btnThrow.addActionListener(this);
 
-		faceToShow = new ImageIcon("DicePictures/faceValue1.png");
+		faceToShow = new ImageIcon("DicePictures/faceValue1White.png");
 		resizedImage = faceToShow.getImage().getScaledInstance(diceWidth, diceHeight, Image.SCALE_SMOOTH);
 		showDice = new ImageIcon(resizedImage);
 		lblDice2.setIcon(showDice);
@@ -120,27 +120,27 @@ public class Dice extends JPanel implements ActionListener {
 
 			switch (faceValueDiceOne) {
 			case 1:
-				faceToShow = new ImageIcon("DicePictures/faceValue1.png");
+				faceToShow = new ImageIcon("DicePictures/faceValue1White.png");
 				break;
 
 			case 2:
-				faceToShow = new ImageIcon("DicePictures/faceValue2.png");
+				faceToShow = new ImageIcon("DicePictures/faceValue2White.png");
 				break;
 
 			case 3:
-				faceToShow = new ImageIcon("DicePictures/faceValue3.png");
+				faceToShow = new ImageIcon("DicePictures/faceValue3White.png");
 				break;
 
 			case 4:
-				faceToShow = new ImageIcon("DicePictures/faceValue4.png");
+				faceToShow = new ImageIcon("DicePictures/faceValue4White.png");
 				break;
 
 			case 5:
-				faceToShow = new ImageIcon("DicePictures/faceValue5.png");
+				faceToShow = new ImageIcon("DicePictures/faceValue5White.png");
 				break;
 
 			case 6:
-				faceToShow = new ImageIcon("DicePictures/faceValue6.png");
+				faceToShow = new ImageIcon("DicePictures/faceValue6White.png");
 				break;
 			}
 
@@ -150,27 +150,27 @@ public class Dice extends JPanel implements ActionListener {
 
 			switch (faceValueDiceTwo) {
 			case 1:
-				faceToShow = new ImageIcon("DicePictures/faceValue1.png");
+				faceToShow = new ImageIcon("DicePictures/faceValue1White.png");
 				break;
 
 			case 2:
-				faceToShow = new ImageIcon("DicePictures/faceValue2.png");
+				faceToShow = new ImageIcon("DicePictures/faceValue2White.png");
 				break;
 
 			case 3:
-				faceToShow = new ImageIcon("DicePictures/faceValue3.png");
+				faceToShow = new ImageIcon("DicePictures/faceValue3White.png");
 				break;
 
 			case 4:
-				faceToShow = new ImageIcon("DicePictures/faceValue4.png");
+				faceToShow = new ImageIcon("DicePictures/faceValue4White.png");
 				break;
 
 			case 5:
-				faceToShow = new ImageIcon("DicePictures/faceValue5.png");
+				faceToShow = new ImageIcon("DicePictures/faceValue5White.png");
 				break;
 
 			case 6:
-				faceToShow = new ImageIcon("DicePictures/faceValue6.png");
+				faceToShow = new ImageIcon("DicePictures/faceValue6White.png");
 				break;
 			}
 
