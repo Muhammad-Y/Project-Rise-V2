@@ -41,19 +41,21 @@ public class PlayerProperties extends JPanel {
 		this.change = change;
 	}
 
-	private Font font = new Font("ALGERIAN", Font.BOLD, 14);
+	private Font font = new Font("ALGERIAN", Font.BOLD, 16);
 
 	public PlayerProperties(PlayerList playerList, int playerAtI, int propertyAtI) {
-
+		lblName.setOpaque(false);
+		lblName.setForeground(Color.white);
 		lblName.setText(playerList.getPlayerFromIndex(playerAtI).getProperty(propertyAtI).getName());
-		lblColor.setBackground(playerList.getPlayerFromIndex(playerAtI).getProperty(propertyAtI).getColor());
-
+//		lblColor.setBackground(playerList.getPlayerFromIndex(playerAtI).getProperty(propertyAtI).getColor());
+		
+		lblColor.setIcon(playerList.getPlayerFromIndex(playerAtI).getProperty(propertyAtI).getPicture());
 		setBackground(Color.DARK_GRAY);
-		setPreferredSize(new Dimension(330, 600));
+		setPreferredSize(new Dimension(330, 566));
 		setLayout(null);
 
 		btnDowngrade.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
-		btnDowngrade.setBounds(170, 249, 150, 54);
+		btnDowngrade.setBounds(158, 381, 150, 54);
 		add(btnDowngrade);
 		btnSell.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -61,22 +63,22 @@ public class PlayerProperties extends JPanel {
 		});
 
 		btnSell.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
-		btnSell.setBounds(38, 336, 255, 74);
+		btnSell.setBounds(39, 484, 255, 74);
 		btnSell.setForeground(Color.red);
 		add(btnSell);
 
 		btnUpgrade.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
-		btnUpgrade.setBounds(10, 249, 150, 54);
+		btnUpgrade.setBounds(10, 381, 150, 54);
 		add(btnUpgrade);
 
 		lblColor.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
-		lblColor.setBounds(0, 0, 330, 107);
+		lblColor.setBounds(62, 80, 218, 302);
 		add(lblColor);
 
 		lblName.setHorizontalAlignment(SwingConstants.CENTER);
 		lblName.setOpaque(true);
 		lblName.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
-		lblName.setBounds(0, 104, 330, 94);
+		lblName.setBounds(0, 0, 330, 82);
 		add(lblName);
 
 		lblColor.setFont(font);
