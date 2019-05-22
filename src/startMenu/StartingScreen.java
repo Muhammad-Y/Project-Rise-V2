@@ -266,7 +266,7 @@ public class StartingScreen extends JFrame {
 
 				mainWindow.addPlayer(playerList);
 				mainWindow.startboard();
-
+				dispose();
 			}
 		}
 		
