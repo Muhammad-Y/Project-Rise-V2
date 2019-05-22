@@ -109,7 +109,7 @@ public class ManageEvents {
 			control(player, pay);
 			if (player.isAlive() == true) {
 //				nya ändringar
-				westPanel.append(player.getName() + " paid " + pay + "\n");
+				westPanel.append(player.getName() + " paid " + pay + " GC\n");
 //				slut på ändringar
 				player.decreaseBalace(pay);
 				player.decreaseNetWorth(pay);
@@ -122,9 +122,7 @@ public class ManageEvents {
 			tempCard.setFortune("BLESSING");
 			player.increaseBalance(tempCard.getAmount());
 			player.increaseNetWorth(tempCard.getAmount());
-//			nya ändringar
-			westPanel.append(player.getName() + " received " + tempCard.getAmount() + "\n");
-//			slut på ändringar
+			westPanel.append(player.getName() + " received " + tempCard.getAmount() + " CG\n");
 //			JOptionPane.showMessageDialog(null, "You get " + tempCard.getAmount());
 			msgGUI.newFortune(true, tempCard.getAmount());
 		}
@@ -154,13 +152,11 @@ public class ManageEvents {
 		int tempInt = 0;
 
 		if (tempProperty.getPurchaseable() == true) {
-//			nya ändringar
 			if (player.getBalance() < tempProperty.getPrice()) {
-				JOptionPane.showMessageDialog(null, "Not enough funds to purchase this ptoperty");
+				JOptionPane.showMessageDialog(null, "Not enough funds to purchase this property");
 			} else {
 				propertyDialog(tempProperty, player);
 			}
-//			slut på ändringar
 		} else if (tempProperty.getPurchaseable() == false) {
 
 			if (tempProperty.getNumberOfHouses() == 0) {
@@ -168,10 +164,8 @@ public class ManageEvents {
 
 				control(player, tempInt);
 				if (player.isAlive() == true) {
-					// ny ändringar
 					westPanel.append(player.getName() + " paid " + tempProperty.getTotalRent() + " GC to "
 							+ tempProperty.getOwner().getName() + "\n");
-					// slut på ändringar
 					player.decreaseBalace(tempInt);
 					tempProperty.getOwner().increaseBalance(tempInt);
 				}
@@ -180,10 +174,8 @@ public class ManageEvents {
 				tempInt = tempProperty.getTotalRent();
 				control(player, tempInt);
 				if (player.isAlive() == true) {
-					// ny ändringar
 					westPanel.append(player.getName() + " paid " + tempProperty.getTotalRent() + " GC to "
 							+ tempProperty.getOwner().getName() + "\n");
-					// slut på ändringar
 					player.decreaseBalace(tempInt);
 					tempProperty.getOwner().increaseBalance(tempInt);
 				}
@@ -213,11 +205,9 @@ public class ManageEvents {
 
 		}
 		totalEarnings = (getRoll() * pay);
-//		nya ändringar
-		westPanel.append(player.getName() + " got " + totalEarnings + "\n");
-//		slut på ändringar
+		westPanel.append(player.getName() + " got " + totalEarnings + " GC\n");
 		JOptionPane.showMessageDialog(null,
-				"the roll is" + roll + "\n" + "you got: " + totalEarnings + "G for your hard work");
+				"The roll is " + roll + "\n" + "You got: " + totalEarnings + " GC for your hard work");
 		player.increaseBalance(totalEarnings);
 		player.increaseNetWorth(totalEarnings);
 		// Rad nedan �r test
@@ -230,9 +220,7 @@ public class ManageEvents {
 		control(player, chargePlayer);
 
 		if (player.isAlive() == true) {
-			// ny ändringar
-			westPanel.append(player.getName() + " paid 200 in tax\n");
-			// slut på ändringar
+			westPanel.append(player.getName() + " paid 200 GC in tax\n");
 			player.decreaseBalace(chargePlayer);
 			player.decreaseNetWorth(chargePlayer);
 			taxCounter++;
@@ -268,7 +256,7 @@ public class ManageEvents {
 			control(player, randomValue);
 			if (player.isAlive() == true) {
 				westPanel.append(
-						player.getName() + " paid " + randomValue + " to " + tempTavernObj.getOwner().getName() + "\n");
+						player.getName() + " paid " + randomValue + " GC to " + tempTavernObj.getOwner().getName() + "\n");
 				tempTavernObj.getOwner().increaseBalance(randomValue);
 				tempTavernObj.getOwner().increaseNetWorth(randomValue);
 				player.decreaseBalace(randomValue);
@@ -285,8 +273,6 @@ public class ManageEvents {
 	 * @param player
 	 */
 	public void jailEvent(Tile tile, Player player) {
-		System.out.println("");
-
 		if (player.isPlayerInJail() == true && (player.getJailCounter()) < 2) {
 			westPanel.append(player.getName() + " is in jail for " + (2 - player.getJailCounter()) + " more turns\n");
 			player.increaseJailCounter();
@@ -314,13 +300,13 @@ public class ManageEvents {
 		player.increaseBalance(200 * taxCounter);
 		player.increaseNetWorth(200 * taxCounter);
 		taxCounter = 0;
-		westPanel.append(player.getName() + " got " + taxCounter * 200 + " gc from church\n");
+		westPanel.append(player.getName() + " got " + taxCounter * 200 + " GC from church\n");
 
 	}
 
 	public void propertyDialog(Property property, Player player) {
 		int yesOrNo = JOptionPane.showConfirmDialog(null, property.getName() + "\n"
-				+ "Do you want to purchase this property for " + property.getPrice() + " Gold coins",
+				+ "Do you want to purchase this property for " + property.getPrice() + " GC",
 				"Decide your fate!", JOptionPane.YES_NO_OPTION);
 
 		if (yesOrNo == 0 && (property.getPrice() <= player.getBalance())) {
@@ -343,7 +329,7 @@ public class ManageEvents {
 	}
 
 	public void tavernDialog(Tavern tavern, Player player) {
-		int yesOrNo = JOptionPane.showConfirmDialog(null, "Do you want to purchase this property", "JOption",
+		int yesOrNo = JOptionPane.showConfirmDialog(null, "Do you want to purchase this property?", "JOption",
 				JOptionPane.YES_NO_OPTION);
 
 		if (yesOrNo == 0 && (tavern.getPrice() <= player.getBalance())) {
@@ -376,7 +362,8 @@ public class ManageEvents {
 	 * @param player
 	 */
 	public void jailDialog(Player player) {
-		int yesOrNo = JOptionPane.showConfirmDialog(null, "Do you want to pay the bail\nWhich is " + (player.getJailCounter() * 50) + "GC?", "JOption",
+		int yesOrNo = JOptionPane.showConfirmDialog(null, "Do you want to pay the bail\nWhich is " +
+				(player.getJailCounter() * 50) + " GC?", "JOption",
 				JOptionPane.YES_NO_OPTION);
 		int totalBail = player.getJailCounter() * 50;
 		if (yesOrNo == 0 && (totalBail <= player.getBalance())) {

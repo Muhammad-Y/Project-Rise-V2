@@ -426,7 +426,7 @@ public class Listener implements MouseListener {
 						}
 						else if(i == 12 || i == 28) {
 							pnlWest.setTitleText(tileCollection.getTileAtIndex(i).getTileInfo(), 
-									tileCollection.getTileAtIndex(i).getTitle(), Color.black, Color.white);
+									tileCollection.getTileAtIndex(i).getName(), Color.DARK_GRAY, Color.white);
 						}
 						else {						
 							pnlWest.setTitleText(tileCollection.getTileAtIndex(i).getTileInfo(),

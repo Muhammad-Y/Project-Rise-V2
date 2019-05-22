@@ -53,11 +53,19 @@ public class Tavern implements Tile{
 		return price;
 	}
 	
-
-	@Override
 	public String getTileInfo() {
-		return this.info + "name\n" + "Owner: " + "";
-		
+		String ownerName = "";
+		if(owner == null) {
+			ownerName = "No Owner";
+		} else {
+			ownerName = owner.getName();
+		}
+		info =    "\nOwner: \t         " + ownerName + "\n"
+				+ "Price:\t\t" + price + "\n"
+				+ "Default rent:    Read Rules\n"
+				+ "Rent with Levels:\t" 	+ 0 + "\n"
+				+ "Total rent:        Read Rules";
+		return info;
 	}
 	
 	public void setPurchaseable(boolean b) {
