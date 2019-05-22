@@ -60,7 +60,7 @@ public class Dice extends JPanel implements ActionListener {
 	public void addPlayerList(PlayerList list) {
 
 		this.testPlayers = list;
-		manageEvents = new ManageEvents(board, list, wsp);
+		manageEvents = new ManageEvents(board, list, wsp, this);
 
 	}
 

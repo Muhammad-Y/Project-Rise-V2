@@ -39,7 +39,8 @@ public class ManageEvents {
 	private int taxCounter = 0;
 	private WestSidePanel westPanel;
 
-	public ManageEvents(Board board, PlayerList playerList, WestSidePanel pnlWest) {
+	public ManageEvents(Board board, PlayerList playerList, WestSidePanel pnlWest, Dice dice) {
+		this.dice = dice;
 		this.westPanel = pnlWest;
 		this.board = board;
 		this.playerList = playerList;
@@ -276,7 +277,7 @@ public class ManageEvents {
 	public void jailEvent(Tile tile, Player player) {
 		System.out.println("");
 
-		if ((player.getJailCounter()) < 2) {
+		if (player.isPlayerInJail() == true && (player.getJailCounter()) < 2) {
 			westPanel.append(player.getName() + " is in jail for " + (2 - player.getJailCounter()) + " more turns\n");
 			player.increaseJailCounter();
 			System.out.println("test");
