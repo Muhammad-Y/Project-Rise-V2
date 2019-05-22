@@ -26,7 +26,7 @@ public class TileInfo {
 				+ "            when you pass ",
 				"2", "\n\n       Doro Mönster Cordo", "4", 
 				"\n\n           You shall pay\n           200 Gold Coins\n"
-				+"              to the king\n" + "         if you land here", 
+				+"          to the church\n" + "         if you land here", 
 				"\n\n               get paid\n     for your hard work",	"7", 
 				"\n\n     Doro Mönster Cordo", "9", "10", 
 				"\n\n         Visiting the prison", "12", "13", "14", "15", 
@@ -41,7 +41,8 @@ public class TileInfo {
 				"33", "\n\n       Doro Mönster Cordo", "35", 
 				"\n\n               get paid\n     for your hard work", 
 				"\n\n       Doro Mönster Cordo", "38", 
-				"\n\n           You shall pay\n           200 Gold Coins\n", "40"};
+				"\n\n           You shall pay\n           200 Gold Coins\n "
+				+ "          to the church\n         if you land here", "40"};
 		return info[tile];
 	}
 	
@@ -52,13 +53,13 @@ public class TileInfo {
 	 */
 	public String getTitle(int i) {
 		title = new String[] {"Go", "1", "Fortune Teller", "4", 
-				"King Tax", "Work", "7", "Fortune Teller", "9", "10",
+				"Church Tax", "Work", "7", "Fortune Teller", "9", "10",
 				"Jail", "12", "Western Tavern", "14", "15", 
 				"Work", "17", "Fortune Teller", "19", "20", 
 				"Sunday church", "22", "Fortune Teller", "24", "25", 
 				"Work", "27", "28", "Northern Tavern", "30", 
 				"Go To Jail", "32", "33", "Fortune Teller", "35", 
-				"Work", "Fortune Teller", "38", "King Tax", "40"}; 
+				"Work", "Fortune Teller", "38", "Church Tax", "40"}; 
 				
 		return title[i];
 	}
