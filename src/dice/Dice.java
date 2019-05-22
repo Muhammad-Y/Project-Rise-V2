@@ -298,6 +298,13 @@ public class Dice extends JPanel implements ActionListener {
 	public void setRoll(int roll) {
 		this.roll = roll;
 	}
+	/**
+	 * To free the prisoner
+	 */
+	public void activateRollDice() {
+		btnThrow.setEnabled(true);
+		finishTurn.setEnabled(false);
+	}
 
 //	public static void main(String[] args) {
 //		Dice ui = new Dice();

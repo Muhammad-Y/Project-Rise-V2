@@ -227,8 +227,10 @@ public class ManageEvents {
 			taxCounter++;
 		}
 	}
-
-	// ROHAN KOD
+	/**
+	 * Gets the total tax paid by players
+	 * @return total tax
+	 */
 	public int getChurchTax() {
 		int totalTax = taxCounter * 200;
 		return totalTax;
@@ -238,13 +240,11 @@ public class ManageEvents {
 		Tavern tempTavernObj = (Tavern) tile;
 
 		if (tempTavernObj.getPurchaseable()) {
-//			nya ändringar
 			if (player.getBalance() < tempTavernObj.getPrice()) {
 				JOptionPane.showMessageDialog(null, "Not enough funds to purchase this tavern");
 			} else {
 				tavernDialog(tempTavernObj, player);
 			}
-//			slut på ändringar
 		} else {
 			int randomValue = 0;
 
@@ -256,10 +256,8 @@ public class ManageEvents {
 
 			control(player, randomValue);
 			if (player.isAlive() == true) {
-				// nya ändringar
 				westPanel.append(
 						player.getName() + " paid " + randomValue + " to " + tempTavernObj.getOwner().getName() + "\n");
-				// slut på ändringar
 				tempTavernObj.getOwner().increaseBalance(randomValue);
 				tempTavernObj.getOwner().increaseNetWorth(randomValue);
 				player.decreaseBalace(randomValue);
@@ -276,17 +274,20 @@ public class ManageEvents {
 	 * @param player
 	 */
 	public void jailEvent(Tile tile, Player player) {
+		System.out.println("");
 
 		if ((player.getJailCounter()) < 2) {
-			System.out
-					.println("Spelare väntar i fängelse " + " Rundor kvar att vänta " + (2 - player.getJailCounter()));
-			// nya ändringar
 			westPanel.append(player.getName() + " is in jail for " + (2 - player.getJailCounter()) + " more turns\n");
-			// slut på ändringar
 			player.increaseJailCounter();
+			System.out.println("test");
+			if (player.getBalance() > (player.getJailCounter()*50)) {
+				jailDialog(player);
+				System.out.println("If sats körs");
+			}
 		} else {
 			player.setPlayerIsInJail(false);
 			player.setJailCounter(0);
+			dice.activateRollDice();
 		}
 
 	}
@@ -296,9 +297,7 @@ public class ManageEvents {
 		board.removePlayer(player);
 		player.setPositionInSpecificIndex(10);
 		board.setPlayer(player);
-		// nya ändringar
 		westPanel.append(player.getName() + " is in jail for " + (2 - player.getJailCounter()) + " more turns\n");
-		// slut på ändringar
 	}
 
 	public void churchEvent(Player player) {
@@ -306,9 +305,7 @@ public class ManageEvents {
 		player.increaseBalance(200 * taxCounter);
 		player.increaseNetWorth(200 * taxCounter);
 		taxCounter = 0;
-		// nya ändringar
 		westPanel.append(player.getName() + " got " + taxCounter * 200 + " gc from church\n");
-		// slut på ändringar
 
 	}
 
@@ -326,14 +323,11 @@ public class ManageEvents {
 			property.setPurchaseable(false);
 			player.decreaseBalace(property.getPrice());
 			// Lägg till ny rad
-//			nya ändringar
 			westPanel.append(player.getName() + " purchased " + property.getName() + "\n");
-//			slut på ändringar
 		}
 
-		else {// nya ändringar
+		else {
 			westPanel.append(player.getName() + " did not purchase " + property.getName() + "\n");
-//			slut på ändringar
 			// Behövs inte fixas
 			// Skriv ut typ "player passed"
 		}
@@ -351,13 +345,9 @@ public class ManageEvents {
 			player.addNewTavern(tavern);
 			tavern.setPurchaseable(false);
 			player.decreaseBalace(tavern.getPrice());
-//			nya ändringar
 			westPanel.append(player.getName() + " purchased " + tavern.getName() + "\n");
-//			slut på ändringar
 		} else {
-//			nya ändringar
 			westPanel.append(player.getName() + " did not purchase " + tavern.getName() + "\n");
-//			slut på ändringar
 			// Behövs inte fixas
 			// Skriv ut typ "player passed"
 		}
@@ -370,6 +360,25 @@ public class ManageEvents {
 
 	public void setRoll(Dice dice) {
 		this.roll = dice.getRoll();
+	}
+	/**
+	 * Message for the prisoner to choose if the player
+	 *  wants to pay the bail and get free
+	 * @param player
+	 */
+	public void jailDialog(Player player) {
+		int yesOrNo = JOptionPane.showConfirmDialog(null, "Do you want to pay the bail\nWhich is " + (player.getJailCounter() * 50) + "GC?", "JOption",
+				JOptionPane.YES_NO_OPTION);
+		int totalBail = player.getJailCounter() * 50;
+		if (yesOrNo == 0 && (totalBail <= player.getBalance())) {
+			player.setJailCounter(0);
+			player.setPlayerIsInJail(false);
+			westPanel.append(player.getName() + " paid the bail and\ngot free from jail\n");
+			dice.activateRollDice();
+		} else {
+			JOptionPane.showMessageDialog(null, "You can not afford the bail");
+			westPanel.append(player.getName() + " did not pay tha bail\n and is still in jail\n");
+		}
 	}
 
 }

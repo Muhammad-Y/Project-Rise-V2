@@ -25,8 +25,7 @@ public class WestSidePanel extends JPanel {
 	private JScrollPane scroller = new JScrollPane(txtMessage);
 	private Border border = BorderFactory.createLineBorder(Color.DARK_GRAY);
 	private JButton btnManage = new JButton("Manage Properties");
-	private String def = "\n\nMove your mouse on a tile \nwhich you want to see \ninformation about!"
-			+ "\n\nYou will receive XXX GC \nif you land on \nSunday Church";
+	private String def = "\n\nMove your mouse on a tile \nwhich you want to see \ninformation about!";
 	private String title = "Information";
 	private Color titleColor = Color.DARK_GRAY;
 
