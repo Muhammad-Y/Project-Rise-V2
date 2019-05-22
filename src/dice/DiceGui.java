@@ -23,7 +23,8 @@ public class DiceGui extends JPanel implements ActionListener{
 	private JLabel lblDice2 = new JLabel();
 	private JPanel centerPanel = new JPanel();
 	private ShowPlayersTurn showPlayer ;
-	private CheatGui cheat = new CheatGui(this);
+	private Dice Dice;
+	private CheatGui cheat = new CheatGui(Dice);
 
 
 	ImageIcon faceToShow, showDice;
