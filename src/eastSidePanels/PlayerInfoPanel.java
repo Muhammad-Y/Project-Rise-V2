@@ -8,6 +8,7 @@ import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 
 import player.PlayerList;
@@ -27,7 +28,7 @@ public class PlayerInfoPanel extends JPanel {
     private JLabel lblNetworth = new JLabel("1000G");
     private JLabel lblProperty = new JLabel();
     private JLabel lblISAlive = new JLabel();
-    private JLabel lblPropertyList = new JLabel();
+    private JTextArea lblPropertyList = new JTextArea("");
 //    private String name ;
     
    // private JLabel background = new JLabel(new ImageIcon("images/paperbg"));
@@ -56,6 +57,8 @@ public class PlayerInfoPanel extends JPanel {
  
     	
     	setPreferredSize(new Dimension(350,400));
+    	p7.setPreferredSize(new Dimension(350, 400));
+    	lblPropertyList.setPreferredSize(new Dimension(350, 400));
     	setBackground(Color.DARK_GRAY);
     	setLayout(new GridLayout(7, 0));
     	
@@ -67,6 +70,7 @@ public class PlayerInfoPanel extends JPanel {
     	p4.setBorder(BorderFactory.createLineBorder(Color.black));
     	p5.setBorder(BorderFactory.createLineBorder(Color.black));
     	p6.setBorder(BorderFactory.createLineBorder(Color.black));
+    	
 
 //    	p1.setOpaque(false);
 //    	p2.setOpaque(false);
@@ -121,12 +125,19 @@ public class PlayerInfoPanel extends JPanel {
     	lblProperty.setHorizontalAlignment(SwingConstants.CENTER);
     	p6.add(lblProperty);
     	add(p6);
+    	
+    	lblPropertyList.setOpaque(false);
 
-    	String pList=""+ playerList.getPlayerFromIndex(playa).getProperties() + "\n";
-    	pList = pList.substring(1, pList.length()-1);
-    	lblPropertyList.setText("" + pList); 
+//    	String pList=""+ playerList.getPlayerFromIndex(playa).getProperties() + "\n"
+    	for(int i = 0; i < playerList.getPlayerFromIndex(playa).getProperties().size(); i++ ) {
+    		
+    		lblPropertyList.append(playerList.getPlayerFromIndex(playa).getProperty(i).getName() + "\n" );
+    		
+    	}
+//    	String pList=""+ playerList.getPlayerFromIndex(playa).getProperties(). + "\n";
+//    	pList = pList.substring(1, pList.length()-1);
     	lblPropertyList.setFont(font);
-    	lblPropertyList.setHorizontalAlignment(SwingConstants.CENTER);
+//    	lblPropertyList.setHorizontalAlignment(SwingConstants.CENTER);
     	p7.add(lblPropertyList);    	
     	add(p7);
 

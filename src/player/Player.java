@@ -357,10 +357,11 @@ public class Player {
 	 * @return
 	 */
 	public Tile getProperty(int pos) {
-		if (propertiesOwned.size() >= pos && pos > 0) {
+//		if (propertiesOwned.size() >= pos && pos > 0) {
+		
 			return this.propertiesOwned.get(pos);
-		}
-		return null;
+//		}
+//		return null;
 	}
 
 	public void checkPlayerRank() {
