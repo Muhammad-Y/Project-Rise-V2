@@ -87,16 +87,5 @@ public class EastSidePanel extends JPanel {
 		return currentPlayer;
 	}
 
-	public static void main(String[] args) {
-		EastSidePanel ui = new EastSidePanel();
-		JFrame frame = new JFrame();
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(ui);
-		frame.pack();
-		frame.setVisible(true);
-		frame.setLocationRelativeTo(null);
-
-	}
-
+	
 }
