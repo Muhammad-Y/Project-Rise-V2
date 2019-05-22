@@ -280,10 +280,8 @@ public class ManageEvents {
 		if (player.isPlayerInJail() == true && (player.getJailCounter()) < 2) {
 			westPanel.append(player.getName() + " is in jail for " + (2 - player.getJailCounter()) + " more turns\n");
 			player.increaseJailCounter();
-			System.out.println("test");
 			if (player.getBalance() > (player.getJailCounter()*50)) {
 				jailDialog(player);
-				System.out.println("If sats körs");
 			}
 		} else {
 			player.setPlayerIsInJail(false);
