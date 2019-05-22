@@ -100,7 +100,7 @@ public class WestSidePanel extends JPanel {
 		scroller.setBackground(Color.white);
 		scroller.setForeground(new Color(71, 60, 50, 225));
 		scroller.setPreferredSize(new Dimension(320, 300));
-		scroller.setAutoscrolls(false);
+		scroller.setAutoscrolls(true);
 		
 		lblHistoryTitle = new JLabel("Game history");
 		lblHistoryTitle.setPreferredSize(new Dimension(320, 30));

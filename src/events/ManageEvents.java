@@ -20,158 +20,171 @@ import tiles.Tavern;
 import tiles.Tax;
 import tiles.Tile;
 import tiles.Work;
+import westSidePanel.WestSidePanel;
 
 /**
  * Klass som hanterar alla händelser då en spelare landar på en ruta
+ * 
  * @author Seth Oberg, Rohan Samandari
  *
  */
 
 public class ManageEvents {
 	private PlayerList playerList;
-	private Board board; 
+	private Board board;
 	private Dice dice;
-	private WinGui winGui ;
-	private Random rand = new Random(); 
+	private WinGui winGui;
+	private Random rand = new Random();
 	private int roll;
-	int taxCounter = 0;
+	private int taxCounter = 0;
+	private WestSidePanel westPanel;
 
-	
-	public ManageEvents(Board board, PlayerList playerList) {
+	public ManageEvents(Board board, PlayerList playerList, WestSidePanel pnlWest) {
+		this.westPanel = pnlWest;
 		this.board = board;
 		this.playerList = playerList;
 	}
-	
-	
-	
+
 	public void newEvent(Tile tile, Player player) {
 		player.checkPlayerRank();
-		
+
 		if (player.getPlayerRank() == PlayerRanks.RULER) {
-			this.winGui= new WinGui();
-		
-			
-			
+			this.winGui = new WinGui();
+
 		}
-		
-		if(tile instanceof Property) {
+
+		if (tile instanceof Property) {
 			propertyEvent(tile, player);
 		}
-		
-		if(tile instanceof Tax) {
+
+		if (tile instanceof Tax) {
 			taxEvent(tile, player);
 		}
-		
-		if(tile instanceof Jail) {
+
+		if (tile instanceof Jail) {
 			jailEvent(tile, player);
 		}
-		
-		if(tile instanceof GoToJail) {
+
+		if (tile instanceof GoToJail) {
 			goToJailEvent(tile, player);
 		}
-		
-		if(tile instanceof Tavern) {
+
+		if (tile instanceof Tavern) {
 			tavernEvent(tile, player);
 		}
-		
-		
-		if(tile instanceof Go) {
-			//Detta sköts just nu i dice klassen?
+
+		if (tile instanceof Go) {
+			// Detta sköts just nu i dice klassen?
 		}
-		
-		if(tile instanceof SundayChurch) {
+
+		if (tile instanceof SundayChurch) {
 			churchEvent(player);
 		}
-		
+
 		if (tile instanceof Work) {
 			workEvent(tile, player);
 		}
 
-		if(tile instanceof FortuneTeller) {
+		if (tile instanceof FortuneTeller) {
 			fortuneTellerEvent(tile, player);
 		}
-		
-		
-		
-		
+
 	}
-	
+
 	private void fortuneTellerEvent(Tile tile, Player player) {
-		FortuneTeller tempCard = (FortuneTeller)tile;
+		FortuneTeller tempCard = (FortuneTeller) tile;
 		tempCard.setAmount(rand.nextInt(600) - 300);
-		if(tempCard.getAmount()<0) {
-		int pay = (tempCard.getAmount() * -1);
+		if (tempCard.getAmount() < 0) {
+			int pay = (tempCard.getAmount() * -1);
 			tempCard.setIsBlessing(false);
 			tempCard.setFortune("CURSE");
 			control(player, pay);
-			if(player.isAlive() == true) {
+			if (player.isAlive() == true) {
+//				nya ändringar
+				westPanel.append(player.getName() + " paid " + pay + "\n");
+//				slut på ändringar
 				player.decreaseBalace(pay);
 				player.decreaseNetWorth(pay);
 				JOptionPane.showMessageDialog(null, "You pay" + pay);
-			} 
-			
+			}
+
 		} else {
 			tempCard.setIsBlessing(true);
 			tempCard.setFortune("BLESSING");
 			player.increaseBalance(tempCard.getAmount());
 			player.increaseNetWorth(tempCard.getAmount());
+//			nya ändringar
+			westPanel.append(player.getName() + " received " + tempCard.getAmount() + "\n");
+//			slut på ändringar
 			JOptionPane.showMessageDialog(null, "You get " + tempCard.getAmount());
-		}		
+		}
 	}
 
 	/**
-	 * This method is supposed to be called from any class that requires the current player to pay any amount,
-	 * if the user does not have the amount required they should be removed from the game
+	 * This method is supposed to be called from any class that requires the current
+	 * player to pay any amount, if the user does not have the amount required they
+	 * should be removed from the game
 	 */
 	public void control(Player player, int amount) {
-		
-		if(player.getBalance() < amount) {
-			player.setIsAlive(false); 
+
+		if (player.getBalance() < amount) {
+			player.setIsAlive(false);
 			playerList.eliminatePlayer(player);
 			board.removePlayer(player);
 			JOptionPane.showMessageDialog(null, "The plague has taken you\nYou have lost\nTry again in another life");
-		}
-		else {
+		} else {
 //			System.out.println("Spelaren har råd att betala " + amount);
 		}
-		
+
 	}
-	
+
 	public void propertyEvent(Tile tile, Player player) {
-		Property tempProperty = (Property) tile; 
-		int tempInt = 0; 
-		
-		if(tempProperty.getPurchaseable() == true) {
-			propertyDialog(tempProperty, player);
-		} 
-		else if (tempProperty.getPurchaseable() == false){
-			
-			if(tempProperty.getNumberOfHouses() == 0) {
+		Property tempProperty = (Property) tile;
+		int tempInt = 0;
+
+		if (tempProperty.getPurchaseable() == true) {
+//			nya ändringar
+			if (player.getBalance() < tempProperty.getPrice()) {
+				JOptionPane.showMessageDialog(null, "Not enough funds to purchase this ptoperty");
+			} else {
+				propertyDialog(tempProperty, player);
+			}
+//			slut på ändringar
+		} else if (tempProperty.getPurchaseable() == false) {
+
+			if (tempProperty.getNumberOfHouses() == 0) {
 				tempInt = tempProperty.getDefaultRent();
-				
+
 				control(player, tempInt);
-				if(player.isAlive() == true) {
+				if (player.isAlive() == true) {
+					// ny ändringar
+					westPanel.append(player.getName() + " paid " + tempProperty.getTotalRent() + " GC to "
+							+ tempProperty.getOwner().getName() + "\n");
+					// slut på ändringar
 					player.decreaseBalace(tempInt);
 					tempProperty.getOwner().increaseBalance(tempInt);
 				}
-				
-			}
-			else {
+
+			} else {
 				tempInt = tempProperty.getTotalRent();
 				control(player, tempInt);
-				if(player.isAlive() == true) {
+				if (player.isAlive() == true) {
+					// ny ändringar
+					westPanel.append(player.getName() + " paid " + tempProperty.getTotalRent() + " GC to "
+							+ tempProperty.getOwner().getName() + "\n");
+					// slut på ändringar
 					player.decreaseBalace(tempInt);
 					tempProperty.getOwner().increaseBalance(tempInt);
 				}
-				
+
 			}
-			
+
 		}
-		 
+
 	}
-	
+
 	public void workEvent(Tile tile, Player player) {
-		int pay=0;
+		int pay = 0;
 		int totalEarnings;
 		if (player.getPlayerRank() == PlayerRanks.PEASANT) {
 
@@ -189,142 +202,168 @@ public class ManageEvents {
 
 		}
 		totalEarnings = (getRoll() * pay);
-		JOptionPane.showMessageDialog(null,"the roll is"+ roll+ "\n" +"you got: " + totalEarnings +"G for your hard work");
+//		nya ändringar
+		westPanel.append(player.getName() + " got " + totalEarnings + "\n");
+//		slut på ändringar
+		JOptionPane.showMessageDialog(null,
+				"the roll is" + roll + "\n" + "you got: " + totalEarnings + "G for your hard work");
 		player.increaseBalance(totalEarnings);
 		player.increaseNetWorth(totalEarnings);
-		//Rad nedan �r test
+		// Rad nedan �r test
 	}
-	
+
 	public void taxEvent(Tile tile, Player player) {
 		Tax tempTaxObject = (Tax) tile;
 		int chargePlayer = tempTaxObject.getTax();
-		
 
-		
 		control(player, chargePlayer);
-		
-		if(player.isAlive() == true) {
+
+		if (player.isAlive() == true) {
+			// ny ändringar
+			westPanel.append(player.getName() + " paid 200 in tax\n");
+			// slut på ändringar
 			player.decreaseBalace(chargePlayer);
 			player.decreaseNetWorth(chargePlayer);
 			taxCounter++;
-			
 		}
-		
-		
-		
 	}
-	
-	
+
+	// ROHAN KOD
+	public int getChurchTax() {
+		int totalTax = taxCounter * 200;
+		return totalTax;
+	}
+
 	public void tavernEvent(Tile tile, Player player) {
 		Tavern tempTavernObj = (Tavern) tile;
-		
-		 
-		if(tempTavernObj.getPurchaseable()) {
-			tavernDialog(tempTavernObj, player); 
-		} 
-		else {
-			int randomValue = 0;
-			
-			if(tempTavernObj.getOwner().getAmountOfTaverns() == 1) {
-				randomValue = (getRoll() * 10);
+
+		if (tempTavernObj.getPurchaseable()) {
+//			nya ändringar
+			if (player.getBalance() < tempTavernObj.getPrice()) {
+				JOptionPane.showMessageDialog(null, "Not enough funds to purchase this tavern");
+			} else {
+				tavernDialog(tempTavernObj, player);
 			}
-			else if(tempTavernObj.getOwner().getAmountOfTaverns() == 2) {
+//			slut på ändringar
+		} else {
+			int randomValue = 0;
+
+			if (tempTavernObj.getOwner().getAmountOfTaverns() == 1) {
+				randomValue = (getRoll() * 10);
+			} else if (tempTavernObj.getOwner().getAmountOfTaverns() == 2) {
 				randomValue = (getRoll() * 20);
 			}
-			
+
 			control(player, randomValue);
-			if(player.isAlive() == true) {
+			if (player.isAlive() == true) {
+				// nya ändringar
+				westPanel.append(
+						player.getName() + " paid " + randomValue + " to " + tempTavernObj.getOwner().getName() + "\n");
+				// slut på ändringar
 				tempTavernObj.getOwner().increaseBalance(randomValue);
 				tempTavernObj.getOwner().increaseNetWorth(randomValue);
 				player.decreaseBalace(randomValue);
 			}
-			
-			
+
 		}
-		
+
 	}
-	
-	
+
 	/**
 	 * Spelaren ska vara fast på jail rutan i 3 rundor, eller köpa sig ut för 50G?
+	 * 
 	 * @param tile
 	 * @param player
 	 */
 	public void jailEvent(Tile tile, Player player) {
 
-		if( (player.getJailCounter()) < 2) {
-			System.out.println("Spelare väntar i fängelse " + " Rundor kvar att vänta " + (2 - player.getJailCounter()) );
+		if ((player.getJailCounter()) < 2) {
+			System.out
+					.println("Spelare väntar i fängelse " + " Rundor kvar att vänta " + (2 - player.getJailCounter()));
+			// nya ändringar
+			westPanel.append(player.getName() + " is in jail for " + (2 - player.getJailCounter()) + " more turns\n");
+			// slut på ändringar
 			player.increaseJailCounter();
-		}
-		else {
+		} else {
 			player.setPlayerIsInJail(false);
 			player.setJailCounter(0);
 		}
 
-
 	}
-	
-	
+
 	public void goToJailEvent(Tile tile, Player player) {
 		player.setPlayerIsInJail(true);
 		board.removePlayer(player);
 		player.setPositionInSpecificIndex(10);
 		board.setPlayer(player);
-		
+		// nya ändringar
+		westPanel.append(player.getName() + " is in jail for " + (2 - player.getJailCounter()) + " more turns\n");
+		// slut på ändringar
 	}
-	
-	
+
 	public void churchEvent(Player player) {
-		
-		player.increaseBalance(200*taxCounter);
-		player.increaseNetWorth(200*taxCounter);
-		
-		taxCounter=0;
+
+		player.increaseBalance(200 * taxCounter);
+		player.increaseNetWorth(200 * taxCounter);
+		taxCounter = 0;
+		// nya ändringar
+		westPanel.append(player.getName() + " got " + taxCounter * 200 + " gc from church\n");
+		// slut på ändringar
 
 	}
-	
-	
 
 	public void propertyDialog(Property property, Player player) {
-		int yesOrNo = JOptionPane.showConfirmDialog(null,property.getName() +"\n"+
-				"Do you want to purchase this property for "+ property.getPrice()+" Gold coins", "Decide your fate!", JOptionPane.YES_NO_OPTION);
+		int yesOrNo = JOptionPane.showConfirmDialog(null, property.getName() + "\n"
+				+ "Do you want to purchase this property for " + property.getPrice() + " Gold coins",
+				"Decide your fate!", JOptionPane.YES_NO_OPTION);
 
-		if(yesOrNo == 0 && (property.getPrice() <= player.getBalance()) ) {
-			
-			//Visa en MessageDialog med "You cannot afford this property" om spelaren klickar på ja men inte har råd
+		if (yesOrNo == 0 && (property.getPrice() <= player.getBalance())) {
+
+			// Visa en MessageDialog med "You cannot afford this property" om spelaren
+			// klickar på ja men inte har råd
 			property.setOwner(player);
 			player.addNewProperty(property);
 			property.setPurchaseable(false);
 			player.decreaseBalace(property.getPrice());
 			// Lägg till ny rad
-
+//			nya ändringar
+			westPanel.append(player.getName() + " purchased " + property.getName() + "\n");
+//			slut på ändringar
 		}
-		else {
-			//Behövs inte fixas
-			//Skriv ut typ "player passed"
+
+		else {// nya ändringar
+			westPanel.append(player.getName() + " did not purchase " + property.getName() + "\n");
+//			slut på ändringar
+			// Behövs inte fixas
+			// Skriv ut typ "player passed"
 		}
 	}
-	
-	public void tavernDialog(Tavern tavern, Player player) {
-		int yesOrNo = JOptionPane.showConfirmDialog(null,
-				"Do you want to purchase this property", "JOption", JOptionPane.YES_NO_OPTION);
 
-		if(yesOrNo == 0 && (tavern.getPrice() <= player.getBalance()) ) {
-			
-			//Visa en MessageDialog med "You cannot afford this property" om spelaren klickar på ja men inte har råd
+	public void tavernDialog(Tavern tavern, Player player) {
+		int yesOrNo = JOptionPane.showConfirmDialog(null, "Do you want to purchase this property", "JOption",
+				JOptionPane.YES_NO_OPTION);
+
+		if (yesOrNo == 0 && (tavern.getPrice() <= player.getBalance())) {
+
+			// Visa en MessageDialog med "You cannot afford this property" om spelaren
+			// klickar på ja men inte har råd
 			tavern.setOwner(player);
 			player.addNewTavern(tavern);
 			tavern.setPurchaseable(false);
 			player.decreaseBalace(tavern.getPrice());
-			
+//			nya ändringar
+			westPanel.append(player.getName() + " purchased " + tavern.getName() + "\n");
+//			slut på ändringar
+		} else {
+//			nya ändringar
+			westPanel.append(player.getName() + " did not purchase " + tavern.getName() + "\n");
+//			slut på ändringar
+			// Behövs inte fixas
+			// Skriv ut typ "player passed"
 		}
-		else {
-			//Behövs inte fixas
-			//Skriv ut typ "player passed"
-		}
-		
+
 	}
-	
+
 	public int getRoll() {
 		return roll;
 	}

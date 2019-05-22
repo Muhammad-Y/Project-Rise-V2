@@ -32,7 +32,7 @@ public class TileInfo {
 				"\n\n         Visiting the prison", "12", "13", "14", "15", 
 				"\n\n               get paid\n     for your hard work", "17", 
 				"\n\n     Doro Mönster Cordo", "19", "20", "\n\n           Rest In Peace\n\n"
-						+ "      Get all the taxes\n        which are paid\n       as the King tax ", "22",				
+						+ "      Get all the taxes\n        which are paid\n     as the church tax", "22",				
 				"\n\n     Doro Mönster Cordo", "24", "25", 
 				"\n\n               get paid\n     for your hard work", 
 				"27", "28", "29", "30",	 

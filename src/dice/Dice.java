@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import board.Board;
@@ -189,12 +190,9 @@ public class Dice extends JPanel implements ActionListener {
 			manageEvents.setRoll(this);
 			movePlayerThread = new Thread(new LoopThread(getRoll()));
 			movePlayerThread.start();
-			
 
 			goEvent();
-			
-			
-			
+
 			tabPanel.addPlayerList(testPlayers);
 			btnThrow.setEnabled(false);
 			finishTurn.setEnabled(true);
@@ -212,26 +210,26 @@ public class Dice extends JPanel implements ActionListener {
 //			tabPanel.setTab(); 
 //
 //		}
-		
-		
+
 		if (e.getSource() == finishTurn) {
 
 			testPlayers.switchToNextPlayer();
-			showPlayer.uppdateGUI(testPlayers.getActivePlayer().getName(), testPlayers.getActivePlayer().getPlayerColor());
-			if(testPlayers.getActivePlayer().isPlayerInJail() == true) {
+//			TIPS: Fönster som visas och stängs efter x antal sekunder utan OK knappen
+			JOptionPane.showMessageDialog(null, testPlayers.getActivePlayer().getName() + "'s turn");
+			showPlayer.uppdateGUI(testPlayers.getActivePlayer().getName(),
+					testPlayers.getActivePlayer().getPlayerColor());
+			if (testPlayers.getActivePlayer().isPlayerInJail() == true) {
 				btnThrow.setEnabled(false);
 				finishTurn.setEnabled(true);
 				manageEvents.newEvent(board.getDestinationTile(testPlayers.getActivePlayer().getPosition()),
 						testPlayers.getActivePlayer());
-			}
-			else if (testPlayers.getActivePlayer().isPlayerInJail() == false){
+			} else if (testPlayers.getActivePlayer().isPlayerInJail() == false) {
 				btnThrow.setEnabled(true);
 				finishTurn.setEnabled(false);
 			}
-			
+
 			tabPanel.setTab();
 		}
-		
 
 	}
 
@@ -284,11 +282,10 @@ public class Dice extends JPanel implements ActionListener {
 	private void goEvent() {
 
 		if (testPlayers.getActivePlayer().passedGo()) {
-			
 
 			testPlayers.getActivePlayer().increaseBalance(200);
 			testPlayers.getActivePlayer().increaseNetWorth(200);
-			
+
 			wsp.append("Passed Go \nand recived 200 Gold coins \n");
 			testPlayers.getActivePlayer().resetPassedGo();
 		}
