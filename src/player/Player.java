@@ -319,6 +319,13 @@ public class Player {
 	public void addNewProperty(Property newProperty) {
 		this.propertiesOwned.add(newProperty);
 	}
+	
+	public void removeProperty(Property property) {
+		increaseBalance(property.getPrice());
+		this.propertiesOwned.remove(property);
+	}
+	
+	
 
 	/**
 	 * @param newTavern add a new Tavern to a user
@@ -348,6 +355,11 @@ public class Player {
 		for (int i = 0; i < tavernsOwned.size(); i++) {
 			tavernsOwned.get(i).clearTavern();
 		}
+	}
+	
+	public Property getPropertyAt(int pos) {
+		
+			return this.propertiesOwned.get(pos);
 	}
 
 	/**

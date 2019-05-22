@@ -194,6 +194,7 @@ public class Dice extends JPanel implements ActionListener {
 			goEvent();
 
 			tabPanel.addPlayerList(testPlayers);
+
 			btnThrow.setEnabled(false);
 			finishTurn.setEnabled(true);
 
@@ -298,6 +299,7 @@ public class Dice extends JPanel implements ActionListener {
 	public void setRoll(int roll) {
 		this.roll = roll;
 	}
+
 	/**
 	 * To free the prisoner
 	 */
