@@ -91,12 +91,13 @@ public class WestSidePanel extends JPanel {
 
 		// HistoryPanel
 		pnlHistory = new JPanel();
-		txtMessage.setFont(new Font("ALGERIAN", Font.BOLD, 14));
+		txtMessage.setFont(new Font("Gabriola", Font.PLAIN, 24));
 		txtMessage.setMargin(new Insets(10, 10, 10, 10));
 		txtMessage.setEditable(false);
 		txtMessage.setForeground(new Color(71, 60, 50, 225));
 
 		scroller.setBackground(Color.white);
+		scroller.setForeground(Color.black);
 		scroller.setForeground(new Color(71, 60, 50, 225));
 		scroller.setPreferredSize(new Dimension(320, 300));
 		scroller.setAutoscrolls(true);
