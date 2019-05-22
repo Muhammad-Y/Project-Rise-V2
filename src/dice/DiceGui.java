@@ -36,7 +36,7 @@ public class DiceGui extends JPanel implements ActionListener{
 	
 	public void addButtonsAndListeners() {
 		
-		showPlayer = new ShowPlayersTurn("Hej", "RED");
+		showPlayer = new ShowPlayersTurn("Hej");
 		add(showPlayer);
 		add(lblDice1);
 
