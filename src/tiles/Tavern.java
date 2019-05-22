@@ -12,9 +12,11 @@ public class Tavern implements Tile{
 	private Player owner;
 	private Color color; 
 	private int price;
+	private String name;
 	
 
-	public Tavern(int price) {
+	public Tavern( String namn, int price) {
+		this.name = namn;
 		this.price = price;
 		this.purchasable = true;
 		this.owner = null;
@@ -26,7 +28,7 @@ public class Tavern implements Tile{
 
 	@Override
 	public String getName() {
-		return this.TAVERN;
+		return this.name;
 	}
 
 	@Override

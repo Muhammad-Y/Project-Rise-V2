@@ -22,10 +22,10 @@ public class TileInfo {
 	 */
 	public String getInfo(int tile) {
 		
-		info = new String[]{"\n\n    Cash in 200 Gold coins \n"
+		info = new String[]{"\n\n    Cash in 200 GC \n"
 				+ "            when you pass ",
 				"2", "\n\n       Doro Mönster Cordo", "4", 
-				"\n\n           You shall pay\n           200 Gold Coins\n"
+				"\n\n           You shall pay\n           200 GC\n"
 				+"          to the church\n" + "         if you land here", 
 				"\n\n               get paid\n     for your hard work",	"7", 
 				"\n\n     Doro Mönster Cordo", "9", "10", 
@@ -37,11 +37,11 @@ public class TileInfo {
 				"\n\n               get paid\n     for your hard work", 
 				"27", "28", "29", "30",	 
 				"\n\n   You shall be in the jail \n              for 3 rounds\n "
-				+ "Can we pay and get free?, \n               guyzz???", "32", 
+				+ "     You can pay the bail \n              and get free", "32", 
 				"33", "\n\n       Doro Mönster Cordo", "35", 
 				"\n\n               get paid\n     for your hard work", 
 				"\n\n       Doro Mönster Cordo", "38", 
-				"\n\n           You shall pay\n           200 Gold Coins\n "
+				"\n\n           You shall pay\n           200 GC\n "
 				+ "          to the church\n         if you land here", "40"};
 		return info[tile];
 	}

@@ -416,13 +416,17 @@ public class Listener implements MouseListener {
 				for (int i=0; i<panelarray.length; i++) {
 					if (e.getSource()==panelarray[i]) {
 						if (i == 0 || i == 2 || i == 4 || i == 5 ||i == 7 || 
-								i == 10 ||i == 12 || i == 15 ||i == 17 || 
-								i == 20 ||i == 22 || i == 25 ||i == 28 || i == 30 ||
+								i == 10 || i == 15 ||i == 17 || 
+								i == 20 ||i == 22 || i == 25 || i == 30 ||
 								i == 33 ||i == 35 || i == 36 || i == 38){
 								pnlWest.setTitleText(info.getInfo(i), info.getTitle(i), Color.DARK_GRAY, Color.white);
 						}else if(i==26 || i==27 || i==29) {
 							pnlWest.setTitleText(tileCollection.getTileAtIndex(i).getTileInfo(),
 									tileCollection.getTileAtIndex(i).getTitle(), new Color(254,231,11, 255), Color.black);
+						}
+						else if(i == 12 || i == 28) {
+							pnlWest.setTitleText(tileCollection.getTileAtIndex(i).getTileInfo(), 
+									tileCollection.getTileAtIndex(i).getTitle(), Color.black, Color.white);
 						}
 						else {						
 							pnlWest.setTitleText(tileCollection.getTileAtIndex(i).getTileInfo(),

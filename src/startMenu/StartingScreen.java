@@ -272,6 +272,9 @@ public class StartingScreen extends JFrame {
 		
 		private void createNewUsers() {
 			for (int i = 0; i < amountOfPlayers; i++) {
+				if (playerTf[i].getText().length()>=10) {
+					playerTf[i].setText(playerTf[i].getText().substring(0, 10));
+				}
 				playerList.addNewPlayer(playerTf[i].getText(), (String) playerColors[i].getSelectedItem());
 				// PLayersTurn
 //				playersTurn.addNewPlayer(playerTf[i].getText(), (String) playerColors[i].getSelectedItem());
