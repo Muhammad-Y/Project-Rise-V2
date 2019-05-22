@@ -2,18 +2,23 @@ package tiles;
 
 import java.awt.Color;
 
+import javax.swing.ImageIcon;
 
 import player.Player;
 
 /**
- * Simple Go tile class. Pays the player 200 gold coins when landing or passing by.
+ * Simple Go tile class. Pays the player 200 gold coins when landing or passing
+ * by.
+ * 
  * @author AevanDino, SebastianViro
  */
 public class Go implements Tile {
-	
+
 	private String info;
 	private String name = "GO";
-	private static Player player; //Only static cuz we dumb yall and we use it in main
+	private static Player player; // Only static cuz we dumb yall and we use it in main
+
+	private ImageIcon img = new ImageIcon("tilePics/Go.png");
 
 //	public Go(Player player) {
 //		this.player=player;
@@ -21,15 +26,15 @@ public class Go implements Tile {
 	public Go(String str) {
 		this.name = str;
 	}
-	
+
 	public void onLanding() {
 		payOut();
 	}
-	
+
 	public void payOut() {
 		player.increaseBalance(200);
 	}
-	
+
 	public String getName() {
 		return this.name;
 	}
@@ -43,8 +48,7 @@ public class Go implements Tile {
 	}
 
 	public String getTileInfo() {
-		info = name + "\n"
-				+ "Every time a player passes by, he or she \nis rewarded 200 gold coins";
+		info = name + "\n" + "Every time a player passes by, he or she \nis rewarded 200 gold coins";
 		return info;
 	}
 
@@ -58,5 +62,9 @@ public class Go implements Tile {
 	public Color getTitleColor() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public ImageIcon getPicture() {
+		return img;
 	}
 }

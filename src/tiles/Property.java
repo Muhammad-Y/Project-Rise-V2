@@ -2,6 +2,7 @@ package tiles;
 
 import java.awt.Color;
 
+import javax.swing.ImageIcon;
 
 import player.Player;
 
@@ -16,9 +17,9 @@ public class Property implements Tile {
 	private Boolean purchaseable;
 	private Color color;
 	private Player owner ;
+	private ImageIcon img;
 
-
-	public Property(String name, int price, int defaultRent, int rentPerLevel, Color color) {
+	public Property(String name, int price, int defaultRent, int rentPerLevel, Color color, ImageIcon img) {
 		setName(name);
 		setPrice(price);
 		setDefaultRent(defaultRent);
@@ -26,6 +27,7 @@ public class Property implements Tile {
 		setColor(color);
 		purchaseable=true;
 		owner = null;
+		this.img=img;
 	}
 
 	public String getTileInfo() {
@@ -139,6 +141,9 @@ public class Property implements Tile {
 	public void clearProperty() {
 		purchaseable = true; 
 		setNumberOfHouses(0);
+	}
+	public ImageIcon getPicture(){
+		return this.img;
 	}
 	
 	

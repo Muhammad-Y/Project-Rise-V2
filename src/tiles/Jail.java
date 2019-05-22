@@ -2,8 +2,10 @@ package tiles;
 
 import java.awt.Color;
 
-public class Jail implements Tile {
+import javax.swing.ImageIcon;
 
+public class Jail implements Tile {
+	private ImageIcon img = new ImageIcon("tilePics/jail.png");
 	public void onLanding() {
 				
 	}
@@ -43,5 +45,7 @@ public class Jail implements Tile {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	public ImageIcon getPicture(){
+		return img;
+	}
 }

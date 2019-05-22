@@ -3,6 +3,8 @@ package tiles;
 import java.awt.Color;
 import java.util.Random;
 
+import javax.swing.ImageIcon;
+
 /**
  * @author SebastianViro, AevanDino, MuhammadAbdulkhuder
  *
@@ -18,6 +20,8 @@ public class FortuneTeller implements Tile{
 
 	private String description = "";
 	private int amount; // Can be both positive and negative
+	
+	private ImageIcon img = new ImageIcon("tilePics/fortune.png");
 	
 	// finns rum till att skapa klass specifika kort   
 	public FortuneTeller() {
@@ -122,5 +126,9 @@ public class FortuneTeller implements Tile{
 	@Override
 	public Color getTitleColor() {
 		return null;
+	}
+	
+	public ImageIcon getPicture(){
+		return img;
 	}
 }

@@ -2,9 +2,9 @@ package tiles;
 
 import java.awt.Color;
 
+import javax.swing.ImageIcon;
 
 import player.Player;
-import player.PlayerRanks;
 
 public class Tax implements Tile {
 
@@ -14,7 +14,7 @@ public class Tax implements Tile {
 	private String info, tileName;
 	private static Player player;
 	private int taxToPay = 200;
-	
+	private ImageIcon img = new ImageIcon("tilePics/tax.png");
 	
 //	public Tax(Player player) {
 //		this.player = player;
@@ -64,5 +64,7 @@ public class Tax implements Tile {
 		return null;
 	}
 
-
+	public ImageIcon getPicture(){
+		return img;
+	}
 }

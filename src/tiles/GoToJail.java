@@ -2,12 +2,16 @@ package tiles;
 
 import java.awt.Color;
 
+import javax.swing.ImageIcon;
+
 public class GoToJail implements Tile {
+
+	private ImageIcon img = new ImageIcon("tilePics/gojail.png");
 
 	@Override
 	public void onLanding() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -46,4 +50,7 @@ public class GoToJail implements Tile {
 		return null;
 	}
 
+	public ImageIcon getPicture() {
+		return img;
+	}
 }

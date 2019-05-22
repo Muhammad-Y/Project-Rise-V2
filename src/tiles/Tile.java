@@ -1,6 +1,8 @@
 package tiles;
 
 import java.awt.Color;
+
+import javax.swing.ImageIcon;
 /**
  * All tiles will implement this interface. Methods listed are
  * commong methods for alla types of tiles.
@@ -37,5 +39,7 @@ public interface Tile {
 	public String getTitle();
 	
 	public Color getTitleColor();
+	
+	public ImageIcon getPicture();
 
 }

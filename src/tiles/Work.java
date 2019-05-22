@@ -2,6 +2,8 @@ package tiles;
 
 import java.awt.Color;
 
+import javax.swing.ImageIcon;
+
 import dice.Dice;
 import player.Player;
 
@@ -9,7 +11,7 @@ import player.Player;
  * @author AevanDino, Sebastian Viro
  */
 public class Work implements Tile {
-	
+	private ImageIcon img = new ImageIcon("tilePics/Work.png");
 	private Dice dice;
 	private static Player player;
 	private String info;
@@ -79,5 +81,9 @@ public class Work implements Tile {
 	public Color getTitleColor() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public ImageIcon getPicture(){
+		return img;
 	}
 }

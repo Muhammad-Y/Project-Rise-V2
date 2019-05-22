@@ -2,31 +2,33 @@ package tiles;
 
 import java.awt.Color;
 
-import javax.swing.JOptionPane;
+import javax.swing.ImageIcon;
 
 /**
- * This class picks and shows a chance card. All cards are always available
- * and each card is picked randomly.
- * @author AevanDino, SebastianViro   
+ * This class picks and shows a chance card. All cards are always available and
+ * each card is picked randomly.
+ * 
+ * @author AevanDino, SebastianViro
  */
 public class OldChanceCard implements Tile {
 
 	private Color color = Color.WHITE;
 	private static final String NAME = "Fortune Teller";
-	
-	private static final Boolean PURCHASEABLE = false;
-	private FortuneTeller[] chanceCard = {new FortuneTeller(Boolean.TRUE, "F�rsta Kortet", 50)
-								, new FortuneTeller(Boolean.FALSE, "Andra Kortet", -50)};
 
+	private static final Boolean PURCHASEABLE = false;
+	private FortuneTeller[] chanceCard = { new FortuneTeller(Boolean.TRUE, "F�rsta Kortet", 50),
+			new FortuneTeller(Boolean.FALSE, "Andra Kortet", -50) };
+	private ImageIcon img = new ImageIcon("tilePics/fortune.png");
 	/**
-	 * Generates a random number between 0 and chanceCard.length and
-	 * returns it to the caller.
+	 * Generates a random number between 0 and chanceCard.length and returns it to
+	 * the caller.
+	 * 
 	 * @return Random integer between 0 and chanceCards.length
 	 */
 	public int getRandomNumber() {
-		return (int) (Math.random()*chanceCard.length);
+		return (int) (Math.random() * chanceCard.length);
 	}
-	
+
 	/**
 	 * Displays the chosen chance card in an JOptionPane
 	 */
@@ -51,9 +53,8 @@ public class OldChanceCard implements Tile {
 	}
 
 	public String getTileInfo() {
-		return "There are two types of cards, blessings and curses." + 
-				"\nBlessing affect the player in a positive way." + 
-				"\nCurses affect the player in a negative way.";
+		return "There are two types of cards, blessings and curses." + "\nBlessing affect the player in a positive way."
+				+ "\nCurses affect the player in a negative way.";
 	}
 
 	@Override
@@ -66,5 +67,9 @@ public class OldChanceCard implements Tile {
 	public Color getTitleColor() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public ImageIcon getPicture() {
+		return img;
 	}
 }

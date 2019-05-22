@@ -2,12 +2,14 @@ package tiles;
 
 import java.awt.Color;
 
+import javax.swing.ImageIcon;
+
 /**
  * Player does not have to pay anything and doesn't get paid for it.
  * @author AevanDino, SebastianViro
  */
 public class SundayChurch implements Tile {
-
+	private ImageIcon img = new ImageIcon("tilePics/church.png");
 	String info;
 
 	public void onLanding() {
@@ -47,6 +49,10 @@ public class SundayChurch implements Tile {
 	public Color getTitleColor() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public ImageIcon getPicture(){
+		return img;
 	}
 
 }

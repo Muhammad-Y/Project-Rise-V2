@@ -2,6 +2,8 @@ package tiles;
 
 import java.awt.Color;
 
+import javax.swing.ImageIcon;
+
 import player.Player;
 
 public class Tavern implements Tile{
@@ -13,7 +15,7 @@ public class Tavern implements Tile{
 	private Color color; 
 	private int price;
 	private String name;
-	
+	private ImageIcon img = new ImageIcon("tilePics/tavern.png");
 
 	public Tavern( String namn, int price) {
 		this.name = namn;
@@ -87,6 +89,10 @@ public class Tavern implements Tile{
 	public Color getTitleColor() {
 		// TODO Auto-generated method stub
 		return color.red;
+	}
+	
+	public ImageIcon getPicture(){
+		return img;
 	}
 
 }
