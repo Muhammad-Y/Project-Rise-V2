@@ -2,12 +2,12 @@ package eastSidePanels;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Insets;
 
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+import javax.swing.UIManager;
 
-import eastSidePanels.EastSidePanel;
-import eastSidePanels.PlayerInfoPanel;
 import player.PlayerList;
 
 /**
@@ -45,6 +45,10 @@ public class PropertyWindow extends JPanel {
 		setPreferredSize(new Dimension(330, 600));
 		setOpaque(false);
 		setLayout(null);
+		tab.setBorder(null);
+		tab.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
+		
+		
 		tab.setBounds(0, 0, 330, 600);
 
 		add(tab);

@@ -93,7 +93,7 @@ public class PlayerInfoPanel extends JPanel {
 		lblRank.setHorizontalAlignment(SwingConstants.CENTER);
 		p5.add(lblRank);
 		add(p5);
-		propertyWindow.setBounds(10, 253, 330, 461);
+		propertyWindow.setBounds(10, 252, 335, 582);
 
 		propertyWindow.setPlayerAt(playa);
 		propertyWindow.addPlayerList(playerList);

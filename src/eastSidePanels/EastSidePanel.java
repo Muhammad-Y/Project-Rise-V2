@@ -39,7 +39,7 @@ public class EastSidePanel extends JPanel {
 		// setLayout(new BorderLayout());
 		setOpaque(false);
 		setLayout(null);
-		tab.setBounds(0, 0, 345, 860);
+		tab.setBounds(0, 0, 355, 860);
 		add(tab);
 
 	}

@@ -30,7 +30,7 @@ public class PlayerProperties extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JLabel lblName = new JLabel("Name");
-	private JLabel lblColor = new JLabel("");
+	private JLabel lblPicture = new JLabel("");
 
 	private JButton btnUpgrade = new JButton("Upgrade");
 	private JButton btnDowngrade = new JButton("Downgrade");
@@ -39,20 +39,19 @@ public class PlayerProperties extends JPanel {
 	private Font font = new Font("ALGERIAN", Font.BOLD, 16);
 
 	public PlayerProperties(PlayerList playerList, int playerAtI, int propertyAtI) {
-//		lblColor.setBackground(playerList.getPlayerFromIndex(playerAtI).getProperty(propertyAtI).getColor());
+		setBorder(null);
 
-		// to make the tile pictures fit
 		setOpaque(false);
 		setBackground(Color.DARK_GRAY);
-		setPreferredSize(new Dimension(330, 461));
+		setPreferredSize(new Dimension(330, 607));
 		setLayout(null);
 
 		btnDowngrade.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
-		btnDowngrade.setBounds(245, 143, 85, 137);
+		btnDowngrade.setBounds(163, 478, 167, 46);
 		add(btnDowngrade);
 
 		btnUpgrade.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
-		btnUpgrade.setBounds(245, 0, 85, 144);
+		btnUpgrade.setBounds(0, 478, 167, 46);
 		add(btnUpgrade);
 		btnSell.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -60,37 +59,27 @@ public class PlayerProperties extends JPanel {
 		});
 
 		btnSell.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
-		btnSell.setBounds(245, 281, 85, 184);
+		btnSell.setBounds(0, 521, 330, 34);
 		btnSell.setForeground(Color.red);
 		add(btnSell);
 		btnSell.setFont(font);
 
-		btnSell.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Property tempProperty = playerList.getPlayerFromIndex(playerAtI).getPropertyAt(propertyAtI);
-
-				playerList.getPlayerFromIndex(playerAtI).removeProperty(tempProperty);
-
-			}
-		});
 		lblName.setForeground(Color.white);
 		lblName.setOpaque(false);
 		lblName.setText(playerList.getPlayerFromIndex(playerAtI).getProperty(propertyAtI).getName());
 
 		lblName.setHorizontalAlignment(SwingConstants.CENTER);
-		lblName.setOpaque(true);
-		lblName.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
-		lblName.setBounds(0, 0, 246, 74);
+		lblName.setBounds(41, 11, 246, 74);
 		add(lblName);
 
 		lblName.setFont(font);
 
-		lblColor.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
-		lblColor.setBounds(10, 73, 236, 377);
-		add(lblColor);
+		lblPicture.setBorder(null);
+		lblPicture.setBounds(0, 0, 330, 480);
+		add(lblPicture);
 
-		lblColor.setFont(font);
-		lblColor.setOpaque(true);
+		lblPicture.setFont(font);
+		lblPicture.setOpaque(true);
 		btnDowngrade.setFont(font);
 		btnUpgrade.setFont(font);
 
@@ -102,10 +91,21 @@ public class PlayerProperties extends JPanel {
 			e.printStackTrace();
 		}
 
-		Image dimg = img.getScaledInstance(lblColor.getWidth(), lblColor.getHeight(), Image.SCALE_SMOOTH);
+		Image dimg = img.getScaledInstance(lblPicture.getWidth(), lblPicture.getHeight(), Image.SCALE_SMOOTH);
 
-		lblColor.setIcon(new ImageIcon(dimg));
+		lblPicture.setIcon(new ImageIcon(dimg));
 
+		
+		
+		btnSell.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Property tempProperty = playerList.getPlayerFromIndex(playerAtI).getPropertyAt(propertyAtI);
+
+				playerList.getPlayerFromIndex(playerAtI).removeProperty(tempProperty);
+
+			}
+		});
+		
 		btnUpgrade.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
