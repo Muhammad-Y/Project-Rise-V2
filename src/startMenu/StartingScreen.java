@@ -15,6 +15,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -31,7 +32,7 @@ public class StartingScreen extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	// References
-//	private ShowPlayersTurn playersTurn = new ShowPlayersTurn();
+	//	private ShowPlayersTurn playersTurn = new ShowPlayersTurn();
 	private BackgroundMusic bgm = new BackgroundMusic();
 	private PlayerList playerList = new PlayerList();
 	private GamePanels mainWindow = new GamePanels();
@@ -78,7 +79,7 @@ public class StartingScreen extends JFrame {
 	private JTextField tfPlayer3 = new JTextField("Insert Name3...");
 	private JTextField tfPlayer4 = new JTextField("Insert Name4...");
 	private JTextField[] playerTf = new JTextField[] { tfPlayer1, tfPlayer2, tfPlayer3, tfPlayer4 };
- 
+
 	// JComboBox
 	private String[] colors = new String[] { "RED", "GREEN", "ORANGE", "YELLOW", "CYAN", "MAGENTA" };
 	private JComboBox<String> playerColors1 = new JComboBox<String>(colors);
@@ -101,7 +102,7 @@ public class StartingScreen extends JFrame {
 	public static void main(String[] args) {
 		StartingScreen su = new StartingScreen();
 		su.initializeGUI();
-		
+
 	}
 
 	/**
@@ -217,6 +218,7 @@ public class StartingScreen extends JFrame {
 			playerTf[i].addMouseListener(new MouseAction());
 
 			playerColors[i].setBounds(530, 360 + i * 40, 100, 30);
+			playerColors[i].setSelectedIndex(i);
 			playerColors[i].setVisible(false);
 
 			pnlPlayerInfo.add(playerLabels[i]);
@@ -256,29 +258,57 @@ public class StartingScreen extends JFrame {
 					amountOfPlayers = 4;
 				}
 			}
- 
-			if (e.getSource() == btnStartGame) {
-//				for (int i = 0; i == amountOfPlayers; i++) {
-//					System.out.println(
-//							"Player One: " + playerTf[i].getText() + " : " + playerColors[i].getSelectedItem());
-//				}
-				createNewUsers();
 
-				mainWindow.addPlayer(playerList);
-				mainWindow.startboard();
-				dispose();
+			if (e.getSource() == btnStartGame) {
+				switch(amountOfPlayers) {
+
+				case 2:
+					if(playerColors[0].getSelectedItem().equals(playerColors[1].getSelectedItem())) {
+						JOptionPane.showMessageDialog(null, "Two players are not allowed to have the same color");
+					} else {
+						startUpGame();
+					}
+					break;
+
+				case 3:
+					if(playerColors[0].getSelectedItem().equals(playerColors[1].getSelectedItem()) 
+							|| playerColors[2].getSelectedItem().equals(playerColors[0].getSelectedItem())) {
+						JOptionPane.showMessageDialog(null, "Two or more players are not allowed to have the same color");
+					} else {
+						startUpGame();
+					}
+					break;
+
+				case 4:
+					if(playerColors[0].getSelectedItem().equals(playerColors[1].getSelectedItem()) 
+							|| playerColors[2].getSelectedItem().equals(playerColors[3].getSelectedItem())
+							|| playerColors[0].getSelectedItem().equals(playerColors[3].getSelectedItem())) {
+						JOptionPane.showMessageDialog(null, "Two or more players are not allowed to have the same color");
+					} else {
+						startUpGame();
+					}
+					break;
+				}
 			}
 		}
-		
+
+		public void startUpGame() {
+			createNewUsers();
+			mainWindow.addPlayer(playerList);
+			mainWindow.startboard();
+			dispose();
+		}
+
 		private void createNewUsers() {
+
 			for (int i = 0; i < amountOfPlayers; i++) {
+
 				if (playerTf[i].getText().length()>=10) {
 					playerTf[i].setText(playerTf[i].getText().substring(0, 10));
 				}
 				playerList.addNewPlayer(playerTf[i].getText(), (String) playerColors[i].getSelectedItem());
-				// PLayersTurn
-//				playersTurn.addNewPlayer(playerTf[i].getText(), (String) playerColors[i].getSelectedItem());
 			}
+
 		}
 
 		public void btnPressed(int amountOfPlayers, boolean bool) {
@@ -293,7 +323,7 @@ public class StartingScreen extends JFrame {
 
 		}
 	}
-	
+
 	// MouseClickedListener for the name inserting so the text disappear when the player clicks.  
 	private class MouseAction implements MouseListener{
 		int counter1 = 0, counter2 = 0, counter3 =0, counter4=0;
@@ -301,25 +331,25 @@ public class StartingScreen extends JFrame {
 			if(e.getSource() == tfPlayer1) {
 				if(counter1<1) {
 					counter1++;
-				tfPlayer1.setText(null);
+					tfPlayer1.setText(null);
 				}
 			}
 			if(e.getSource() == tfPlayer2) {
 				if(counter2<1) {
 					counter2++;
-				tfPlayer2.setText(null);
+					tfPlayer2.setText(null);
 				}
 			}
 			if(e.getSource() == tfPlayer3) {
 				if(counter3<1) {
 					counter3++;
-				tfPlayer3.setText(null);
+					tfPlayer3.setText(null);
 				}
 			}
 			if(e.getSource() == tfPlayer4) {
 				if(counter4<1) {
 					counter4++;
-				tfPlayer4.setText(null);
+					tfPlayer4.setText(null);
 				}
 			}
 		}
@@ -332,7 +362,7 @@ public class StartingScreen extends JFrame {
 		}
 		public void mouseReleased(MouseEvent e) {
 		}
-		
+
 	}
 
 }
