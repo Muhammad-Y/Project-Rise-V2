@@ -81,11 +81,15 @@ public class StartingScreen extends JFrame {
 	private JTextField[] playerTf = new JTextField[] { tfPlayer1, tfPlayer2, tfPlayer3, tfPlayer4 };
 
 	// JComboBox
-	private String[] colors = new String[] { "RED", "GREEN", "ORANGE", "YELLOW", "CYAN", "MAGENTA" };
+	private String[] colors = new String[]  { "RED", "GREEN", "ORANGE", "YELLOW", "CYAN", "MAGENTA" };
+	private String[] colors1 = new String[] { "GREEN", "ORANGE", "YELLOW", "CYAN", "MAGENTA", "RED" };
+	private String[] colors2 = new String[] { "ORANGE", "YELLOW", "CYAN", "MAGENTA", "RED", "GREEN" };
+	private String[] colors3 = new String[] { "YELLOW", "CYAN", "MAGENTA", "RED", "GREEN", "ORANGE" };
+
 	private JComboBox<String> playerColors1 = new JComboBox<String>(colors);
-	private JComboBox<String> playerColors2 = new JComboBox<String>(colors);
-	private JComboBox<String> playerColors3 = new JComboBox<String>(colors);
-	private JComboBox<String> playerColors4 = new JComboBox<String>(colors);
+	private JComboBox<String> playerColors2 = new JComboBox<String>(colors1);
+	private JComboBox<String> playerColors3 = new JComboBox<String>(colors2);
+	private JComboBox<String> playerColors4 = new JComboBox<String>(colors3);
 	private JComboBox[] playerColors = new JComboBox[] { playerColors1, playerColors2, playerColors3, playerColors4 };
 
 	// Mute button
@@ -218,7 +222,6 @@ public class StartingScreen extends JFrame {
 			playerTf[i].addMouseListener(new MouseAction());
 
 			playerColors[i].setBounds(530, 360 + i * 40, 100, 30);
-			playerColors[i].setSelectedIndex(i);
 			playerColors[i].setVisible(false);
 
 			pnlPlayerInfo.add(playerLabels[i]);

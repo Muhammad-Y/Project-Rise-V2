@@ -47,11 +47,11 @@ public class PlayerProperties extends JPanel {
 		setLayout(null);
 
 		btnDowngrade.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
-		btnDowngrade.setBounds(163, 478, 167, 46);
+		btnDowngrade.setBounds(163, 481, 167, 53);
 		add(btnDowngrade);
 
 		btnUpgrade.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
-		btnUpgrade.setBounds(0, 478, 167, 46);
+		btnUpgrade.setBounds(0, 481, 167, 53);
 		add(btnUpgrade);
 		btnSell.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -59,7 +59,7 @@ public class PlayerProperties extends JPanel {
 		});
 
 		btnSell.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
-		btnSell.setBounds(0, 521, 330, 34);
+		btnSell.setBounds(0, 532, 330, 46);
 		btnSell.setForeground(Color.red);
 		add(btnSell);
 		btnSell.setFont(font);
@@ -72,7 +72,7 @@ public class PlayerProperties extends JPanel {
 		lblName.setBounds(41, 11, 246, 74);
 		add(lblName);
 
-		lblName.setFont(font);
+		lblName.setFont(new Font("Algerian", Font.BOLD, 22));
 
 		lblPicture.setBorder(null);
 		lblPicture.setBounds(0, 0, 330, 480);

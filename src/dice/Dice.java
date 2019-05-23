@@ -216,7 +216,6 @@ public class Dice extends JPanel implements ActionListener {
 
 			testPlayers.switchToNextPlayer();
 //			TIPS: Fönster som visas och stängs efter x antal sekunder utan OK knappen
-			JOptionPane.showMessageDialog(null, testPlayers.getActivePlayer().getName() + "'s turn");
 			showPlayer.uppdateGUI(testPlayers.getActivePlayer().getName(),
 					testPlayers.getActivePlayer().getPlayerColor());
 			if (testPlayers.getActivePlayer().isPlayerInJail() == true) {

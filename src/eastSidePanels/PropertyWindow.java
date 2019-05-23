@@ -52,7 +52,9 @@ public class PropertyWindow extends JPanel {
 		tab.setBounds(0, 0, 330, 600);
 
 		add(tab);
-
+		
+		UIManager.getDefaults().put("TabbedPane.lightHighlight", Color.BLACK);
+		UIManager.getDefaults().put("TabbedPane.selectHighlight", Color.BLACK);
 	}
 
 	public void addtabs() {
