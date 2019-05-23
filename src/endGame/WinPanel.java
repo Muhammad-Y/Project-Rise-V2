@@ -26,6 +26,7 @@ public class WinPanel extends JFrame {
 	public void createFrame() {
 		setSize(imgBackground.getIconWidth(), imgBackground.getIconHeight());
 		setLayout(null);
+		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 	}
