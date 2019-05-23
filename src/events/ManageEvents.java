@@ -58,7 +58,10 @@ public class ManageEvents {
 
 		if (player.getPlayerRank() == PlayerRanks.RULER) {
 			this.winGui = new WinGui();
-
+		}
+		
+		if (playerList.getLength()==1) {
+			this.winGui = new WinGui();
 		}
 
 		if (tile instanceof Property) {
