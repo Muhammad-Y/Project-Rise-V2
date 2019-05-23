@@ -14,26 +14,27 @@ import javax.swing.SwingConstants;
 
 import events.ManageEvents;
 
+/**
+ * 
+ * @author AevanDino, Sebastian Viro, Muhammad Abdulkhuder
+ *
+ */
 public class MessageGUI extends JPanel{
 
-    private JPanel centerPanel = new JPanel();
+	private static final long serialVersionUID = 1L;
+	private JPanel centerPanel = new JPanel();
     private JPanel outerPanel = new JPanel();
     private JLabel type = new JLabel();
     private JTextPane dis = new JTextPane();
-
-    private Color color1 = new Color(102,178,255);
+    private JFrame frame;
+    
     private Font fontType = new Font("ALGERIAN", Font.BOLD, 30);
-    private Font fontDis = new Font("ALGERIAN", Font.ITALIC, 20);
+    private Font fontDis = new Font("ALGERIAN", Font.BOLD, 20);
 
-    private ManageEvents me;
+    private Thread thread;
     
     public MessageGUI() {
-//    	startGUI();
 	}
-    
-    public MessageGUI(ManageEvents me) {
-    	this.me = me;
-    }
     
     public void startGUI() {
     	setLayout(new BorderLayout());
@@ -50,14 +51,13 @@ public class MessageGUI extends JPanel{
 
         type.setPreferredSize(new Dimension(200,70));
         type.setFont(fontType);
+        type.setForeground(Color.WHITE);
         type.setHorizontalAlignment(SwingConstants.CENTER);
         dis.setFont(fontDis);
+        dis.setForeground(Color.WHITE);
         dis.setEditable(false);
-//        dis.setBackground(color1);
 
-    //    dis.setHorizontalAlignment(SwingConstants.CENTER);
 
-//        centerPanel.setBackground(color1);
         centerPanel.add(type,BorderLayout.NORTH);
         centerPanel.add(dis,BorderLayout.CENTER);
 
@@ -65,6 +65,10 @@ public class MessageGUI extends JPanel{
         outerPanel.add(centerPanel, BorderLayout.CENTER); 
         getFrame();
         
+       thread  = new Thread(new Sleeper());
+       thread.start();
+        
+
     }
     
     public void newFortune(Boolean b, int amount) {
@@ -72,8 +76,8 @@ public class MessageGUI extends JPanel{
     		type.setText("Blessing");
     		 dis.setText("\n                        Fortune smiles upon you. \n"
     	                + "                            You recived " + amount + " GC");
-    		 dis.setBackground(new Color(102,178,255));
-    		 centerPanel.setBackground(new Color(102,178,255));
+    		 dis.setBackground(new Color(26, 122, 137));
+    		 centerPanel.setBackground(new Color(26, 122, 137));
     	} else {
     		type.setText("Curse");
     		dis.setText("\n                        You have been cursed! \n"
@@ -81,13 +85,11 @@ public class MessageGUI extends JPanel{
     		dis.setBackground(new Color(209, 13, 10));
     		centerPanel.setBackground(new Color(209, 13, 10));
     	}
-//    	new MessageGUI();
     	startGUI();
     }
     
     public void getFrame() {
-//		MessageGUI mGUI = new MessageGUI();
-		JFrame frame = new JFrame();
+    	frame = new JFrame();
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.add(this);
@@ -95,4 +97,17 @@ public class MessageGUI extends JPanel{
 		frame.setVisible(true);
 		frame.setLocationRelativeTo(null);
 	}
+    
+    private class Sleeper extends Thread {
+    	
+    	public void run() {
+    		try { 
+    			thread.sleep(3500);
+    		} catch (Exception e) {
+    			e.printStackTrace();
+    		} finally {
+				frame.dispose();
+			}
+    	}
+    }
 }
