@@ -21,7 +21,8 @@ public class WestSidePanel extends JPanel {
 	private JTextArea txtMessage = new JTextArea();
 	private JScrollPane scroller = new JScrollPane(txtMessage);
 	private Border border = BorderFactory.createLineBorder(Color.DARK_GRAY);
-	private String def = "\n\nMove your mouse on a tile \nwhich you want to see \ninformation about!";
+	private String def = "\n\nMove your mouse on a tile \n   which you want to see \n"
+			+ "      information about!";
 	private String title = "Information";
 	private Color titleColor = Color.DARK_GRAY;
 
@@ -72,17 +73,17 @@ public class WestSidePanel extends JPanel {
 		scroller.setBackground(Color.white);
 		scroller.setForeground(Color.black);
 		scroller.setForeground(new Color(71, 60, 50, 225));
-		scroller.setPreferredSize(new Dimension(320, 330));
+		scroller.setPreferredSize(new Dimension(320, 405));
 		scroller.setAutoscrolls(true);
 		
 		lblHistoryTitle = new JLabel("Game history");
 		lblHistoryTitle.setPreferredSize(new Dimension(320, 50));
 		lblHistoryTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		lblHistoryTitle.setBorder(BorderFactory.createLineBorder(Color.white, 2, false));
+		lblHistoryTitle.setBorder(BorderFactory.createLineBorder(Color.black));
 		lblHistoryTitle.setForeground(Color.white);
 		lblHistoryTitle.setFont(font);
 
-		pnlHistory.setPreferredSize(new Dimension(340, 380));
+		pnlHistory.setPreferredSize(new Dimension(340, 475));
 		pnlHistory.setBackground(new Color(0, 0, 0, 20));
 		pnlHistory.setBorder(border);
 		pnlHistory.add(lblHistoryTitle);

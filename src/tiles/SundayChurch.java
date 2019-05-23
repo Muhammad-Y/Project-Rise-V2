@@ -5,7 +5,7 @@ import java.awt.Color;
 import javax.swing.ImageIcon;
 
 /**
- * Player does not have to pay anything and doesn't get paid for it.
+ * Player does not have to pay anything and doesn't get paid for it. // But the player gets all the collected church taxes.
  * @author AevanDino, SebastianViro
  */
 public class SundayChurch implements Tile {

@@ -70,13 +70,13 @@ public class MessageGUI extends JPanel{
     	if(b) {
     		type.setText("Blessing");
     		 dis.setText("\n                        Fortune smiles upon you. \n"
-    	                + "                            You recived " + amount + " gold");
+    	                + "                            You recived " + amount + " GC");
     		 dis.setBackground(new Color(102,178,255));
     		 centerPanel.setBackground(new Color(102,178,255));
     	} else {
     		type.setText("Curse");
     		dis.setText("\n                        You have been cursed! \n"
-	                + "                            You pay " + amount + " gold");
+	                + "                            You pay " + amount + " GC");
     		dis.setBackground(new Color(209, 13, 10));
     		centerPanel.setBackground(new Color(209, 13, 10));
     	}

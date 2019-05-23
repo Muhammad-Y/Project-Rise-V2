@@ -2,6 +2,8 @@ package tiles;
 
 import java.awt.Color;
 
+import events.ManageEvents;
+
 /**
  * Information about each tiles.
  * @author Rohan
@@ -22,27 +24,27 @@ public class TileInfo {
 	 */
 	public String getInfo(int tile) {
 		
-		info = new String[]{"\n\n    Cash in 200 GC \n"
+		info = new String[]{"\n\n            Cash in 200 GC \n"
 				+ "            when you pass ",
-				"2", "\n\n       Doro Mönster Cordo", "4", 
-				"\n\n           You shall pay\n           200 GC\n"
-				+"          to the church\n" + "         if you land here", 
+				"2", "\n\n          Fortune Teller\n            will tell you \n           your fortune", "4", 
+				"\n\n           You shall pay\n                  200 GC\n"
+				+"          to the church\n", 
 				"\n\n               get paid\n     for your hard work",	"7", 
-				"\n\n     Doro Mönster Cordo", "9", "10", 
-				"\n\n         Visiting the prison", "12", "13", "14", "15", 
+				"\n\n          Fortune Teller\n            will tell you \n           your fortune", "9", "10", 
+				"\n\n       Visiting the prison", "12", "13", "14", "15", 
 				"\n\n               get paid\n     for your hard work", "17", 
-				"\n\n     Doro Mönster Cordo", "19", "20", "\n\n           Rest In Peace\n\n"
-						+ "      Get all the taxes\n        which are paid\n     as the church tax", "22",				
-				"\n\n     Doro Mönster Cordo", "24", "25", 
+				"\n\n          Fortune Teller\n            will tell you \n           your fortune", "19", "20",
+				"\n\n    All of Gods worshippers\n        donations are here \n\t;)" , "22",				
+				"\n\n          Fortune Teller\n            will tell you \n           your fortune", "24", "25", 
 				"\n\n               get paid\n     for your hard work", 
 				"27", "28", "29", "30",	 
 				"\n\n   You shall be in the jail \n              for 3 rounds\n "
 				+ "     You can pay the bail \n              and get free", "32", 
-				"33", "\n\n       Doro Mönster Cordo", "35", 
+				"33", "\n\n          Fortune Teller\n            will tell you \n           your fortune", "35", 
 				"\n\n               get paid\n     for your hard work", 
-				"\n\n       Doro Mönster Cordo", "38", 
-				"\n\n           You shall pay\n           200 GC\n "
-				+ "          to the church\n         if you land here", "40"};
+				"\n\n          Fortune Teller\n            will tell you \n           your fortune", "38", 
+				"\n\n           You shall pay\n                  200 GC\n "
+				+ "          to the church\n", "40"};
 		return info[tile];
 	}
 	
