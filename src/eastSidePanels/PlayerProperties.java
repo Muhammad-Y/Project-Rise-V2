@@ -108,13 +108,20 @@ public class PlayerProperties extends JPanel {
 		
 		btnUpgrade.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				Property tempProperty = playerList.getPlayerFromIndex(playerAtI).getPropertyAt(propertyAtI);
 
+				tempProperty.increaseLevel();
+				
+				
 			}
 		});
 
 		btnDowngrade.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Property tempProperty = playerList.getPlayerFromIndex(playerAtI).getPropertyAt(propertyAtI);
 
+				tempProperty.decreaseLevel();
 			}
 		});
 

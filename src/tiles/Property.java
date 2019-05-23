@@ -16,26 +16,30 @@ public class Property implements Tile {
 	private int price, rentPerLevel, defaultRent, levels;
 	private Boolean purchaseable;
 	private Color color;
-	private Player owner ;
+	private Player player ;
 	private ImageIcon img;
+	private int levelPrice;
 
-	public Property(String name, int price, int defaultRent, int rentPerLevel, Color color, ImageIcon img) {
+	
+
+	public Property(String name, int price, int defaultRent, int rentPerLevel, Color color,int levelPrice , ImageIcon img) {
 		setName(name);
 		setPrice(price);
 		setDefaultRent(defaultRent);
 		setRentPerHouse(rentPerLevel);
 		setColor(color);
 		purchaseable=true;
-		owner = null;
+		player = null;
 		this.img=img;
+		this.levelPrice= levelPrice;
 	}
 
 	public String getTileInfo() {
 		String ownerName = "";
-		if(owner == null) {
+		if(player == null) {
 			ownerName = "No Owner";
 		} else {
-			ownerName = owner.getName();
+			ownerName = player.getName();
 		}
 		info =    "\nOwner: \t         " + ownerName + "\n"
 				+ "Price:\t\t" + price + "\n"
@@ -58,9 +62,7 @@ public class Property implements Tile {
 ////		System.out.println(p.getTileInfo());
 //	}
 
-	public void onLanding() {
-
-	}
+	
 
 	public void setName(String tileName) {
 		this.name = tileName;
@@ -96,11 +98,11 @@ public class Property implements Tile {
 
 	
 	public void setOwner(Player newOwner) {
-		this.owner = newOwner;
+		this.player = newOwner;
 	}
 	
 	public Player getOwner() {
-		return owner;
+		return player;
 	}
 	
 	
@@ -124,11 +126,42 @@ public class Property implements Tile {
 		return this.defaultRent + (this.rentPerLevel * this.levels);
 	}
 	
-	public void setNumberOfHouses(int num) {
+	public void setLevel(int num) {
 		this.levels=num;
 	}
 	
-	public int getNumberOfHouses() {
+	public int getLevelPrice() {
+		return levelPrice;
+	}
+
+	public void setLevelPrice(int levelPrice) {
+		this.levelPrice = levelPrice;
+	}
+	
+	public void increaseLevel() {
+		
+		
+		if (player.getPlayerRank().nbrOfLevels() > levels && player.getBalance()>= getLevelPrice()) {
+			this.levels+=1;
+
+			player.decreaseBalace(getLevelPrice());
+		}
+		
+	}
+	
+	public void decreaseLevel() {
+		if (levels>0) {
+			
+			this.levels-=1;
+
+		}
+		
+		player.increaseBalance(getLevelPrice());
+
+	}
+	
+	
+	public int getLevel() {
 		return this.levels;
 	}
 	
@@ -140,10 +173,16 @@ public class Property implements Tile {
 	//Ej klar!!!
 	public void clearProperty() {
 		purchaseable = true; 
-		setNumberOfHouses(0);
+		setLevel(0);
 	}
 	public ImageIcon getPicture(){
 		return this.img;
+	}
+
+	
+	public void onLanding() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

@@ -1,11 +1,13 @@
 package player;
 
+
 /**
  * Enum class used to deal with the players rank. That is, different things happen
  * when the same method is called for different ranks
  * 
  * @author AevanDino
  */
+
 public enum PlayerRanks {
 	
 	/**
@@ -87,9 +89,7 @@ public enum PlayerRanks {
 		}
 	},
 	
-	/**
-	 * Player rank ruler.
-	 */
+	
 	RULER {
 		/**
 		 * How salary is calculated for rulers

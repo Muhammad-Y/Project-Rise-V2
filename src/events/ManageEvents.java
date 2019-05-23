@@ -168,7 +168,7 @@ public class ManageEvents {
 			}
 		} else if (tempProperty.getPurchaseable() == false) {
 
-			if (tempProperty.getNumberOfHouses() == 0) {
+			if (tempProperty.getLevel() == 0) {
 				tempInt = tempProperty.getDefaultRent();
 
 				control(player, tempInt);
@@ -196,30 +196,15 @@ public class ManageEvents {
 	}
 
 	public void workEvent(Tile tile, Player player) {
-		int pay = 0;
-		int totalEarnings;
-		if (player.getPlayerRank() == PlayerRanks.PEASANT) {
-
-			pay = 20;
-
-		}
-		if (player.getPlayerRank() == PlayerRanks.KNIGHT) {
-
-			pay = 25;
-
-		}
-		if (player.getPlayerRank() == PlayerRanks.LORD) {
-
-			pay = 30;
-
-		}
-		totalEarnings = (getRoll() * pay);
-		westPanel.append(player.getName() + " got " + totalEarnings + " GC\n");
+		
+		Work tempWorkObject = (Work) tile;
+		tempWorkObject.setPlayer(player);
+		tempWorkObject.payPlayer(getRoll());
+		
+		westPanel.append(player.getName() + " Got " + tempWorkObject.getPay() + " GC\n");
 		JOptionPane.showMessageDialog(null,
-				"The roll is " + roll + "\n" + "You got: " + totalEarnings + " GC for your hard work");
-		player.increaseBalance(totalEarnings);
-		player.increaseNetWorth(totalEarnings);
-		// Rad nedan �r test
+				"The roll is " + roll + "\n" + "You got: " + tempWorkObject.getPay() + " GC for your hard work");
+		
 	}
 
 	public void taxEvent(Tile tile, Player player) {
@@ -362,7 +347,7 @@ public class ManageEvents {
 	}
 
 	public int getRoll() {
-		return roll;
+		return dice.getRoll();
 	}
 
 	public void setRoll(Dice dice) {
