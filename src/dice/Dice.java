@@ -60,7 +60,7 @@ public class Dice extends JPanel implements ActionListener {
 	public void addPlayerList(PlayerList list) {
 
 		this.testPlayers = list;
-		manageEvents = new ManageEvents(board, list, wsp, this);
+		manageEvents = new ManageEvents(board, list, wsp, this,tabPanel);
 
 	}
 
@@ -307,6 +307,16 @@ public class Dice extends JPanel implements ActionListener {
 		finishTurn.setEnabled(false);
 	}
 
+	public void endTurnIfPlayerEliminated() {
+		btnThrow.setEnabled(true);
+		finishTurn.setEnabled(false);
+	}
+	
+	public void setPlayerList(PlayerList pl) {
+		this.testPlayers = pl;
+	}
+
+	
 //	public static void main(String[] args) {
 //		Dice ui = new Dice();
 //		JFrame frame = new JFrame();

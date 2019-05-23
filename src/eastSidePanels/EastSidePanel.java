@@ -22,7 +22,6 @@ public class EastSidePanel extends JPanel {
 	
 	private int currentPlayer = 0;
 
-	private int[] array;
 
 	public void addPlayerList(PlayerList playerList) {
 		this.playerList = playerList;
@@ -46,11 +45,10 @@ public class EastSidePanel extends JPanel {
 
 	public void addtabs() {
 
-		array = new int[playerList.getLength()];
 
 		tab.removeAll();
 
-		for (int i = 0; i < array.length; i++) {
+		for (int i = 0; i < playerList.getLength(); i++) {
 			new EastSidePanel();
 			p = new PlayerInfoPanel(playerList, i);
 			tab.addTab("Player " + (i + 1), p);

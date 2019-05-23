@@ -6,6 +6,7 @@ import javax.swing.JOptionPane;
 
 import board.Board;
 import dice.Dice;
+import eastSidePanels.EastSidePanel;
 import messageGui.DeathGUI;
 import messageGui.MessageGUI;
 import messageGui.WinGui;
@@ -38,17 +39,18 @@ public class ManageEvents {
 	private WinGui winGui;
 	private DeathGUI deathGUI;
 	private MessageGUI msgGUI;
-	
+	private EastSidePanel eastPanel ;
 	private Random rand = new Random();
 	private int roll;
 	private int taxCounter = 0;
 	private WestSidePanel westPanel;
 
-	public ManageEvents(Board board, PlayerList playerList, WestSidePanel pnlWest, Dice dice) {
+	public ManageEvents(Board board, PlayerList playerList, WestSidePanel pnlWest, Dice dice, EastSidePanel eastPanel) {
 		this.dice = dice;
 		this.westPanel = pnlWest;
 		this.board = board;
 		this.playerList = playerList;
+		this.eastPanel= eastPanel;
 		deathGUI = new DeathGUI();
 		msgGUI = new MessageGUI();
 	}
@@ -99,7 +101,7 @@ public class ManageEvents {
 		if (tile instanceof FortuneTeller) {
 			fortuneTellerEvent(tile, player);
 		}
-
+		eastPanel.addPlayerList(playerList);
 	}
 
 	private void fortuneTellerEvent(Tile tile, Player player) {
@@ -140,7 +142,11 @@ public class ManageEvents {
 
 		if (player.getBalance() < amount) {
 			player.setIsAlive(false);
+			playerList.switchToNextPlayer();
 			playerList.eliminatePlayer(player);
+			playerList.updatePlayerList();
+			eastPanel.addPlayerList(playerList.getList());
+			dice.setPlayerList(playerList.getList());
 			board.removePlayer(player);
 			deathGUI.addGui();
 //			JOptionPane.showMessageDialog(null, "The plague has taken you\nYou have lost\nTry again in another life");
@@ -281,8 +287,10 @@ public class ManageEvents {
 			player.increaseJailCounter();
 			if (player.getBalance() > (player.getJailCounter()*50)) {
 				jailDialog(player);
+			} else {
+				JOptionPane.showMessageDialog(null, "You can not afford the bail");
 			}
-		} else {
+		} else if(player.getJailCounter() > 2){
 			player.setPlayerIsInJail(false);
 			player.setJailCounter(0);
 			dice.activateRollDice();
@@ -375,7 +383,6 @@ public class ManageEvents {
 			westPanel.append(player.getName() + " paid the bail and\ngot free from jail\n");
 			dice.activateRollDice();
 		} else {
-			JOptionPane.showMessageDialog(null, "You can not afford the bail");
 			westPanel.append(player.getName() + " did not pay tha bail\n and is still in jail\n");
 		}
 	}
