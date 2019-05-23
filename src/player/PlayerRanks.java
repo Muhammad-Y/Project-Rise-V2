@@ -30,7 +30,7 @@ public enum PlayerRanks {
 		 * Tax for peasants
 		 */
 		public int calculateTax() {
-			return 100; 
+			return 200; 
 		}
 	},
 	
@@ -50,14 +50,14 @@ public enum PlayerRanks {
 		 * Highest level a property can be
 		 */
 		public int nbrOfLevels() {
-			return 2;
+			return 3;
 		}
 
 		/**
 		 * Tax for Knights
 		 */
 		public int calculateTax() {
-			return 150;
+			return 200;
 		}
 	},
 	
@@ -76,7 +76,7 @@ public enum PlayerRanks {
 		 * Highest level a property can be
 		 */
 		public int nbrOfLevels() {
-			return 3;
+			return 5;
 		}
 		
 		/**
@@ -104,7 +104,7 @@ public enum PlayerRanks {
 		 * Highest level a property can be
 		 */
 		public int nbrOfLevels() {
-			return 4;
+			return 5;
 		}
 
 		/**
