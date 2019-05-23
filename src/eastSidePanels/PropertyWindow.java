@@ -16,12 +16,11 @@ import player.PlayerList;
 public class PropertyWindow extends JPanel {
 
 	private PlayerList playerList;
-	private JTabbedPane tab = new JTabbedPane();
+	private JTabbedPane tab;
 	private PlayerProperties p;
 
 	private int playerAt;
-	
-	
+
 	public int getPlayerAt() {
 		return playerAt;
 	}
@@ -45,14 +44,18 @@ public class PropertyWindow extends JPanel {
 		setPreferredSize(new Dimension(330, 600));
 		setOpaque(false);
 		setLayout(null);
+		UIManager.put("TabbedPane.contentOpaque", false);
+		UIManager.put("TabbedPane.selected", Color.cyan);
+
+		tab = new JTabbedPane();
+
 		tab.setBorder(null);
 		tab.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
-		
-		
+
 		tab.setBounds(0, 0, 330, 600);
 
 		add(tab);
-		
+
 		UIManager.getDefaults().put("TabbedPane.lightHighlight", Color.BLACK);
 		UIManager.getDefaults().put("TabbedPane.selectHighlight", Color.BLACK);
 	}
@@ -61,24 +64,20 @@ public class PropertyWindow extends JPanel {
 		array = new int[playerList.getLength()];
 
 		tab.removeAll();
-		
+
 		tab.setForeground(Color.white);
 
+		array2 = new int[playerList.getPlayerFromIndex(getPlayerAt()).getProperties().size()];
 
-			array2 = new int[playerList.getPlayerFromIndex(getPlayerAt()).getProperties().size()];
+		for (int j = 0; j < array2.length; j++) {
 
-			for (int j = 0; j < array2.length; j++) {
+			new PropertyWindow();
+			p = new PlayerProperties(playerList, getPlayerAt(), j);
+			tab.addTab("Property" + (j + 1), p);
+			tab.setBackgroundAt(j, playerList.getPlayerFromIndex(getPlayerAt()).getProperty(j).getColor());
 
-				new PropertyWindow();
-				p = new PlayerProperties(playerList, getPlayerAt(), j);
-				tab.addTab("Property" + (j + 1), p);
-				tab.setBackgroundAt(j, playerList.getPlayerFromIndex(getPlayerAt()).getProperty(j).getColor());
-
-			}
-		
+		}
 
 	}
-
-	
 
 }
