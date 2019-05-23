@@ -3,11 +3,10 @@ package combinedPanels;
 import java.awt.Color;
 
 import java.awt.Dimension;
+import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
-import com.sun.javafx.tk.Toolkit;
 
 import board.Board;
 import dice.Dice;
@@ -28,9 +27,9 @@ public class GamePanels extends JPanel {
 	private WestSidePanel westPanel = new WestSidePanel();
 	private Board board = new Board(westPanel);
 	
-//	private Dimension screenSize = Toolkit.getD
-//	private int width = 
-//	private int height =
+	private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	private int width = (int)screenSize.getWidth();
+	private int height = (int)screenSize.getHeight();
 
 
 	private PlayerList playerList ;
@@ -42,7 +41,7 @@ public class GamePanels extends JPanel {
 	public GamePanels() {
 
 		setBackground(Color.DARK_GRAY);
-		setPreferredSize(new Dimension(1440, 860));
+		setPreferredSize(new Dimension(width, height));
 		setLayout(null);
 		
 		
@@ -62,7 +61,9 @@ public class GamePanels extends JPanel {
 
 	public void startboard() {
 		frame = new JFrame("Tjena");
-		frame.setPreferredSize(new Dimension(1480, 900));
+		frame.setPreferredSize(new Dimension(width + 18, height + 10));
+		frame.setLocation(-9, 0);
+//		frame.setPreferredSize(new Dimension(1480, 900));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		frame.add(this);
