@@ -269,7 +269,7 @@ public class Dice extends JPanel implements ActionListener {
 				}
 
 				try {
-					Thread.sleep(60);
+					Thread.sleep(460);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}

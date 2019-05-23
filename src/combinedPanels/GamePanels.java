@@ -7,6 +7,8 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import com.sun.javafx.tk.Toolkit;
+
 import board.Board;
 import dice.Dice;
 import eastSidePanels.EastSidePanel;
@@ -25,6 +27,10 @@ public class GamePanels extends JPanel {
 	private Menu m = new Menu();
 	private WestSidePanel westPanel = new WestSidePanel();
 	private Board board = new Board(westPanel);
+	
+//	private Dimension screenSize = Toolkit.getD
+//	private int width = 
+//	private int height =
 
 
 	private PlayerList playerList ;

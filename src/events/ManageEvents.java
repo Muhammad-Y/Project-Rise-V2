@@ -290,7 +290,8 @@ public class ManageEvents {
 			} else {
 				JOptionPane.showMessageDialog(null, "You can not afford the bail");
 			}
-		} else if(player.getJailCounter() > 2){
+		} else if(player.getJailCounter() >= 2){
+			System.out.println("Testa ");
 			player.setPlayerIsInJail(false);
 			player.setJailCounter(0);
 			dice.activateRollDice();

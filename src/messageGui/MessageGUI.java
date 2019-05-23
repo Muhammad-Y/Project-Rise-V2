@@ -52,6 +52,7 @@ public class MessageGUI extends JPanel{
         type.setFont(fontType);
         type.setHorizontalAlignment(SwingConstants.CENTER);
         dis.setFont(fontDis);
+        dis.setEditable(false);
 //        dis.setBackground(color1);
 
     //    dis.setHorizontalAlignment(SwingConstants.CENTER);
