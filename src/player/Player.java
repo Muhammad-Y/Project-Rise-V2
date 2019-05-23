@@ -14,12 +14,12 @@ import tiles.Tile;
 /**
  * Player class deals with everything that has to do with a player.
  * 
- * @author AevanDino , seth oberg , muhammad hasan, sebastian viro
+ * @author AevanDino, Seth Öberg, Muhammad Hasan, Sebastian Viro
  */
 public class Player {
 
 	private String name;
-	private Boolean isAlive; // If we want to kill off players.
+	private Boolean isAlive; 
 
 	private ImageIcon playerIcon;
 	private int counter;
@@ -62,6 +62,7 @@ public class Player {
 
 		counter = 0;
 	}
+	
 	public Player(String inPlayerName, ImageIcon playerIcon, Color playerColor, int playerIndex) {
 		this.playerColor = playerColor;
 		setName(inPlayerName);
@@ -76,15 +77,13 @@ public class Player {
 		this.tavernsOwned = new ArrayList<>();
 		this.propertiesOwned = new ArrayList<>(); 
 
-		counter = 0;
-		
+		counter = 0;	
 	}
 
-	
 	/**
 	 * Keep track of how many turns a user has been in jail, if 3 the player gets out of jail
 	 * if less than 3 the "roll dice" button is to be inactivated and the end turn activated
-	 * @return
+	 * @return playerJailCounter
 	 */
 	public int getJailCounter() {
 		return playerJailCounter;
@@ -123,14 +122,14 @@ public class Player {
 	
 
 	/**
-	 * @return the playerName
+	 * @return name, the players name
 	 */
 	public String getName() {
 		return this.name;
 	}
 
 	/**
-	 * @param playerName the playerName to set
+	 * @param playerName, the player name to set
 	 */
 	public void setName(String playerName) {
 		this.name = playerName;
@@ -146,7 +145,7 @@ public class Player {
 	}
 
 	/**
-	 * @return the playerindex of a player
+	 * @return the playerIndex of a player
 	 */
 	public int getPlayerIndex() {
 		return playerIndex;
@@ -154,7 +153,7 @@ public class Player {
 
 	/**
 	 * Get the position a player has on the board from 0-39 
-	 * @return
+	 * @return counter
 	 */
 	public int getPosition() {
 		return counter;
@@ -162,7 +161,7 @@ public class Player {
 
 	
 	/**
-	 * Move player to a sepcific index on the board
+	 * Move player to a specific index on the board
 	 * @param newPosition
 	 */
 	public void setPositionInSpecificIndex(int newPosition) {
@@ -183,21 +182,15 @@ public class Player {
 			} else {
 				counter = 0;
 				playerPassedgo = true;
-
 			}
-
 		}
-
 	}
-
 	
 	/**
-	 * @return boolean to keep track if user has passed go
+	 * @return playerPassedgo, boolean to keep track if user has passed go
 	 */
 	public boolean passedGo() {
-
 		return playerPassedgo;
-		
 	}
 	
 	
@@ -209,7 +202,7 @@ public class Player {
 	}
 
 	/**
-	 * @return the playerBalance
+	 * @return balance, the player balance
 	 */
 	public int getBalance() {
 		return this.balance;
@@ -217,7 +210,7 @@ public class Player {
 
 	
 	/**
-	 * @return the image of a player
+	 * @return playerIcon, the image of a player
 	 */
 	public ImageIcon getImage() {
 		return playerIcon;
@@ -266,7 +259,6 @@ public class Player {
 			return "This player is alive and well";
 		} else
 			return "The plauge has taken another soul";
-
 	}
 
 	/**
@@ -368,24 +360,18 @@ public class Player {
 	 * @param pos
 	 * @return
 	 */
-	public Tile getProperty(int pos) {
-//		if (propertiesOwned.size() >= pos && pos > 0) {
-		
+	public Tile getProperty(int pos) {	
 			return this.propertiesOwned.get(pos);
-//		}
-//		return null;
 	}
 
 	public void checkPlayerRank() {
 
 		if (getNetWorth() >= 3000) {
 			setPlayerRank(PlayerRanks.KNIGHT);
-
 		}
 
 		if (getNetWorth() >= 6000) {
 			setPlayerRank(PlayerRanks.LORD);
-
 		}
 		if (getNetWorth() >= 9000) {
 			setPlayerRank(PlayerRanks.RULER);
@@ -406,6 +392,10 @@ public class Player {
 		return this.tavernsOwned;
 	}
 	
+	/**
+	 * Returns the players color
+	 * @return playerColor
+	 */
 	public Color getPlayerColor() {
 		return playerColor;
 	}

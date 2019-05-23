@@ -10,7 +10,7 @@ import eastSidePanels.EastSidePanel;
 
 /**
  * A class that holds all active players 
- * @author sethoberg
+ * @author Seth �berg
  *
  */
 
@@ -20,7 +20,7 @@ public class PlayerList {
 	private StringColorMap colorMap = new StringColorMap();
 	
 	private ImageIcon playerIcon = new ImageIcon(); 
-	private int currentPlayer = 0; //index fÃ¶r den aktiva spelaren?
+	private int currentPlayer = 0; 
 	private int playerListLength = 0;
 	
 	
@@ -35,13 +35,10 @@ public class PlayerList {
 	
 	/**
 	 * Constructor that sets the active player to 0 immediately at the start of a game
-	 * @param p
 	 */
 	public PlayerList() {
 		currentPlayer = 0; 
 	}
-	
-	
 	
 	/**
 	 * Add new player
@@ -52,8 +49,7 @@ public class PlayerList {
 		activePlayers.add(new Player(name, icon, playerListLength)); 
 		playerListLength++;
 	} 
-	
-	
+		
 	/**
 	 * Adds new player with the use of the ColorIconMap
 	 * @param name chosen name
@@ -64,7 +60,6 @@ public class PlayerList {
 		activePlayers.add(new Player(name, playerIcon, colorMap.getColorFromMap(icon), playerListLength)); 
 		playerListLength++;
 	}
-	
 	
 	/**
 	 * @return list with all players
@@ -81,23 +76,20 @@ public class PlayerList {
 		return activePlayers.get(index);
 	}
 	
-	
 	/**
-	 * @return the curent player
+	 * @return the current player
 	 */
 	public Player getActivePlayer() {
 		return activePlayers.get(currentPlayer); 
 	}
-	
-	
+		
 	/**
 	 * @return amount of players
 	 */
 	public int getLength() {
 		return activePlayers.size();
 	}
-	
-	
+		
 	/**
 	 * @param player to remove from list 
 	 */
@@ -105,9 +97,7 @@ public class PlayerList {
 		player.clearPlayer(); 
 		activePlayers.remove(player.getPlayerIndex());
 	}
-	
-	
-	
+		
 	/**
 	 * Update amount of players after a player has been removed
 	 */
@@ -115,10 +105,8 @@ public class PlayerList {
 		
 		for(int i = 0; i < activePlayers.size(); i++) {
 			activePlayers.get(i).setPlayerIndex(i);
-		}
-		
+		}	
 	}
-	
 	
 	/**
 	 * Used to switch to the current player to the next one
@@ -130,9 +118,7 @@ public class PlayerList {
 		}
 		else {
 			currentPlayer = 0; 
-		}
-		
+		}	
 	}
-	
 
 }
