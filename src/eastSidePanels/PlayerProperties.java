@@ -96,9 +96,9 @@ public class PlayerProperties extends JPanel {
 		lblPicture.setIcon(new ImageIcon(dimg));
 
 		
-		
+		 
 		btnSell.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public  void actionPerformed(ActionEvent e) {
 				Property tempProperty = playerList.getPlayerFromIndex(playerAtI).getPropertyAt(propertyAtI);
 
 				playerList.getPlayerFromIndex(playerAtI).removeProperty(tempProperty);

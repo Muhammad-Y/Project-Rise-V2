@@ -242,7 +242,7 @@ public class Player {
 	/**
 	 * @return the playerIsAlive
 	 */
-	public Boolean isAlive() {
+	public Boolean isAlive() { 
 		return isAlive;
 	}
 

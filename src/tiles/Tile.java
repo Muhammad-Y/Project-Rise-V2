@@ -23,7 +23,7 @@ public interface Tile {
 	/**
 	 * @return if tile can be bought.
 	 */
-	public Boolean getPurchaseable();
+	public Boolean getPurchaseable(); 
 
 
 	/**

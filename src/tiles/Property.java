@@ -133,7 +133,7 @@ public class Property implements Tile {
 	public int getLevelPrice() {
 		return levelPrice;
 	}
-
+ 
 	public void setLevelPrice(int levelPrice) {
 		this.levelPrice = levelPrice;
 	}

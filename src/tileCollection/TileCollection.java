@@ -70,7 +70,7 @@ public class TileCollection {
 
 	}
 	
-	
+	 
 	public Tile getTileAtIndex(int index) {
 		return tileArray[index];
 	}

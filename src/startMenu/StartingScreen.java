@@ -50,7 +50,7 @@ public class StartingScreen extends JFrame {
 
 	// Fonts
 	private Font fontRadioButtons = new Font("Gabriola", Font.PLAIN, 24);
-	private Font fontHeader = new Font("Gabriola", Font.BOLD, 92);
+	private Font fontHeader = new Font("Gabriola", Font.BOLD, 92); 
 	private Font fontLabel = new Font("Gabriola", Font.BOLD, 42);
 	private Font fontLabelPlayer = new Font("Gabriola", Font.BOLD, 30);
 

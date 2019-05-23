@@ -53,7 +53,7 @@ public class Work implements Tile {
 	}
 
 	public Color getColor() {
-		return null;
+		return null; 
 	}
 
 	public String getTileInfo() {

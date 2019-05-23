@@ -205,7 +205,7 @@ public class ManageEvents {
 		JOptionPane.showMessageDialog(null,
 				"The roll is " + roll + "\n" + "You got: " + tempWorkObject.getPay() + " GC for your hard work");
 		
-	}
+	} 
 
 	public void taxEvent(Tile tile, Player player) {
 		Tax tempTaxObject = (Tax) tile;
