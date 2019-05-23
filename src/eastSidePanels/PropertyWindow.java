@@ -44,6 +44,8 @@ public class PropertyWindow extends JPanel {
 
 		setPreferredSize(new Dimension(330, 600));
 		setOpaque(false);
+		setLayout(null);
+		tab.setBounds(0, 0, 330, 600);
 
 		add(tab);
 

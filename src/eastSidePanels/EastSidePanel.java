@@ -35,9 +35,11 @@ public class EastSidePanel extends JPanel {
 
 	public EastSidePanel() {
 
-		setPreferredSize(new Dimension(345, 900));
+		setPreferredSize(new Dimension(345, 860));
 		// setLayout(new BorderLayout());
 		setOpaque(false);
+		setLayout(null);
+		tab.setBounds(0, 0, 345, 860);
 		add(tab);
 
 	}

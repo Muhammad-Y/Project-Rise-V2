@@ -28,7 +28,6 @@ public class PlayerInfoPanel extends JPanel {
 	private JLabel lblGold = new JLabel("100 Gold coins");
 	private JLabel lblNetworth = new JLabel("1000G");
 	private JLabel lblISAlive = new JLabel();
-	private JTextArea lblPropertyList = new JTextArea("");
     // private String name ;
 	private JPanel p1 = new JPanel();
 	private JPanel p2 = new JPanel();
@@ -36,31 +35,28 @@ public class PlayerInfoPanel extends JPanel {
 	private JPanel p4 = new JPanel();
 	private JPanel p5 = new JPanel();
 	private JPanel p6 = new JPanel();
-	private JPanel p7 = new JPanel();
 	private PropertyWindow propertyWindow = new PropertyWindow();
 
 	private Font font = new Font("ALGERIAN", Font.PLAIN, 18);
 
 	public PlayerInfoPanel(PlayerList playerList, int playa) {
 
-		setPreferredSize(new Dimension(350, 715));
+		setPreferredSize(new Dimension(345, 860));
 		setBackground(Color.DARK_GRAY);
-		setLayout(null);
-
-		p1.setBounds(10, 5, 330, 50);
-		p2.setBounds(10, 55, 330, 50);
-		p3.setBounds(10, 105, 330, 50);
-		p4.setBounds(10, 155, 330, 50);
-		p5.setBounds(10, 205, 330, 50);
 		p6.setBounds(10, 255, 330, 50);
-		propertyWindow.setBounds(10, 254, 330, 600);
+		p1.setBounds(10, 5, 330, 50);
 
 		p1.setBorder(BorderFactory.createLineBorder(Color.black));
+		p2.setBounds(10, 55, 330, 50);
 		p2.setBorder(BorderFactory.createLineBorder(Color.black));
+		p3.setBounds(10, 105, 330, 50);
 		p3.setBorder(BorderFactory.createLineBorder(Color.black));
+		p4.setBounds(10, 155, 330, 50);
 		p4.setBorder(BorderFactory.createLineBorder(Color.black));
+		p5.setBounds(10, 205, 330, 50);
 		p5.setBorder(BorderFactory.createLineBorder(Color.black));
 		p6.setBorder(BorderFactory.createLineBorder(Color.black));
+		setLayout(null);
 
 		lblName.setText(playerList.getPlayerFromIndex(playa).getName().toUpperCase());
 		lblName.setFont(font);
@@ -97,6 +93,7 @@ public class PlayerInfoPanel extends JPanel {
 		lblRank.setHorizontalAlignment(SwingConstants.CENTER);
 		p5.add(lblRank);
 		add(p5);
+		propertyWindow.setBounds(10, 253, 330, 461);
 
 		propertyWindow.setPlayerAt(playa);
 		propertyWindow.addPlayerList(playerList);
