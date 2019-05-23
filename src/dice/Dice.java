@@ -227,6 +227,7 @@ public class Dice extends JPanel implements ActionListener {
 				btnThrow.setEnabled(true);
 				finishTurn.setEnabled(false);
 			}
+			tabPanel.addPlayerList(testPlayers);
 
 			tabPanel.setTab();
 		}

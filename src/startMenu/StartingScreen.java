@@ -92,6 +92,7 @@ public class StartingScreen extends JFrame {
 	private JComboBox<String> playerColors4 = new JComboBox<String>(colors3);
 	private JComboBox[] playerColors = new JComboBox[] { playerColors1, playerColors2, playerColors3, playerColors4 };
 
+	
 	// Mute button
 	private JCheckBox mute = new JCheckBox("Music On");
 

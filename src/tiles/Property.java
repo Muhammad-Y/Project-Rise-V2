@@ -3,6 +3,7 @@ package tiles;
 import java.awt.Color;
 
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 import player.Player;
 
@@ -140,8 +141,8 @@ public class Property implements Tile {
 	
 	public void increaseLevel() {
 		
-		
-		if (player.getPlayerRank().nbrOfLevels() > levels && player.getBalance()>= getLevelPrice()) {
+		int res = JOptionPane.showConfirmDialog(null, "Do you want to upgrade " + getName() + " for: " + getLevelPrice());
+		if (res == 0 && player.getPlayerRank().nbrOfLevels() > levels && player.getBalance()>= getLevelPrice()) {
 			this.levels+=1;
 
 			player.decreaseBalace(getLevelPrice());
@@ -150,14 +151,11 @@ public class Property implements Tile {
 	}
 	
 	public void decreaseLevel() {
-		if (levels>0) {
-			
+		int res = JOptionPane.showConfirmDialog(null, "Do you really want to downgrade " + getName() + " for: " + getLevelPrice());
+		if (levels>0 && res == 0) {	
 			this.levels-=1;
-
+			player.increaseBalance(getLevelPrice());
 		}
-		
-		player.increaseBalance(getLevelPrice());
-
 	}
 	
 	

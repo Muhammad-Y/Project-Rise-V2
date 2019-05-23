@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -71,6 +72,8 @@ public class MessageGUI extends JPanel{
 
     }
     
+   
+    
     public void newFortune(Boolean b, int amount) {
     	if(b) {
     		type.setText("Blessing");
@@ -88,21 +91,26 @@ public class MessageGUI extends JPanel{
     	startGUI();
     }
     
+   
+    
     public void getFrame() {
     	frame = new JFrame();
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.add(this);
+
 		frame.pack();
 		frame.setVisible(true);
 		frame.setLocationRelativeTo(null);
+
 	}
+    
     
     private class Sleeper extends Thread {
     	
     	public void run() {
     		try { 
-    			thread.sleep(3500);
+    			thread.sleep(3000);
     		} catch (Exception e) {
     			e.printStackTrace();
     		} finally {
@@ -110,4 +118,5 @@ public class MessageGUI extends JPanel{
 			}
     	}
     }
+    
 }

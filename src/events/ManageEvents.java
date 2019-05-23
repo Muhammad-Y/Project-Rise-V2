@@ -1,7 +1,11 @@
 package events;
 
+import java.io.File;
 import java.util.Random;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.JOptionPane;
 
 import board.Board;
@@ -9,6 +13,7 @@ import dice.Dice;
 import eastSidePanels.EastSidePanel;
 import messageGui.DeathGUI;
 import messageGui.MessageGUI;
+import messageGui.SecretGui;
 import messageGui.WinGui;
 import player.Player;
 import player.PlayerList;
@@ -39,18 +44,21 @@ public class ManageEvents {
 	private WinGui winGui;
 	private DeathGUI deathGUI;
 	private MessageGUI msgGUI;
-	private EastSidePanel eastPanel ;
+	private EastSidePanel eastPanel;
 	private Random rand = new Random();
 	private int roll;
 	private int taxCounter = 0;
 	private WestSidePanel westPanel;
+	private SecretGui hush;
+
+	private Thread thread;
 
 	public ManageEvents(Board board, PlayerList playerList, WestSidePanel pnlWest, Dice dice, EastSidePanel eastPanel) {
 		this.dice = dice;
 		this.westPanel = pnlWest;
 		this.board = board;
 		this.playerList = playerList;
-		this.eastPanel= eastPanel;
+		this.eastPanel = eastPanel;
 		deathGUI = new DeathGUI();
 		msgGUI = new MessageGUI();
 	}
@@ -61,8 +69,8 @@ public class ManageEvents {
 		if (player.getPlayerRank() == PlayerRanks.RULER) {
 			this.winGui = new WinGui();
 		}
-		
-		if (playerList.getLength()==1) {
+
+		if (playerList.getLength() == 1) {
 			this.winGui = new WinGui();
 		}
 
@@ -102,35 +110,6 @@ public class ManageEvents {
 			fortuneTellerEvent(tile, player);
 		}
 		eastPanel.addPlayerList(playerList);
-	}
-
-	private void fortuneTellerEvent(Tile tile, Player player) {
-		FortuneTeller tempCard = (FortuneTeller) tile;
-		tempCard.setAmount(rand.nextInt(600) - 300);
-		if (tempCard.getAmount() < 0) {
-			int pay = (tempCard.getAmount() * -1);
-			tempCard.setIsBlessing(false);
-			tempCard.setFortune("CURSE");
-			control(player, pay);
-			if (player.isAlive() == true) {
-//				nya ändringar
-				westPanel.append(player.getName() + " paid " + pay + " GC\n");
-//				slut på ändringar
-				player.decreaseBalace(pay);
-				player.decreaseNetWorth(pay);
-//				JOptionPane.showMessageDialog(null, "You pay" + pay);
-				msgGUI.newFortune(false, pay);
-			}
-
-		} else {
-			tempCard.setIsBlessing(true);
-			tempCard.setFortune("BLESSING");
-			player.increaseBalance(tempCard.getAmount());
-			player.increaseNetWorth(tempCard.getAmount());
-			westPanel.append(player.getName() + " received " + tempCard.getAmount() + " CG\n");
-//			JOptionPane.showMessageDialog(null, "You get " + tempCard.getAmount());
-			msgGUI.newFortune(true, tempCard.getAmount());
-		}
 	}
 
 	/**
@@ -196,16 +175,16 @@ public class ManageEvents {
 	}
 
 	public void workEvent(Tile tile, Player player) {
-		
+
 		Work tempWorkObject = (Work) tile;
 		tempWorkObject.setPlayer(player);
 		tempWorkObject.payPlayer(getRoll());
-		
+
 		westPanel.append(player.getName() + " Got " + tempWorkObject.getPay() + " GC\n");
 		JOptionPane.showMessageDialog(null,
 				"The roll is " + roll + "\n" + "You got: " + tempWorkObject.getPay() + " GC for your hard work");
-		
-	} 
+
+	}
 
 	public void taxEvent(Tile tile, Player player) {
 		Tax tempTaxObject = (Tax) tile;
@@ -220,8 +199,10 @@ public class ManageEvents {
 			taxCounter++;
 		}
 	}
+
 	/**
 	 * Gets the total tax paid by players
+	 * 
 	 * @return total tax
 	 */
 	public int getChurchTax() {
@@ -249,8 +230,8 @@ public class ManageEvents {
 
 			control(player, randomValue);
 			if (player.isAlive() == true) {
-				westPanel.append(
-						player.getName() + " paid " + randomValue + " GC to " + tempTavernObj.getOwner().getName() + "\n");
+				westPanel.append(player.getName() + " paid " + randomValue + " GC to "
+						+ tempTavernObj.getOwner().getName() + "\n");
 				tempTavernObj.getOwner().increaseBalance(randomValue);
 				tempTavernObj.getOwner().increaseNetWorth(randomValue);
 				player.decreaseBalace(randomValue);
@@ -261,7 +242,8 @@ public class ManageEvents {
 	}
 
 	/**
-	 * Spelaren ska vara fast på jail rutan i 3 rundor, eller köpa sig ut för 50G?
+	 * Spelaren ska vara fast på jail rutan i 3 rundor, eller köpa sig ut för
+	 * 50G?
 	 * 
 	 * @param tile
 	 * @param player
@@ -270,12 +252,12 @@ public class ManageEvents {
 		if (player.isPlayerInJail() == true && (player.getJailCounter()) < 2) {
 			westPanel.append(player.getName() + " is in jail for " + (2 - player.getJailCounter()) + " more turns\n");
 			player.increaseJailCounter();
-			if (player.getBalance() > (player.getJailCounter()*50)) {
+			if (player.getBalance() > (player.getJailCounter() * 50)) {
 				jailDialog(player);
 			} else {
 				JOptionPane.showMessageDialog(null, "You can not afford the bail");
 			}
-		} else if(player.getJailCounter() >= 2){
+		} else if (player.getJailCounter() >= 2) {
 			System.out.println("Testa ");
 			player.setPlayerIsInJail(false);
 			player.setJailCounter(0);
@@ -302,8 +284,8 @@ public class ManageEvents {
 	}
 
 	public void propertyDialog(Property property, Player player) {
-		int yesOrNo = JOptionPane.showConfirmDialog(null, property.getName() + "\n"
-				+ "Do you want to purchase this property for " + property.getPrice() + " GC",
+		int yesOrNo = JOptionPane.showConfirmDialog(null,
+				property.getName() + "\n" + "Do you want to purchase this property for " + property.getPrice() + " GC",
 				"Decide your fate!", JOptionPane.YES_NO_OPTION);
 
 		if (yesOrNo == 0 && (property.getPrice() <= player.getBalance())) {
@@ -353,14 +335,16 @@ public class ManageEvents {
 	public void setRoll(Dice dice) {
 		this.roll = dice.getRoll();
 	}
+
 	/**
-	 * Message for the prisoner to choose if the player
-	 *  wants to pay the bail and get free
+	 * Message for the prisoner to choose if the player wants to pay the bail and
+	 * get free
+	 * 
 	 * @param player
 	 */
 	public void jailDialog(Player player) {
-		int yesOrNo = JOptionPane.showConfirmDialog(null, "Do you want to pay the bail\nWhich is " +
-				(player.getJailCounter() * 50) + " GC?", "JOption",
+		int yesOrNo = JOptionPane.showConfirmDialog(null,
+				"Do you want to pay the bail\nWhich is " + (player.getJailCounter() * 50) + " GC?", "JOption",
 				JOptionPane.YES_NO_OPTION);
 		int totalBail = player.getJailCounter() * 50;
 		if (yesOrNo == 0 && (totalBail <= player.getBalance())) {
@@ -373,4 +357,101 @@ public class ManageEvents {
 		}
 	}
 
+	private void fortuneTellerEvent(Tile tile, Player player) {
+		FortuneTeller tempCard = (FortuneTeller) tile;
+		if (rand.nextInt(10) == 0) {
+
+			 hush = new SecretGui();
+
+			
+			thread = new Thread(new SecretSleeper(tempCard, player));
+
+		} else {
+
+			fortune(tempCard, player);
+		}
+	}
+
+	public void fortune(FortuneTeller tempCard, Player player) {
+		tempCard.setAmount(rand.nextInt(600) - 300);
+		if (tempCard.getAmount() < 0) {
+			int pay = (tempCard.getAmount() * -1);
+			tempCard.setIsBlessing(false);
+			tempCard.setFortune("CURSE");
+			control(player, pay);
+			if (player.isAlive() == true) {
+//				nya ändringar
+				westPanel.append(player.getName() + " paid " + pay + " GC\n");
+//				slut på ändringar
+				player.decreaseBalace(pay);
+				player.decreaseNetWorth(pay);
+//				JOptionPane.showMessageDialog(null, "You pay" + pay);
+				msgGUI.newFortune(false, pay);
+			}
+
+		} else {
+			tempCard.setIsBlessing(true);
+			tempCard.setFortune("BLESSING");
+			player.increaseBalance(tempCard.getAmount());
+			player.increaseNetWorth(tempCard.getAmount());
+			westPanel.append(player.getName() + " received " + tempCard.getAmount() + " CG\n");
+//			JOptionPane.showMessageDialog(null, "You get " + tempCard.getAmount());
+			msgGUI.newFortune(true, tempCard.getAmount());
+		}
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	private class SecretSleeper extends Thread {
+
+		private FortuneTeller tempCard;
+		private Player player;
+		private Clip clip;
+		private Thread musicPlayer;
+		public Boolean isPlaying;
+		private int musicPausedAt = 0;
+		
+		public SecretSleeper(FortuneTeller tempCard, Player player) {
+			this.tempCard = tempCard;
+			this.player = player;
+			start();
+
+		}
+
+		public void run() {
+			try {
+			
+				for (int i = 0; i < 5; i++) {
+					File musicPath = new File("music/���.wav");				
+					AudioInputStream ais = AudioSystem.getAudioInputStream(musicPath);
+					clip = AudioSystem.getClip();
+					clip.open(ais);
+					clip.start();
+					fortune(tempCard, player);
+					eastPanel.addPlayerList(playerList);
+
+					Thread.sleep(3000);
+
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+
+			}
+		}
+	}
 }
