@@ -85,7 +85,7 @@ public class GamePanels extends JPanel {
 	}
 
 	public void startboard() {
-		frame = new JFrame("Tjena");
+		frame = new JFrame("Change Your Fate!");
 		frame.setPreferredSize(new Dimension(width + 18, height + 10));
 		frame.setLocation(-9, 0);
 //		frame.setPreferredSize(new Dimension(1480, 900));

@@ -2,6 +2,7 @@ package dice;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -94,7 +95,8 @@ public class Dice extends JPanel implements ActionListener {
 		add(lblDice1);
 
 		add(lblDice2);
-
+		
+		btnThrow.setFont(new Font("Algerian", Font.PLAIN, 14));
 		add(btnThrow);
 
 		btnThrow.addActionListener(this);
@@ -104,11 +106,12 @@ public class Dice extends JPanel implements ActionListener {
 		showDice = new ImageIcon(resizedImage);
 		lblDice2.setIcon(showDice);
 		lblDice1.setIcon(showDice);
-
+		
+		finishTurn.setFont(new Font("Algerian", Font.PLAIN, 14));
 		finishTurn.addActionListener(this);
 
 		add(finishTurn);
-		add(cheat);
+//		add(cheat);
 		finishTurn.setEnabled(false);
 
 	}
