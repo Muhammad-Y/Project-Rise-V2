@@ -110,8 +110,6 @@ public class PlayerProperties extends JPanel {
 
 		lblPicture.setIcon(new ImageIcon(dimg));
 
-
-
 		btnSell.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Property tempProperty = playerList.getPlayerFromIndex(playerAtI).getPropertyAt(propertyAtI);
@@ -154,7 +152,6 @@ public class PlayerProperties extends JPanel {
 			}
 		});
 
-		
 		btnTrade.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int otherPlayerInt = 0;
@@ -163,22 +160,24 @@ public class PlayerProperties extends JPanel {
 				int offer = 0;
 				int type = 0;
 
+				otherPlayerInt = (Integer.parseInt(JOptionPane.showInputDialog(null,
+						"Which player do you want to trade with?\n 1 for player 1 \n 2 for player 2 and so on..."))
+						- 1);
+				
 				type = (Integer.parseInt(JOptionPane.showInputDialog(null,
 						"Pick a trade type\n 1 = Property for property \n 2 = Money for property\n 3 = Both")));
 
 				if (type == 1 || type == 3) {
-					otherPlayerInt = (Integer.parseInt(JOptionPane.showInputDialog(null,
-							"Which player do you want to trade with?\n 1 for player 1 \n 2 for player 2 and so on..."))
+					whichPropertyToGive = (Integer.parseInt(JOptionPane.showInputDialog(null,
+							"Which property do you want to give away \n 1 for property 1 \n 2 for property 2 and so on..."))
 							- 1);
 				}
 
 				if (type == 2 || type == 3) {
-					offer = (Integer.parseInt(JOptionPane.showInputDialog(null, "How much do you offer")));
+					offer = (Integer.parseInt(JOptionPane.showInputDialog(null, "How much do you offer " + playerList.getPlayerFromIndex(otherPlayerInt).getName()+"?")));
 				}
 
-				whichPropertyToGive = (Integer.parseInt(JOptionPane.showInputDialog(null,
-						"Which property do you want to give away \n 1 for property 1 \n 2 for property 2 and so on..."))
-						- 1);
+				
 
 				whichPropertyYouWant = (Integer
 						.parseInt(JOptionPane.showInputDialog(null,
@@ -192,6 +191,10 @@ public class PlayerProperties extends JPanel {
 
 				Player activePlayer = playerList.getActivePlayer();
 				Player otherPlayer = playerList.getPlayerFromIndex(otherPlayerInt);
+				
+				
+				
+				if (type == 1 || type == 3) {
 
 				activePlayer.removeProperty(activePlayerProperty);
 				otherPlayer.removeProperty(otherPlayersProperty);
@@ -209,15 +212,28 @@ public class PlayerProperties extends JPanel {
 				otherPlayer.addNewProperty(activePlayerProperty);
 
 				JOptionPane.showMessageDialog(null, "Trade Complete! Omedato gosaimasu!!!");
+				}
+				
+				if (type == 2) {
+					
+					otherPlayer.removeProperty(otherPlayersProperty);
+					activePlayerProperty.setOwner(otherPlayer);
+					activePlayer.addNewProperty(otherPlayersProperty);
+					
+					activePlayer.decreaseBalace(offer);
+					activePlayer.decreaseNetWorth(offer);
 
+					otherPlayer.increaseBalance(offer);
+					otherPlayer.increaseNetWorth(offer);
+					
+				}
+				
+				
+				
 			}
 		});
-		
+
 	}
-	
-	
-	
-	
 
 	public void updateLevels(PlayerList playerList, int p, int pr) {
 		int lvl = playerList.getPlayerFromIndex(p).getPropertyAt(pr).getLevel();
