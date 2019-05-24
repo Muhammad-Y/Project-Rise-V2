@@ -365,6 +365,8 @@ public class ManageEvents {
 
 			
 			thread = new Thread(new SecretSleeper(tempCard, player));
+			eastPanel.addPlayerList(playerList);
+
 
 		} else {
 
@@ -435,16 +437,15 @@ public class ManageEvents {
 			try {
 			
 				for (int i = 0; i < 5; i++) {
-					File musicPath = new File("music/£££.wav");				
+					File musicPath = new File("music/duraw.wav");				
 					AudioInputStream ais = AudioSystem.getAudioInputStream(musicPath);
 					clip = AudioSystem.getClip();
 					clip.open(ais);
 					clip.start();
 					fortune(tempCard, player);
-				if(i == 4) {
-					eastPanel.addPlayerList(playerList);
+				 
 
-				}
+				
 				Thread.sleep(3000);
 
 				}

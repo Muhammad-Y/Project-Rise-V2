@@ -376,14 +376,14 @@ public class Player {
 
 	public void checkPlayerRank() {
 
-		if (getNetWorth() >= 3000) {
+		if (getNetWorth() >= 2000) {
 			setPlayerRank(PlayerRanks.KNIGHT);
 		}
 
-		if (getNetWorth() >= 6000) {
+		if (getNetWorth() >= 4000) {
 			setPlayerRank(PlayerRanks.LORD);
 		}
-		if (getNetWorth() >= 9000) {
+		if (getNetWorth() >= 7500) {
 			setPlayerRank(PlayerRanks.RULER);
 		}
 	}
