@@ -3,6 +3,7 @@ package messageGui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Toolkit;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -14,7 +15,9 @@ public class SecretGui extends JFrame {
 	
     private JLabel lblSecret = new JLabel();
     private Thread thread;
-
+    private Dimension sSize = Toolkit.getDefaultToolkit().getScreenSize();
+    private int width = (int)sSize.getWidth();
+    private int height = (int)sSize.getHeight();
 	public SecretGui() {
 		
 	
@@ -23,7 +26,8 @@ public class SecretGui extends JFrame {
 	        setPreferredSize(new Dimension(320, 180));
 	        setBackground(Color.black);
 	        setForeground(Color.black);
-
+	        setLocation(width/2 -160, height/2-375);
+	        
 	        lblSecret.setPreferredSize(new Dimension(320, 180));
 	        lblSecret.setIcon(new ImageIcon("images/$$$.jpg"));
 	       

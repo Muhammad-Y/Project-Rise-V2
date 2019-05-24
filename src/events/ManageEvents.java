@@ -441,9 +441,11 @@ public class ManageEvents {
 					clip.open(ais);
 					clip.start();
 					fortune(tempCard, player);
+				if(i == 4) {
 					eastPanel.addPlayerList(playerList);
 
-					Thread.sleep(3000);
+				}
+				Thread.sleep(3000);
 
 				}
 
