@@ -422,9 +422,7 @@ public class ManageEvents {
 		private FortuneTeller tempCard;
 		private Player player;
 		private Clip clip;
-		private Thread musicPlayer;
-		public Boolean isPlaying;
-		private int musicPausedAt = 0;
+	
 		
 		public SecretSleeper(FortuneTeller tempCard, Player player) {
 			this.tempCard = tempCard;
