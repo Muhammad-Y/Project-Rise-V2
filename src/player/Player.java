@@ -315,17 +315,23 @@ public class Player {
 
 	public void removeProperty(Property property) {
 
-		
+		this.propertiesOwned.remove(property);
+		property.setOwner(null);
+
+	}
+
+	public void sellProperty(Property property) {
+
 		int total = (property.getPrice() + (property.getLevel() * property.getLevelPrice()));
-		
-		int res = JOptionPane.showConfirmDialog(null, "Do you really want to sell " + property.getName() + " for: " + total);
-		
+
+		int res = JOptionPane.showConfirmDialog(null,
+				"Do you really want to sell " + property.getName() + " for: " + total);
+
 		if (res == 0) {
 			increaseBalance(total);
 			this.propertiesOwned.remove(property);
 			property.setOwner(null);
 		}
-		
 
 	}
 
@@ -359,7 +365,7 @@ public class Player {
 		}
 	}
 
-	public Property getPropertyAt(int pos) {
+	public Property getPropertyAt(int pos)   {
 
 		return this.propertiesOwned.get(pos);
 	}

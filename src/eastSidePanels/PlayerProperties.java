@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
-import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -15,11 +14,13 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.border.MatteBorder;
 
+import player.Player;
 import player.PlayerList;
 import tiles.Property;
 
@@ -35,6 +36,8 @@ public class PlayerProperties extends JPanel {
 	private JTextArea taLevel = new JTextArea("");
 	private JButton btnUpgrade = new JButton("Upgrade");
 	private JButton btnDowngrade = new JButton("Downgrade");
+	private JButton btnTrade = new JButton("Trade");
+
 	private JButton btnSell = new JButton("Sell");
 	private String res = "+";
 
@@ -57,13 +60,16 @@ public class PlayerProperties extends JPanel {
 		btnUpgrade.setBounds(0, 481, 167, 53);
 		add(btnUpgrade);
 
+		btnTrade.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
+		btnTrade.setBounds(163, 532, 167, 46);
+		add(btnTrade);
+
 		btnSell.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
-		btnSell.setBounds(0, 532, 330, 46);
+		btnSell.setBounds(0, 532, 167, 46);
 		btnSell.setForeground(Color.red);
 		add(btnSell);
 		btnSell.setFont(font);
 
-		
 		taLevel.setEditable(false);
 		taLevel.setBounds(57, 31, 263, 53);
 		taLevel.setOpaque(false);
@@ -90,6 +96,7 @@ public class PlayerProperties extends JPanel {
 		lblPicture.setOpaque(true);
 		btnDowngrade.setFont(font);
 		btnUpgrade.setFont(font);
+		btnTrade.setFont(font);
 
 		BufferedImage img = null;
 		try {
@@ -103,11 +110,13 @@ public class PlayerProperties extends JPanel {
 
 		lblPicture.setIcon(new ImageIcon(dimg));
 
+
+
 		btnSell.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Property tempProperty = playerList.getPlayerFromIndex(playerAtI).getPropertyAt(propertyAtI);
 
-				playerList.getPlayerFromIndex(playerAtI).removeProperty(tempProperty);
+				playerList.getPlayerFromIndex(playerAtI).sellProperty(tempProperty);
 
 			}
 		});
@@ -119,8 +128,8 @@ public class PlayerProperties extends JPanel {
 
 				tempProperty.increaseLevel();
 				String tempRes = taLevel.getText();
-				
-				if (tempRes.length()<tempProperty.getLevel()) {
+
+				if (tempRes.length() < tempProperty.getLevel()) {
 					taLevel.append(res);
 
 				}
@@ -134,20 +143,81 @@ public class PlayerProperties extends JPanel {
 
 				tempProperty.decreaseLevel();
 
-				
 				String tempRes = taLevel.getText();
-				
-				if (tempRes.length()>tempProperty.getLevel()) {
-					
-					tempRes= tempRes.substring(0, tempRes.length()-1);
+
+				if (tempRes.length() > tempProperty.getLevel()) {
+
+					tempRes = tempRes.substring(0, tempRes.length() - 1);
 					taLevel.setText(tempRes);
 				}
-				
 
 			}
 		});
 
+		
+		btnTrade.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int otherPlayerInt = 0;
+				int whichPropertyToGive = 0;
+				int whichPropertyYouWant = 0;
+				int offer = 0;
+				int type = 0;
+
+				type = (Integer.parseInt(JOptionPane.showInputDialog(null,
+						"Pick a trade type\n 1 = Property for property \n 2 = Money for property\n 3 = Both")));
+
+				if (type == 1 || type == 3) {
+					otherPlayerInt = (Integer.parseInt(JOptionPane.showInputDialog(null,
+							"Which player do you want to trade with?\n 1 for player 1 \n 2 for player 2 and so on..."))
+							- 1);
+				}
+
+				if (type == 2 || type == 3) {
+					offer = (Integer.parseInt(JOptionPane.showInputDialog(null, "How much do you offer")));
+				}
+
+				whichPropertyToGive = (Integer.parseInt(JOptionPane.showInputDialog(null,
+						"Which property do you want to give away \n 1 for property 1 \n 2 for property 2 and so on..."))
+						- 1);
+
+				whichPropertyYouWant = (Integer
+						.parseInt(JOptionPane.showInputDialog(null,
+								"Which property do you want \n 1 for property 1 \n 2 for property 2 and so on..."))
+						- 1);
+
+				Property activePlayerProperty = playerList.getActivePlayer().getPropertyAt(whichPropertyToGive);
+
+				Property otherPlayersProperty = playerList.getPlayerFromIndex(otherPlayerInt)
+						.getPropertyAt(whichPropertyYouWant);
+
+				Player activePlayer = playerList.getActivePlayer();
+				Player otherPlayer = playerList.getPlayerFromIndex(otherPlayerInt);
+
+				activePlayer.removeProperty(activePlayerProperty);
+				otherPlayer.removeProperty(otherPlayersProperty);
+
+				activePlayer.decreaseBalace(offer);
+				activePlayer.decreaseNetWorth(offer);
+
+				otherPlayer.increaseBalance(offer);
+				otherPlayer.increaseNetWorth(offer);
+
+				activePlayerProperty.setOwner(otherPlayer);
+				activePlayer.addNewProperty(otherPlayersProperty);
+
+				otherPlayersProperty.setOwner(activePlayer);
+				otherPlayer.addNewProperty(activePlayerProperty);
+
+				JOptionPane.showMessageDialog(null, "Trade Complete! Omedato gosaimasu!!!");
+
+			}
+		});
+		
 	}
+	
+	
+	
+	
 
 	public void updateLevels(PlayerList playerList, int p, int pr) {
 		int lvl = playerList.getPlayerFromIndex(p).getPropertyAt(pr).getLevel();
@@ -169,5 +239,4 @@ public class PlayerProperties extends JPanel {
 		}
 
 	}
-
 }
