@@ -30,7 +30,7 @@ import westSidePanel.WestSidePanel;
 public class Dice extends JPanel implements ActionListener {
 
 //	private ShowPlayersTurn showPlayer;
-	private CheatGui cheat = new CheatGui(this);
+//	private CheatGui cheat = new CheatGui(this);
 	private ShowPlayersTurn showPlayer;
 	private Board board;
 	private PlayerList testPlayers;
@@ -199,7 +199,7 @@ public class Dice extends JPanel implements ActionListener {
 			tabPanel.addPlayerList(testPlayers);
 
 			btnThrow.setEnabled(false);
-			finishTurn.setEnabled(true);
+//			finishTurn.setEnabled(true);
 
 		}
 
@@ -270,10 +270,12 @@ public class Dice extends JPanel implements ActionListener {
 					manageEvents.newEvent(board.getDestinationTile(testPlayers.getActivePlayer().getPosition()),
 							testPlayers.getActivePlayer());
 					tabPanel.addPlayerList(testPlayers);
+					finishTurn.setEnabled(true);
+					
 				}
 
 				try {
-					Thread.sleep(460);
+					Thread.sleep(250);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}

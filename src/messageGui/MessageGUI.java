@@ -77,14 +77,14 @@ public class MessageGUI extends JPanel{
     public void newFortune(Boolean b, int amount) {
     	if(b) {
     		type.setText("Blessing");
-    		 dis.setText("\n                        Fortune smiles upon you. \n"
-    	                + "                            You recived " + amount + " GC");
+    		 dis.setText("\n                     Fortune smiles upon you. \n"
+    	                + "                         You recived " + amount + " GC");
     		 dis.setBackground(new Color(26, 122, 137));
     		 centerPanel.setBackground(new Color(26, 122, 137));
     	} else {
     		type.setText("Curse");
-    		dis.setText("\n                        You have been cursed! \n"
-	                + "                            You pay " + amount + " GC");
+    		dis.setText("\n                     You have been cursed! \n"
+	                + "                         You pay " + amount + " GC");
     		dis.setBackground(new Color(209, 13, 10));
     		centerPanel.setBackground(new Color(209, 13, 10));
     	}

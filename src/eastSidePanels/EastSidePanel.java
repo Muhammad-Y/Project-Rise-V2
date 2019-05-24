@@ -77,15 +77,16 @@ public class EastSidePanel extends JPanel {
 			tab.setSelectedIndex(currentPlayer);
 			tab.setForeground(Color.white);
 			tab.setBackground(new Color(157, 0, 0));
-			tab.setBackgroundAt(currentPlayer, new Color(0, 157, 0));
+//			tab.setBackgroundAt(currentPlayer, new Color(0, 157, 0));
+			tab.setBackgroundAt(currentPlayer, playerList.getPlayerFromIndex(currentPlayer).getPlayerColor());
 
 		} else
 
 			tab.setSelectedIndex(currentPlayer);
 		tab.setForeground(Color.white);
 		tab.setBackground(new Color(157, 0, 0));
-		tab.setBackgroundAt(currentPlayer, new Color(0, 157, 0));
-
+//		tab.setBackgroundAt(currentPlayer, new Color(0, 157, 0));
+		tab.setBackgroundAt(currentPlayer, playerList.getPlayerFromIndex(currentPlayer).getPlayerColor());
 	}
 
 	public int getTab() {
