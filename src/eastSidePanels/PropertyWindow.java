@@ -74,10 +74,16 @@ public class PropertyWindow extends JPanel {
 
 	}
 
+	/**
+	 * @return playerAT
+	 */
 	public int getPlayerAt() {
 		return playerAt;
 	}
 
+	/**
+	 * @param playerAt
+	 */
 	public void setPlayerAt(int playerAt) {
 		this.playerAt = playerAt;
 	}

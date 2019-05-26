@@ -240,8 +240,14 @@ public class PlayerProperties extends JPanel implements ActionListener {
 
 	}
 
-	public void updateLevels(PlayerList playerList, int p, int pr) {
-		int lvl = playerList.getPlayerFromIndex(p).getPropertyAt(pr).getLevel();
+	/**
+	 * @param playerList
+	 * @param playerIndex
+	 * @param propertyIndex
+	 * 	 updates levels shown
+	 */
+	public void updateLevels(PlayerList playerList, int playerIndex, int propertyIndex) {
+		int lvl = playerList.getPlayerFromIndex(playerIndex).getPropertyAt(propertyIndex).getLevel();
 
 		for (int i = 0; i < lvl; i++) {
 
@@ -250,6 +256,10 @@ public class PlayerProperties extends JPanel implements ActionListener {
 
 	}
 
+	/**
+	 * @param property
+	 * updates levels shown
+	 */
 	public void updateLevels(Property property) {
 		int lvl = property.getLevel();
 
