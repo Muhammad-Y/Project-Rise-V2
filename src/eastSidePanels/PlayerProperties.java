@@ -41,13 +41,12 @@ public class PlayerProperties extends JPanel implements ActionListener {
 	private Font font = new Font("ALGERIAN", Font.BOLD, 22);
 	private Font fontLevel = new Font("ALGERIAN", Font.BOLD, 50);
 	private String res = "+";
-	
+
 	private PlayerList playerList;
 	private int playerAtI, propertyAtI;
-	
 
 	/**
-	 * @param playerList 
+	 * @param playerList
 	 * @param playerAtI
 	 * @param propertyAtI
 	 */
@@ -121,7 +120,7 @@ public class PlayerProperties extends JPanel implements ActionListener {
 		Image resizedImg = img.getScaledInstance(lblPicture.getWidth(), lblPicture.getHeight(), Image.SCALE_SMOOTH);
 
 		lblPicture.setIcon(new ImageIcon(resizedImg));
-		
+
 		btnUpgrade.addActionListener(this);
 		btnDowngrade.addActionListener(this);
 		btnSell.addActionListener(this);
@@ -172,6 +171,7 @@ public class PlayerProperties extends JPanel implements ActionListener {
 			int whichPropertyYouWant = 0;
 			int offer = 0;
 			int type = 0;
+			int confirm;
 
 			otherPlayerInt = (Integer
 					.parseInt(JOptionPane.showInputDialog(null,
@@ -204,37 +204,50 @@ public class PlayerProperties extends JPanel implements ActionListener {
 			Player otherPlayer = playerList.getPlayerFromIndex(otherPlayerInt);
 
 			if (type == 1 || type == 3) {
+				confirm = JOptionPane.showConfirmDialog(null,
+						otherPlayer.getName() + " Are you okay with this trade?" + "\n You are getting " + offer
+								+ "Gold coins" + "\n and are trading away " + otherPlayersProperty.getName() + "\n for "
+								+ activePlayerProperty.getName());
 
-				activePlayer.removeProperty(activePlayerProperty);
-				otherPlayer.removeProperty(otherPlayersProperty);
+				if (confirm == 0) {
 
-				activePlayer.decreaseBalace(offer);
-				activePlayer.decreaseNetWorth(offer);
+					activePlayer.removeProperty(activePlayerProperty);
+					otherPlayer.removeProperty(otherPlayersProperty);
 
-				otherPlayer.increaseBalance(offer);
-				otherPlayer.increaseNetWorth(offer);
+					activePlayer.decreaseBalace(offer);
+					activePlayer.decreaseNetWorth(offer);
 
-				activePlayerProperty.setOwner(otherPlayer);
-				activePlayer.addNewProperty(otherPlayersProperty);
+					otherPlayer.increaseBalance(offer);
+					otherPlayer.increaseNetWorth(offer);
 
-				otherPlayersProperty.setOwner(activePlayer);
-				otherPlayer.addNewProperty(activePlayerProperty);
+					activePlayerProperty.setOwner(otherPlayer);
+					activePlayer.addNewProperty(otherPlayersProperty);
 
-				JOptionPane.showMessageDialog(null, "Trade Complete! Omedato gosaimasu!!!");
+					otherPlayersProperty.setOwner(activePlayer);
+					otherPlayer.addNewProperty(activePlayerProperty);
+
+					JOptionPane.showMessageDialog(null, "Trade Complete! Omedato gosaimasu!!!");
+
+				}
+
 			}
 
 			if (type == 2) {
+				confirm = JOptionPane.showConfirmDialog(null, otherPlayer.getName() + " Are you okay with this trade?"
+						+ "\n You are getting " + offer + "Gold coins for " + otherPlayersProperty.getName());
 
-				otherPlayer.removeProperty(otherPlayersProperty);
-				activePlayerProperty.setOwner(otherPlayer);
-				activePlayer.addNewProperty(otherPlayersProperty);
+				if (confirm == 0) {
 
-				activePlayer.decreaseBalace(offer);
-				activePlayer.decreaseNetWorth(offer);
+					otherPlayer.removeProperty(otherPlayersProperty);
+					activePlayerProperty.setOwner(otherPlayer);
+					activePlayer.addNewProperty(otherPlayersProperty);
 
-				otherPlayer.increaseBalance(offer);
-				otherPlayer.increaseNetWorth(offer);
+					activePlayer.decreaseBalace(offer);
+					activePlayer.decreaseNetWorth(offer);
 
+					otherPlayer.increaseBalance(offer);
+					otherPlayer.increaseNetWorth(offer);
+				}
 			}
 		}
 
@@ -243,8 +256,7 @@ public class PlayerProperties extends JPanel implements ActionListener {
 	/**
 	 * @param playerList
 	 * @param playerIndex
-	 * @param propertyIndex
-	 * 	 updates levels shown
+	 * @param propertyIndex updates levels shown
 	 */
 	public void updateLevels(PlayerList playerList, int playerIndex, int propertyIndex) {
 		int lvl = playerList.getPlayerFromIndex(playerIndex).getPropertyAt(propertyIndex).getLevel();
@@ -257,8 +269,7 @@ public class PlayerProperties extends JPanel implements ActionListener {
 	}
 
 	/**
-	 * @param property
-	 * updates levels shown
+	 * @param property updates levels shown
 	 */
 	public void updateLevels(Property property) {
 		int lvl = property.getLevel();
