@@ -10,21 +10,27 @@ import javax.swing.UIManager;
 import player.PlayerList;
 
 /**
+ * this class add tabs that displays informations about the players
+ * in tabs
  * @author Abdulkhuder Muhammad, Sebastian Viro.
  *
  */
 public class EastSidePanel extends JPanel {
 
+	private static final long serialVersionUID = 3397908521882247649L;
 	private PlayerList playerList;
 	private JTabbedPane tab;
 	private PlayerInfoPanel p;
 
 	private int currentPlayer = 0;
 
+	/**
+	 * @param playerList
+	 * this method is also used to update the information displayed
+	 */
 	public void addPlayerList(PlayerList playerList) {
 		this.playerList = playerList;
-//		propertyWindow.addPlayerList(playerList);
-		
+
 		addtabs();
 
 	}
@@ -35,18 +41,21 @@ public class EastSidePanel extends JPanel {
 		// setLayout(new BorderLayout());
 		setOpaque(false);
 		setLayout(null);
-		UIManager.put("TabbedPane.contentOpaque",false);
-		UIManager.put("TabbedPane.selected",Color.cyan);
+		UIManager.put("TabbedPane.contentOpaque", false);
+		UIManager.put("TabbedPane.selected", Color.cyan);
 
 		tab = new JTabbedPane();
-		
+
 		tab.setBounds(0, 0, 355, 860);
 		tab.setBackground(new Color(0, 0, 0));
-		
+
 		add(tab);
 
 	}
 
+	/**
+	 * this method adds tabs according to the amount of players
+	 */
 	public void addtabs() {
 
 		tab.removeAll();
@@ -64,10 +73,13 @@ public class EastSidePanel extends JPanel {
 		tab.setForeground(Color.white);
 		tab.setBackground(new Color(157, 0, 0));
 		tab.setBackgroundAt(currentPlayer, new Color(0, 157, 0));
-//		tab.setBackgroundAt(currentPlayer, playerList.getPlayerFromIndex(currentPlayer).getPlayerColor());
 
 	}
 
+	/**
+	 * this method is used to display the correct color
+	 * the active players turn should be green and the others should be red.
+	 */
 	public void setTab() {
 		tab.setBackgroundAt(currentPlayer, null);
 
@@ -77,20 +89,17 @@ public class EastSidePanel extends JPanel {
 
 			tab.setSelectedIndex(currentPlayer);
 			tab.setForeground(Color.white);
-//			tab.setBackground(new Color(157, 0, 0));
-			tab.setBackground(playerList.getPlayerFromIndex(currentPlayer).getPlayerColor());
-//			tab.setBackgroundAt(currentPlayer, new Color(0, 157, 0));
-			tab.setBackgroundAt(currentPlayer, playerList.getPlayerFromIndex(currentPlayer).getPlayerColor());
+			tab.setBackground(new Color(157, 0, 0));
+			tab.setBackgroundAt(currentPlayer, new Color(0, 157, 0));
 
 		} else
 
 			tab.setSelectedIndex(currentPlayer);
 		tab.setForeground(Color.white);
-//		tab.setBackground(new Color(157, 0, 0));
-		tab.setBackground(playerList.getPlayerFromIndex(currentPlayer).getPlayerColor());
-//		tab.setBackgroundAt(currentPlayer, new Color(0, 157, 0));
-		tab.setBackgroundAt(currentPlayer, playerList.getPlayerFromIndex(currentPlayer).getPlayerColor());
+		tab.setBackground(new Color(157, 0, 0));
+		tab.setBackgroundAt(currentPlayer, new Color(0, 157, 0));
 	}
+	
 
 	public int getTab() {
 		return currentPlayer;

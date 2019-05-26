@@ -14,39 +14,43 @@ import javax.swing.SwingConstants;
 import player.PlayerList;
 
 /**
- * @author Abdulkhuder Muhammad, Sebastian Viro, Rohan Samandari
+ * This class is used to show information about the players
+ * and the current properties in tabs from property window
+ * 
+ * @author Abdulkhuder Muhammad, Sebastian Viro.
  *
  */
 public class PlayerInfoPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	// private PlayerList playerList;
 	private JLabel lblName = new JLabel("");
 	private JLabel lblRank = new JLabel("");
 	private JLabel lblGold = new JLabel("100 Gold coins");
 	private JLabel lblNetworth = new JLabel("1000G");
-	// private String name ;
 	private JPanel p1 = new JPanel();
 	private JPanel p2 = new JPanel();
 	private JPanel p3 = new JPanel();
 	private JPanel p4 = new JPanel();
+	
 	private PropertyWindow propertyWindow = new PropertyWindow();
 
 	private Font font = new Font("ALGERIAN", Font.PLAIN, 18);
 
-	public PlayerInfoPanel(PlayerList playerList, int playa) {
+	/**
+	 * @param playerList
+	 * @param playernbr
+	 * 
+	 * player list is used to get the players to display correct information
+	 * playernbr is to specify what player
+	 */
+	public PlayerInfoPanel(PlayerList playerList, int playernbr) {
 
 		setPreferredSize(new Dimension(345, 860));
 		p1.setBounds(10, 5, 330, 50);
 		setBackground(Color.DARK_GRAY);
-//		setOpaque(false);
-//		p1.setOpaque(false);
-//		p2.setOpaque(false);
-//		p3.setOpaque(false);
-//		p4.setOpaque(false);
-//		propertyWindow.setOpaque(false);
 
+		p1.setBackground(playerList.getPlayerFromIndex(playernbr).getPlayerColor());
 		p1.setBorder(BorderFactory.createLineBorder(Color.black));
 		p2.setBounds(10, 55, 330, 50);
 		p2.setBorder(BorderFactory.createLineBorder(Color.black));
@@ -57,17 +61,17 @@ public class PlayerInfoPanel extends JPanel {
 		p4.setBorder(BorderFactory.createLineBorder(Color.black));
 		setLayout(null);
 
-		lblName.setText(playerList.getPlayerFromIndex(playa).getName().toUpperCase());
+		lblName.setText(playerList.getPlayerFromIndex(playernbr).getName().toUpperCase());
 		lblName.setFont(font);
 		lblName.setHorizontalAlignment(SwingConstants.CENTER);
 		lblName.setOpaque(false);
-		lblName.setForeground(Color.black);
-		lblName.setBackground(Color.white);
+		lblName.setForeground(Color.white);
+		lblName.setBackground(playerList.getPlayerFromIndex(playernbr).getPlayerColor());
 
 		p1.add(lblName);
 		add(p1);
 
-		lblGold.setText("Amount of gold: " + playerList.getPlayerFromIndex(playa).getBalance());
+		lblGold.setText("Amount of gold: " + playerList.getPlayerFromIndex(playernbr).getBalance());
 		lblGold.setFont(font);
 		lblGold.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGold.setForeground(Color.black);
@@ -75,20 +79,20 @@ public class PlayerInfoPanel extends JPanel {
 		p2.add(lblGold);
 		add(p2);
 
-		lblNetworth.setText("Total wealth: " + playerList.getPlayerFromIndex(playa).getNetWorth());
+		lblNetworth.setText("Total wealth: " + playerList.getPlayerFromIndex(playernbr).getNetWorth());
 		lblNetworth.setFont(font);
 		lblNetworth.setHorizontalAlignment(SwingConstants.CENTER);
 		p3.add(lblNetworth);
 		add(p3);
 
-		lblRank.setText("Player Rank: " + playerList.getPlayerFromIndex(playa).getPlayerRank());
+		lblRank.setText("Player Rank: " + playerList.getPlayerFromIndex(playernbr).getPlayerRank());
 		lblRank.setFont(font);
 		lblRank.setHorizontalAlignment(SwingConstants.CENTER);
 		p4.add(lblRank);
 		add(p4);
 		propertyWindow.setBounds(10, 210, 335, 626);
 
-		propertyWindow.setPlayerAt(playa);
+		propertyWindow.setPlayerAt(playernbr);
 		propertyWindow.addPlayerList(playerList);
 		add(propertyWindow);
 
