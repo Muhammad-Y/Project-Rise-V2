@@ -152,6 +152,8 @@ public class ManageEvents {
 
 				control(player, tempInt);
 				if (player.isAlive() == true) {
+					JOptionPane.showMessageDialog(null, player.getName() + " paid " + tempProperty.getTotalRent() + " GC to " 
+							+ tempProperty.getOwner().getName());
 					westPanel.append(player.getName() + " paid " + tempProperty.getTotalRent() + " GC to "
 							+ tempProperty.getOwner().getName() + "\n");
 					player.decreaseBalace(tempInt);
@@ -230,6 +232,8 @@ public class ManageEvents {
 
 			control(player, randomValue);
 			if (player.isAlive() == true) {
+				JOptionPane.showMessageDialog(null, player.getName() + " paid " + randomValue + " GC to " 
+						+ tempTavernObj.getOwner().getName());
 				westPanel.append(player.getName() + " paid " + randomValue + " GC to "
 						+ tempTavernObj.getOwner().getName() + "\n");
 				tempTavernObj.getOwner().increaseBalance(randomValue);
@@ -271,6 +275,7 @@ public class ManageEvents {
 		board.removePlayer(player);
 		player.setPositionInSpecificIndex(10);
 		board.setPlayer(player);
+		JOptionPane.showMessageDialog(null, player.getName() + " hamnade i fängelse.");
 		westPanel.append(player.getName() + " is in jail for " + (2 - player.getJailCounter()) + " more turns\n");
 	}
 
