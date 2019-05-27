@@ -90,9 +90,9 @@ public enum PlayerRanks {
 	},
 	
 	
-	KING {
+	KINGS {
 		/**
-		 * How salary is calculated for KING
+		 * How salary  is calculated for KING
 		 */
 		public int getSalary(int dots) {
 		

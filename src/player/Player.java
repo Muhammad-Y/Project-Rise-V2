@@ -390,7 +390,7 @@ public class Player {
 			setPlayerRank(PlayerRanks.LORD);
 		}
 		if (getNetWorth() >= 7500) {
-			setPlayerRank(PlayerRanks.KING);
+			setPlayerRank(PlayerRanks.KINGS);
 		}
 	}
 
