@@ -29,96 +29,109 @@ import westSidePanel.WestSidePanel;
  */
 public class Dice extends JPanel implements ActionListener {
 
-//	private ShowPlayersTurn showPlayer;
 //	private CheatGui cheat = new CheatGui(this);
-	private ShowPlayersTurn showPlayer;
+	private ShowPlayersTurn showPlayersturn;
 	private Board board;
-	private PlayerList testPlayers;
-	private WestSidePanel wsp;
-	private EastSidePanel tabPanel = new EastSidePanel();
-	private JButton finishTurn = new JButton("End Turn");
-	private int newIndex;
-	private Thread movePlayerThread;
+	private PlayerList playerList;
+	private WestSidePanel westSidePnl;
+	private EastSidePanel eastSidePnl = new EastSidePanel();
 
-	private JButton btnThrow = new JButton("Roll Dice");
+	private Thread movePlayerThread;
+	private ManageEvents manageEvents;
+
+	private JButton btnEndTurn = new JButton("End Turn");
+	private JButton btnRollDice = new JButton("Roll Dice");
 
 	private JLabel lblDice1 = new JLabel();
 	private JLabel lblDice2 = new JLabel();
-	private JPanel centerPanel = new JPanel();
 
 	private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	private ImageIcon faceToShow, showDice;
+	private Image resizedImage;
 
 	private int diceWidth = (screenSize.width) / 20;
 	private int diceHeight = (screenSize.height) / 10;
-
-	ImageIcon faceToShow, showDice;
-	Image resizedImage;
-
-	// Nytt 13e maj
-	private ManageEvents manageEvents;
 	private int roll;
 
-	public void addPlayerList(PlayerList list) {
+	/**
+	 * @param playerList
+	 */
+	public void addPlayerList(PlayerList playerList) {
 
-		this.testPlayers = list;
-		manageEvents = new ManageEvents(board, list, wsp, this,tabPanel);
+		this.playerList = playerList;
+		manageEvents = new ManageEvents(board, playerList, westSidePnl, this, eastSidePnl);
 
 	}
 
-	public Dice(Board board, PlayerList allPlayers, WestSidePanel wsp, EastSidePanel tabPanel) {
+	/**
+	 * @param board
+	 * @param playerList
+	 * @param westSidePanel
+	 * @param eastSidePnl
+	 */
+	public Dice(Board board, PlayerList playerList, WestSidePanel westSidePanel, EastSidePanel eastSidePnl) {
 		this.board = board;
-		testPlayers = allPlayers;
-		this.wsp = wsp;
-		this.tabPanel = tabPanel;
+		this.playerList = playerList;
+		this.westSidePnl = westSidePanel;
+		this.eastSidePnl = eastSidePnl;
 
 		initializePanel();
-		addButtonsAndListeners();
 
 	}
 
 	// We can remove it after we are done with cheat
+
+	/**
+	 * calls the method that initializes the panel
+	 */
 	public Dice() {
 
 		initializePanel();
-		addButtonsAndListeners();
+		
 	}
 
+	/**
+	 * initializes Panel
+	 */
 	public void initializePanel() {
+		
 		setPreferredSize(new Dimension(650, 120));
 		setLayout(new FlowLayout());
 		setOpaque(false);
-	}
-
-	public void addButtonsAndListeners() {
-		showPlayer = new ShowPlayersTurn("Player");
-		add(showPlayer);
+		
+		showPlayersturn = new ShowPlayersTurn("Player");
+		add(showPlayersturn);
 		add(lblDice1);
 
 		add(lblDice2);
-		
-		btnThrow.setFont(new Font("Algerian", Font.PLAIN, 14));
-		add(btnThrow);
 
-		btnThrow.addActionListener(this);
+		btnRollDice.setFont(new Font("Algerian", Font.PLAIN, 14));
+		add(btnRollDice);
+
+		btnRollDice.addActionListener(this);
 
 		faceToShow = new ImageIcon("DicePictures/faceValue1White.png");
 		resizedImage = faceToShow.getImage().getScaledInstance(diceWidth, diceHeight, Image.SCALE_SMOOTH);
 		showDice = new ImageIcon(resizedImage);
 		lblDice2.setIcon(showDice);
 		lblDice1.setIcon(showDice);
-		
-		finishTurn.setFont(new Font("Algerian", Font.PLAIN, 14));
-		finishTurn.addActionListener(this);
 
-		add(finishTurn);
+		btnEndTurn.setFont(new Font("Algerian", Font.PLAIN, 14));
+		btnEndTurn.addActionListener(this);
+
+		add(btnEndTurn);
 //		add(cheat);
-		finishTurn.setEnabled(false);
-
+		btnEndTurn.setEnabled(false);
 	}
 
+	
+
+	/**
+	 * Action Listener that handles what happens if the buttons are pressed
+	 */
 	public void actionPerformed(ActionEvent e) {
 
-		if (e.getSource() == btnThrow) {
+		if (e.getSource() == btnRollDice) {
 			int faceValueDiceOne = (int) (Math.random() * (7 - 1) + 1);
 			int faceValueDiceTwo = (int) (Math.random() * (7 - 1) + 1);
 
@@ -180,81 +193,116 @@ public class Dice extends JPanel implements ActionListener {
 
 			if (faceValueDiceOne == faceValueDiceTwo) {
 				setRoll(((faceValueDiceOne + faceValueDiceTwo) * 2));
-				wsp.append(testPlayers.getActivePlayer().getName() + " Rolled a dubble: " + getRoll() + "\n");
+				westSidePnl.append(playerList.getActivePlayer().getName() + " Rolled a dubble: " + getRoll() + "\n");
 			} else {
 				setRoll(((faceValueDiceOne + faceValueDiceTwo)));
-				wsp.append(testPlayers.getActivePlayer().getName() + " Rolled a: " + getRoll() + "\n");
+				westSidePnl.append(playerList.getActivePlayer().getName() + " Rolled a: " + getRoll() + "\n");
 			}
 			resizedImage = faceToShow.getImage().getScaledInstance(diceWidth, diceHeight, Image.SCALE_SMOOTH);
 			showDice = new ImageIcon(resizedImage);
 			lblDice2.setIcon(showDice);
 
-			testPlayers.getActivePlayer().checkPlayerRank();
+			playerList.getActivePlayer().checkPlayerRank();
 			manageEvents.setRoll(this);
+		
 			movePlayerThread = new Thread(new LoopThread(getRoll()));
 			movePlayerThread.start();
 
 			goEvent();
 
-			tabPanel.addPlayerList(testPlayers);
+			eastSidePnl.addPlayerList(playerList);
 
-			btnThrow.setEnabled(false);
-//			finishTurn.setEnabled(true);
+			btnRollDice.setEnabled(false);
 
 		}
 
-//		if (e.getSource() == finishTurn) {
-//
-//			testPlayers.switchToNextPlayer();
-//			showPlayer.uppdateGUI(testPlayers.getActivePlayer().getName(), "GREEN");
-////			System.out.println(
-////					"Next player turn" + "\n" + "Aktic playerindex: " + testPlayers.getActivePlayer().getPlayerIndex());
-//			btnThrow.setEnabled(true);
-//			finishTurn.setEnabled(false);
-//			tabPanel.setTab(); 
-//
-//		}
 
-		if (e.getSource() == finishTurn) {
 
-			testPlayers.switchToNextPlayer();
-//			TIPS: Fönster som visas och stängs efter x antal sekunder utan OK knappen
-			showPlayer.uppdateGUI(testPlayers.getActivePlayer().getName(),
-					testPlayers.getActivePlayer().getPlayerColor());
-			if (testPlayers.getActivePlayer().isPlayerInJail() == true) {
-				btnThrow.setEnabled(false);
-				finishTurn.setEnabled(true);
-				manageEvents.newEvent(board.getDestinationTile(testPlayers.getActivePlayer().getPosition()),
-						testPlayers.getActivePlayer());
-			} else if (testPlayers.getActivePlayer().isPlayerInJail() == false) {
-				btnThrow.setEnabled(true);
-				finishTurn.setEnabled(false);
+		if (e.getSource() == btnEndTurn) {
+
+			playerList.switchToNextPlayer();
+			showPlayersturn.uppdateGUI(playerList.getActivePlayer().getName(),
+					playerList.getActivePlayer().getPlayerColor());
+			if (playerList.getActivePlayer().isPlayerInJail() == true) {
+				btnRollDice.setEnabled(false);
+				btnEndTurn.setEnabled(true);
+				manageEvents.newEvent(board.getDestinationTile(playerList.getActivePlayer().getPosition()),
+						playerList.getActivePlayer());
+			} else if (playerList.getActivePlayer().isPlayerInJail() == false) {
+				btnRollDice.setEnabled(true);
+				btnEndTurn.setEnabled(false);
 			}
-			tabPanel.addPlayerList(testPlayers);
+			eastSidePnl.addPlayerList(playerList);
 
-			tabPanel.setTab();
+			eastSidePnl.setTab();
 		}
 
 	}
 
+	/**
+	 * @param Cheat method used for Testing
+	 * it moves the player to a specific index
+	 */
 	public void moveWCheat(int i) {
+		
 		setRoll(i);
-		testPlayers.getActivePlayer().checkPlayerRank();
-		board.removePlayer(testPlayers.getActivePlayer());
-		testPlayers.getActivePlayer().setPosition(getRoll());
-		board.setPlayer(testPlayers.getActivePlayer());
+		playerList.getActivePlayer().checkPlayerRank();
+		board.removePlayer(playerList.getActivePlayer());
+		playerList.getActivePlayer().setPosition(getRoll());
+		board.setPlayer(playerList.getActivePlayer());
 
-		// För att testa händelser
-		// Koppling mellan spelares index och TileCollection funkar
+		
 		manageEvents.setRoll(this);
 		goEvent();
-		manageEvents.newEvent(board.getDestinationTile(testPlayers.getActivePlayer().getPosition()),
-				testPlayers.getActivePlayer());
-		tabPanel.addPlayerList(testPlayers);
+		manageEvents.newEvent(board.getDestinationTile(playerList.getActivePlayer().getPosition()),
+				playerList.getActivePlayer());
+		eastSidePnl.addPlayerList(playerList);
 	}
 
-	private class LoopThread implements Runnable {
 
+
+	/**
+	 * To free the prisoner
+	 */
+	public void activateRollDice() {
+		btnRollDice.setEnabled(true);
+		btnEndTurn.setEnabled(false);
+	}
+
+	/**
+	 * Ends the turn if player is eliminated
+	 */
+	public void endTurnIfPlayerEliminated() {
+		btnRollDice.setEnabled(true);
+		btnEndTurn.setEnabled(false);
+	}
+
+	/**
+	 * @param playerList
+	 */
+	public void setPlayerList(PlayerList playerList) {
+		this.playerList = playerList;
+	}
+	
+	/**
+	 * @return number of total roll
+	 */
+	public int getRoll() {
+		return roll;
+	}
+
+	/**
+	 * @param  sets number of total roll
+	 */
+	public void setRoll(int roll) {
+		this.roll = roll;
+	}
+
+	/**
+	 * @author Seth �berg, Muhammad Abdulkhuder
+	 *
+	 */
+	private class LoopThread implements Runnable {
 		public LoopThread(int index) {
 			setRoll(index);
 		}
@@ -262,16 +310,16 @@ public class Dice extends JPanel implements ActionListener {
 		public void run() {
 
 			for (int i = 0; i < getRoll(); i++) {
-				board.removePlayer(testPlayers.getActivePlayer());
-				testPlayers.getActivePlayer().setPosition(1);
-				board.setPlayer(testPlayers.getActivePlayer());
+				board.removePlayer(playerList.getActivePlayer());
+				playerList.getActivePlayer().setPosition(1);
+				board.setPlayer(playerList.getActivePlayer());
 
 				if (i == (getRoll() - 1)) {
-					manageEvents.newEvent(board.getDestinationTile(testPlayers.getActivePlayer().getPosition()),
-							testPlayers.getActivePlayer());
-					tabPanel.addPlayerList(testPlayers);
-					finishTurn.setEnabled(true);
-					
+					manageEvents.newEvent(board.getDestinationTile(playerList.getActivePlayer().getPosition()),
+							playerList.getActivePlayer());
+					eastSidePnl.addPlayerList(playerList);
+					btnEndTurn.setEnabled(true);
+
 				}
 
 				try {
@@ -287,42 +335,16 @@ public class Dice extends JPanel implements ActionListener {
 
 	private void goEvent() {
 
-		if (testPlayers.getActivePlayer().passedGo()) {
+		if (playerList.getActivePlayer().passedGo()) {
 
-			testPlayers.getActivePlayer().increaseBalance(200);
-			testPlayers.getActivePlayer().increaseNetWorth(200);
+			playerList.getActivePlayer().increaseBalance(200);
+			playerList.getActivePlayer().increaseNetWorth(200);
 
-			wsp.append("Passed Go \nand recived 200 Gold coins \n");
-			testPlayers.getActivePlayer().resetPassedGo();
+			westSidePnl.append("Passed Go \nand recived 200 Gold coins \n");
+			playerList.getActivePlayer().resetPassedGo();
 		}
 	}
 
-	public int getRoll() {
-		return roll;
-	}
-
-	public void setRoll(int roll) {
-		this.roll = roll;
-	}
-
-	/**
-	 * To free the prisoner
-	 */
-	public void activateRollDice() {
-		btnThrow.setEnabled(true);
-		finishTurn.setEnabled(false);
-	}
-
-	public void endTurnIfPlayerEliminated() {
-		btnThrow.setEnabled(true);
-		finishTurn.setEnabled(false);
-	}
-	
-	public void setPlayerList(PlayerList pl) {
-		this.testPlayers = pl;
-	}
-
-	
 //	public static void main(String[] args) {
 //		Dice ui = new Dice();
 //		JFrame frame = new JFrame();
