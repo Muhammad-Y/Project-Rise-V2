@@ -5,13 +5,19 @@ import java.awt.*;
 import javax.swing.BorderFactory;
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.text.DefaultCaret;
 
+/**
+ * 
+ * @author RohanSamandari, AevanDino
+ *
+ */
 public class WestSidePanel extends JPanel {
 
 	/**
 	 * WestPanel which shows Info about each Boxes.
 	 * 
-	 * @author Rohan
+	 * @author RohanSamandari
 	 */
 	private static final long serialVersionUID = 1L;
 	private JLabel lblInfoTitle, lblHistoryTitle;
@@ -20,6 +26,9 @@ public class WestSidePanel extends JPanel {
 	private JTextArea txtTileInfo = new JTextArea();
 	private JTextArea txtMessage = new JTextArea();
 	private JScrollPane scroller = new JScrollPane(txtMessage);
+	
+	private DefaultCaret caret = (DefaultCaret)txtMessage.getCaret();
+	
 	private Border border = BorderFactory.createLineBorder(Color.DARK_GRAY);
 	private String def = "\n\nMove your mouse on a tile \n   which you want to see \n"
 			+ "      information about!";
@@ -27,6 +36,8 @@ public class WestSidePanel extends JPanel {
 	private Color titleColor = Color.DARK_GRAY;
 
 	public WestSidePanel() {
+		  
+		caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE); 
 
 		// HeadPanel with Information Label
 		pnlSpace = new JPanel();
