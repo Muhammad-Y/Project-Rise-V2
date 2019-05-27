@@ -20,7 +20,7 @@ public class EastSidePanel extends JPanel {
 	private static final long serialVersionUID = 3397908521882247649L;
 	private PlayerList playerList;
 	private JTabbedPane tab;
-	private PlayerInfoPanel p;
+	private PlayerInfoPanel playerInfoPnl;
 
 	private int currentPlayer = 0;
 
@@ -30,15 +30,12 @@ public class EastSidePanel extends JPanel {
 	 */
 	public void addPlayerList(PlayerList playerList) {
 		this.playerList = playerList;
-
 		addtabs();
-
 	}
 
 	public EastSidePanel() {
 
 		setPreferredSize(new Dimension(345, 860));
-		// setLayout(new BorderLayout());
 		setOpaque(false);
 		setLayout(null);
 		UIManager.put("TabbedPane.contentOpaque", false);
@@ -62,9 +59,9 @@ public class EastSidePanel extends JPanel {
 
 		for (int i = 0; i < playerList.getLength(); i++) {
 			new EastSidePanel();
-			p = new PlayerInfoPanel(playerList, i);
-			p.setOpaque(false);
-			tab.addTab("Player " + (i + 1), p);
+			playerInfoPnl = new PlayerInfoPanel(playerList, i);
+			playerInfoPnl.setOpaque(false);
+			tab.addTab("Player " + (i + 1), playerInfoPnl);
 			tab.setOpaque(false);
 
 		}

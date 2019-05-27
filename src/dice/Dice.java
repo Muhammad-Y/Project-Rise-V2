@@ -24,12 +24,11 @@ import player.PlayerList;
 import westSidePanel.WestSidePanel;
 
 /**
- * @author Muhammad Abdulkhuder ,AevanDino, Sebastian Viro, Seth ï¿½berg
+ * @author Muhammad Abdulkhuder, Aevan Dino, Sebastian Viro, Seth Öberg
  *
  */
 public class Dice extends JPanel implements ActionListener {
 
-//	private CheatGui cheat = new CheatGui(this);
 	private ShowPlayersTurn showPlayersturn;
 	private Board board;
 	private PlayerList playerList;
@@ -79,8 +78,6 @@ public class Dice extends JPanel implements ActionListener {
 
 	}
 
-	// We can remove it after we are done with cheat
-
 	/**
 	 * calls the method that initializes the panel
 	 */
@@ -120,7 +117,7 @@ public class Dice extends JPanel implements ActionListener {
 		btnEndTurn.addActionListener(this);
 
 		add(btnEndTurn);
-//		add(cheat);
+//		add(cheat); //Enable for testing with cheater.
 		btnEndTurn.setEnabled(false);
 	}
 
@@ -216,8 +213,6 @@ public class Dice extends JPanel implements ActionListener {
 
 		}
 
-
-
 		if (e.getSource() == btnEndTurn) {
 
 			playerList.switchToNextPlayer();
@@ -260,7 +255,6 @@ public class Dice extends JPanel implements ActionListener {
 	}
 
 
-
 	/**
 	 * To free the prisoner
 	 */
@@ -300,6 +294,7 @@ public class Dice extends JPanel implements ActionListener {
 
 	/**
 	 * @author Seth Öberg, Muhammad Abdulkhuder
+	 * Moves the player with a thread.
 	 *
 	 */
 	private class LoopThread implements Runnable {
@@ -329,10 +324,12 @@ public class Dice extends JPanel implements ActionListener {
 				}
 
 			}
-
 		}
 	}
 
+	/**
+	 * If a player passes go.
+	 */
 	private void goEvent() {
 
 		if (playerList.getActivePlayer().passedGo()) {
@@ -344,15 +341,4 @@ public class Dice extends JPanel implements ActionListener {
 			playerList.getActivePlayer().resetPassedGo();
 		}
 	}
-
-//	public static void main(String[] args) {
-//		Dice ui = new Dice();
-//		JFrame frame = new JFrame();
-//		frame.setVisible(true);
-//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		frame.add(ui);
-//		frame.pack();
-//		frame.setVisible(true);
-//		frame.setLocationRelativeTo(null);
-//	}
 }
