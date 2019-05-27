@@ -35,6 +35,8 @@ public class Player {
 	private boolean playerPassedgo = false;
 
 	private ArrayList<Property> propertiesOwned;
+	private ArrayList<Tile> tilesOwned;
+
 	private ArrayList<Tavern> tavernsOwned;
 
 	/**

@@ -17,7 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-import javax.swing.SwingConstants;
+import javax.swing.SwingConstants; 
 import javax.swing.border.MatteBorder;
 
 import player.Player;

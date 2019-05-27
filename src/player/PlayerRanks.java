@@ -91,6 +91,7 @@ public enum PlayerRanks {
 	
 	
 	KINGS {
+		
 		/**
 		 * How salary  is calculated for KING
 		 */
