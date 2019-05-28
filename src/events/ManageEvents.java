@@ -283,9 +283,8 @@ public class ManageEvents {
 
 		player.increaseBalance(200 * taxCounter);
 		player.increaseNetWorth(200 * taxCounter);
+		westPanel.append(player.getName() + " got " + taxCounter * 200 + " GC from the church\n");
 		taxCounter = 0;
-		westPanel.append(player.getName() + " got " + taxCounter * 200 + " GC from church\n");
-
 	}
 
 	public void propertyDialog(Property property, Player player) {
