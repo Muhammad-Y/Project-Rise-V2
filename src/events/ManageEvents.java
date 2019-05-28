@@ -275,7 +275,7 @@ public class ManageEvents {
 		board.removePlayer(player);
 		player.setPositionInSpecificIndex(10);
 		board.setPlayer(player);
-		JOptionPane.showMessageDialog(null, player.getName() + " hamnade i fängelse.");
+		JOptionPane.showMessageDialog(null, player.getName() + " got in jail.");
 		westPanel.append(player.getName() + " is in jail for " + (2 - player.getJailCounter()) + " more turns\n");
 	}
 
