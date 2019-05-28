@@ -38,6 +38,7 @@ public class StartingScreen extends JFrame {
 	private GamePanels mainWindow = new GamePanels();
 	private ColorIconMap colorMap = new ColorIconMap();
 	private Board board;
+	private Introduction intro;
 
 	// JButtons
 	private JButton btnConfirm = new JButton("Confirm");
@@ -307,6 +308,7 @@ public class StartingScreen extends JFrame {
 			mainWindow.addPlayer(playerList);
 			mainWindow.startboard();
 			dispose();
+			intro = new Introduction();
 		}
 
 		private void createNewUsers() {

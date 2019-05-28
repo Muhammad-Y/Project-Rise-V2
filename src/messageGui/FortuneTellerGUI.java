@@ -65,14 +65,5 @@ public class FortuneTellerGUI extends JPanel{
 
  
 }
-    public static void main(String[] args) {
-		FortuneTellerGUI ft = new FortuneTellerGUI("Momo", "sucks", 250);
-		JFrame frame = new JFrame();
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(ft);
-		frame.pack();
-		frame.setVisible(true);
-		frame.setLocationRelativeTo(null);
-	}
+    
 }
