@@ -57,6 +57,10 @@ public class Dice extends JPanel implements ActionListener {
 	public void addPlayerList(PlayerList playerList) {
 
 		this.playerList = playerList;
+		
+		showPlayersTurn.uppdateGUI(playerList.getActivePlayer().getName(),
+				playerList.getActivePlayer().getPlayerColor());
+		
 		manageEvents = new ManageEvents(board, playerList, westSidePnl, this, eastSidePnl);
 		
 	}
@@ -99,8 +103,6 @@ public class Dice extends JPanel implements ActionListener {
 		showPlayersTurn = new ShowPlayersTurn("Player");
 		add(showPlayersTurn);
 		
-		showPlayersTurn.uppdateGUI(playerList.getActivePlayer().getName(),
-				playerList.getActivePlayer().getPlayerColor());
 		
 		add(lblDice1);
 
