@@ -9,7 +9,8 @@ import player.Player;
 
 
 /**
- * name, price, defRent, renPH, color
+ * Class for property.
+ * @author Sebastian Viro, Aevan Dino
  */
 public class Property implements Tile {
 
@@ -20,8 +21,6 @@ public class Property implements Tile {
 	private Player player ;
 	private ImageIcon img;
 	private int levelPrice;
-
-	
 
 	public Property(String name, int price, int defaultRent, int rentPerLevel, Color color,int levelPrice , ImageIcon img) {
 		setName(name);
@@ -55,15 +54,6 @@ public class Property implements Tile {
 	public Color getTitleColor() {
 		return color;
 	}
-	
-	
-//	public static void main(String[] args) {
-//		Property p = new Property("MomoSuger gatan", 200, 35, 20, Color.BLUE);
-//		p.setNumberOfHouses(3);
-////		System.out.println(p.getTileInfo());
-//	}
-
-	
 
 	public void setName(String tileName) {
 		this.name = tileName;
@@ -157,31 +147,22 @@ public class Property implements Tile {
 			player.increaseBalance(getLevelPrice());
 		}
 	}
-	
-	
+		
 	public int getLevel() {
 		return this.levels;
 	}
 	
 	public void setPurchaseable(boolean b) {
 		this.purchaseable = b;
-	}
+	}	
 	
-	
-	//Ej klar!!!
 	public void clearProperty() {
 		purchaseable = true; 
 		setLevel(0);
 	}
+	
 	public ImageIcon getPicture(){
 		return this.img;
 	}
 
-	
-	public void onLanding() {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
 }

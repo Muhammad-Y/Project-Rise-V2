@@ -7,32 +7,18 @@ import javax.swing.ImageIcon;
 import player.Player;
 
 /**
- * Simple Go tile class. Pays the player 200 gold coins when landing or passing
- * by.
- * 
+ * Simple Go tile class. 
  * @author AevanDino, SebastianViro
  */
 public class Go implements Tile {
 
 	private String info;
 	private String name = "GO";
-	private static Player player; // Only static cuz we dumb yall and we use it in main
-
+	
 	private ImageIcon img = new ImageIcon("tilePics/Go.png");
 
-//	public Go(Player player) {
-//		this.player=player;
-//	}
 	public Go(String str) {
 		this.name = str;
-	}
-
-	public void onLanding() {
-		payOut();
-	}
-
-	public void payOut() {
-		player.increaseBalance(200);
 	}
 
 	public String getName() {
@@ -52,9 +38,7 @@ public class Go implements Tile {
 		return info;
 	}
 
-	@Override
 	public String getTitle() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

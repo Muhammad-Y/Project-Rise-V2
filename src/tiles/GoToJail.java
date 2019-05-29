@@ -3,7 +3,11 @@ package tiles;
 import java.awt.Color;
 
 import javax.swing.ImageIcon;
-
+/**
+ * 
+ * @author Sebastian Viro, Aevan Dino
+ *
+ */
 public class GoToJail implements Tile {
 
 	private ImageIcon img = new ImageIcon("tilePics/gojail.png");
@@ -38,8 +42,6 @@ public class GoToJail implements Tile {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
 
 	public ImageIcon getPicture() {
 		return img;
