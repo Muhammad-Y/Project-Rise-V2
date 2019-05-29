@@ -31,57 +31,43 @@ public class StartingScreen extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
-	// References
-	//	private ShowPlayersTurn playersTurn = new ShowPlayersTurn();
 	private BackgroundMusic bgm = new BackgroundMusic();
 	private PlayerList playerList = new PlayerList();
 	private GamePanels mainWindow = new GamePanels();
-	private ColorIconMap colorMap = new ColorIconMap();
-	private Board board;
-	private Introduction intro;
 
-	// JButtons
 	private JButton btnConfirm = new JButton("Confirm");
 	private JButton btnStartGame = new JButton("Start Game");
 	private JButton btnReset = new JButton("Reset");
 
-	// Images
 	private ImageIcon imgBackground = new ImageIcon(
 			new ImageIcon("images/fancyRoll.jpg").getImage().getScaledInstance(900, 860, Image.SCALE_SMOOTH));
 
-	// Fonts
 	private Font fontRadioButtons = new Font("Gabriola", Font.PLAIN, 24);
 	private Font fontHeader = new Font("Gabriola", Font.BOLD, 92); 
 	private Font fontLabel = new Font("Gabriola", Font.BOLD, 42);
 	private Font fontLabelPlayer = new Font("Gabriola", Font.BOLD, 30);
 
-	// Panels used
 	private JPanel pnlPlayerInfo = new JPanel();
 
-	// Radio buttons
 	private JRadioButton[] radioButtons = new JRadioButton[4];
 	private ButtonGroup btnGroup = new ButtonGroup();
 
-	// JLabels
 	private JLabel lblPlayer = new JLabel("How many players?");
 	private JLabel lblBackground = new JLabel("", imgBackground, JLabel.CENTER);
 	private JLabel lblRise = new JLabel("RISE");
 
-	// JLabels players
 	private JLabel lblPlayerIndex1 = new JLabel("Player 1:");
 	private JLabel lblPlayerIndex2 = new JLabel("Player 2:");
 	private JLabel lblPlayerIndex3 = new JLabel("Player 3:");
 	private JLabel lblPlayerIndex4 = new JLabel("Player 4:");
 	private JLabel[] playerLabels = new JLabel[] { lblPlayerIndex1, lblPlayerIndex2, lblPlayerIndex3, lblPlayerIndex4 };
 
-	// JTextFields
 	private JTextField tfPlayer1 = new JTextField("Name1...");
 	private JTextField tfPlayer2 = new JTextField("Name2...");
 	private JTextField tfPlayer3 = new JTextField("Name3...");
 	private JTextField tfPlayer4 = new JTextField("Name4...");
 	private JTextField[] playerTf = new JTextField[] { tfPlayer1, tfPlayer2, tfPlayer3, tfPlayer4 };
 
-	// JComboBox
 	private String[] colors = new String[]  { "RED", "GREEN", "ORANGE", "YELLOW", "CYAN", "MAGENTA" };
 	private String[] colors1 = new String[] { "GREEN", "ORANGE", "YELLOW", "CYAN", "MAGENTA", "RED" };
 	private String[] colors2 = new String[] { "ORANGE", "YELLOW", "CYAN", "MAGENTA", "RED", "GREEN" };
@@ -93,16 +79,18 @@ public class StartingScreen extends JFrame {
 	private JComboBox<String> playerColors4 = new JComboBox<String>(colors3);
 	private JComboBox[] playerColors = new JComboBox[] { playerColors1, playerColors2, playerColors3, playerColors4 };
 
-	
-	// Mute button
+	/**
+	 * Mute button
+	 */
 	private JCheckBox mute = new JCheckBox("Music On");
 
-	// Integers
+	/**
+	 * Integers
+	 */
 	private int amountOfPlayers;
 
 	/**
-	 * Used to test program
-	 * 
+	 * Used to start the program
 	 * @param args
 	 */
 	public static void main(String[] args) {
@@ -111,21 +99,10 @@ public class StartingScreen extends JFrame {
 
 	}
 
+	
 	/**
-	 * Used to determine amount of players
-	 * 
-	 * @param amountOfPlayers
+	 * Method to initilize the GUI.
 	 */
-	private StartingScreen(int amountOfPlayers) {
-		this.amountOfPlayers = amountOfPlayers;
-	}
-
-	/**
-	 * Empty constructor
-	 */
-	public StartingScreen() {
-	}
-
 	public void initializeGUI() {
 
 		bgm.startMusic();
@@ -133,53 +110,75 @@ public class StartingScreen extends JFrame {
 		createFrame();
 		bgm.startMusic();
 
-		// JPanel for information about players
+		/**
+		 * JPanel for information about players
+		 */
 		pnlPlayerInfo.setBounds(0, 0, 900, 830);
 		pnlPlayerInfo.setOpaque(false);
 		pnlPlayerInfo.setLayout(null);
 
-		// Label used to create a background
+		/**
+		 * Label used to create a background
+		 */
 		lblBackground.setBounds(0, 0, 900, 830);
 		lblBackground.setIcon(imgBackground);
 		lblBackground.setLayout(null);
 
-		// Header reading "RISE"
+		/**
+		 *  Header reading "RISE"
+		 */
 		lblRise.setFont(fontHeader);
 		lblRise.setBounds(375, 125, 175, 200);
 		lblBackground.add(lblRise);
 
-		// JLabel reading "How many players?"
+		/**
+		 * JLabel reading "How many players?"
+		 */
 		lblPlayer.setFont(fontLabel);
 		lblPlayer.setBounds(315, 175, 300, 200);
 
-		// Create three JRadioButtons
+		/**
+		 * Create three JRadioButtons
+		 */
 		createRadioButtons();
 
-		// Confirm button
+		/**
+		 * Confirm button
+		 */
 		btnConfirm.setBounds(375, 315, 150, 30);
 		btnConfirm.addActionListener(new ButtonListener());
 
-		// Create players
+		/**
+		 * Create players
+		 */
 		CreatePlayers();
 
-		// Start game button
+		/**
+		 * Start game button
+		 */
 		btnStartGame.setBounds(350, 530, 200, 40);
 		btnStartGame.setVisible(false);
 		btnStartGame.addActionListener(new ButtonListener());
 
-		// Rest button
+		/**
+		 * Rest button
+		 */
 		btnReset.setBounds(375, 575, 150, 30);
 		btnReset.setVisible(false);
 		btnReset.addActionListener(new ButtonListener());
 
-		// Mute button
+		/**
+		 * Mute button
+		 */
 		mute.setBounds(2, 740, 150, 35);
 		mute.setForeground(Color.white);
 		mute.setFont(fontRadioButtons);
 		mute.setOpaque(false);
 		mute.addActionListener(new ButtonListener());
 
-		// Adding stuff to background label
+		/**
+		 * Adding stuff to background label
+		 */
 		lblBackground.add(lblRise);
 		lblBackground.add(lblPlayer);
 		lblBackground.add(btnConfirm);
@@ -308,7 +307,7 @@ public class StartingScreen extends JFrame {
 			mainWindow.addPlayer(playerList);
 			mainWindow.startboard();
 			dispose();
-			intro = new Introduction();
+			Introduction intro = new Introduction();
 		}
 
 		private void createNewUsers() {
@@ -336,7 +335,9 @@ public class StartingScreen extends JFrame {
 		}
 	}
 
-	// MouseClickedListener for the name inserting so the text disappear when the player clicks.  
+	/**
+	 * MouseClickedListener for the name inserting so the text disappear when the player clicks.  
+	 */
 	private class MouseAction implements MouseListener{
 		int counter1 = 0, counter2 = 0, counter3 =0, counter4=0;
 		public void mouseClicked(MouseEvent e) {
@@ -365,7 +366,9 @@ public class StartingScreen extends JFrame {
 				}
 			}
 		}
-		// Nothing will happen with the other implemented methods
+		/**
+		 * Nothing will happen with the other implemented methods. Methods must be implemented by MouseListener.
+		 */
 		public void mouseEntered(MouseEvent e) {
 		}
 		public void mouseExited(MouseEvent e) {
@@ -374,8 +377,6 @@ public class StartingScreen extends JFrame {
 		}
 		public void mouseReleased(MouseEvent e) {
 		}
-
 	}
-
 }
 
