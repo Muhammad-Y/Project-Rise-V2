@@ -354,7 +354,7 @@ public class Dice extends JPanel implements ActionListener {
 			playerList.getActivePlayer().increaseBalance(200);
 			playerList.getActivePlayer().increaseNetWorth(200);
 
-			westSidePnl.append("Passed Go \nand recived 200 Gold coins \n");
+			westSidePnl.append("Passed Go and received 200 GC\n");
 			playerList.getActivePlayer().resetPassedGo();
 		}
 	}
