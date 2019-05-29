@@ -29,10 +29,10 @@ public class Jail implements Tile {
 				+ "\nThird time player has to pay 200 and is set free";
 	}
 	
-	public static void main(String[] args) {
-		Jail j = new Jail();
-		System.out.println(j.getTileInfo());
-	}
+//	public static void main(String[] args) {
+//		Jail j = new Jail();
+//		System.out.println(j.getTileInfo());
+//	}
 
 	@Override
 	public String getTitle() {
@@ -40,11 +40,6 @@ public class Jail implements Tile {
 		return null;
 	}
 
-	@Override
-	public Color getTitleColor() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	public ImageIcon getPicture(){
 		return img;
 	}

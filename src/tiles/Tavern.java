@@ -85,12 +85,6 @@ public class Tavern implements Tile{
 	@Override
 	
 	
-	//Vad används denna till????
-	public Color getTitleColor() {
-		// TODO Auto-generated method stub
-		return color.red;
-	}
-	
 	public ImageIcon getPicture(){
 		return img;
 	}

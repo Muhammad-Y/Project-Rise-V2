@@ -9,11 +9,6 @@ import javax.swing.ImageIcon;
  * @author AevanDino, SebastianViro
  */
 public interface Tile {
-	/**
-	 * Thing to do when landing on tile. Should be able to be called
-	 * through out the game. Consider possible outcomes (bought/owned/notOwned etc).
-	 */
-	public void onLanding();
 
 	/**
 	 * @return tileName, name of current tile.
@@ -37,9 +32,7 @@ public interface Tile {
 	public String getTileInfo();
 	
 	public String getTitle();
-	
-	public Color getTitleColor();
-	
+		
 	public ImageIcon getPicture();
 
 }

@@ -58,11 +58,7 @@ public class Tax implements Tile {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	@Override
-	public Color getTitleColor() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 	public ImageIcon getPicture(){
 		return img;

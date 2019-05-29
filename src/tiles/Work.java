@@ -24,12 +24,6 @@ public class Work implements Tile {
 
 	}
 
-	
-
-//	public void onLanding() {
-//		dice = new BetterDice(player);
-//		dice.startGUI();
-//	}
 
 	public void payPlayer(int nbrOfDots) {
 		setRoll(nbrOfDots);
@@ -69,11 +63,7 @@ public class Work implements Tile {
 		return this.player = player;
 	}
 
-	@Override
-	public void onLanding() {
-		// TODO Auto-generated method stub
-
-	}
+	
 
 	@Override
 	public String getTitle() {
@@ -81,7 +71,6 @@ public class Work implements Tile {
 		return null;
 	}
 
-	@Override
 	public Color getTitleColor() {
 		// TODO Auto-generated method stub
 		return null;

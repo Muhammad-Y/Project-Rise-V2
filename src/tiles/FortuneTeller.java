@@ -122,11 +122,6 @@ public class FortuneTeller implements Tile{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
-	public Color getTitleColor() {
-		return null;
-	}
 	
 	public ImageIcon getPicture(){
 		return img;
