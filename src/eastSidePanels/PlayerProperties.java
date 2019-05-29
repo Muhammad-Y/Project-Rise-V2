@@ -173,35 +173,56 @@ public class PlayerProperties extends JPanel implements ActionListener {
 			int type = 0;
 			int confirm;
 
+			do {
 			otherPlayerInt = (Integer
 					.parseInt(JOptionPane.showInputDialog(null,
 							"Which player do you want to trade with?\n 1 for player 1 \n 2 for player 2 and so on..."))
 					- 1);
+			  
+	
+			
 
-			type = (Integer.parseInt(JOptionPane.showInputDialog(null,
-					"Pick a trade type\n 1 = Property for property \n 2 = Money for property\n 3 = Both")));
+			} while(otherPlayerInt == playerList.getActivePlayer().getPlayerIndex() || otherPlayerInt > playerList.getLength()-1);
+			
+			Player activePlayer = playerList.getActivePlayer();
+			Player otherPlayer = playerList.getPlayerFromIndex(otherPlayerInt);
+			
+			do {			
+				type = (Integer.parseInt(JOptionPane.showInputDialog(null,
+						"Pick a trade type\n 1 = Property for property \n 2 = Money for property\n 3 = Both")));	
+			} while (type == 1 || type == 2 || type == 3);
+			
 
 			if (type == 1 || type == 3) {
-				whichPropertyToGive = (Integer.parseInt(JOptionPane.showInputDialog(null,
-						"Which property do you want to give away \n 1 for property 1 \n 2 for property 2 and so on..."))
-						- 1);
+				
+				do {
+					whichPropertyToGive = (Integer.parseInt(JOptionPane.showInputDialog(null,
+							"Which property do you want to give away \n 1 for property 1 \n 2 for property 2 and so on..."))
+							- 1);
+				} while (whichPropertyToGive > activePlayer.getProperties().size());
+				
 			}
 
 			if (type == 2 || type == 3) {
-				offer = (Integer.parseInt(JOptionPane.showInputDialog(null,
-						"How much do you offer " + playerList.getPlayerFromIndex(otherPlayerInt).getName() + "?")));
+				do {
+					offer = (Integer.parseInt(JOptionPane.showInputDialog(null,
+							"How much do you offer " + otherPlayer.getName() + "?")));
+				} while (offer > activePlayer.getBalance());
+			
 			}
 
-			whichPropertyYouWant = (Integer.parseInt(JOptionPane.showInputDialog(null,
-					"Which property do you want \n 1 for property 1 \n 2 for property 2 and so on...")) - 1);
+			do {
+				whichPropertyYouWant = (Integer.parseInt(JOptionPane.showInputDialog(null,
+						"Which property do you want \n 1 for property 1 \n 2 for property 2 and so on...")) - 1);
+			} while (whichPropertyYouWant > otherPlayer.getProperties().size());
+			
 
 			Property activePlayerProperty = playerList.getActivePlayer().getPropertyAt(whichPropertyToGive);
 
 			Property otherPlayersProperty = playerList.getPlayerFromIndex(otherPlayerInt)
 					.getPropertyAt(whichPropertyYouWant);
 
-			Player activePlayer = playerList.getActivePlayer();
-			Player otherPlayer = playerList.getPlayerFromIndex(otherPlayerInt);
+			
 
 			if (type == 1 || type == 3) {
 				confirm = JOptionPane.showConfirmDialog(null,
