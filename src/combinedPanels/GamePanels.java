@@ -108,7 +108,6 @@ public class GamePanels extends JPanel {
 	}
 	
 	public void Dispose() {
-		System.exit(0);
 		frame.dispose();
 	}
 
