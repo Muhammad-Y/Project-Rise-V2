@@ -20,7 +20,7 @@ public class Rules extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	public Rules() {
-		super(new GridLayout(1, 1));
+		new GridLayout(1, 1);
 
 		JTabbedPane tabbedPane = new JTabbedPane();
 
@@ -54,7 +54,7 @@ public class Rules extends JPanel {
 		JComponent panel10 = makeTextPanel("images/Sell.jpg");
 		tabbedPane.addTab("Sell", panel10);
 
-		add(tabbedPane);         
+		add(tabbedPane); 		
 	}
 
 	protected JComponent makeTextPanel(String text) {
@@ -79,7 +79,7 @@ public class Rules extends JPanel {
 		frame.pack();
 		frame.setVisible(true);
 	}
-	
+
 	/**
 	 * Method which is called to display rules.
 	 */

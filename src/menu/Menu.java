@@ -13,13 +13,16 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import board.Rules;
+import combinedPanels.GamePanels;
 import startMenu.BackgroundMusic;
+import startMenu.StartingScreen;
 
 /**
  * This class displays the game board as well as what the players are called and
  * how much they own.
  * 
- * @autho Muhammad Hasan
+ * @autho Muhammad Hasan, Rohan Samandari
  */
 
 public class Menu extends JPanel {
@@ -30,6 +33,10 @@ public class Menu extends JPanel {
 	private JMenuItem jmExit = new JMenuItem("Exit");
 	private JMenuItem jmOptions = new JMenuItem("Pause Music");
 	private JMenuItem jmRestart = new JMenuItem("Restart Game");
+	private JMenuItem jmRules = new JMenuItem("Read Rules");
+	
+	private Rules rules = new Rules();
+//	private StartingScreen ss = new StartingScreen();
 	/**
 	 * Constructor used to create and draw in the frame.
 	 */
@@ -39,19 +46,12 @@ public class Menu extends JPanel {
 		setLayout(new BorderLayout());
 		//jmMenuBar.setAlignmentX(LEFT_ALIGNMENT);
 		jmMenuBar.setPreferredSize(new Dimension(100,5));
-		jmExit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
-			}
-		});
-		jmOptions.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-//				music.pauseMusic();
-				JOptionPane.showInputDialog("Hello");
-			}
-		});
+		jmExit.addActionListener(new ButtonListener()); 
+		jmOptions.addActionListener(new ButtonListener()); 
+		jmRules.addActionListener(new ButtonListener());
+		jmRestart.addActionListener(new ButtonListener());
 		jmMenu.add(jmOptions);
+		jmMenu.add(jmRules);
 		jmMenu.add(jmRestart);
 		jmMenu.add(jmExit);
 		jmMenuBar.add(jmMenu);
@@ -61,6 +61,25 @@ public class Menu extends JPanel {
 	}
 	public Menu(BackgroundMusic music) {
 		this.music = music;
+	}
+	
+	public class ButtonListener implements ActionListener{
+
+		public void actionPerformed(ActionEvent e) {
+			if (e.getSource()==jmOptions) {
+				JOptionPane.showInputDialog("Hello");
+			} else if (e.getSource()==jmRestart) {
+				StartingScreen ss = new StartingScreen();
+				ss.initializeGUI();
+				GamePanels gp = new GamePanels();
+				gp.Dispose();
+			} else if (e.getSource()==jmExit) {
+				System.exit(0);
+			} else if (e.getSource()==jmRules) {
+				rules.showRules();
+			}
+		}
+		
 	}
 	
 
