@@ -15,7 +15,7 @@ public enum PlayerRanks {
 	 */
 	PEASANT {
 		/**
-		 * How salary is caluclated for peasants
+		 * How salary is calculated for peasants
 		 */
 		public int getSalary(int dots) {
 			return 20 * dots;
@@ -93,7 +93,7 @@ public enum PlayerRanks {
 	KINGS {
 		
 		/**
-		 * How salary  is calculated for KING
+		 * How salary is calculated for the king
 		 */
 		public int getSalary(int dots) {
 		

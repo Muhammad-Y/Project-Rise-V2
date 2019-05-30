@@ -39,7 +39,9 @@ public class WestSidePanel extends JPanel {
 		  
 		caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE); 
 
-		// HeadPanel with Information Label
+		/**
+		 * HeadPanel with Information Label
+		 */
 		pnlSpace = new JPanel();
 
 		pnlSpace.setPreferredSize(new Dimension(10, 15));
@@ -60,7 +62,9 @@ public class WestSidePanel extends JPanel {
 		pnlHeading.setBackground(new Color(0, 0, 0, 20));
 		pnlHeading.add(lblInfoTitle, BorderLayout.SOUTH);
 
-		// TileInformation Panel
+		/**
+		 * TileInformation Panel
+		 */
 		pnlInfo = new JPanel();
 		pnlInfo.setPreferredSize(new Dimension(340, 255));
 		pnlInfo.setBorder(border);
@@ -74,7 +78,9 @@ public class WestSidePanel extends JPanel {
 
 		pnlInfo.add(txtTileInfo);
 
-		// HistoryPanel
+		/**
+		 * HistoryPanel
+		 */
 		pnlHistory = new JPanel();
 		txtMessage.setFont(new Font("Gabriola", Font.BOLD, 18));
 		txtMessage.setMargin(new Insets(10, 10, 10, 10));
@@ -100,7 +106,9 @@ public class WestSidePanel extends JPanel {
 		pnlHistory.add(lblHistoryTitle);
 		pnlHistory.add(scroller);
 
-		// The main Panel
+		/**
+		 * The main Panel
+		 */
 		setOpaque(false);
 		setPreferredSize(new Dimension(345, 860));
 		setBackground(Color.yellow);
