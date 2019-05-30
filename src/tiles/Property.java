@@ -27,7 +27,7 @@ public class Property implements Tile {
 		setName(name);
 		setPrice(price);
 		setDefaultRent(defaultRent);
-		setRentPerHouse(rentPerLevel);
+		setRentPerLevel(rentPerLevel);
 		setColor(color);
 		purchaseable=true;
 		player = null;
@@ -115,11 +115,11 @@ public class Property implements Tile {
 		return this.defaultRent;
 	}
 
-	public void setRentPerHouse(int rentPerHouse) {
-		this.rentPerLevel = rentPerHouse;
+	public void setRentPerLevel(int rentPerLevel) {
+		this.rentPerLevel = rentPerLevel;
 	}
 
-	public int getRentPerHouse() {
+	public int getRentPerLevel() {
 		return this.rentPerLevel;
 	}
 	

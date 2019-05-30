@@ -33,6 +33,9 @@ public class PlayerProperties extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	private JLabel lblName = new JLabel("Name");
 	private JLabel lblPicture = new JLabel("");
+	private JLabel lblRent = new JLabel("Rent");
+	private JLabel lblRentPerLevel = new JLabel("Rent Per Level");
+
 	private JTextArea taLevel = new JTextArea("");
 	private JButton btnUpgrade = new JButton("Upgrade");
 	private JButton btnDowngrade = new JButton("Downgrade");
@@ -40,7 +43,7 @@ public class PlayerProperties extends JPanel implements ActionListener {
 	private JButton btnSell = new JButton("Sell");
 	private Font font = new Font("ALGERIAN", Font.BOLD, 22);
 	private Font fontLevel = new Font("ALGERIAN", Font.BOLD, 50);
-	private String res = "+";
+	private String plus = "+";
 
 	private PlayerList playerList;
 	private int playerAtI, propertyAtI;
@@ -63,6 +66,20 @@ public class PlayerProperties extends JPanel implements ActionListener {
 		setPreferredSize(new Dimension(330, 607));
 		setLayout(null);
 
+		lblRent.setForeground(Color.white);
+		lblRentPerLevel.setForeground(Color.white);
+		lblRent.setText(
+				"The Rent is: " + playerList.getPlayerFromIndex(playerAtI).getPropertyAt(propertyAtI).getTotalRent());
+		lblRentPerLevel.setText("The rent per level : "
+				+ playerList.getPlayerFromIndex(playerAtI).getPropertyAt(propertyAtI).getRentPerLevel());
+		lblRent.setFont(font);
+		lblRentPerLevel.setFont(font);
+
+		lblRent.setBounds(0, 92, 330, 64);
+		add(lblRent);
+		lblRentPerLevel.setBounds(0, 140, 330, 64);
+		add(lblRentPerLevel);
+
 		btnDowngrade.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
 		btnDowngrade.setBounds(163, 481, 167, 53);
 		add(btnDowngrade);
@@ -82,7 +99,7 @@ public class PlayerProperties extends JPanel implements ActionListener {
 		btnSell.setFont(font);
 
 		taLevel.setEditable(false);
-		taLevel.setBounds(57, 31, 263, 53);
+		taLevel.setBounds(46, 38, 263, 53);
 		taLevel.setOpaque(false);
 		taLevel.setFont(fontLevel);
 		taLevel.setForeground(Color.white);
@@ -94,7 +111,7 @@ public class PlayerProperties extends JPanel implements ActionListener {
 		lblName.setText(playerList.getPlayerFromIndex(playerAtI).getProperty(propertyAtI).getName());
 
 		lblName.setHorizontalAlignment(SwingConstants.CENTER);
-		lblName.setBounds(0, 0, 330, 46);
+		lblName.setBounds(0, 11, 330, 46);
 		add(lblName);
 		lblName.setFont(font);
 		lblPicture.setForeground(Color.WHITE);
@@ -128,15 +145,20 @@ public class PlayerProperties extends JPanel implements ActionListener {
 
 	}
 
+	/**
+	 * What happens when a button is pressed
+	 */
 	public void actionPerformed(ActionEvent e) {
 
+		// Sell properties
 		if (e.getSource() == btnSell) {
+
 			Property tempProperty = playerList.getPlayerFromIndex(playerAtI).getPropertyAt(propertyAtI);
 
 			playerList.getPlayerFromIndex(playerAtI).sellProperty(tempProperty);
 
 		}
-
+		// upgrade properties
 		if (e.getSource() == btnUpgrade) {
 			Property tempProperty = playerList.getPlayerFromIndex(playerAtI).getPropertyAt(propertyAtI);
 
@@ -144,12 +166,12 @@ public class PlayerProperties extends JPanel implements ActionListener {
 			String tempRes = taLevel.getText();
 
 			if (tempRes.length() < tempProperty.getLevel()) {
-				taLevel.append(res);
+				taLevel.append(plus);
 
 			}
 
 		}
-
+		// downgrade properties
 		if (e.getSource() == btnDowngrade) {
 			Property tempProperty = playerList.getPlayerFromIndex(playerAtI).getPropertyAt(propertyAtI);
 
@@ -165,6 +187,7 @@ public class PlayerProperties extends JPanel implements ActionListener {
 
 		}
 
+		// trade with a certain player
 		if (e.getSource() == btnTrade) {
 			int otherPlayerInt = 0;
 			int whichPropertyToGive = 0;
@@ -247,6 +270,8 @@ public class PlayerProperties extends JPanel implements ActionListener {
 
 					otherPlayer.increaseBalance(offer);
 					otherPlayer.increaseNetWorth(offer);
+					JOptionPane.showMessageDialog(null, "Trade Complete! Omedato gosaimasu!!!");
+
 				}
 			}
 		}
@@ -256,27 +281,27 @@ public class PlayerProperties extends JPanel implements ActionListener {
 	/**
 	 * @param playerList
 	 * @param playerIndex
-	 * @param propertyIndex updates levels shown
+	 * @param propertyIndex updates levels shown adds a plus to the picture
 	 */
 	public void updateLevels(PlayerList playerList, int playerIndex, int propertyIndex) {
 		int lvl = playerList.getPlayerFromIndex(playerIndex).getPropertyAt(propertyIndex).getLevel();
 
 		for (int i = 0; i < lvl; i++) {
 
-			taLevel.append(res);
+			taLevel.append(plus);
 		}
 
 	}
 
 	/**
-	 * @param property updates levels shown
+	 * @param property updates levels shown adds a plus to the picture
 	 */
 	public void updateLevels(Property property) {
 		int lvl = property.getLevel();
 
 		for (int i = 0; i < lvl; i++) {
 
-			taLevel.append(res);
+			taLevel.append(plus);
 
 		}
 
