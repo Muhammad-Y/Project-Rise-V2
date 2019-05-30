@@ -77,7 +77,7 @@ public class Property implements Tile {
 
 	public Color getColor() {
 		return this.color;
-	}
+	} 
 
 	public void setPrice(int price) {
 		this.price=price;

@@ -35,7 +35,6 @@ public class PlayerProperties extends JPanel implements ActionListener {
 	private JLabel lblPicture = new JLabel("");
 	private JLabel lblRent = new JLabel("Rent");
 	private JLabel lblRentPerLevel = new JLabel("Rent Per Level");
-
 	private JTextArea taLevel = new JTextArea("");
 	private JButton btnUpgrade = new JButton("Upgrade");
 	private JButton btnDowngrade = new JButton("Downgrade");
@@ -51,7 +50,7 @@ public class PlayerProperties extends JPanel implements ActionListener {
 	/**
 	 * @param playerList
 	 * @param playerAtI
-	 * @param propertyAtI
+	 * @param propertyAtI 
 	 */
 	public PlayerProperties(PlayerList playerList, int playerAtI, int propertyAtI) {
 
