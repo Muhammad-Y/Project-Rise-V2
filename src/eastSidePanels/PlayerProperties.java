@@ -187,10 +187,13 @@ public class PlayerProperties extends JPanel implements ActionListener {
 			Player activePlayer = playerList.getActivePlayer();
 			Player otherPlayer = playerList.getPlayerFromIndex(otherPlayerInt);
 			
+			if ( otherPlayer.getProperties().size() > 0) {
+				
+			
 			do {			
 				type = (Integer.parseInt(JOptionPane.showInputDialog(null,
 						"Pick a trade type\n 1 = Property for property \n 2 = Money for property\n 3 = Both")));	
-			} while (type == 1 || type == 2 || type == 3);
+			} while (type<0 ||type >3);
 			
 
 			if (type == 1 || type == 3) {
@@ -271,7 +274,10 @@ public class PlayerProperties extends JPanel implements ActionListener {
 				}
 			}
 		}
-
+			else {
+				JOptionPane.showMessageDialog(null, "Trade can not be done! The player you picked does not own any properties!");
+			}
+		}
 	}
 
 	/**
