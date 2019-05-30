@@ -172,6 +172,8 @@ public class ManageEvents {
 				tempInt = tempProperty.getTotalRent();
 				control(player, tempInt);
 				if (player.isAlive() == true) {
+					JOptionPane.showMessageDialog(null, player.getName() + " paid " + tempProperty.getTotalRent() + " GC to " 
+							+ tempProperty.getOwner().getName());
 					westPanel.append(player.getName() + " paid " + tempProperty.getTotalRent() + " GC to "
 							+ tempProperty.getOwner().getName() + "\n");
 					player.decreaseBalace(tempInt);

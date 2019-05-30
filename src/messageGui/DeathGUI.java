@@ -11,6 +11,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * Class to draw a GUI when players are eliminated
+ * @author Sebastian Viro, Muhammad Abdulkhuder
+ */
 public class DeathGUI extends JPanel implements ActionListener{
 
 
@@ -18,10 +22,6 @@ public class DeathGUI extends JPanel implements ActionListener{
 	private JButton btnExit = new JButton("The plague has taken you, you lost");
 	private Font font = new Font("Gabriola", Font.BOLD, 32);
 	private JFrame frame;
-	
-	public DeathGUI () {
-
-	}
 	
 	/**
 	 * Draws the gui
@@ -31,11 +31,8 @@ public class DeathGUI extends JPanel implements ActionListener{
 		setLayout(null);
 
 		lblPic.setBounds(0, 0, 1200, 675);
-		lblPic.setIcon(
-				new ImageIcon("images/plague_doctors_1200.jpg"));
-	
+		lblPic.setIcon(new ImageIcon("images/plague_doctors_1200.jpg"));
 		btnExit.setBounds(300, 575, 600, 100);
-		
 		add(lblPic);
 		btnExit.setFont(font);
 		btnExit.addActionListener(this);
