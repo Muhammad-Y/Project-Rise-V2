@@ -5,15 +5,10 @@ import java.awt.Color;
 import javax.swing.ImageIcon;
 /**
  * All tiles will implement this interface. Methods listed are
- * commong methods for alla types of tiles.
+ * common methods for all types of tiles.
  * @author AevanDino, SebastianViro
  */
 public interface Tile {
-	/**
-	 * Thing to do when landing on tile. Should be able to be called
-	 * through out the game. Consider possible outcomes (bought/owned/notOwned etc).
-	 */
-	public void onLanding();
 
 	/**
 	 * @return tileName, name of current tile.
@@ -36,10 +31,14 @@ public interface Tile {
 	 */
 	public String getTileInfo();
 	
+	/**
+	 * @return the tile title.
+	 */
 	public String getTitle();
-	
-	public Color getTitleColor();
-	
+		
+	/**
+	 * @return picture of the tile.
+	 */
 	public ImageIcon getPicture();
 
 }

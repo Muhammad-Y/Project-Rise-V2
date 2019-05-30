@@ -4,11 +4,12 @@ import java.awt.Color;
 
 import javax.swing.ImageIcon;
 
+/**
+ * Class for jail tile. 
+ * @author Sebastian Viro, Aevan Dino	
+ */
 public class Jail implements Tile {
 	private ImageIcon img = new ImageIcon("tilePics/jail.png");
-	public void onLanding() {
-				
-	}
 
 	public String getName() {
 		return "JAIL";
@@ -28,23 +29,12 @@ public class Jail implements Tile {
 				+ "\nSecond time costs 100 gold coins"
 				+ "\nThird time player has to pay 200 and is set free";
 	}
-	
-	public static void main(String[] args) {
-		Jail j = new Jail();
-		System.out.println(j.getTileInfo());
-	}
 
 	@Override
 	public String getTitle() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public Color getTitleColor() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	public ImageIcon getPicture(){
 		return img;
 	}

@@ -10,27 +10,23 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import board.Board;
-import cheat.CheatGui;
+import cheat.CheatGui; //May be needed for testing in future 
 import eastSidePanels.EastSidePanel;
 import events.ManageEvents;
-import javafx.scene.control.TabPane;
 import player.PlayerList;
 import westSidePanel.WestSidePanel;
 
 /**
- * @author Muhammad Abdulkhuder ,AevanDino, Sebastian Viro, Seth ï¿½berg
+ * @author Muhammad Abdulkhuder, Aevan Dino, Sebastian Viro, Seth Oberg
  *
  */
 public class Dice extends JPanel implements ActionListener {
 
-//	private CheatGui cheat = new CheatGui(this);
-	private ShowPlayersTurn showPlayersturn;
+	private ShowPlayersTurn showPlayersTurn;
 	private Board board;
 	private PlayerList playerList;
 	private WestSidePanel westSidePnl;
@@ -53,21 +49,28 @@ public class Dice extends JPanel implements ActionListener {
 	private int diceHeight = (screenSize.height) / 10;
 	private int roll;
 
+	
+	
 	/**
-	 * @param playerList
+	 * @param playerList method used for updating the list of players 
 	 */
 	public void addPlayerList(PlayerList playerList) {
 
 		this.playerList = playerList;
+		
+		showPlayersTurn.uppdateGUI(playerList.getActivePlayer().getName(),
+				playerList.getActivePlayer().getPlayerColor());
+		
 		manageEvents = new ManageEvents(board, playerList, westSidePnl, this, eastSidePnl);
-
+		
 	}
-
+	
+	
 	/**
-	 * @param board
-	 * @param playerList
-	 * @param westSidePanel
-	 * @param eastSidePnl
+	 * @param board The board object 
+	 * @param playerList a list containing all the players in the game
+	 * @param westSidePanel panel containing all the information about the tiles and the history of all the events
+	 * @param eastSidePnl panel containing all the information about the players and their properties 
 	 */
 	public Dice(Board board, PlayerList playerList, WestSidePanel westSidePanel, EastSidePanel eastSidePnl) {
 		this.board = board;
@@ -78,8 +81,6 @@ public class Dice extends JPanel implements ActionListener {
 		initializePanel();
 
 	}
-
-	// We can remove it after we are done with cheat
 
 	/**
 	 * calls the method that initializes the panel
@@ -99,8 +100,10 @@ public class Dice extends JPanel implements ActionListener {
 		setLayout(new FlowLayout());
 		setOpaque(false);
 		
-		showPlayersturn = new ShowPlayersTurn("Player");
-		add(showPlayersturn);
+		showPlayersTurn = new ShowPlayersTurn("Player");
+		add(showPlayersTurn);
+		
+		
 		add(lblDice1);
 
 		add(lblDice2);
@@ -120,7 +123,7 @@ public class Dice extends JPanel implements ActionListener {
 		btnEndTurn.addActionListener(this);
 
 		add(btnEndTurn);
-//		add(cheat);
+//		add(cheat); //Enable for testing with cheater.
 		btnEndTurn.setEnabled(false);
 	}
 
@@ -216,24 +219,33 @@ public class Dice extends JPanel implements ActionListener {
 
 		}
 
-
-
+		
+		/**
+		 * When a player ends their turn 
+		 * If the next player is in jail they will not have the ability to roll the 
+		 * dice and will only have the ability to end their turn if they have not paid the bail
+		 * If the player is not in jail they can roll the dice 
+		 */
 		if (e.getSource() == btnEndTurn) {
 
 			playerList.switchToNextPlayer();
-			showPlayersturn.uppdateGUI(playerList.getActivePlayer().getName(),
+			
+			showPlayersTurn.uppdateGUI(playerList.getActivePlayer().getName(),
 					playerList.getActivePlayer().getPlayerColor());
+			
 			if (playerList.getActivePlayer().isPlayerInJail() == true) {
 				btnRollDice.setEnabled(false);
 				btnEndTurn.setEnabled(true);
 				manageEvents.newEvent(board.getDestinationTile(playerList.getActivePlayer().getPosition()),
 						playerList.getActivePlayer());
-			} else if (playerList.getActivePlayer().isPlayerInJail() == false) {
+			} 
+			
+			else if (playerList.getActivePlayer().isPlayerInJail() == false) {
 				btnRollDice.setEnabled(true);
 				btnEndTurn.setEnabled(false);
 			}
+			
 			eastSidePnl.addPlayerList(playerList);
-
 			eastSidePnl.setTab();
 		}
 
@@ -258,7 +270,6 @@ public class Dice extends JPanel implements ActionListener {
 				playerList.getActivePlayer());
 		eastSidePnl.addPlayerList(playerList);
 	}
-
 
 
 	/**
@@ -299,7 +310,8 @@ public class Dice extends JPanel implements ActionListener {
 	}
 
 	/**
-	 * @author Seth Öberg, Muhammad Abdulkhuder
+	 * @author Seth ï¿½berg, Muhammad Abdulkhuder
+	 * Moves the player with a thread.
 	 *
 	 */
 	private class LoopThread implements Runnable {
@@ -329,10 +341,12 @@ public class Dice extends JPanel implements ActionListener {
 				}
 
 			}
-
 		}
 	}
 
+	/**
+	 * If a player passes go.
+	 */
 	private void goEvent() {
 
 		if (playerList.getActivePlayer().passedGo()) {
@@ -340,19 +354,8 @@ public class Dice extends JPanel implements ActionListener {
 			playerList.getActivePlayer().increaseBalance(200);
 			playerList.getActivePlayer().increaseNetWorth(200);
 
-			westSidePnl.append("Passed Go \nand recived 200 Gold coins \n");
+			westSidePnl.append("Passed Go and received 200 GC\n");
 			playerList.getActivePlayer().resetPassedGo();
 		}
 	}
-
-//	public static void main(String[] args) {
-//		Dice ui = new Dice();
-//		JFrame frame = new JFrame();
-//		frame.setVisible(true);
-//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		frame.add(ui);
-//		frame.pack();
-//		frame.setVisible(true);
-//		frame.setLocationRelativeTo(null);
-//	}
 }

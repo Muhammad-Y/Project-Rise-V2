@@ -6,7 +6,7 @@ import events.ManageEvents;
 
 /**
  * Information about each tiles.
- * @author Rohan
+ * @author Rohan Samandari
  *
  */
 public class TileInfo {

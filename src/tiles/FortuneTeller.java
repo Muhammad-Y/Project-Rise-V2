@@ -19,15 +19,20 @@ public class FortuneTeller implements Tile{
 	private Boolean isBlessing = false;
 
 	private String description = "";
-	private int amount; // Can be both positive and negative
+	private int amount; 
 	
 	private ImageIcon img = new ImageIcon("tilePics/fortune.png");
 	
-	// finns rum till att skapa klass specifika kort   
 	public FortuneTeller() {
 		
 	}
 	
+	/**
+	 * Constructor to create a fortune.
+	 * @param isBlessing
+	 * @param description 
+	 * @param amount
+	 */
 	public FortuneTeller(Boolean isBlessing, String description, int amount) {
 		
 		if(isBlessing) {
@@ -95,10 +100,6 @@ public class FortuneTeller implements Tile{
 		this.amount = amount;
 	}
 
-	public void onLanding() {
-//		displayCard(getChanceCard()); // displayCard needs to be implemented in GUI.
-	}
-
 	public String getName() {
 		return this.NAME;
 	}
@@ -117,14 +118,7 @@ public class FortuneTeller implements Tile{
 				"\nCurses affect the player in a negative way.";
 	}
 
-	@Override
 	public String getTitle() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Color getTitleColor() {
 		return null;
 	}
 	

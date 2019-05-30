@@ -18,32 +18,25 @@ public class SecretGui extends JFrame {
     private Dimension sSize = Toolkit.getDefaultToolkit().getScreenSize();
     private int width = (int)sSize.getWidth();
     private int height = (int)sSize.getHeight();
+    
 	public SecretGui() {
-		
-	
-	    	setLayout(new BorderLayout());
-	     
-	        setPreferredSize(new Dimension(320, 180));
-	        setBackground(Color.black);
-	        setForeground(Color.black);
-	        setLocation(width/2 -160, height/2-375);
+			
+	   	setLayout(new BorderLayout());
+	   	setPreferredSize(new Dimension(320, 180));
+	   	setBackground(Color.black);
+	   	setForeground(Color.black);
+	   	setLocation(width/2 -160, height/2-375);
 	        
-	        lblSecret.setPreferredSize(new Dimension(320, 180));
-	        lblSecret.setIcon(new ImageIcon("images/$$$.jpg"));
+	   	lblSecret.setPreferredSize(new Dimension(320, 180));
+	   	lblSecret.setIcon(new ImageIcon("images/$$$.jpg"));
 	       
-	        add(lblSecret);
-	        
-	        
-	    
-
-	    
-			setVisible(true);
-			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-			pack();
-			setVisible(true);
-//			setLocationRelativeTo(null);
-			thread  = new Thread(new Sleeper());
-		       thread.start();
+	   	add(lblSecret);	
+	   	setVisible(true);
+	   	setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+	   	pack();
+	   	setVisible(true);
+	   	thread  = new Thread(new Sleeper());
+	   	thread.start();
 		
 	}
 	
@@ -51,7 +44,7 @@ public class SecretGui extends JFrame {
 	    	
 	    	public void run() {
 	    		try { 
-	    			thread.sleep(15000);
+	    			Thread.sleep(15000);
 	    		} catch (Exception e) {
 	    			e.printStackTrace();
 	    		} finally {
@@ -59,5 +52,4 @@ public class SecretGui extends JFrame {
 				}
 	    	}
 	    }
-
 }

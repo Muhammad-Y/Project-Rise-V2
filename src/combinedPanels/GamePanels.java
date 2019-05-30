@@ -106,6 +106,10 @@ public class GamePanels extends JPanel {
 		dice.addPlayerList(playerList);
 
 	}
+	
+	public void Dispose() {
+		frame.dispose();
+	}
 
 	public static void main(String[] args) {
 

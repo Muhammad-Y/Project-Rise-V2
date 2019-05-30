@@ -34,9 +34,9 @@ public class MessageGUI extends JPanel{
 
     private Thread thread;
     
-    public MessageGUI() {
-	}
-    
+    /**
+     * Method to draw the GUI.
+     */
     public void startGUI() {
     	setLayout(new BorderLayout());
         outerPanel.setLayout(new BorderLayout());
@@ -68,12 +68,13 @@ public class MessageGUI extends JPanel{
         
        thread  = new Thread(new Sleeper());
        thread.start();
-        
-
     }
     
-   
-    
+    /**
+     * Method checks if the fortune is a blessing or a curse and changes the GUI accordingly before it calls the method startGUI().
+     * @param b boolean for the fortune.
+     * @param amount how much the player either has to pay or get paid.
+     */
     public void newFortune(Boolean b, int amount) {
     	if(b) {
     		type.setText("Blessing");
@@ -91,26 +92,27 @@ public class MessageGUI extends JPanel{
     	startGUI();
     }
     
-   
-    
+    /**
+     * Creates the frame.
+     */
     public void getFrame() {
     	frame = new JFrame();
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.add(this);
-
 		frame.pack();
 		frame.setVisible(true);
 		frame.setLocationRelativeTo(null);
-
 	}
     
-    
+    /**
+     *Inner class that extends thread in order to automatically close the frame after 3 seconds.
+     */
     private class Sleeper extends Thread {
     	
     	public void run() {
     		try { 
-    			thread.sleep(3000);
+    			Thread.sleep(3000);
     		} catch (Exception e) {
     			e.printStackTrace();
     		} finally {

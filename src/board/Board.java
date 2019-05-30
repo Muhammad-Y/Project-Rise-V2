@@ -13,7 +13,6 @@ import javax.swing.JPanel;
 
 import player.Player;
 import player.PlayerList;
-import tiles.Property;
 import tiles.Tile;
 import tileCollection.TileCollection;
 import tiles.TileInfo;
@@ -22,7 +21,7 @@ import westSidePanel.WestSidePanel;
 
 
 /**
- * @author Muhammad Abdulkhuder, Seth öberg, Rohan Samandari
+ * @author Muhammad Abdulkhuder, Seth �berg, Rohan Samandari
  *
  */
 public class Board extends JPanel {
@@ -30,137 +29,115 @@ public class Board extends JPanel {
 	private WestSidePanel pnlWest;
 	private TileInfo info = new TileInfo();
 	
-	//Gui Tile klassen borde dÃ¶pas om till typ GUITile sÃ¥ att det blir tydligare 
-	private GUITile[] tiles = new GUITile[40]; //skapar tomma Tile objekt med en bakgrund 
+	private GUITile[] guiTiles = new GUITile[40]; //Creates empty tile objects with a background.  
 	private PlayerList playerList = new PlayerList();
 	private Listener listener = new Listener();
 	
-	//Ny
 	private TileCollection tileCollection = new TileCollection();
-	private Property property ;
-	
-	private JFrame hej;
-	
+		
 	private static final long serialVersionUID = 1L;
-	JPanel p1 = new JPanel();
-	JPanel p2 = new JPanel();
-	JPanel p3 = new JPanel();
-	JPanel p4 = new JPanel();
-	JPanel p5 = new JPanel();
-	JPanel p6 = new JPanel();
-	JPanel p7 = new JPanel();
-	JPanel p8 = new JPanel();
-	JPanel p9 = new JPanel();
-	JPanel p10 = new JPanel();
-	JPanel p11 = new JPanel();
-	JPanel p12 = new JPanel();
-	JPanel p13 = new JPanel();
-	JPanel p14 = new JPanel();
-	JPanel p15 = new JPanel();
-	JPanel p16 = new JPanel();
-	JPanel p17 = new JPanel();
-	JPanel p18 = new JPanel();
-	JPanel p19 = new JPanel();
-	JPanel p20 = new JPanel();
-	JPanel p21 = new JPanel();
-	JPanel p22 = new JPanel();
-	JPanel p23 = new JPanel();
-	JPanel p24 = new JPanel();
-	JPanel p25 = new JPanel();
-	JPanel p26 = new JPanel();
-	JPanel p27 = new JPanel();
-	JPanel p28 = new JPanel();
-	JPanel p29 = new JPanel();
-	JPanel p30 = new JPanel();
-	JPanel p31 = new JPanel();
-	JPanel p32 = new JPanel();
-	JPanel p33 = new JPanel();
-	JPanel p34 = new JPanel();
-	JPanel p35 = new JPanel();
-	JPanel p36 = new JPanel();
-	JPanel p37 = new JPanel();
-	JPanel p38 = new JPanel();
-	JPanel p39 = new JPanel();
-	JPanel p40 = new JPanel();
+	
+	private JPanel p1 = new JPanel();
+	private JPanel p2 = new JPanel();
+	private JPanel p3 = new JPanel();
+	private JPanel p4 = new JPanel();
+	private JPanel p5 = new JPanel();
+	private JPanel p6 = new JPanel();
+	private JPanel p7 = new JPanel();
+	private JPanel p8 = new JPanel();
+	private JPanel p9 = new JPanel();
+	private JPanel p10 = new JPanel();
+	private JPanel p11 = new JPanel();
+	private JPanel p12 = new JPanel();
+	private JPanel p13 = new JPanel();
+	private JPanel p14 = new JPanel();
+	private JPanel p15 = new JPanel();
+	private JPanel p16 = new JPanel();
+	private JPanel p17 = new JPanel();
+	private JPanel p18 = new JPanel();
+	private JPanel p19 = new JPanel();
+	private JPanel p20 = new JPanel();
+	private JPanel p21 = new JPanel();
+	private JPanel p22 = new JPanel();
+	private JPanel p23 = new JPanel();
+	private JPanel p24 = new JPanel();
+	private JPanel p25 = new JPanel();
+	private JPanel p26 = new JPanel();
+	private JPanel p27 = new JPanel();
+	private JPanel p28 = new JPanel();
+	private JPanel p29 = new JPanel();
+	private JPanel p30 = new JPanel();
+	private JPanel p31 = new JPanel();
+	private JPanel p32 = new JPanel();
+	private JPanel p33 = new JPanel();
+	private JPanel p34 = new JPanel();
+	private JPanel p35 = new JPanel();
+	private JPanel p36 = new JPanel();
+	private JPanel p37 = new JPanel();
+	private JPanel p38 = new JPanel();
+	private JPanel p39 = new JPanel();
+	private JPanel p40 = new JPanel();
 
-	JPanel[] panelarray = { p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20,
+	private JPanel[] panelarray = { p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20,
 			p21, p22, p23, p24, p25, p26, p27, p28, p29, p30, p31, p32, p33, p34, p35, p36, p37, p38, p39, p40 };
-
 
 	JLabel lblNewLabel = new JLabel();
 
-	
-	public Board() {
-		initializeAllPanels();	
-		
-		initializeGUI(); 
-	}
-
+	/**
+	 * 
+	 * @param wp, WestSidePanel
+	 */
 	public Board(WestSidePanel wp) {
 		this.pnlWest = wp;
 		initializeAllPanels();	
-		
 		initializeGUI(); 
 	}
 	
-	
-	
+	/**
+	 * 
+	 * @param playerList, list of players
+	 */
 	public Board(PlayerList playerList) {
 		initializeAllPanels();	
 		this.playerList = playerList; 
 		
 	}
 
+	/**
+	 * 
+	 * @param playerList, list of players
+	 * @param wp, WestSidePanel
+	 */
 	public Board(PlayerList playerList,WestSidePanel wp) {
 		initializeAllPanels();	
 		this.playerList = playerList;  
 		
 	}
 
-	
+	/**
+	 * Sets the list of players.
+	 * @param playerList
+	 */
 	public void addPlayers(PlayerList playerList) {
 		this.playerList = playerList;
 	}
-	
-	
-	//testa sÃ¥ att spelare lÃ¤sts in pÃ¥ rÃ¤tt sÃ¤tt
-	public void printPlayers() {
-		
-		for(int i = 0; i < playerList.getLength(); i++) {
-			System.out.println(playerList.getPlayerFromIndex(i).getName() + " " + 
-		playerList.getPlayerFromIndex(i).getImage() + " " + playerList.getPlayerFromIndex(i).getPlayerIndex());
-		}
-		
-	}
-	
-	 
-	//Kopiera 
+	/**
+	 * Sets players
+	 */
 	public void setPlayers() {
 		
 		for(int i = 0; i < playerList.getLength(); i++) {
 			setPlayer(playerList.getPlayerFromIndex(i));
 		}
-		
 	}
 	
-	
-	//Ta bort! 
-	public void startboard() {
-		hej = new JFrame("Tjena");
-		hej.setPreferredSize(new Dimension(750, 750));
-		hej.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		hej.setVisible(true);
-		hej.add(this);
-		hej.pack();
-	}
-	
-	
-	//initiera alla paneler hÃ¤r istÃ¤llet fÃ¶r att gÃ¶ra det i konstruktor
+	/**
+	 * Initilizes all panels
+	 */
 	public void initializeAllPanels() {
 		setPreferredSize(new Dimension(750, 750));
 		setLayout(null);
 
-		//Att mÃ¥la upp alla paneler borde gÃ¶ras om till en metod
 		p1.setOpaque(false);
 		p1.setBounds(649, 650, 101, 100);
 		add(p1);
@@ -321,7 +298,9 @@ public class Board extends JPanel {
 		p40.setBounds(649, 587, 101, 62);
 		add(p40);
 		
-		//MouseListener		
+		/**
+		 * Adds mouselistener
+		 */
 		for (int i=0; i<panelarray.length; i++) {
 			panelarray[i].addMouseListener(listener);
 		}
@@ -335,115 +314,157 @@ public class Board extends JPanel {
 		}
 	}
 	
-
+	/**
+	 * Initilizes gui
+	 */
 	public void initializeGUI() {
 		addEmptyGridPanels();
-		paintNewBoard(tiles); //en fÃ¤rdig array med alla 40 tiles mÃ¥ste skickas in till board
+		paintNewBoard(guiTiles); //Requires a array with all 40 tiles to be sent to paintNewBoard.
 		
 	}
 	
-	
+	/**
+	 * @param index index for a tile.
+	 * @return GUITile at given index.
+	 */
 	public GUITile getTileAtIndex(int index) {
-		return tiles[index];
+		return guiTiles[index];
 	}
 	
 	
 	public void addEmptyGridPanels() {
-		for (int i = 0; i < tiles.length; i++) {
+		for (int i = 0; i < guiTiles.length; i++) {
 			
 			//Beroende pÃ¥ vart objekt lÃ¤ggs in behÃ¶ver JLabel objektet lÃ¤ggas in pÃ¥ olika platser
-			//Denna del BORDE efektiviseras 
 			//Olika konstruktorer av NewTile() beroende pÃ¥ vart objekt ska placeras 
 			
 			//Det behÃ¶vs fler konstruktorer fÃ¶r tomma rutor som besÃ¶k av fÃ¤ngelse
 			//stationer/work etc 
-			
-			//Om index 0-10 ska JLabel lÃ¤ggas in i north
+			// ???????????????????+++
+			/**
+			 * If index is between 0-10 then labels are placed in north.
+			 */
 			if(i < 11) {
-				tiles[i] = new GUITile(1); 
-			}
-			//Om index 11-20 ska JLabel lÃ¤ggas i east
-			else if(i < 20) {
-				tiles[i] = new GUITile(2); 
-			}
-			//Om index 20-30 ska JLabel lÃ¤ggas i south
-			else if(i < 31) {
-				tiles[i] = new GUITile(3); 
-			}
-			//Om index 30-39 ska JLabel lÃ¤ggas i west
-			else if(i < 40) {
-				tiles[i] = new GUITile(4); 
+				guiTiles[i] = new GUITile(1); 
 			}
 			
+			/**
+			 * If index is between 11-20 then labels are placed in east.
+			 */
+			else if(i < 20) {
+				guiTiles[i] = new GUITile(2); 
+			}
+
+			/**
+			 * If index is between 20 and 30 then labels are placed in south.
+			 */
+			else if(i < 31) {
+				guiTiles[i] = new GUITile(3); 
+			}
+			
+			/**
+			 * If index is between 31-39 then labels are placed in west.
+			 */
+			else if(i < 40) {
+				guiTiles[i] = new GUITile(4); 
+			}	
 		}
+	}
 		
-	}
-	
-	
-	//skicka in spelar objekt fÃ¶r att fÃ¶rflytta och ta bort spelar objekt
+	/**
+	 * Sets a player on a certain position. 
+	 * @param player
+	 */
 	public void setPlayer(Player player) {
-		tiles[player.getPosition()].setPlayer(player); 
+		guiTiles[player.getPosition()].setPlayer(player); 
 	}
+	
+	/**
+	 * Removes a player from a certain position.
+	 * @param player
+	 */
 	public void removePlayer(Player player) {
-		tiles[player.getPosition()].removePlayer(player);
+		guiTiles[player.getPosition()].removePlayer(player);
 	}
 	
 	
-	//Method called when the user arrives at the destination tile
+	/**
+	 * Method is called when the user arrives at the destination tile
+	 * @param index of tile.
+	 * @return tile at given index.
+	 */
 	public Tile getDestinationTile(int index) {
 		return tileCollection.getTileAtIndex(index);
 	}
 	 
-	
-	
-	//AnvÃ¤nds fÃ¶r att initiera alla space/rutor 
-	//HÃ¤r behÃ¶ver en fÃ¤rdig array med alla 40 tile objekt skickas in
+	/**
+	 * Used to initilize all the tiles.
+	 * @param spaces, receives a array with all 40 tile objects.
+	 */
 	public void paintNewBoard(GUITile[] spaces) {
 
 		for(int i = 0; i < panelarray.length; i ++) {
 			panelarray[i].add(spaces[i]);
-		}
-		
+		}	
 	}
-public class Listener implements MouseListener {
+	
+	/**
+	 * Listener class for interactive tiles 
+	 */
+	public class Listener implements MouseListener {
 
-		
+		/**
+		 * Nothing happens when clicking
+		 */
 		public void mouseClicked(MouseEvent e) {
-			// nothing will happen by clicking
+
 		}
-		
-			public void mouseEntered(MouseEvent e) {
-				for (int i=0; i<panelarray.length; i++) {
-					if (e.getSource()==panelarray[i]) {
-						if (i == 0 || i == 2 || i == 4 || i == 5 ||i == 7 || 
-								i == 10 || i == 15 ||i == 17 || 
-								i == 20 ||i == 22 || i == 25 || i == 30 ||
-								i == 33 ||i == 35 || i == 36 || i == 38){
-								pnlWest.setTitleText(info.getInfo(i), info.getTitle(i), Color.DARK_GRAY, Color.white);
-						}else if(i==26 || i==27 || i==29) {
-							pnlWest.setTitleText(tileCollection.getTileAtIndex(i).getTileInfo(),
-									tileCollection.getTileAtIndex(i).getTitle(), new Color(254,231,11, 255), Color.black);
-						}
-						else if(i == 12 || i == 28) {
-							pnlWest.setTitleText(tileCollection.getTileAtIndex(i).getTileInfo(), 
-									tileCollection.getTileAtIndex(i).getName(), Color.DARK_GRAY, Color.white);
-						}
-						else {						
-							pnlWest.setTitleText(tileCollection.getTileAtIndex(i).getTileInfo(),
-								tileCollection.getTileAtIndex(i).getTitle(), tileCollection.getTileAtIndex(i).getColor(), Color.white );
-						}
+		/**
+		 * Method for when hovering over tiles.
+		 */
+		public void mouseEntered(MouseEvent e) {
+			for (int i=0; i<panelarray.length; i++) {
+				if (e.getSource()==panelarray[i]) {
+					if (i == 0 || i == 2 || i == 4 || i == 5 ||i == 7 || 
+							i == 10 || i == 15 ||i == 17 || 
+							i == 20 ||i == 22 || i == 25 || i == 30 ||
+							i == 33 ||i == 35 || i == 36 || i == 38){
+							pnlWest.setTitleText(info.getInfo(i), info.getTitle(i), Color.DARK_GRAY, Color.white);
+					}else if(i==26 || i==27 || i==29) {
+						pnlWest.setTitleText(tileCollection.getTileAtIndex(i).getTileInfo(),
+								tileCollection.getTileAtIndex(i).getTitle(), new Color(254,231,11, 255), Color.black);
 					}
-				}		
+					else if(i == 12 || i == 28) {
+						pnlWest.setTitleText(tileCollection.getTileAtIndex(i).getTileInfo(), 
+								tileCollection.getTileAtIndex(i).getName(), Color.DARK_GRAY, Color.white);
+					}
+					else {						
+						pnlWest.setTitleText(tileCollection.getTileAtIndex(i).getTileInfo(),
+							tileCollection.getTileAtIndex(i).getTitle(), tileCollection.getTileAtIndex(i).getColor(), Color.white );
+					}
+				}
+			}		
 			}
+		
+			/**
+			 * Calls method to set default text when mouse leaves a tile.
+			 */
 			public void mouseExited(MouseEvent e) {
 				pnlWest.setTextDefault();
 			}
-			public void mousePressed(MouseEvent e) {
-				// Nothing will happen by pressed button
-			}
-			public void mouseReleased(MouseEvent e) {
-				// Nothing will happen by releasing button
-			}
-}
 
+			/**
+			 * Nothing happens when mouse is pressed.
+			 */
+			public void mousePressed(MouseEvent e) {
+
+			}
+			
+			/**
+			 * Nothing happens by releasing mouse.
+			 */
+			public void mouseReleased(MouseEvent e) {
+
+			}
+	}
 }

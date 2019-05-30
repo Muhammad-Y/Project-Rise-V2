@@ -6,7 +6,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 
 import javax.swing.BorderFactory;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
@@ -14,9 +13,11 @@ import javax.swing.SwingConstants;
 
 import tiles.FortuneTeller;
 
+/**
+ * Remove this class??
+ *
+ */
 public class FortuneTellerGUI extends JPanel{
-
-    private FortuneTeller cardo;
 
     private JPanel centerPanel = new JPanel();
     private JPanel outerPanel = new JPanel();
@@ -50,29 +51,12 @@ public class FortuneTellerGUI extends JPanel{
                 + "                            You recived " + 2 + " gold");
         dis.setFont(fontDis);
         dis.setBackground(color1);
-
-    //    dis.setHorizontalAlignment(SwingConstants.CENTER);
-
-
+        
         centerPanel.setBackground(color1);
         centerPanel.add(type,BorderLayout.NORTH);
         centerPanel.add(dis,BorderLayout.CENTER);
 
-
         add(outerPanel, BorderLayout.CENTER);
         outerPanel.add(centerPanel, BorderLayout.CENTER);
-
-
- 
-}
-    public static void main(String[] args) {
-		FortuneTellerGUI ft = new FortuneTellerGUI("Momo", "sucks", 250);
-		JFrame frame = new JFrame();
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(ft);
-		frame.pack();
-		frame.setVisible(true);
-		frame.setLocationRelativeTo(null);
-	}
+    }
 }

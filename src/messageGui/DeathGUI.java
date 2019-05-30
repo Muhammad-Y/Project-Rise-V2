@@ -11,6 +11,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * Class to draw a GUI when players are eliminated
+ * @author Sebastian Viro, Muhammad Abdulkhuder
+ */
 public class DeathGUI extends JPanel implements ActionListener{
 
 
@@ -19,23 +23,16 @@ public class DeathGUI extends JPanel implements ActionListener{
 	private Font font = new Font("Gabriola", Font.BOLD, 32);
 	private JFrame frame;
 	
-	public DeathGUI () {
-//		addGui();
-	}
-	
+	/**
+	 * Draws the gui
+	 */
 	public void addGui() {
-//		getFrame();
 		setPreferredSize(new Dimension(1200, 675));
 		setLayout(null);
 
-//		lblLblpic.setBounds(0, 0, 1027, 500);
 		lblPic.setBounds(0, 0, 1200, 675);
-		lblPic.setIcon(
-				new ImageIcon("images/plague_doctors_1200.jpg"));
-	
-		
+		lblPic.setIcon(new ImageIcon("images/plague_doctors_1200.jpg"));
 		btnExit.setBounds(300, 575, 600, 100);
-		
 		add(lblPic);
 		btnExit.setFont(font);
 		btnExit.addActionListener(this);
@@ -43,6 +40,9 @@ public class DeathGUI extends JPanel implements ActionListener{
 		getFrame();
 	}
 
+	/**
+	 * Creates the frame
+	 */
 	public void getFrame() {
 		frame = new JFrame();
 		frame.setVisible(true);
@@ -53,25 +53,13 @@ public class DeathGUI extends JPanel implements ActionListener{
 		frame.setLocationRelativeTo(null);
 	}
 	
-	public static void main(String[] args) {
-		DeathGUI dGUI = new DeathGUI();
-//		JFrame frame = new JFrame();
-//		
-//		frame.setUndecorated(true);	
-//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		frame.getContentPane().add(dGUI);
-//		frame.pack();
-//		frame.setVisible(true);
-//		frame.setLocationRelativeTo(null);
-//		dGUI.addGui();
-	}
-
+	/**
+	 * Adds action the the btnExit, disposes the frame. 
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == btnExit) {
-//			frame.setVisible(false);
 			frame.dispose();
-			
 		}
 	}
 }

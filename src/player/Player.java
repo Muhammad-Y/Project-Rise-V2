@@ -35,6 +35,8 @@ public class Player {
 	private boolean playerPassedgo = false;
 
 	private ArrayList<Property> propertiesOwned;
+	private ArrayList<Tile> tilesOwned;
+
 	private ArrayList<Tavern> tavernsOwned;
 
 	/**
@@ -390,7 +392,7 @@ public class Player {
 			setPlayerRank(PlayerRanks.LORD);
 		}
 		if (getNetWorth() >= 7500) {
-			setPlayerRank(PlayerRanks.RULER);
+			setPlayerRank(PlayerRanks.KINGS);
 		}
 	}
 
