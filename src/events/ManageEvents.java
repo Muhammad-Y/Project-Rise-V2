@@ -32,16 +32,13 @@ import westSidePanel.WestSidePanel;
 
 /**
  * Klass som hanterar alla händelser då en spelare landar på en ruta
- * 
- * @author Seth Oberg, Rohan Samandari
- *
+ * @author Seth Oberg, Rohan Samandari, Sebastian Viro
  */
 
 public class ManageEvents {
 	private PlayerList playerList;
 	private Board board;
 	private Dice dice;
-	private WinGui winGui;
 	private DeathGUI deathGUI;
 	private MessageGUI msgGUI;
 	private EastSidePanel eastPanel;
@@ -49,10 +46,15 @@ public class ManageEvents {
 	private int roll;
 	private int taxCounter = 0;
 	private WestSidePanel westPanel;
-	private SecretGui hush;
 
-	private Thread thread;
-
+	/**
+	 * Constructor initializes objects in the parameter. Creates Death -and MessageGUI.
+	 * @param board
+	 * @param playerList
+	 * @param pnlWest
+	 * @param dice
+	 * @param eastPanel
+	 */
 	public ManageEvents(Board board, PlayerList playerList, WestSidePanel pnlWest, Dice dice, EastSidePanel eastPanel) {
 		this.dice = dice;
 		this.westPanel = pnlWest;
@@ -63,15 +65,20 @@ public class ManageEvents {
 		msgGUI = new MessageGUI();
 	}
 
+	/**
+	 * Method checks what type of tile the player has landed on.
+	 * @param tile the player landed on.
+	 * @param player, player who landed on a tile.
+	 */
 	public void newEvent(Tile tile, Player player) {
 		player.checkPlayerRank();
 
 		if (player.getPlayerRank() == PlayerRanks.KINGS) {
-			this.winGui = new WinGui();
+			new WinGui();
 		}
 
 		if (playerList.getLength() == 1) {
-			this.winGui = new WinGui();
+			new WinGui();
 		}
 
 		if (tile instanceof Property) {
@@ -95,7 +102,7 @@ public class ManageEvents {
 		}
 
 		if (tile instanceof Go) {
-			// Detta sköts just nu i dice klassen?
+			
 		}
 
 		if (tile instanceof SundayChurch) {
@@ -128,13 +135,15 @@ public class ManageEvents {
 			dice.setPlayerList(playerList.getList());
 			board.removePlayer(player);
 			deathGUI.addGui();
-//			JOptionPane.showMessageDialog(null, "The plague has taken you\nYou have lost\nTry again in another life");
-		} else {
-//			System.out.println("Spelaren har råd att betala " + amount);
-		}
-
+		} 
 	}
 
+	/**
+	 * Method called when player lands on a property. Checks if it's availability and if the player has to pay rent or 
+	 * can purchase the property.
+	 * @param tile
+	 * @param player
+	 */
 	public void propertyEvent(Tile tile, Player player) {
 		Property tempProperty = (Property) tile;
 		int tempInt = 0;
@@ -159,7 +168,6 @@ public class ManageEvents {
 					player.decreaseBalace(tempInt);
 					tempProperty.getOwner().increaseBalance(tempInt);
 				}
-
 			} else {
 				tempInt = tempProperty.getTotalRent();
 				control(player, tempInt);
@@ -169,13 +177,15 @@ public class ManageEvents {
 					player.decreaseBalace(tempInt);
 					tempProperty.getOwner().increaseBalance(tempInt);
 				}
-
 			}
-
 		}
-
 	}
 
+	/**
+	 * Method called when the player lands on a work tile.
+	 * @param tile
+	 * @param player
+	 */
 	public void workEvent(Tile tile, Player player) {
 
 		Work tempWorkObject = (Work) tile;
@@ -188,6 +198,11 @@ public class ManageEvents {
 
 	}
 
+	/**
+	 * Method called when the player lands on a tax tile. 
+	 * @param tile
+	 * @param player
+	 */
 	public void taxEvent(Tile tile, Player player) {
 		Tax tempTaxObject = (Tax) tile;
 		int chargePlayer = tempTaxObject.getTax();
@@ -204,7 +219,6 @@ public class ManageEvents {
 
 	/**
 	 * Gets the total tax paid by players
-	 * 
 	 * @return total tax
 	 */
 	public int getChurchTax() {
@@ -212,6 +226,11 @@ public class ManageEvents {
 		return totalTax;
 	}
 
+	/**
+	 * Method called when players lands on a tavern tile, checks it's availability. 
+	 * @param tile
+	 * @param player
+	 */
 	public void tavernEvent(Tile tile, Player player) {
 		Tavern tempTavernObj = (Tavern) tile;
 
@@ -229,7 +248,7 @@ public class ManageEvents {
 			} else if (tempTavernObj.getOwner().getAmountOfTaverns() == 2) {
 				randomValue = (getRoll() * 20);
 			}
-
+			
 			control(player, randomValue);
 			if (player.isAlive() == true) {
 				JOptionPane.showMessageDialog(null, player.getName() + " paid " + randomValue + " GC to " 
@@ -240,17 +259,13 @@ public class ManageEvents {
 				tempTavernObj.getOwner().increaseNetWorth(randomValue);
 				player.decreaseBalace(randomValue);
 			}
-
 		}
-
 	}
 
 	/**
-	 * Spelaren ska vara fast på jail rutan i 3 rundor, eller köpa sig ut för
-	 * 50G?
-	 * 
+	 * Method for jailed players, giving them the option to pay bail if the have enough balance.
 	 * @param tile
-	 * @param player
+	 * @param player in jail
 	 */
 	public void jailEvent(Tile tile, Player player) {
 		if (player.isPlayerInJail() == true && (player.getJailCounter()) < 2) {
@@ -262,14 +277,17 @@ public class ManageEvents {
 				JOptionPane.showMessageDialog(null, "You can not afford the bail");
 			}
 		} else if (player.getJailCounter() >= 2) {
-			System.out.println("Testa ");
 			player.setPlayerIsInJail(false);
 			player.setJailCounter(0);
 			dice.activateRollDice();
 		}
-
 	}
 
+	/**
+	 * Method to jail a player.
+	 * @param tile
+	 * @param player
+	 */
 	public void goToJailEvent(Tile tile, Player player) {
 		player.setPlayerIsInJail(true);
 		board.removePlayer(player);
@@ -279,46 +297,50 @@ public class ManageEvents {
 		westPanel.append(player.getName() + " is in jail for " + (2 - player.getJailCounter()) + " more turns\n");
 	}
 
+	/**
+	 * Method called if the player lands on sunday church. Pays out all the collected tax then resets the counter.
+	 * @param player
+	 */
 	public void churchEvent(Player player) {
-
 		player.increaseBalance(200 * taxCounter);
 		player.increaseNetWorth(200 * taxCounter);
 		westPanel.append(player.getName() + " got " + taxCounter * 200 + " GC from the church\n");
 		taxCounter = 0;
 	}
 
+	/**
+	 * Method for a dialog if the player is able to purchase a property.
+	 * @param property in question.
+	 * @param player in question.
+	 */
 	public void propertyDialog(Property property, Player player) {
 		int yesOrNo = JOptionPane.showConfirmDialog(null,
 				property.getName() + "\n" + "Do you want to purchase this property for " + property.getPrice() + " GC",
 				"Decide your fate!", JOptionPane.YES_NO_OPTION);
 
 		if (yesOrNo == 0 && (property.getPrice() <= player.getBalance())) {
-
-			// Visa en MessageDialog med "You cannot afford this property" om spelaren
-			// klickar på ja men inte har råd
 			property.setOwner(player);
 			player.addNewProperty(property);
 			property.setPurchaseable(false);
 			player.decreaseBalace(property.getPrice());
-			// Lägg till ny rad
 			westPanel.append(player.getName() + " purchased " + property.getName() + "\n");
 		}
 
 		else {
 			westPanel.append(player.getName() + " did not purchase " + property.getName() + "\n");
-			// Behövs inte fixas
-			// Skriv ut typ "player passed"
 		}
 	}
 
+	/**
+	 * Method for a dialog if the player wants to purchase a tavern.
+	 * @param tavern, the to buy.
+	 * @param player, player who landed on the tavern.
+	 */
 	public void tavernDialog(Tavern tavern, Player player) {
 		int yesOrNo = JOptionPane.showConfirmDialog(null, "Do you want to purchase this property?", "JOption",
 				JOptionPane.YES_NO_OPTION);
 
 		if (yesOrNo == 0 && (tavern.getPrice() <= player.getBalance())) {
-
-			// Visa en MessageDialog med "You cannot afford this property" om spelaren
-			// klickar på ja men inte har råd
 			tavern.setOwner(player);
 			player.addNewTavern(tavern);
 			tavern.setPurchaseable(false);
@@ -326,16 +348,20 @@ public class ManageEvents {
 			westPanel.append(player.getName() + " purchased " + tavern.getName() + "\n");
 		} else {
 			westPanel.append(player.getName() + " did not purchase " + tavern.getName() + "\n");
-			// Behövs inte fixas
-			// Skriv ut typ "player passed"
 		}
-
 	}
 
+	/**
+	 * @return roll of the dice.
+	 */
 	public int getRoll() {
 		return dice.getRoll();
 	}
 
+	/**
+	 * Sets the roll of the dice.
+	 * @param dice
+	 */
 	public void setRoll(Dice dice) {
 		this.roll = dice.getRoll();
 	}
@@ -343,8 +369,7 @@ public class ManageEvents {
 	/**
 	 * Message for the prisoner to choose if the player wants to pay the bail and
 	 * get free
-	 * 
-	 * @param player
+	 * @param player in jail.
 	 */
 	public void jailDialog(Player player) {
 		int yesOrNo = JOptionPane.showConfirmDialog(null,
@@ -360,24 +385,29 @@ public class ManageEvents {
 			westPanel.append(player.getName() + " did not pay tha bail\n and is still in jail\n");
 		}
 	}
-
+	
+	/**
+	 * Method for FortuneTeller, small chance for a secret event to trigger.
+	 * @param tile, tile the player landed on.
+	 * @param player, player in question.
+	 */
 	private void fortuneTellerEvent(Tile tile, Player player) {
 		FortuneTeller tempCard = (FortuneTeller) tile;
 		if (rand.nextInt(10) == 0) {
-
-			 hush = new SecretGui();
-
-			
-			thread = new Thread(new SecretSleeper(tempCard, player));
+			new SecretGui();
+			new Thread(new SecretSleeper(tempCard, player));
 			eastPanel.addPlayerList(playerList);
 
-
 		} else {
-
 			fortune(tempCard, player);
 		}
 	}
 
+	/**
+	 * Method that either withdraws or adds gold coins to a player depending on the type of fortune.
+	 * @param tempCard, instance of FortuneTeller 
+	 * @param player, player who landed on the tile
+	 */
 	public void fortune(FortuneTeller tempCard, Player player) {
 		tempCard.setAmount(rand.nextInt(600) - 300);
 		if (tempCard.getAmount() < 0) {
@@ -386,12 +416,9 @@ public class ManageEvents {
 			tempCard.setFortune("CURSE");
 			control(player, pay);
 			if (player.isAlive() == true) {
-//				nya ändringar
 				westPanel.append(player.getName() + " paid " + pay + " GC\n");
-//				slut på ändringar
 				player.decreaseBalace(pay);
 				player.decreaseNetWorth(pay);
-//				JOptionPane.showMessageDialog(null, "You pay" + pay);
 				msgGUI.newFortune(false, pay);
 			}
 
@@ -401,44 +428,25 @@ public class ManageEvents {
 			player.increaseBalance(tempCard.getAmount());
 			player.increaseNetWorth(tempCard.getAmount());
 			westPanel.append(player.getName() + " received " + tempCard.getAmount() + " CG\n");
-//			JOptionPane.showMessageDialog(null, "You get " + tempCard.getAmount());
 			msgGUI.newFortune(true, tempCard.getAmount());
 		}
-	}
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	}	
 	
 	private class SecretSleeper extends Thread {
 
 		private FortuneTeller tempCard;
 		private Player player;
 		private Clip clip;
-	
-		
+			
 		public SecretSleeper(FortuneTeller tempCard, Player player) {
 			this.tempCard = tempCard;
 			this.player = player;
 			start();
 
 		}
-
 		
 		public void run() {
 			try {
-			
 				for (int i = 0; i < 5; i++) {
 					File musicPath = new File("music/duraw.wav");				
 					AudioInputStream ais = AudioSystem.getAudioInputStream(musicPath);
@@ -446,11 +454,7 @@ public class ManageEvents {
 					clip.open(ais);
 					clip.start();
 					fortune(tempCard, player);
-				 
-
-				
-				Thread.sleep(3000);
-
+					Thread.sleep(3000);
 				}
 
 			} catch (Exception e) {
