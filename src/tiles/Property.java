@@ -9,7 +9,7 @@ import player.Player;
 
 /**
  * Class for property.
- * @author Sebastian Viro, Aevan Dino
+ * @author Sebastian Viro, Aevan Dino, Muhammad Abdulkhuder
  */
 public class Property implements Tile {
 
