@@ -28,17 +28,14 @@ public class Tavern implements Tile{
 		
 	}
 
-	@Override
 	public String getName() {
 		return this.name;
 	}
 
-	@Override
 	public Boolean getPurchaseable() {
 		return this.purchasable;
 	}
 
-	@Override
 	public Color getColor() {
 		return null;
 	}
@@ -77,13 +74,10 @@ public class Tavern implements Tile{
 	public void clearTavern() {
 		purchasable = true; 
 	}
-	@Override
+
 	public String getTitle() {
-		// TODO Auto-generated method stub
 		return null;
 	}
-	@Override
-	
 	
 	public ImageIcon getPicture(){
 		return img;

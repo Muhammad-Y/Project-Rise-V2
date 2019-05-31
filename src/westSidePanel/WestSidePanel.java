@@ -8,7 +8,6 @@ import javax.swing.border.Border;
 import javax.swing.text.DefaultCaret;
 
 /**
- * 
  * @author RohanSamandari, AevanDino
  *
  */

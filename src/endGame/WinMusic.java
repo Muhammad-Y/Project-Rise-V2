@@ -6,6 +6,10 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
+/**
+ * @author Aevan Dino
+ *
+ */
 public class WinMusic extends Thread {
 
 
@@ -29,6 +33,9 @@ public class WinMusic extends Thread {
 		}
 	}
 
+	/**
+	 * Stops the music
+	 */
 	public void stopMusic() {
 		
 		if(musicPlayer != null) {

@@ -33,6 +33,9 @@ public class EastSidePanel extends JPanel {
 		addtabs();
 	}
 
+	/**
+	 * Draws the GUI
+	 */
 	public EastSidePanel() {
 
 		setPreferredSize(new Dimension(345, 860));

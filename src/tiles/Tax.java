@@ -16,10 +16,6 @@ public class Tax implements Tile {
 	private int taxToPay = 200;
 	private ImageIcon img = new ImageIcon("tilePics/tax.png");
 	
-//	public Tax(Player player) {
-//		this.player = player;
-//	}
-	
 	public Tax() {
 		
 	}
@@ -55,10 +51,8 @@ public class Tax implements Tile {
 	}
 	@Override
 	public String getTitle() {
-		// TODO Auto-generated method stub
 		return null;
 	}
-
 
 	public ImageIcon getPicture(){
 		return img;

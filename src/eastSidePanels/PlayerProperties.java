@@ -25,7 +25,7 @@ import player.PlayerList;
 import tiles.Property;
 
 /**
- * @author Muhammad Abdulkhuder, Aevan Dino sebastian Viro.
+ * @author Muhammad Abdulkhuder Aevan Dino sebastian Viro.
  *
  */
 public class PlayerProperties extends JPanel implements ActionListener {
@@ -43,7 +43,6 @@ public class PlayerProperties extends JPanel implements ActionListener {
 	private Font font = new Font("ALGERIAN", Font.BOLD, 22);
 	private Font fontLevel = new Font("ALGERIAN", Font.BOLD, 50);
 	private String plus = "+";
-
 	private PlayerList playerList;
 	private int playerAtI, propertyAtI;
 

@@ -1,11 +1,5 @@
 package tileCollection;
 
-/** 
- * Informtion about each tiles. 
- * Price, Title, 
- * @author Rohan, Sebastian
- */
-
 import java.awt.Color;
 
 import javax.swing.ImageIcon;
@@ -20,6 +14,13 @@ import tiles.Tavern;
 import tiles.Tax;
 import tiles.Tile;
 import tiles.Work;
+
+
+/** 
+ * Informtion about each tiles. 
+ * Price, Title, 
+ * @author Rohan, Sebastian, Muhammad Abdulkhuder
+ */
 
 public class TileCollection {
 

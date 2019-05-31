@@ -332,15 +332,12 @@ public class Board extends JPanel {
 	}
 	
 	
+	/**
+	 * Tile objects are created with an int depending on their position on the board.
+	 */
 	public void addEmptyGridPanels() {
 		for (int i = 0; i < guiTiles.length; i++) {
 			
-			//Beroende pÃ¥ vart objekt lÃ¤ggs in behÃ¶ver JLabel objektet lÃ¤ggas in pÃ¥ olika platser
-			//Olika konstruktorer av NewTile() beroende pÃ¥ vart objekt ska placeras 
-			
-			//Det behÃ¶vs fler konstruktorer fÃ¶r tomma rutor som besÃ¶k av fÃ¤ngelse
-			//stationer/work etc 
-			// ???????????????????+++
 			/**
 			 * If index is between 0-10 then labels are placed in north.
 			 */

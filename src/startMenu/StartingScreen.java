@@ -27,6 +27,12 @@ import dice.ShowPlayersTurn;
 import menu.Menu;
 import player.PlayerList;
 
+/**
+ * First screen which player sees, here he is able to choose the amount of players and
+ * what names and colors the players will have during the game.
+ * @author Aevan Dino
+ *
+ */
 public class StartingScreen extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -200,6 +206,9 @@ public class StartingScreen extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	}
 
+	/**
+	 * Methods create radio buttons using for-loop
+	 */
 	public void createRadioButtons() {
 		for (int i = 0; i < 3; i++) {
 			JRadioButton btnRadio = new JRadioButton((i + 2) + "");
@@ -211,7 +220,10 @@ public class StartingScreen extends JFrame {
 			add(btnRadio);
 		}
 	}
-
+	
+	/**
+	 * Creates all players, textfields, labels and color choice boxes
+	 */
 	public void CreatePlayers() {
 		for (int i = 0; i < 4; i++) {
 			playerLabels[i].setBounds(280, 360 + i * 40, 150, 50);
@@ -231,6 +243,10 @@ public class StartingScreen extends JFrame {
 		}
 	}
 
+	/**
+	 * Buttonlistener class, listens for clicks.
+	 * @author Aevan Dino
+	 */
 	private class ButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 
@@ -302,6 +318,9 @@ public class StartingScreen extends JFrame {
 			}
 		}
 
+		/**
+		 * Method called when player clicks start game
+		 */
 		public void startUpGame() {
 			createNewUsers();
 			mainWindow.addPlayer(playerList);
@@ -309,7 +328,10 @@ public class StartingScreen extends JFrame {
 			dispose();
 			Introduction intro = new Introduction();
 		}
-
+		
+		/**
+		 * Creates the right amount of players.
+		 */
 		private void createNewUsers() {
 
 			for (int i = 0; i < amountOfPlayers; i++) {
@@ -321,7 +343,12 @@ public class StartingScreen extends JFrame {
 			}
 
 		}
-
+		
+		/**
+		 * Whenever player chooses to reset the start screen
+		 * @param amountOfPlayers, how many players to draw
+		 * @param bool, boolean indicating whether or not components should be visible.
+		 */
 		public void btnPressed(int amountOfPlayers, boolean bool) {
 			for (int i = 0; i < amountOfPlayers; i++) {
 				playerLabels[i].setVisible(bool);
@@ -379,4 +406,3 @@ public class StartingScreen extends JFrame {
 		}
 	}
 }
-

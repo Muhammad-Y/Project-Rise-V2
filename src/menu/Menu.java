@@ -24,27 +24,23 @@ import startMenu.StartingScreen;
  * 
  * @autho Muhammad Hasan, Rohan Samandari
  */
-
 public class Menu extends JPanel {
 	private BackgroundMusic music;
-	// Menu
 	private JMenu jmMenu = new JMenu("Menu");
 	private JMenuBar jmMenuBar = new JMenuBar();
 	private JMenuItem jmExit = new JMenuItem("Exit");
 	private JMenuItem jmOptions = new JMenuItem("Pause Music");
 	private JMenuItem jmRestart = new JMenuItem("Restart Game");
 	private JMenuItem jmRules = new JMenuItem("Read Rules");
-	
 	private Rules rules = new Rules();
-//	private StartingScreen ss = new StartingScreen();
+	
 	/**
-	 * Constructor used to create and draw in the frame.
+	 * Constructor which draws the gui
 	 */
 	public Menu() {
 		setOpaque(false);
 		setPreferredSize(new Dimension(400, 40));
 		setLayout(new BorderLayout());
-		//jmMenuBar.setAlignmentX(LEFT_ALIGNMENT);
 		jmMenuBar.setPreferredSize(new Dimension(100,5));
 		jmExit.addActionListener(new ButtonListener()); 
 		jmOptions.addActionListener(new ButtonListener()); 
@@ -59,10 +55,20 @@ public class Menu extends JPanel {
 		add(jmMenuBar, BorderLayout.WEST);
 		setBackground(Color.black);
 	}
+	
+	/**
+	 * Sets music reference
+	 * @param music
+	 */
 	public Menu(BackgroundMusic music) {
 		this.music = music;
 	}
 	
+	/**
+	 * Button listener class used to listen for actions
+	 * @author Rohan Samandari
+	 *
+	 */
 	public class ButtonListener implements ActionListener{
 
 		public void actionPerformed(ActionEvent e) {
@@ -81,17 +87,4 @@ public class Menu extends JPanel {
 		}
 		
 	}
-	
-
-//	public static void main(String[] args) {
-//
-//		Menu panelTest = new Menu();
-//		JFrame frame = new JFrame();
-//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		frame.setVisible(true);
-//		frame.getContentPane().add(panelTest);
-//		frame.pack();
-//		
-//	}
-
 }

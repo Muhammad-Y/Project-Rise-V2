@@ -7,7 +7,6 @@ import javax.swing.JOptionPane;
 
 import player.Player;
 
-
 /**
  * Class for property.
  * @author Sebastian Viro, Aevan Dino
@@ -22,6 +21,16 @@ public class Property implements Tile {
 	private ImageIcon img;
 	private int levelPrice;
 
+	/**
+	 * Construtor which sets values of property
+	 * @param name, of property
+	 * @param price, of property
+	 * @param defaultRent, rent for level 0
+	 * @param rentPerLevel, amount to be increased by per level
+	 * @param color, color of property
+	 * @param levelPrice, cost of upgrade 
+	 * @param img, image of tile
+	 */
 	public Property(String name, int price, int defaultRent, int rentPerLevel, Color color,int levelPrice , ImageIcon img) {
 		setName(name);
 		setPrice(price);
@@ -33,7 +42,10 @@ public class Property implements Tile {
 		this.img=img;
 		this.levelPrice= levelPrice;
 	}
-
+	
+	/**
+	 * Returns information about tile
+	 */
 	public String getTileInfo() {
 		String ownerName = "";
 		if(player == null) {
@@ -44,10 +56,12 @@ public class Property implements Tile {
 		info =    "\nOwner: \t         " + ownerName + "\n"
 				+ "Price:\t\t" + price + "\n"
 				+ "Default rent:\t" + defaultRent + "\n"
-				+ "Rent with Levels:\t" 	+ rentPerLevel + "\n"
+				+ "Rent per level:\t" 	+ rentPerLevel + "\n"
 				+ "Total rent:\t" 		+ getTotalRent();
 		return info;
 	}
+	
+	
 	public String getTitle() {
 		return name;
 	}

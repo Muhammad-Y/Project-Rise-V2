@@ -24,7 +24,6 @@ public class Work implements Tile {
 
 	}
 
-
 	public void payPlayer(int nbrOfDots) {
 		setRoll(nbrOfDots);
 		player.increaseBalance(player.getPlayerRank().getSalary(nbrOfDots));

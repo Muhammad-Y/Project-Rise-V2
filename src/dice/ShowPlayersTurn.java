@@ -1,36 +1,35 @@
 package dice;
-/**
- * A Lable which shows current player's turn
- * @author Rohan
- */
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.util.LinkedList;
-
 import javax.swing.*;
 
-import board.ColorIconMap;
-import player.Player;
-import player.PlayerList;
-
+/**
+ * A Lable which shows current players turn
+ * @author Rohan Samandari
+ */
 public class ShowPlayersTurn extends JPanel{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	private JLabel lblPlayer;
-	private String playerName = "Player";
 	private Color players;
+	private String playerName = "Player";
 	
+	/**
+	 * @param player The current player name in which the label displays.
+	 * 
+	 */
 	public ShowPlayersTurn(String player) {
 		this.playerName = player;
 		players = Color.DARK_GRAY;
 		showTheLabel();
 	}
 	
+	/**
+	 * Shows the label
+	 */
 	private void showTheLabel() {
 		setPreferredSize(new Dimension(250,50));
 		setBackground(players);
@@ -43,12 +42,14 @@ public class ShowPlayersTurn extends JPanel{
 		lblPlayer.setBorder(BorderFactory.createLineBorder(Color.white));
 		add(lblPlayer);
 	}
+	/**
+	 * @param playerName
+	 * @param color
+	 * Updates the label
+	 */
 	public void uppdateGUI(String playerName, Color color) {
-		
 		lblPlayer.setOpaque(true);
 		lblPlayer.setBackground(color);
-		lblPlayer.setText(playerName+"'s turn");
-		
-		
+		lblPlayer.setText(playerName+"'s turn");	
 	}
 }

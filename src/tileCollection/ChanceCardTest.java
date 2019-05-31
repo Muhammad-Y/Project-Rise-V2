@@ -27,13 +27,4 @@ public class ChanceCardTest {
 		// "null, JOptionPane.QUESTION_MESSAGE, null" sets icon to question mark, instead of the usual exclamation mark.
 		JOptionPane.showMessageDialog(null, "Chans: " + chanceCard[getRandomNumber()], null, JOptionPane.QUESTION_MESSAGE, null);
 	}
-	
-	/**
-	 * Temporary main method, used to test class
-	 * @param args null
-	 */
-	public static void main(String[] args) {		
-		ChanceCardTest chanceCard = new ChanceCardTest();
-		chanceCard.printCard();	
-	}
 }

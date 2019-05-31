@@ -33,15 +33,7 @@ public class SundayChurch implements Tile {
 		return info;
 	}
 
-	public static void main(String[] args) {
-		SundayChurch s = new SundayChurch();
-		System.out.println(s.getTileInfo());
-		
-	}
-
-	@Override
 	public String getTitle() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	

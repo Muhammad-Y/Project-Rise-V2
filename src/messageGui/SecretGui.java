@@ -10,15 +10,22 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-
+/**
+ * Class used in easter egg for "Monster Card:o"
+ * @author Muhammad Abdulkhuder, Sebastian Viro
+ */
 public class SecretGui extends JFrame {
-	
-    private JLabel lblSecret = new JLabel();
+
+	private static final long serialVersionUID = 1L;
+	private JLabel lblSecret = new JLabel();
     private Thread thread;
     private Dimension sSize = Toolkit.getDefaultToolkit().getScreenSize();
     private int width = (int)sSize.getWidth();
     private int height = (int)sSize.getHeight();
     
+    /**
+     * Constructor which creates GUI to show
+     */
 	public SecretGui() {
 			
 	   	setLayout(new BorderLayout());
@@ -40,6 +47,11 @@ public class SecretGui extends JFrame {
 		
 	}
 	
+	/**
+	 * 
+	 * @author Muhammad Abdulkhuder, Sebastian Viro
+	 *
+	 */
 	 private class Sleeper extends Thread {
 	    	
 	    	public void run() {

@@ -17,24 +17,29 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 
+/**
+ * Panel that shows up when players start the game. This contains information about the game
+ * @author Muhammad Abdulkhuder, Sebastian Viro
+ */
 public class Introduction extends JPanel {
 
 	private JLabel lblTitel = new JLabel("Welcome to Rise!");
 	private JLabel lblPic = new JLabel();
-
 	private JFrame frame;
-	
 	private JTextArea taText = new JTextArea();
-
 	private Font fontTitel = new Font("ALGERIAN", Font.ITALIC, 20);
 	private Font fontText = new Font("Gabriola", Font.ITALIC, 22);
 
+	/**
+	 * Constructor that calls upon method which draws gui
+	 */
 	public Introduction() {
 		startGUI();
 	}
 
-	
-	
+	/**
+	 * Creates gui
+	 */
 	private void startGUI() {
 		setPreferredSize(new Dimension(600, 350));
 		lblTitel.setBounds(87, -20, 411, 86);
@@ -72,22 +77,19 @@ public class Introduction extends JPanel {
 		add(lblTitel);
 		add(taText);
 		add(lblPic);
-		
 		getFrame();
-
 	}
 
-	 
+	 /**
+	  * Creates a frame which the panel is shown in.
+	  */
     public void getFrame() {
     	frame = new JFrame();
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().add(this);
-
 		frame.pack();
 		frame.setVisible(true);
 		frame.setLocationRelativeTo(null);
-
 	}
-
 }

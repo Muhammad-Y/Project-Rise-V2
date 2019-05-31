@@ -10,7 +10,7 @@ import eastSidePanels.EastSidePanel;
 
 /**
  * A class that holds all active players 
- * @author Seth Öberg
+ * @author Seth Oberg
  *
  */
 

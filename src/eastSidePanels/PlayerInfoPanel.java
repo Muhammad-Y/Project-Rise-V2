@@ -26,8 +26,8 @@ public class PlayerInfoPanel extends JPanel {
 
 	private JLabel lblName = new JLabel("");
 	private JLabel lblRank = new JLabel("");
-	private JLabel lblGold = new JLabel("100 Gold coins");
-	private JLabel lblNetworth = new JLabel("1000G");
+	private JLabel lblGold = new JLabel("");
+	private JLabel lblNetworth = new JLabel("");
 	private JPanel p1 = new JPanel();
 	private JPanel p2 = new JPanel();
 	private JPanel p3 = new JPanel();

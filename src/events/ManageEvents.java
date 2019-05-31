@@ -12,7 +12,7 @@ import board.Board;
 import dice.Dice;
 import eastSidePanels.EastSidePanel;
 import messageGui.DeathGUI;
-import messageGui.MessageGUI;
+import messageGui.FortuneTellerGUI;
 import messageGui.SecretGui;
 import messageGui.WinGui;
 import player.Player;
@@ -31,8 +31,8 @@ import tiles.Work;
 import westSidePanel.WestSidePanel;
 
 /**
- * Klass som hanterar alla händelser då en spelare landar på en ruta
- * @author Seth Oberg, Rohan Samandari, Sebastian Viro
+ * The class handles all the events that occur when a player lands on a tile.
+ * @author Seth Oberg, Rohan Samandari,Muhammad Abdulkhuder ,Sebastian Viro, Aevan Dino.
  */
 
 public class ManageEvents {
@@ -40,7 +40,7 @@ public class ManageEvents {
 	private Board board;
 	private Dice dice;
 	private DeathGUI deathGUI;
-	private MessageGUI msgGUI;
+	private FortuneTellerGUI msgGUI;
 	private EastSidePanel eastPanel;
 	private Random rand = new Random();
 	private int roll;
@@ -62,7 +62,7 @@ public class ManageEvents {
 		this.playerList = playerList;
 		this.eastPanel = eastPanel;
 		deathGUI = new DeathGUI();
-		msgGUI = new MessageGUI();
+		msgGUI = new FortuneTellerGUI();
 	}
 
 	/**
@@ -99,10 +99,6 @@ public class ManageEvents {
 
 		if (tile instanceof Tavern) {
 			tavernEvent(tile, player);
-		}
-
-		if (tile instanceof Go) {
-			
 		}
 
 		if (tile instanceof SundayChurch) {
@@ -166,6 +162,7 @@ public class ManageEvents {
 					westPanel.append(player.getName() + " paid " + tempProperty.getTotalRent() + " GC to "
 							+ tempProperty.getOwner().getName() + "\n");
 					player.decreaseBalace(tempInt);
+					player.decreaseNetWorth(tempInt);
 					tempProperty.getOwner().increaseBalance(tempInt);
 				}
 			} else {
@@ -434,12 +431,22 @@ public class ManageEvents {
 		}
 	}	
 	
+	/**
+	 * This class is an easter egg. That gives the player 5 fortunes.
+	 * @author Sebastian viro ,Muhammad Abdulkhuder
+	 *
+	 */
 	private class SecretSleeper extends Thread {
 
 		private FortuneTeller tempCard;
 		private Player player;
 		private Clip clip;
 			
+		/**
+		 * @param tempCard
+		 * @param player
+		 * Starts the sleeper
+		 */
 		public SecretSleeper(FortuneTeller tempCard, Player player) {
 			this.tempCard = tempCard;
 			this.player = player;
